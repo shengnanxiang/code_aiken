@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AiKen 背面排版 · 大写居中</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1a1a1a;
+    color: #e0e0e0;
+    font-family: 'Inter', sans-serif;
+    padding: 40px 20px;
+  }
+
+  .container { max-width: 820px; margin: 0 auto; }
+
+  h1 {
+    font-size: 22px; font-weight: 500; color: #fff;
+    margin-bottom: 6px; letter-spacing: 0.5px;
+  }
+  .subtitle { font-size: 13px; color: #888; margin-bottom: 50px; }
+
+  .section-title {
+    font-size: 15px; font-weight: 600; color: #c0a060;
+    margin-bottom: 6px; letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .section-desc { font-size: 12px; color: #777; margin-bottom: 28px; }
+  .section { margin-bottom: 56px; }
+
+  .panel {
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 12px;
+    padding: 52px 40px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .panel::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, #2e2e2e 0%, #262626 50%, #2a2a2a 100%);
+    z-index: 0;
+  }
+  .panel > * { position: relative; z-index: 1; }
+
+  .layout-label {
+    position: absolute; top: 12px; right: 16px;
+    font-size: 10px; color: #555;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 1px;
+  }
+
+  .center { text-align: center; }
+
+  .text-serif { font-family: 'Cormorant Garamond', serif; }
+  .text-mono { font-family: 'JetBrains Mono', monospace; }
+  .text-sans { font-family: 'Inter', sans-serif; }
+
+  .text-light { color: #d0d0d0; }
+  .text-gold { color: #c0a060; }
+  .text-cream { color: #e8e0d0; }
+  .text-silver { color: #b0b0b0; }
+  .text-white { color: #f0f0f0; }
+
+  .params {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #888;
+  }
+  .params-gold {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #8a7a40;
+  }
+  .params-silver {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #999;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 18px auto;
+    width: 75%;
+  }
+  .divider-thin {
+    border: none;
+    border-top: 1px solid #3a3a3a;
+    margin: 16px auto;
+    width: 65%;
+  }
+  .divider-gold {
+    border: none;
+    border-top: 1px solid #5a4a20;
+    margin: 18px auto;
+    width: 55%;
+  }
+  .divider-double {
+    border: none;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #555;
+    padding-top: 3px;
+    margin: 18px auto;
+    width: 60%;
+    height: 3px;
+  }
+
+  .note {
+    font-size: 11px; color: #666;
+    margin-top: 10px; text-align: center;
+    font-style: italic;
+  }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  @media (max-width: 700px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>AiKen 背面排版 · 大写居中</h1>
+  <p class="subtitle">UPPERCASE · CENTERED · Text + Parameters</p>
+
+  <!-- ========== Option 1: MEMORIES DEVELOP IN TIME ========== -->
+  <div class="section">
+    <div class="section-title">Option 1 · MEMORIES DEVELOP IN TIME</div>
+    <p class="section-desc">大写居中，不同字体/字号/分隔线变体</p>
+
+    <!-- 1A: 衬线 + 细分隔线 -->
+    <div class="panel">
+      <span class="layout-label">1A · SERIF + LINE</span>
+      <div class="center">
+        <div class="text-serif text-cream" style="font-size:22px; letter-spacing:3px; font-weight:400;">MEMORIES DEVELOP IN TIME</div>
+        <hr class="divider">
+        <div class="params">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+      </div>
+      <p class="note">Cormorant Garamond + 细分隔线。经典铭牌感。</p>
+    </div>
+
+    <!-- 1B: 无衬线 + 细分隔线 -->
+    <div class="panel">
+      <span class="layout-label">1B · SANS + LINE</span>
+      <div class="center">
+        <div class="text-sans text-silver" style="font-size:16px; letter-spacing:4px; font-weight:400;">MEMORIES DEVELOP IN TIME</div>
+        <hr class="divider">
+        <div class="params">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+      </div>
+      <p class="note">Inter + 细分隔线。现代工业感。</p>
+    </div>
+
+    <!-- 1C: 无衬线 + 宽字距无分隔线 -->
+    <div class="panel">
+      <span class="layout-label">1C · SANS WIDE · NO LINE</span>
+      <div class="center">
+        <div class="text-sans text-silver" style="font-size:15px; letter-spacing:6px; font-weight:300;">MEMORIES DEVELOP IN TIME</div>
+        <div style="height:18px"></div>
+        <div class="params">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+      </div>
+      <p class="note">Inter Light + 超宽字距 + 无分隔线。极简，用间距分层。</p>
+    </div>
+
+    <!-- 1D: 等宽字体 -->
+    <div class="panel">
+      <span class="layout-label">1D · MONOSPACE</span>
+      <div class="center">
+        <div class="text-mono text-light" style="font-size:14px; letter-spacing:3px; font-weight:400;">MEMORIES DEVELOP IN TIME</div>
+        <hr class="divider-thin">
+        <div class="params-silver">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+      </div>
+      <p class="note">JetBrains Mono。打字机/技术规格感，文字和参数同字体统一。</p>
+    </div>
+
+    <!-- 1E: 大字 + 金色 -->
+    <div class="panel">
+      <span class="layout-label">1E · LARGE GOLD</span>
+      <div class="center">
+        <div class="text-serif text-gold" style="font-size:28px; letter-spacing:4px; font-weight:500;">MEMORIES DEVELOP IN TIME</div>
+        <hr class="divider-gold">
+        <div class="params-gold">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+      </div>
+      <p class="note">大号衬线 + 金色。文字为绝对主角，最有铭文感。</p>
+    </div>
+
+    <!-- 1F: 双分隔线 -->
+    <div class="panel">
+      <span class="layout-label">1F · DOUBLE LINE</span>
+      <div class="center">
+        <div class="text-sans text-white" style="font-size:16px; letter-spacing:4px; font-weight:500;">MEMORIES DEVELOP IN TIME</div>
+        <hr class="divider-double">
+        <div class="params">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+      </div>
+      <p class="note">双线分隔。复古仪器面板感。</p>
+    </div>
+
+    <!-- 1G: 两行排列 -->
+    <div class="panel">
+      <span class="layout-label">1G · TWO LINES</span>
+      <div class="center">
+        <div class="text-serif text-cream" style="font-size:24px; letter-spacing:3px; font-weight:400; line-height:1.5;">MEMORIES DEVELOP<br>IN TIME</div>
+        <div style="height:16px"></div>
+        <div class="params">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+      </div>
+      <p class="note">文字分两行，无分隔线。适合背面宽度有限的场景。</p>
+    </div>
+  </div>
+
+  <!-- ========== Option 2: DEVELOPED BY TIME ========== -->
+  <div class="section">
+    <div class="section-title">Option 2 · DEVELOPED BY TIME</div>
+    <p class="section-desc">大写居中，同样变体。文字更短，视觉更轻。</p>
+
+    <!-- 2A: 衬线 + 细分隔线 -->
+    <div class="panel">
+      <span class="layout-label">2A · SERIF + LINE</span>
+      <div class="center">
+        <div class="text-serif text-cream" style="font-size:24px; letter-spacing:3px; font-weight:400;">DEVELOPED BY TIME</div>
+        <hr class="divider">
+        <div class="params">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+      </div>
+      <p class="note">Cormorant Garamond + 细分隔线。文字短，可以稍大。</p>
+    </div>
+
+    <!-- 2B: 无衬线 + 细分隔线 -->
+    <div class="panel">
+      <span class="layout-label">2B · SANS + LINE</span>
+      <div class="center">
+        <div class="text-sans text-silver" style="font-size:18px; letter-spacing:4px; font-weight:400;">DEVELOPED BY TIME</div>
+        <hr class="divider">
+        <div class="params">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+      </div>
+      <p class="note">Inter + 细分隔线。现代工业感。</p>
+    </div>
+
+    <!-- 2C: 无衬线 + 宽字距无分隔线 -->
+    <div class="panel">
+      <span class="layout-label">2C · SANS WIDE · NO LINE</span>
+      <div class="center">
+        <div class="text-sans text-silver" style="font-size:17px; letter-spacing:6px; font-weight:300;">DEVELOPED BY TIME</div>
+        <div style="height:18px"></div>
+        <div class="params">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+      </div>
+      <p class="note">Inter Light + 超宽字距 + 无分隔线。极简。</p>
+    </div>
+
+    <!-- 2D: 等宽字体 -->
+    <div class="panel">
+      <span class="layout-label">2D · MONOSPACE</span>
+      <div class="center">
+        <div class="text-mono text-light" style="font-size:15px; letter-spacing:3px; font-weight:400;">DEVELOPED BY TIME</div>
+        <hr class="divider-thin">
+        <div class="params-silver">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+      </div>
+      <p class="note">JetBrains Mono。文字和参数同字体，整体统一。</p>
+    </div>
+
+    <!-- 2E: 大字 + 金色 -->
+    <div class="panel">
+      <span class="layout-label">2E · LARGE GOLD</span>
+      <div class="center">
+        <div class="text-serif text-gold" style="font-size:32px; letter-spacing:4px; font-weight:500;">DEVELOPED BY TIME</div>
+        <hr class="divider-gold">
+        <div class="params-gold">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+      </div>
+      <p class="note">大号衬线 + 金色。文字短可以放更大，铭文感最强。</p>
+    </div>
+
+    <!-- 2F: 双分隔线 -->
+    <div class="panel">
+      <span class="layout-label">2F · DOUBLE LINE</span>
+      <div class="center">
+        <div class="text-sans text-white" style="font-size:18px; letter-spacing:4px; font-weight:500;">DEVELOPED BY TIME</div>
+        <hr class="divider-double">
+        <div class="params">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+      </div>
+      <p class="note">双线分隔。复古仪器面板感。</p>
+    </div>
+  </div>
+
+  <!-- ========== 直接对比 ========== -->
+  <div class="section">
+    <div class="section-title">Side by Side</div>
+    <p class="section-desc">同排版下两句话的直接对比</p>
+
+    <div class="two-col">
+      <div class="panel">
+        <span class="layout-label">SERIF</span>
+        <div class="center">
+          <div class="text-serif text-cream" style="font-size:22px; letter-spacing:3px;">MEMORIES DEVELOP IN TIME</div>
+          <hr class="divider">
+          <div class="params">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+        </div>
+      </div>
+      <div class="panel">
+        <span class="layout-label">SERIF</span>
+        <div class="center">
+          <div class="text-serif text-cream" style="font-size:24px; letter-spacing:3px;">DEVELOPED BY TIME</div>
+          <hr class="divider">
+          <div class="params">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="panel">
+        <span class="layout-label">SANS WIDE</span>
+        <div class="center">
+          <div class="text-sans text-silver" style="font-size:15px; letter-spacing:6px; font-weight:300;">MEMORIES DEVELOP IN TIME</div>
+          <div style="height:18px"></div>
+          <div class="params">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+        </div>
+      </div>
+      <div class="panel">
+        <span class="layout-label">SANS WIDE</span>
+        <div class="center">
+          <div class="text-sans text-silver" style="font-size:17px; letter-spacing:6px; font-weight:300;">DEVELOPED BY TIME</div>
+          <div style="height:18px"></div>
+          <div class="params">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="panel">
+        <span class="layout-label">MONO</span>
+        <div class="center">
+          <div class="text-mono text-light" style="font-size:14px; letter-spacing:3px;">MEMORIES DEVELOP IN TIME</div>
+          <hr class="divider-thin">
+          <div class="params-silver">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+        </div>
+      </div>
+      <div class="panel">
+        <span class="layout-label">MONO</span>
+        <div class="center">
+          <div class="text-mono text-light" style="font-size:15px; letter-spacing:3px;">DEVELOPED BY TIME</div>
+          <hr class="divider-thin">
+          <div class="params-silver">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="panel">
+        <span class="layout-label">GOLD</span>
+        <div class="center">
+          <div class="text-serif text-gold" style="font-size:28px; letter-spacing:4px; font-weight:500;">MEMORIES DEVELOP IN TIME</div>
+          <hr class="divider-gold">
+          <div class="params-gold">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+        </div>
+      </div>
+      <div class="panel">
+        <span class="layout-label">GOLD</span>
+        <div class="center">
+          <div class="text-serif text-gold" style="font-size:32px; letter-spacing:4px; font-weight:500;">DEVELOPED BY TIME</div>
+          <hr class="divider-gold">
+          <div class="params-gold">110 · 36 · 1/30s—1/2000s · ISO100—3200</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
