@@ -1,0 +1,66 @@
+统计|相机页PV/UV；衡量App相机页活跃|相机页曝光|App → 相机页|已连接.jpg|进入相机页时上报|CameraPage|CameraPage||-|page_view|核心页面曝光
+统计|连接状态曝光量；监测连接稳定性|相机连接状态曝光|App → 相机页 → 顶部状态条|已连接.jpg|状态条可见时上报|CameraPage|ConnectStatus|connected|battery=78|view|携带电量与连接状态
+统计|当前风格卡点击率＝点击PV/相机页PV|当前风格卡点击|App → 相机页 → 当前风格卡|已连接.jpg|点击当前风格卡时上报|CameraPage|CurrentStyle|on|style_id=GOLD200|click|入口：跳转风格列表
+统计|提前取出按钮曝光量；衡量取出意向|提前取出按钮曝光|App → 相机页 → 提前取出|已连接.jpg|按钮可见时上报|CameraPage|TakeOut|on|remaining=36;shot_cnt=0|view|曝光与点击成对比
+统计|取出意图率＝取出点击PV/提前取出曝光PV|提前取出按钮点击|App → 相机页 → 提前取出|已连接.jpg|点击按钮时上报|CameraPage|TakeOut|on|remaining=36;shot_cnt=0|click|北极星链路起点
+统计|弃卷率＝提前取出次数/取卷次数|提前取出弹窗曝光|App → 相机页 → 提前取出 → 弹窗|提前取出.jpg|弹窗展示时上报|TakeOutDialog|TakeOutDialog|on|remaining=36|view|二次确认拦截
+统计|取卷转化率＝确认取出次数/弹窗曝光PV|确认取出点击|App → 相机页 → 提前取出 → 取出|提前取出.jpg|点击取出时上报|TakeOutDialog|TakeOutConfirm|on|remaining=36|click|触发传输与冲印
+统计|拦截率＝取消次数/弹窗曝光PV|提前取出取消点击|App → 相机页 → 提前取出 → 取消|提前取出.jpg|点击取消时上报|TakeOutDialog|TakeOutCancel|on|-|click|衡量文案说服力
+统计|冲印方式弹窗曝光量；衡量强制决策损耗|冲印方式弹窗曝光|取出 → 冲印方式弹窗|冲印方式.jpg|弹窗展示时上报|PrintModeDialog|PrintModeDialog|on|-|view|每次询问时弹出
+统计|即时/经典冲印占比＝各模式选择PV/弹窗曝光PV|冲印方式选择点击|取卷流程 → 冲印方式弹窗 → 即时/经典|冲印方式.jpg|选中某模式时上报|PrintModeDialog|PrintModeSelect|selected|print_mode=instant|click|拆解冲扫体验偏好
+统计|冲印启动率＝开始冲印次数/取出确认次数|开始冲印点击|冲印方式弹窗 → 开始冲印|冲印方式.jpg|点击开始冲印时上报|PrintModeDialog|PrintStart|on|print_mode=instant|click|北极星分母
+统计|传输成功率＝传输成功数/传输开始数|传输开始|取出后自动传输|冲印方式.jpg|开始传输时上报|CameraPage|Transfer||shot_cnt=32|view|硬件质量监控
+统计|传输耗时分布；失败率监控|传输结束|取出后自动传输|冲印方式.jpg|传输结束（成功/失败）时上报|CameraPage|Transfer|failed|result=fail;duration=18|view|反哺固件优化
+统计|周冲扫卷数（北极星）＝冲印完成卷数/7天|冲印完成|冲印完成后可在暗房查看|暗房 · 冲印中.jpg|冲印完成时上报|CameraPage|PrintFinish|success|print_mode=instant;cost=300|view|北极星指标取数点
+统计|风格列表PV/UV；风格模块渗透率|风格列表曝光|App → 相机页 → 风格列表|风格列表-未选择.jpg|列表页进入时上报|StyleListPage|StyleList||style_cnt=5|page_view|风格模块入口
+统计|各筛选标签使用占比|风格筛选点击|风格列表 → 筛选标签|风格列表-未选择.jpg|点击筛选标签时上报|StyleListPage|StyleFilter|selected|filter_type=warm|click|辅助风格分类运营
+统计|风格卡曝光量；各风格热度排序|风格卡片曝光|风格列表 → 风格卡片|风格列表-未选择.jpg|卡片可见时上报|StyleListPage|StyleCard||style_id=GOLD200;selected=0|view|风格偏好画像
+统计|详情点击率＝风格详情点击PV/风格卡曝光PV|查看详情点击|风格列表 → 风格卡片 → 查看详情|风格列表-未选择.jpg|点击查看详情时上报|StyleListPage|StyleDetail|on|style_id=GOLD200|click|进入风格详情
+统计|解锁入口点击率；兑换码活动效果|解锁新风格点击|风格列表 → 解锁新风格|风格列表-未选择.jpg|点击解锁入口时上报|StyleListPage|UnlockStyle|on|-|click|运营活动埋点
+统计|风格详情PV/UV；详情页吸引力|风格详情曝光|风格列表 → 查看详情|风格详情.jpg|详情页进入时上报|StyleDetailPage|StyleDetail||style_id=GOLD200|page_view|风格转化分析
+统计|颗粒/边框/漏光各档位选择分布|成像设置点击|风格详情 → 成像设置|风格详情.jpg|选择某档位时上报|StyleDetailPage|ImageSetting|selected|type=grain;value=mid|click|评估特效使用偏好
+统计|风格选用率＝选用此风格PV/风格详情PV|选用此风格点击|风格详情 → 选用此风格|风格详情.jpg|点击选用时上报|StyleDetailPage|UseStyle|on|style_id=GOLD200|click|风格→拍摄转化
+统计|风格切换频次；风格粘性|风格选择成功|选用此风格后写入设备|风格详情.jpg|设备回执成功时上报|StyleDetailPage|StyleSelected|success|style_id=GOLD200|view|含特效参数快照
+统计|设置页PV/UV；设置模块渗透率|相机设置页曝光|App → 相机设置|相机设置.jpg|设置页进入时上报|CameraSettingPage|CameraSetting||-|page_view|设置模块入口
+统计|各设置项使用占比|冲印方式设置入口点击|相机设置 → 冲印方式|相机设置.jpg|点击冲印方式时上报|CameraSettingPage|PrintModeEntry|on|cur_value=ask|click|默认值设置
+统计|默认冲印方式分布；衡量「每次询问」偏好|冲印方式设置弹窗曝光|相机设置 → 冲印方式 → 弹窗|冲印方式设置.jpg|弹窗展示时上报|PrintModeSettingDialog|PrintModeSetting||cur_value=ask|view|设置项曝光
+统计|各默认冲印方式选择占比|冲印方式设置选择|冲印方式设置弹窗 → 选项|冲印方式设置.jpg|选中选项时上报|PrintModeSettingDialog|PrintModeSettingSelect|selected|print_mode=classic|click|影响主流程
+统计|设置保存率＝完成次数/弹窗曝光PV|冲印方式设置完成点击|冲印方式设置弹窗 → 完成|冲印方式设置.jpg|点击完成时上报|PrintModeSettingDialog|PrintModeSettingSave|on|print_mode=classic|click|写入设备配置
+统计|日期戳开启率；偏好设置洞察|日期戳开关切换|相机设置 → 日期戳|相机设置.jpg|开关切换时上报|CameraSettingPage|DateStamp|on|status=1|click|成像偏好
+统计|设备删除率；流失监控|删除设备点击|相机设置 → 删除设备|相机设置.jpg|点击删除时上报|CameraSettingPage|DeleteDevice|on|-|click|解绑流失预警
+统计|可用风格查看次数；风格渗透辅助|可用风格点击|相机设置 → 可用风格|相机设置.jpg|点击可用风格时上报|CameraSettingPage|AvailableStyle|on|style_cnt=6|click|当前值即风格列表
+统计|暗房PV/UV；冲后回看渗透率|暗房胶卷列表曝光|App → 暗房|暗房 · 冲印中.jpg|列表页进入时上报|DarkroomPage|DarkroomList||roll_cnt=3|page_view|胶卷沉淀核心页
+统计|暗房筛选使用占比|暗房筛选点击|暗房 → 筛选标签|暗房 · 冲印中.jpg|点击筛选标签时上报|DarkroomPage|DarkroomFilter|selected|filter_type=all|click|多卷管理
+统计|冲印中状态留存；等待期流失分析|胶卷卡片曝光|暗房 → 胶卷卡片|暗房 · 冲印中.jpg|卡片可见时上报|DarkroomPage|RollCard||roll_id;print_status=processing|view|冲印进度可见性
+统计|胶卷打开率＝卡片点击PV/卡片曝光PV|胶卷卡片点击|暗房 → 胶卷卡片|暗房 · 冲印中.jpg|点击卡片时上报|DarkroomPage|RollCardClick|on|roll_id;print_status=done|click|进入底片浏览
+统计|底片浏览PV/UV；成片回看率|底片浏览曝光|暗房 → 胶卷卡片 → 底片浏览|底片浏览.jpg|页面进入时上报|FilmStripPage|FilmStrip||roll_id;shot_cnt=32|page_view|冲扫完成后的第一站
+统计|单张停留与浏览深度|胶片带滑动|底片浏览 → 横向滑动|底片浏览.jpg|滑动停止时上报|FilmStripPage|FilmSwipe|on|photo_idx=5|view|浏览深度
+统计|大图进入率＝单图点击PV/底片浏览PV|单张照片点击|底片浏览 → 单张照片|底片浏览.jpg|点击照片时上报|FilmStripPage|PhotoClick|on|photo_idx=5|click|进入大图浏览
+统计|多选使用率；批量操作渗透|选择模式点击|底片浏览 → 选择|底片浏览.jpg|点击选择时上报|FilmStripPage|SelectMode|on|-|click|批量删除/保存前置
+统计|保存到相册转化率；内容沉淀量|保存全部点击|底片浏览 → 保存全部|底片浏览.jpg|点击保存全部时上报|FilmStripPage|SaveAll|on|shot_cnt=32|click|内容沉淀指标
+统计|分享渗透率；传播价值验证|分享点击|底片浏览 → 分享|底片浏览.jpg|点击分享时上报|FilmStripPage|Share|on|shot_cnt=32|click|传播拉新
+统计|大图浏览PV/UV；单图精读率|大图浏览曝光|底片浏览 → 单张照片|大图浏览.jpg|页面进入时上报|PhotoViewPage|PhotoView||roll_id;total=6|page_view|成片回看
+统计|翻页深度；平均查看张数|左右切换点击|大图浏览 → 左右箭头|大图浏览.jpg|切换图片时上报|PhotoViewPage|PhotoSwitch|on|from=2;to=3|click|浏览深度
+统计|设为封面使用率；封面管理行为|设为封面点击|大图浏览 → 设为封面|大图浏览.jpg|点击设为封面时上报|PhotoViewPage|SetCover|on|photo_idx=3|click|胶卷封面运营
+统计|单图保存率＝单图保存PV/大图浏览PV|单张保存点击|大图浏览 → 保存|大图浏览.jpg|点击保存时上报|PhotoViewPage|PhotoSave|on|photo_idx=3|click|内容沉淀
+统计|创作入口使用率；拼贴玩法渗透|拼贴分享页曝光|底片浏览 → 分享 → 拼贴|拼贴分享.jpg|页面进入时上报|CollagePage|Collage||photo_cnt=3|page_view|创作模块
+统计|拼贴选片数与选片偏好|拼贴缩略图选择|拼贴分享 → 缩略图带|拼贴分享.jpg|选择/取消照片时上报|CollagePage|CollageSelect|selected|photo_cnt=2;max=6|click|创作选片行为
+统计|重新生成使用率；模板满意度|重新生成点击|拼贴分享 → 重新生成|拼贴分享.jpg|点击重新生成时上报|CollagePage|CollageRegen|on|photo_cnt=2|click|模板迭代依据
+统计|拼贴保存量；分享传播量|拼贴保存点击|拼贴分享 → 保存|拼贴分享.jpg|点击保存时上报|CollagePage|CollageSave|on|photo_cnt=3|click|内容沉淀
+统计|拼贴分享量；传播回流UV|拼贴分享点击|拼贴分享 → 分享|拼贴分享.jpg|点击分享时上报|CollagePage|CollageShare|on|photo_cnt=3|click|传播价值验证
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
