@@ -1,1064 +1,348 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>从「自嗨式定义」到「让自己看到」—— 用AI协助产品定义的实践与感受</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
-
-  /* ========== RESET & BASE ========== */
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --bg: #000000;
-    --surface: #111111;
-    --surface-2: #1a1a1a;
-    --text: #ffffff;
-    --text-secondary: #888888;
-    --text-muted: #555555;
-    --accent: #e63946;
-    --accent-light: #ff5a5a;
-    --accent-glow: rgba(230, 57, 70, 0.15);
-    --border: rgba(255,255,255,0.1);
-    --border-strong: rgba(230,57,70,0.3);
-    --green: #34d399;
-    --radius: 20px;
-    --transition: 0.6s cubic-bezier(0.65, 0, 0.35, 1);
-  }
-
-  html { font-size: 18px; }
-
-  body {
-    font-family: 'Noto Sans SC', -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    overflow: hidden;
-    height: 100vh;
-    width: 100vw;
-    letter-spacing: -0.01em;
-  }
-
-  /* ========== SLIDE CONTAINER ========== */
-  .slides {
-    display: flex;
-    width: calc(100vw * 11);
-    height: 100vh;
-    transition: transform var(--transition);
-  }
-
-  .slide {
-    width: 100vw;
-    height: 100vh;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 100px 120px 80px;
-    position: relative;
-    overflow-y: auto;
-  }
-
-  /* ========== COVER ========== */
-  .slide-cover {
-    background: var(--bg);
-  }
-  .slide-cover .eyebrow {
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 32px;
-  }
-  .slide-cover h1 {
-    font-size: clamp(56px, 7vw, 110px);
-    font-weight: 900;
-    text-align: center;
-    line-height: 1.1;
-    position: relative;
-    z-index: 1;
-    max-width: 1100px;
-  }
-  .slide-cover h1 .highlight {
-    color: var(--accent);
-  }
-  .slide-cover .cover-subtitle {
-    font-size: clamp(20px, 2vw, 28px);
-    color: var(--text-secondary);
-    margin-top: 40px;
-    font-weight: 300;
-    letter-spacing: 1px;
-    text-align: center;
-    max-width: 700px;
-    line-height: 1.6;
-  }
-  .slide-cover .cover-line {
-    width: 60px;
-    height: 2px;
-    background: var(--accent);
-    margin-top: 48px;
-  }
-  .slide-cover .cover-meta {
-    position: absolute;
-    bottom: 60px;
-    left: 120px;
-    font-size: 14px;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-  }
-
-  /* ========== CONTENT SLIDE ========== */
-  .slide-content {
-    background: var(--bg);
-    justify-content: center;
-  }
-  .slide-content h2 {
-    font-size: clamp(36px, 4.5vw, 64px);
-    font-weight: 900;
-    margin-bottom: 16px;
-    text-align: center;
-    line-height: 1.15;
-  }
-  .slide-content h2 .accent {
-    color: var(--accent);
-  }
-  .slide-content .section-desc {
-    color: var(--text-secondary);
-    text-align: center;
-    margin-bottom: 56px;
-    font-size: 18px;
-    font-weight: 300;
-    max-width: 700px;
-  }
-
-  /* ========== TIMELINE ========== */
-  .timeline {
-    display: flex;
-    align-items: flex-start;
-    gap: 0;
-    width: 100%;
-    max-width: 1200px;
-    position: relative;
-    padding-top: 60px;
-  }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    top: 80px;
-    left: 140px;
-    right: 140px;
-    height: 1px;
-    background: var(--border);
-  }
-  .timeline-node {
-    flex: 1;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s forwards;
-  }
-  .timeline-node:nth-child(1) { animation-delay: 0.3s; }
-  .timeline-node:nth-child(2) { animation-delay: 0.6s; }
-  .timeline-node:nth-child(3) { animation-delay: 0.9s; }
-  .timeline-node:nth-child(4) { animation-delay: 1.2s; }
-  .timeline-dot {
-    width: 160px; height: 160px;
-    border-radius: 16px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    margin: 0 auto 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    transition: all 0.3s;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.3);
-  }
-  .timeline-dot img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s;
-  }
-  .timeline-dot img.invert-logo {
-    filter: invert(1);
-    background: #000;
-  }
-  .timeline-node:hover .timeline-dot {
-    border-color: var(--border-strong);
-    box-shadow: 0 0 40px rgba(230,57,70,0.15);
-  }
-  .timeline-node:hover .timeline-dot img {
-    transform: scale(1.05);
-  }
-  .timeline-label {
-    font-weight: 700;
-    font-size: 18px;
-    margin-bottom: 8px;
-  }
-  .timeline-sublabel {
-    font-size: 14px;
-    color: var(--text-secondary);
-  }
-
-  /* ========== RADAR CHART ========== */
-  .radar-container {
-    position: relative;
-    width: 100%;
-    max-width: 900px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 16px auto;
-  }
-  .radar-core {
-    position: relative;
-    width: 460px;
-    height: 460px;
-    margin-top: 0px;
-  }
-  .radar-core svg {
-    width: 100%;
-    height: 100%;
-  }
-  .radar-label {
-    position: absolute;
-    text-align: center;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-  }
-  .radar-label .rl-name {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--text);
-    white-space: nowrap;
-    transition: color 0.3s;
-  }
-  .radar-label .rl-desc {
-    font-size: 13px;
-    color: var(--text-secondary);
-    margin-top: 4px;
-    white-space: nowrap;
-    transition: color 0.3s;
-  }
-  .radar-label:hover .rl-name { color: var(--accent); }
-  .radar-label:hover .rl-desc { color: var(--accent-light); }
-  .radar-bottom {
-    text-align: center;
-    margin-top: 40px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .radar-bottom p {
-    font-size: 20px;
-    color: var(--text-secondary);
-    font-weight: 300;
-    line-height: 1.6;
-  }
-  .radar-bottom strong { color: var(--accent); }
-
-  /* ========== FLOW CHART ========== */
-  .flow-section {
-    max-width: 1100px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .flow-chart {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: center;
-    justify-content: center;
-  }
-  .flow-node {
-    padding: 14px 24px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    opacity: 0;
-    animation: fadeIn 0.5s forwards;
-  }
-  .flow-node.pain {
-    border-color: var(--border-strong);
-    background: rgba(230,57,70,0.08);
-  }
-  .flow-arrow {
-    color: var(--text-muted);
-    font-size: 18px;
-    opacity: 0;
-    animation: fadeIn 0.5s forwards;
-  }
-  .pain-quote {
-    border-left: 3px solid var(--accent);
-    padding: 28px 32px;
-    background: var(--surface);
-    border-radius: 0 16px 16px 0;
-    max-width: 800px;
-    margin: 32px auto 0;
-  }
-  .pain-quote p {
-    font-size: 20px;
-    color: var(--text);
-    line-height: 1.7;
-  }
-  .pain-quote strong {
-    color: var(--accent);
-  }
-
-  /* ========== PHONE COMPARISON (Slide 7) ========== */
-  .phone-comparison {
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-    align-items: center;
-    min-height: 492px;
-  }
-  .phone-comparison .phone-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-  }
-  .phone-comparison .phone-col img {
-    height: 60vh;
-    max-height: 520px;
-    width: auto;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-  }
-  .phone-comparison .phone-col .col-label {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: 1px;
-  }
-  .phone-comparison .phone-col.before .col-label { color: var(--accent); }
-  .phone-comparison .phone-col.after .col-label { color: var(--green); }
-
-  /* ========== STORY CARDS ========== */
-  .story-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    width: 100%;
-    max-width: 1200px;
-  }
-  .story-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 40px;
-    opacity: 0;
-    animation: fadeInUp 0.6s forwards;
-    transition: all 0.3s;
-  }
-  .story-card:nth-child(1) { animation-delay: 0.2s; }
-  .story-card:nth-child(2) { animation-delay: 0.6s; }
-  .story-card:nth-child(3) { animation-delay: 1.0s; }
-  .story-card:hover {
-    border-color: var(--border-strong);
-    background: var(--surface-2);
-  }
-  .story-card .card-emoji {
-    font-size: 40px;
-    margin-bottom: 24px;
-  }
-  .story-card h3 {
-    font-size: 26px;
-    margin-bottom: 16px;
-    font-weight: 700;
-  }
-  .story-card p {
-    color: var(--text-secondary);
-    font-size: 16px;
-    line-height: 1.8;
-  }
-  .story-card .quote-inline {
-    display: block;
-    margin-top: 24px;
-    padding: 16px;
-    background: rgba(255,255,255,0.03);
-    border-radius: 12px;
-    font-style: italic;
-    color: var(--text);
-    font-size: 15px;
-    line-height: 1.7;
-  }
-  .story-card.self-hi h3 { color: var(--text); }
-  .story-card.shock h3 { color: var(--accent); }
-  .story-card.insight h3 { color: var(--green); }
-
-  /* ========== PHONE MOCKUP GALLERY (Slide 6) ========== */
-  .phone-gallery {
-    display: flex;
-    gap: 24px;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-  }
-  .phone-gallery img {
-    height: 60vh;
-    max-height: 560px;
-    width: auto;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    transition: transform 0.3s;
-  }
-  .phone-gallery img:hover {
-    transform: translateY(-8px);
-  }
-  .compare-block {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border-radius: var(--radius);
-    overflow: hidden;
-    border: 1px solid var(--border);
-    width: 100%;
-    max-width: 860px;
-    margin: 0 auto;
-    opacity: 0;
-    animation: fadeInUp 0.6s 0.3s forwards;
-  }
-  .compare-col {
-    padding: 32px;
-    text-align: center;
-  }
-  .compare-col.old {
-    background: rgba(230,57,70,0.05);
-    border-right: 1px solid var(--border);
-  }
-  .compare-col.new {
-    background: var(--surface);
-  }
-  .compare-col .col-tag {
-    display: inline-block;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 700;
-    padding: 6px 12px;
-    border-radius: 4px;
-    margin-bottom: 24px;
-  }
-  .compare-col.old .col-tag {
-    color: var(--accent);
-    background: rgba(230,57,70,0.15);
-  }
-  .compare-col.new .col-tag {
-    color: var(--text);
-    background: rgba(255,255,255,0.08);
-  }
-  .compare-col h3 {
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-  .compare-col ul {
-    list-style: none;
-    text-align: left;
-    display: inline-block;
-  }
-  .compare-col ul li {
-    padding: 12px 0;
-    color: var(--text-secondary);
-    font-size: 16px;
-    line-height: 1.7;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-  .compare-col.old ul li::before { content: "✕"; color: var(--accent); font-size: 14px; flex-shrink: 0; margin-top: 2px; }
-  .compare-col.new ul li::before { content: "✓"; color: var(--green); font-size: 16px; flex-shrink: 0; margin-top: 2px; }
-  .compare-note {
-    margin-top: 28px;
-    padding: 18px 28px;
-    background: var(--surface);
-    border-radius: 12px;
-    max-width: 1100px;
-    width: 100%;
-    text-align: center;
-    opacity: 0;
-    animation: fadeInUp 0.6s 0.8s forwards;
-  }
-  .compare-note p { color: var(--text-secondary); font-size: 16px; }
-  .compare-note strong { color: var(--text); }
-
-  /* ========== SHOWCASE ========== */
-  .showcase-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    width: 100%;
-    max-width: 1100px;
-  }
-  .showcase-card {
-    background: var(--surface);
-    border: 1px dashed var(--border);
-    border-radius: var(--radius);
-    padding: 56px 48px;
-    text-align: center;
-    transition: all 0.3s;
-    min-height: 320px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .showcase-card:hover {
-    border-color: var(--border-strong);
-    border-style: solid;
-    background: var(--surface-2);
-  }
-  .showcase-card .placeholder {
-    font-size: 56px;
-    margin-bottom: 24px;
-    opacity: 0.5;
-  }
-  .showcase-card h3 {
-    font-size: 22px;
-    margin-bottom: 12px;
-  }
-  .showcase-card p {
-    font-size: 15px;
-    color: var(--text-secondary);
-  }
-  .showcase-card .todo {
-    color: var(--text-muted);
-    font-size: 13px;
-    margin-top: 16px;
-  }
-  .showcase-card.img-card {
-    background-size: cover;
-    background-position: center;
-    border: 1px solid var(--border);
-    padding: 0;
-    aspect-ratio: 3 / 2;
-    width: 100%;
-    min-height: auto;
-    position: relative;
-    overflow: hidden;
-    justify-content: flex-end;
-  }
-  .showcase-card.img-card .card-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 32px;
-    background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.6) 60%, transparent);
-  }
-  .showcase-card.img-card .card-overlay h3 {
-    color: var(--text);
-    font-size: 24px;
-    margin-bottom: 8px;
-  }
-  .showcase-card.img-card .card-overlay p {
-    color: var(--text-secondary);
-    font-size: 15px;
-    max-width: 360px;
-    margin: 0 auto;
-  }
-
-  /* ========== INSIGHTS ========== */
-  .insight-block {
-    background: var(--surface);
-    border-left: 3px solid var(--accent);
-    padding: 28px 36px;
-    border-radius: 0 16px 16px 0;
-    margin: 16px 0;
-    max-width: 900px;
-    width: 100%;
-    opacity: 0;
-    animation: fadeInUp 0.6s forwards;
-  }
-  .insight-block:nth-child(2) { animation-delay: 0.3s; }
-  .insight-block:nth-child(3) { animation-delay: 0.6s; }
-  .insight-block:nth-child(4) { animation-delay: 0.9s; }
-  .insight-block p {
-    font-size: 20px;
-    line-height: 1.8;
-    color: var(--text);
-    font-weight: 400;
-    text-align: center;
-  }
-  .insight-block strong { color: var(--accent); }
-
-  /* ========== Q&A ========== */
-  .qa-area {
-    width: 100%;
-    max-width: 700px;
-    text-align: center;
-  }
-  .qa-poll {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 40px 0;
-  }
-  .qa-poll-btn {
-    padding: 18px 32px;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--text);
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-family: inherit;
-  }
-  .qa-poll-btn:hover, .qa-poll-btn.selected {
-    border-color: var(--accent);
-    background: rgba(230,57,70,0.1);
-    color: var(--accent-light);
-  }
-  .qa-note {
-    margin-top: 48px;
-    color: var(--text-secondary);
-    font-size: 16px;
-  }
-
-  /* ========== NAVIGATION ========== */
-  .page-indicator {
-    position: fixed;
-    top: 32px;
-    right: 48px;
-    font-size: 14px;
-    color: var(--accent);
-    z-index: 100;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-variant-numeric: tabular-nums;
-  }
-  .nav-dots {
-    position: fixed;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 12px;
-    z-index: 100;
-  }
-  .nav-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.15);
-    cursor: pointer;
-    transition: all 0.3s;
-    border: none;
-  }
-  .nav-dot.active {
-    background: var(--accent);
-    width: 28px;
-    border-radius: 4px;
-  }
-  .nav-arrows {
-    position: fixed;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 32px;
-    z-index: 100;
-    pointer-events: none;
-    transform: translateY(-50%);
-  }
-  .nav-arrow {
-    pointer-events: auto;
-    width: 48px; height: 48px;
-    border-radius: 50%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 20px;
-    color: var(--text);
-    transition: all 0.3s;
-  }
-  .nav-arrow:hover {
-    background: var(--accent-glow);
-    border-color: var(--accent);
-  }
-  .slide-num {
-    position: absolute;
-    bottom: 40px;
-    left: 48px;
-    font-size: 13px;
-    color: var(--text-muted);
-  }
-
-  /* ========== ANIMATIONS ========== */
-  @keyframes fadeInUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    to { opacity: 1; }
-  }
-
-  /* ========== RESPONSIVE ========== */
-  @media (max-width: 1024px) {
-    .slide { padding: 80px 60px 60px; }
-    .radar-container { flex-direction: column; gap: 40px; }
-    .story-cards { grid-template-columns: 1fr; }
-    .compare-block { grid-template-columns: 1fr; }
-    .compare-col.old { border-right: none; border-bottom: 1px solid var(--border); }
-    .showcase-grid { grid-template-columns: 1fr; }
-    .timeline { flex-direction: column; gap: 24px; padding-top: 0; }
-    .timeline::before { display: none; }
-    .flow-chart { flex-direction: column; }
-    .flow-arrow { transform: rotate(90deg); }
-    .nav-arrows { display: none; }
-    .slide-cover .cover-meta { left: 60px; }
-  }
-
-  .slide::-webkit-scrollbar { width: 4px; }
-  .slide::-webkit-scrollbar-track { background: transparent; }
-  .slide::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AiKen 复古数码相机 — 拍回胶卷的感觉。36张仪式·盲拍惊喜·直出分享，¥499 潮玩数码相机。">
+    <title>AiKen 复古数码相机 — 拍回胶卷的感觉</title>
+    <link rel="stylesheet" href="aiken-styles.css">
 </head>
 <body>
 
-<div class="page-indicator" id="pageIndicator">1 / 11</div>
-
-<div class="slides" id="slides">
-
-  <!-- ====== 0: COVER ====== -->
-  <div class="slide slide-cover">
-    <h1>从<span class="highlight">「自嗨式定义」</span><br>到<span class="highlight">「让自己看到」</span></h1>
-    <p class="cover-subtitle">用AI协助产品定义的实践与感受</p>
-    <div class="cover-line"></div>
-    <div class="cover-meta">2026.7</div>
-  </div>
-
-  <!-- ====== 1: ABOUT ME ====== -->
-  <div class="slide slide-content">
-    <h2>我是谁</h2>
-    <div class="timeline">
-      <div class="timeline-node">
-        <div class="timeline-dot"><img src="assets/hp.jpg" alt="HP" class="invert-logo"></div>
-        <div class="timeline-label">UX/UI 设计师</div>
-        <div class="timeline-sublabel">职业生涯起点</div>
-      </div>
-      <div class="timeline-node">
-        <div class="timeline-dot"><img src="assets/ef.jpg" alt="EF" class="invert-logo"></div>
-        <div class="timeline-label">英语教育 产品经理</div>
-        <div class="timeline-sublabel">App & Web 产品</div>
-      </div>
-      <div class="timeline-node">
-        <div class="timeline-dot"><img src="assets/mint2.jpg" alt="Mint"></div>
-        <div class="timeline-label">Mint 产品经理</div>
-        <div class="timeline-sublabel">加入汉图</div>
-      </div>
-      <div class="timeline-node">
-        <div class="timeline-dot"><img src="assets/aiken.png" alt="AiKen"></div>
-        <div class="timeline-label">AiKen 相机 产品经理</div>
-        <div class="timeline-sublabel">现在</div>
-      </div>
+<nav id="navbar">
+    <a href="#hero" class="nav-logo">Ai<span>Ken</span></a>
+    <div class="nav-links">
+        <a href="#positioning">产品定位</a>
+        <a href="#ritual">仪式感</a>
+        <a href="#styles">胶片直出</a>
+        <a href="#digital">数码内核</a>
+        <a href="#ecosystem">生态社交</a>
+        <a href="#compare">竞品对比</a>
+        <a href="#specs">技术规格</a>
     </div>
-  </div>
+    <a href="#cta" class="nav-cta">立即了解</a>
+</nav>
 
-  <!-- ====== 2: PM RADAR ====== -->
-  <div class="slide slide-content">
-    <h2>产品经理的<span class="accent">能力</span>画像</h2>
-    <div class="radar-container">
-      <div class="radar-core">
-        <svg viewBox="0 0 520 520">
-          <defs>
-            <radialGradient id="centerGlow" cx="50%" cy="50%">
-              <stop offset="0%" stop-color="rgba(230,57,70,0.08)"/>
-              <stop offset="100%" stop-color="transparent"/>
-            </radialGradient>
-          </defs>
-          <!-- Background glow -->
-          <circle cx="260" cy="260" r="240" fill="url(#centerGlow)"/>
-          <!-- Grid pentagons -->
-          <g stroke="rgba(255,255,255,0.04)" fill="none" stroke-width="1">
-            <polygon points="260,30 506,210 414,476 106,476 14,210"/>
-            <polygon points="260,76 473,216 397,428 123,428 47,216"/>
-            <polygon points="260,122 440,222 380,380 140,380 80,222"/>
-            <polygon points="260,168 407,228 363,332 157,332 113,228"/>
-            <polygon points="260,214 374,234 346,284 174,284 146,234"/>
-          </g>
-          <!-- Axes -->
-          <g stroke="rgba(255,255,255,0.06)" stroke-width="1">
-            <line x1="260" y1="30" x2="260" y2="476"/>
-            <line x1="506" y1="210" x2="14" y2="210"/>
-          </g>
-          <!-- Data shape -->
-          <polygon points="260,100 428,210 380,410 140,410 92,210" fill="rgba(230,57,70,0.1)" stroke="#e63946" stroke-width="2.5"/>
-          <!-- Data dots -->
-          <circle cx="260" cy="100" r="6" fill="#e63946"/>
-          <circle cx="428" cy="210" r="6" fill="#e63946"/>
-          <circle cx="380" cy="410" r="6" fill="#e63946"/>
-          <circle cx="140" cy="410" r="6" fill="#e63946"/>
-          <circle cx="92" cy="210" r="6" fill="#e63946"/>
-          <!-- Center accent dot -->
-          <circle cx="260" cy="260" r="2" fill="#e63946" opacity="0.5"/>
-        </svg>
-        <!-- Labels positioned at pentagon vertices -->
-        <div class="radar-label" style="left:50%;top:calc(3.5% + 4px);"><div class="rl-name">用户洞察</div><div class="rl-desc">理解场景与行为</div></div>
-        <div class="radar-label" style="left:97%;top:40%;"><div class="rl-name">概念定义</div><div class="rl-desc">模糊概念 → 清晰定义</div></div>
-        <div class="radar-label" style="left:73%;top:89%;"><div class="rl-name">原型验证</div><div class="rl-desc">快速看到产品怎么用</div></div>
-        <div class="radar-label" style="left:27%;top:89%;"><div class="rl-name">跨团队沟通</div><div class="rl-desc">消除信息不对称</div></div>
-        <div class="radar-label" style="left:3%;top:40%;"><div class="rl-name">产品决策</div><div class="rl-desc">用数据辅助判断</div></div>
-      </div>
+<section class="hero" id="hero">
+    <div class="hero-badge">小米生态链 · 潮玩数码相机</div>
+    <h1>拍回<span class="accent">胶卷</span>的感觉</h1>
+    <p class="hero-sub">36 张仪式 · 盲拍惊喜 · 直出分享</p>
+    <p class="hero-tagline">一台让年轻潮人获得胶卷体验的潮玩数码相机</p>
+    <div class="hero-price">
+        <span class="currency">¥</span>
+        <span class="amount">499</span>
+        <span class="note">起 · 竞品同体验约 ¥800</span>
     </div>
-  </div>
-
-  <!-- ====== 4: THE SELF-HI ====== -->
-  <div class="slide slide-content">
-    <h2>自嗨：我以为在追求<span class="accent">极致</span></h2>
-    <div class="phone-gallery" style="min-height:492px; display:flex; align-items:center; justify-content:center;">
-      <img src="assets/01.png" alt="01">
-      <img src="assets/02.png" alt="02">
-      <img src="assets/03.png" alt="03">
-      <img src="assets/04.png" alt="04">
-      <img src="assets/05.png" alt="05">
+    <div class="hero-cta-group">
+        <button class="btn-primary" onclick="document.getElementById('cta').scrollIntoView()">立即了解</button>
+        <button class="btn-secondary" onclick="document.getElementById('ritual').scrollIntoView()">探索功能</button>
     </div>
-  </div>
+    <div class="hero-scroll">向下滑动 ↓</div>
+</section>
 
-  <!-- ====== 4b: THE SHOCK ====== -->
-  <div class="slide slide-content">
-    <h2>看到：用户很<span class="accent">懵</span></h2>
-    <div class="phone-comparison">
-      <div class="phone-col before">
-        <img src="assets/before.jpg" alt="我眼中的流程">
-        <div class="col-label">产品定的第一步</div>
-      </div>
-      <div class="phone-col after">
-        <img src="assets/after.jpg" alt="用户眼中的流程">
-        <div class="col-label">用户要的第一步</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ====== 4c: RADAR CENTERED COPY ====== -->
-  <div class="slide slide-content">
-    <h2>产品经理的<span class="accent">能力</span>画像</h2>
-    <div class="radar-container">
-      <div class="radar-core" style="width:460px;height:460px;">
-        <svg viewBox="0 0 560 560">
-          <defs>
-            <radialGradient id="centerGlow3" cx="50%" cy="50%">
-              <stop offset="0%" stop-color="rgba(230,57,70,0.15)"/>
-              <stop offset="50%" stop-color="rgba(230,57,70,0.03)"/>
-              <stop offset="100%" stop-color="transparent"/>
-            </radialGradient>
-          </defs>
-          <!-- Background glow -->
-          <circle cx="280" cy="280" r="260" fill="url(#centerGlow3)"/>
-          <!-- Dashed lines from center to 4 positions (shortened to not overlap text) -->
-          <g stroke="#e63946" stroke-width="2" stroke-dasharray="6,8" opacity="0.6">
-            <!-- 1:30 → upper right (stop before text) -->
-            <line x1="310" y1="250" x2="390" y2="170"/>
-            <!-- 4:30 → lower right -->
-            <line x1="310" y1="310" x2="390" y2="390"/>
-            <!-- 7:30 → lower left -->
-            <line x1="250" y1="310" x2="170" y2="390"/>
-            <!-- 10:30 → upper left -->
-            <line x1="250" y1="250" x2="170" y2="170"/>
-          </g>
-        </svg>
-        <!-- Center label: 原型验证 -->
-        <div class="radar-label" style="left:50%;top:50%;transform:translate(-50%,-50%);">
-          <div class="rl-name" style="color:#e63946;font-size:24px;">原型验证</div>
-          <div class="rl-desc" style="color:#e63946;font-size:13px;margin-top:6px;">让其他四项能力落地的关键</div>
+<section class="positioning" id="positioning">
+    <div class="container">
+        <div class="positioning-grid">
+            <div class="positioning-text">
+                <span class="section-tag">PRODUCT POSITIONING</span>
+                <div class="quote">
+                    不是数码相机加了胶卷滤镜，<br>
+                    而是<span class="hl">胶卷相机</span>换了<span class="hl">数码内核</span>。
+                </div>
+                <p>AiKen 以 110 胶卷形态为灵感，用「过卷滑盖 + 36 张限额 + 盲拍取景 + 冲洗等待」复刻胶卷的仪式与惊喜，以数码内核实现自动曝光、1 秒开机、WiFi 秒传，以 9 种胶片风格 LUT 直出成片并支持拼图社交分享。</p>
+                <p>它不只是一台相机，更是一个制造「设备仪式感 × 内容情感密度」的情绪价值引擎。</p>
+                <div class="positioning-tags">
+                    <span class="positioning-tag active">潮玩数码相机</span>
+                    <span class="positioning-tag">18-30 岁潮流青年</span>
+                    <span class="positioning-tag">110 胶卷形态</span>
+                    <span class="positioning-tag">小米生态链</span>
+                    <span class="positioning-tag">¥499</span>
+                </div>
+            </div>
+            <div class="positioning-visual">
+                <img src="assets/aiken.png" alt="AiKen 复古数码相机" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #f5f0ed, #e8e0db)';">
+            </div>
         </div>
-        <!-- 1:30 position: 用户洞察 -->
-        <div class="radar-label" style="left:82%;top:18%;"><div class="rl-name">用户洞察</div><div class="rl-desc">理解场景与行为</div></div>
-        <!-- 4:30 position: 概念定义 -->
-        <div class="radar-label" style="left:82%;top:82%;"><div class="rl-name">概念定义</div><div class="rl-desc">模糊概念 → 清晰定义</div></div>
-        <!-- 7:30 position: 产品决策 -->
-        <div class="radar-label" style="left:18%;top:82%;"><div class="rl-name">产品决策</div><div class="rl-desc">用数据辅助判断</div></div>
-        <!-- 10:30 position: 跨团队沟通 -->
-        <div class="radar-label" style="left:18%;top:18%;"><div class="rl-name">跨团队沟通</div><div class="rl-desc">消除信息不对称</div></div>
-      </div>
     </div>
-  </div>
+</section>
 
-  <!-- ====== 5: OLD WORLD ====== -->
-  <div class="slide slide-content">
-    <h2>没有AI的<span class="accent">旧世界</span></h2>
-    <div class="flow-section" style="min-height:492px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-      <div class="flow-chart" style="margin-bottom:16px;">
-        <span class="flow-node">📊 调研</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-node">💡 想概念</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-node pain">📝 写PRD</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-node pain">🔍 陷细节</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-node pain">😰 漏边界</span>
-      </div>
-      <div class="flow-chart" style="margin-bottom:0;">
-        <span class="flow-node pain">🩹 被动补</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-node">👨‍💻 开发</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-node pain">🔄 返工</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-node pain">🔁 陷入循环</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-node">🚀 上市</span>
-      </div>
-      <div class="pain-quote">
-        <p>PRD 是文字的。10个人看同一份 PRD，<strong>脑子里有10个不同的产品。</strong></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ====== 6: AI - PROTOTYPING ====== -->
-  <div class="slide slide-content">
-    <h2>AI提效带来的<span class="accent">质变</span></h2>
-    <div style="min-height:492px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-    <div class="compare-block" style="margin:0 auto;">
-      <div class="compare-col old">
-        <span class="col-tag">Before</span>
-        <h3>慢速原型</h3>
-        <ul>
-          <li>软硬件互动原型复杂度极高，基本不做</li>
-          <li>画一个可互动流程需几天，且修改成本高</li>
-          <li>容易忽略非核心流程体验，导致PRD也不完整</li>
-          <li>验证一个假设往往要一周以上</li>
-        </ul>
-      </div>
-      <div class="compare-col new">
-        <span class="col-tag">After</span>
-        <h3>快速迭代</h3>
-        <ul>
-          <li>能够快速做出软硬件结合的交互原型</li>
-          <li>一小时内就可出初稿，分钟级调整</li>
-          <li>先看到产品怎么用，别人怎么用，再写PRD</li>
-          <li>拿原型给用户快速验证，与团队无歧义沟通</li>
-        </ul>
-      </div>
-    </div>
-    </div>
-  </div>
-
-  <!-- ====== 7: DEMO ====== -->
-  <div class="slide slide-content">
-    <h2>用原型驱动产品<span class="accent">每一个环节</span></h2>
-    <div class="showcase-grid" style="min-height:492px; align-items:center;">
-      <div class="showcase-card img-card" style="background-image:url('assets/soft-hard-demo2.png');">
-        <div class="card-overlay">
-          <h3>硬件 + 软件展示</h3>
-          <p>完整展示从开机到出片的全流程</p>
+<section class="feature-dark" id="ritual">
+    <div class="container">
+        <div class="section-center">
+            <span class="section-tag">PRIORITY 01</span>
+            <h2 class="section-title">复刻胶卷仪式感</h2>
+            <p class="section-desc">每一卷只有 36 张，每一张都是仪式；没有屏幕可看，每一张都是惊喜。AiKen 用触觉、听觉与等待，重建按下快门的庄重感。</p>
         </div>
-      </div>
-      <div class="showcase-card img-card" style="background-image:url('assets/printer-link02.png');">
-        <div class="card-overlay">
-          <h3>与口袋打印机联动</h3>
-          <p>利用原型直接跑通流程并梳理逻辑</p>
+        <div class="feature-cards">
+            <div class="feature-card">
+                <div class="icon">🎞️</div>
+                <h3>过卷滑盖</h3>
+                <p>每次滑动模拟拨片过卷动作，触觉仪式告诉你：下一张，准备好了。滑开即开机，合上即休眠。</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">📷</div>
+                <h3>36 张限额</h3>
+                <p>一卷 36 张，拍完即「换卷」。稀缺制造珍惜，告别数码时代的随意快门。</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🔭</div>
+                <h3>盲拍取景</h3>
+                <p>旁轴光学取景器，无屏幕干扰。构图靠心、按下靠感觉，你永远不知道拍到了什么。</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">⏳</div>
+                <h3>经典冲洗模式</h3>
+                <p>拍摄后 3-24 小时随机出图，用等待复刻暗房仪式。经典模式才是灵魂所在。</p>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</section>
 
-  <!-- ====== 8: INSIGHTS ====== -->
-  <div class="slide slide-content">
-    <h2>我的体会</h2>
-    <p class="section-desc">不要让AI代替思考，利用它去放大擅长的能力</p>
-    <div class="insight-block">
-      <p>借助AI快速广泛收集并整理信息来提效 <strong>「用户、市场、竞品」</strong></p>
+<section id="styles" class="bg-gray">
+    <div class="container">
+        <div class="section-center">
+            <span class="section-tag">PRIORITY 02</span>
+            <h2 class="section-title">胶片风格直出</h2>
+            <p class="section-desc">拍完即成片，无需后期调色。9 种胶片 LUT 风格，叠加漏光、颗粒、暗角、画框四重效果。</p>
+        </div>
+        <div class="style-gallery">
+            <div class="style-item"><div class="style-bg s-warm">☀</div><div class="style-label">温暖午后<small>暖色调 · 柔和光晕</small></div></div>
+            <div class="style-item"><div class="style-bg s-portrait">人像</div><div class="style-label">人像经典<small>肤色优化 · 柔焦感</small></div></div>
+            <div class="style-item"><div class="style-bg s-japanese">日系</div><div class="style-label">日系蓝调<small>青蓝偏移 · 清淡空气感</small></div></div>
+            <div class="style-item"><div class="style-bg s-berlin">柏林</div><div class="style-label">柏林之冬<small>冷灰低饱和 · 德系质感</small></div></div>
+            <div class="style-item"><div class="style-bg s-bw">B&W</div><div class="style-label">经典黑白<small>高反差 · 银盐质感</small></div></div>
+            <div class="style-item"><div class="style-bg s-neon">霓虹</div><div class="style-label">霓虹之夜<small>高饱和 · 赛博夜色</small></div></div>
+            <div class="style-item"><div class="style-bg s-rich">浓郁</div><div class="style-label">浓郁色彩<small>高饱和高对比</small></div></div>
+            <div class="style-item"><div class="style-bg s-street">街头</div><div class="style-label">街头黑白<small>粗颗粒 · 街拍质感</small></div></div>
+            <div class="style-item"><div class="style-bg s-dream">梦境</div><div class="style-label">白日梦境<small>柔光过曝 · 梦幻仙气</small></div></div>
+        </div>
+        <div class="style-note">
+            搭配漏光 · 颗粒 · 暗角 · 画框四重胶片效果叠加 ·
+            <span class="hl">风格解锁任务系统持续探索新风格</span>
+        </div>
     </div>
-    <div class="insight-block">
-      <p>利用AI快速学习并踏足自己不熟悉的领域 <strong>「如影像产品的定义」</strong></p>
+</section>
+
+<section id="digital">
+    <div class="container">
+        <div class="section-center">
+            <span class="section-tag">PRIORITY 03</span>
+            <h2 class="section-title">数码内核的便捷</h2>
+            <p class="section-desc">胶卷的仪式，数码的速度。把该自动的自动掉，让你专注于「拍」本身。</p>
+        </div>
+        <div class="specs-grid">
+            <div class="spec-highlight">
+                <div><span class="num">1</span><span class="unit">秒</span></div>
+                <div class="label">滑开即开机 · 即拿即拍</div>
+            </div>
+            <div class="spec-highlight">
+                <div><span class="num">40</span><span class="unit">秒</span></div>
+                <div class="label">WiFi 传输至手机（竞品 120s）</div>
+            </div>
+            <div class="spec-highlight">
+                <div><span class="num">1350</span><span class="unit">mm</span></div>
+                <div class="label">超焦距 · 免对焦免测光</div>
+            </div>
+            <div class="spec-highlight">
+                <div><span class="num">9</span><span class="unit">种</span></div>
+                <div class="label">胶片 LUT 风格可切换</div>
+            </div>
+        </div>
     </div>
-    <div class="insight-block">
-      <p>找到自己的核心能力，利用AI来放大它 <strong>「Design Thinking + Prototyping」</strong></p>
+</section>
+
+<section id="ecosystem" class="bg-gray">
+    <div class="container">
+        <div class="section-center">
+            <span class="section-tag">PRIORITY 04</span>
+            <h2 class="section-title">潮玩社交与生态</h2>
+            <p class="section-desc">拍、传、拼、打、分享，一机搞定。AiKen 连通小米生态链，让每一张照片都有社交出口。</p>
+        </div>
+        <div class="ecosystem-flow">
+            <div class="eco-node highlight">
+                <div class="eco-icon">📷</div>
+                <div class="eco-label">AiKen 拍摄</div>
+                <div class="eco-sub">盲拍 · 36 张</div>
+            </div>
+            <div class="eco-arrow">→</div>
+            <div class="eco-node">
+                <div class="eco-icon">📱</div>
+                <div class="eco-label">WiFi 传输</div>
+                <div class="eco-sub">40 秒 · 小米打印App</div>
+            </div>
+            <div class="eco-arrow">→</div>
+            <div class="eco-node">
+                <div class="eco-icon">🎨</div>
+                <div class="eco-label">胶片直出</div>
+                <div class="eco-sub">9 种 LUT · 四重效果</div>
+            </div>
+            <div class="eco-arrow">→</div>
+            <div class="eco-node">
+                <div class="eco-icon">🖼️</div>
+                <div class="eco-label">拼图创作</div>
+                <div class="eco-sub">小红书/微信分享</div>
+            </div>
+            <div class="eco-arrow">→</div>
+            <div class="eco-node">
+                <div class="eco-icon">🖨️</div>
+                <div class="eco-label">即拍即打</div>
+                <div class="eco-sub">米家口袋照片打印机</div>
+            </div>
+        </div>
     </div>
-  </div>
+</section>
 
-  <!-- ====== 9: CLOSING ====== -->
-  <div class="slide slide-content">
-    <h2>谢谢大家</h2>
-    <p class="section-desc" style="font-size:clamp(36px, 4.5vw, 64px); font-weight:900; color:var(--accent); margin-top:40px; line-height:1.3;">你最擅长的是什么？<br>如何利用AI放大它？</p>
-  </div>
+<section id="compare">
+    <div class="container">
+        <div class="section-center">
+            <span class="section-tag">COMPETITIVE ANALYSIS</span>
+            <h2 class="section-title">与竞品对比</h2>
+            <p class="section-desc">同样的胶卷体验，AiKen 以半价门槛和小米生态品质，拉低进入。</p>
+        </div>
+        <div class="comparison-wrapper">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>对比维度</th>
+                        <th class="highlight">AiKen</th>
+                        <th>Flashback One35 V2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>价格</td>
+                        <td class="highlight aiken-col">¥499</td>
+                        <td>~¥800</td>
+                    </tr>
+                    <tr>
+                        <td>传输速度</td>
+                        <td class="highlight aiken-col">40 秒</td>
+                        <td>120 秒</td>
+                    </tr>
+                    <tr>
+                        <td>胶片风格</td>
+                        <td class="highlight aiken-col">9 种 LUT + 漏光/颗粒/暗角/画框</td>
+                        <td>基础滤镜</td>
+                    </tr>
+                    <tr>
+                        <td>风格解锁</td>
+                        <td class="highlight aiken-col"><span class="check">✔</span> 任务系统持续解锁</td>
+                        <td><span class="cross">✖</span> 固定风格</td>
+                    </tr>
+                    <tr>
+                        <td>冲洗模式</td>
+                        <td class="highlight aiken-col">即时 + 经典（3-24h 随机）</td>
+                        <td>固定等待</td>
+                    </tr>
+                    <tr>
+                        <td>生态集成</td>
+                        <td class="highlight aiken-col"><span class="check">✔</span> 米家口袋照片打印机</td>
+                        <td><span class="cross">✖</span> 无</td>
+                    </tr>
+                    <tr>
+                        <td>拼图分享</td>
+                        <td class="highlight aiken-col"><span class="check">✔</span> 内置拼图模板</td>
+                        <td><span class="cross">✖</span> 无</td>
+                    </tr>
+                    <tr>
+                        <td>品控保障</td>
+                        <td class="highlight aiken-col"><span class="check">✔</span> 小米生态链</td>
+                        <td>独立品牌</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
 
-</div>
+<section id="specs" class="tech-specs">
+    <div class="container">
+        <div class="section-center">
+            <span class="section-tag">TECH SPECS</span>
+            <h2 class="section-title">技术规格</h2>
+            <p class="section-desc">每一项参数，都为「拍回胶卷的感觉」服务。</p>
+        </div>
+        <div class="specs-detail">
+            <div class="spec-row"><div class="spec-key">产品形态</div><div class="spec-val">110 胶卷尺寸 · 横向滑盖过卷</div></div>
+            <div class="spec-row"><div class="spec-key">取景方式</div><div class="spec-val">旁轴光学取景器 · 无屏幕</div></div>
+            <div class="spec-row"><div class="spec-key">图像传感器</div><div class="spec-val">SC1320CS</div></div>
+            <div class="spec-row"><div class="spec-key">镜头</div><div class="spec-val">3D006A-403 · F2.2</div></div>
+            <div class="spec-row"><div class="spec-key">等效焦距</div><div class="spec-val">35mm</div></div>
+            <div class="spec-row"><div class="spec-key">对焦方式</div><div class="spec-val">固定焦距 · 超焦距 1350mm</div></div>
+            <div class="spec-row"><div class="spec-key">曝光控制</div><div class="spec-val">自动曝光 · 免测光</div></div>
+            <div class="spec-row"><div class="spec-key">胶片风格</div><div class="spec-val">9 种 LUT + 漏光/颗粒/暗角/画框</div></div>
+            <div class="spec-row"><div class="spec-key">连接方式</div><div class="spec-val">BLE + BT + WiFi 三模</div></div>
+            <div class="spec-row"><div class="spec-key">配对 App</div><div class="spec-val">小米打印 App</div></div>
+            <div class="spec-row"><div class="spec-key">单卷张数</div><div class="spec-val">36 张/卷</div></div>
+            <div class="spec-row"><div class="spec-key">冲洗模式</div><div class="spec-val">即时模式 / 经典模式（3-24h 随机）</div></div>
+            <div class="spec-row"><div class="spec-key">开机速度</div><div class="spec-val">1 秒</div></div>
+            <div class="spec-row"><div class="spec-key">传输速度</div><div class="spec-val">约 40 秒/张</div></div>
+        </div>
+    </div>
+</section>
 
-<div class="nav-arrows">
-  <button class="nav-arrow" onclick="prevSlide()" aria-label="上一页">◂</button>
-  <button class="nav-arrow" onclick="nextSlide()" aria-label="下一页">▸</button>
-</div>
+<section class="keywords-section">
+    <div class="container">
+        <div class="section-center">
+            <span class="section-tag">KEYWORDS</span>
+            <h2 class="section-title">AiKen 的关键词</h2>
+            <p class="section-desc">每一个词，都是 AiKen 与用户之间的暗号。</p>
+        </div>
+        <div class="keywords-cloud">
+            <span class="keyword large">仪式感</span>
+            <span class="keyword large">胶片味道</span>
+            <span class="keyword large">盲拍惊喜</span>
+            <span class="keyword large">潮玩便携</span>
+            <span class="keyword large">直出分享</span>
+            <span class="keyword">36张限额</span>
+            <span class="keyword">冲洗等待</span>
+            <span class="keyword">风格直出</span>
+            <span class="keyword">过卷滑盖</span>
+            <span class="keyword">旁轴取景</span>
+            <span class="keyword">秒传手机</span>
+            <span class="keyword">即拍即打</span>
+            <span class="keyword">情绪价值</span>
+        </div>
+    </div>
+</section>
 
-<div class="nav-dots" id="navDots"></div>
+<section class="cta-section" id="cta">
+    <div class="container">
+        <h2>拍回胶卷的感觉</h2>
+        <p>36 张仪式 · 盲拍惊喜 · 直出分享</p>
+        <div class="cta-price">
+            <span class="currency">¥</span>
+            <span class="amount">499</span>
+        </div>
+        <div class="hero-cta-group">
+            <button class="btn-primary">预约购买</button>
+            <button class="btn-secondary">了解更多</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo">Ai<span>Ken</span></div>
+    <div class="footer-links">
+        <a href="#positioning">产品定位</a>
+        <a href="#ritual">仪式感</a>
+        <a href="#styles">胶片直出</a>
+        <a href="#digital">数码内核</a>
+        <a href="#ecosystem">生态社交</a>
+        <a href="#specs">技术规格</a>
+    </div>
+    <div class="footer-copy">© 2026 AiKen · 小米生态链产品 · 拍回胶卷的感觉</div>
+</footer>
 
 <script>
-  const TOTAL = 11;
-  let current = 0;
-  const slides = document.getElementById('slides');
-  const indicator = document.getElementById('pageIndicator');
-  const navDots = document.getElementById('navDots');
-
-  for (let i = 0; i < TOTAL; i++) {
-    const dot = document.createElement('button');
-    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
-    dot.onclick = () => goSlide(i);
-    dot.setAttribute('aria-label', `第${i + 1}页`);
-    navDots.appendChild(dot);
-  }
-
-  function updateUI() {
-    slides.style.transform = `translateX(-${current * 100}vw)`;
-    const dots = navDots.querySelectorAll('.nav-dot');
-    dots.forEach((d, i) => d.classList.toggle('active', i === current));
-    indicator.textContent = `${current + 1} / ${TOTAL}`;
-  }
-
-  function nextSlide() { if (current < TOTAL - 1) { current++; updateUI(); } }
-  function prevSlide() { if (current > 0) { current--; updateUI(); } }
-  function goSlide(i) { current = i; updateUI(); }
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); nextSlide(); }
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevSlide(); }
-  });
-
-  let touchX = 0, touchY = 0;
-  document.addEventListener('touchstart', e => {
-    touchX = e.touches[0].clientX;
-    touchY = e.touches[0].clientY;
-  }, { passive: true });
-  document.addEventListener('touchend', e => {
-    const dx = touchX - e.changedTouches[0].clientX;
-    const dy = touchY - e.changedTouches[0].clientY;
-    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
-      if (dx > 0) nextSlide(); else prevSlide();
+window.addEventListener('scroll', function() {
+    var nav = document.getElementById('navbar');
+    if (window.scrollY > 10) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
     }
-  });
-
-  let voted = false;
-  function vote(choice) {
-    if (voted) return;
-    voted = true;
-    const labels = { prototype: '做原型/Demo', research: '用户调研分析', writing: '写文档/PRD', automation: '自动化工作流' };
-    document.getElementById('pollResult').textContent = `✓ 你选择了「${labels[choice]}」——谢谢！`;
-    document.querySelectorAll('.qa-poll-btn').forEach(b => {
-      b.classList.remove('selected');
-      if (b.textContent.includes(labels[choice])) b.classList.add('selected');
-    });
-  }
+});
 </script>
-
 </body>
 </html>
