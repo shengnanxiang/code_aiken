@@ -39,7 +39,7 @@
 | 事件名 | 元素 | 类型 | 时机 | 携带信息
 |---|---|---|---|---|
 | style_detail_view | 风格详情 | page_view | 曝光 | style_id |
-| image_setting_click | 颗粒/边框/漏光 | click | 选中 | setting_type, setting_val |
+| image_setting_click | 颗粒/边框/漏光/暗角 | click | 选中 | setting_type (grain/frame/light_leak/vignette), setting_val |
 | use_style_click | 选用此风格 | click | 点击 | style_id |
 
 ## 相机设置
@@ -90,3 +90,9 @@
 | collage_regen_click | 重新生成 | click | 点击 | photo_cnt |
 | collage_save_click | 保存 | click | 点击 | photo_cnt |
 | collage_share_click | 分享 | click | 点击 | photo_cnt |
+
+## 风格解锁任务
+| 事件名 | 元素 | 类型 | 时机 | 携带信息
+|---|---|---|---|---|
+| style_unlock_task_progress | 任务进度 | - | 胶片实验室：每次 image_setting_click 后；周末影记：每周日 24:00 结算 | task_type (effect_explorer/weekly_habit), light_leak_tried, frame_tried, vignette_tried, week_num, photos_this_week, consecutive_weeks, task_complete |
+| style_unlock_task_finish | 任务完成 | - | 任务条件达成 | task_type, style_id, duration, total_photos |
