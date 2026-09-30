@@ -69,10 +69,10 @@
 
 |**产品关联项**|**详细描述**|
 |---|---|
-|**产品特点介绍**|一台让年轻人获得胶卷体验的潮玩数码相机。<br>无屏幕设计，旁轴光学取景器构图，超焦距免对焦，拿起就拍。<br>每卷36张，拍完在手机端选择风格，传输至手机并套用所选风格“冲扫”出片。|
+|**产品特点介绍**|一台让年轻人获得胶卷体验的潮玩数码相机。<br>无屏幕设计，旁轴光学取景器构图，超焦距免对焦，拿起就拍。<br>每卷36张，拍完在手机端选择风格，传输至手机并套用所选风格"冲扫"出片。|
 |**产品功能概要**<br>|1. 一卷一拍，每卷36张，拍完后需传输至手机并清除相机内文件，方可开始下一卷；<br>2. 按卷选择风格滤镜，在手机端套用风格后出片；<br>3. 提供两种"冲扫"模式：即时模式（传输后立即可查看）和胶卷模式（传输后模拟24小时延迟冲扫）；<br>4. 用户可选择多张照片生成拼贴图进行分享；<br>5. 用户可通过输入兑换码获得新的风格滤镜。|
 |**目标人群**|热爱氛围感的年轻潮人（18\-30岁），追求胶卷质感与拍摄仪式感，不希望承受真实胶卷的技术门槛和经济成本。|
-|**需求点/痛点**|1. 手机拍照太“普通”，缺乏仪式感和情绪价值；<br>2. 真实胶卷技术要求高，经济及时间成本太高；<br>3. 希望拥有一台"拿起就拍"的随身相机，操作简单、出片有质感。|
+|**需求点/痛点**|1. 手机拍照太"普通"，缺乏仪式感和情绪价值；<br>2. 真实胶卷技术要求高，经济及时间成本太高；<br>3. 希望拥有一台"拿起就拍"的随身相机，操作简单、出片有质感。|
 
 ### 软件竞争力
 
@@ -245,12 +245,12 @@
     |---|---|---|---|---|---|
     |    1|    关机【稳态】|    熄灭|    熄灭|    设备关机。|    拉开相机开机。|
     |    2|    无连接，正常待机【稳态】|    剩余张数|    白色，常亮|    设备就绪，等待用户操作。可过片、拍摄。|    开机后无蓝牙连接。|
-    |    3|    与手机配对中（瞬态）|    剩余张数|    蓝色，闪烁|    可过片、拍摄。|    蓝牙广播中，短按“印放”键一次。<br>    超时或失败回到稳态。|
+    |    3|    与手机配对中（瞬态）|    剩余张数|    蓝色，闪烁|    可过片、拍摄。|    蓝牙广播中，短按"印放"键一次。<br>    超时或失败回到稳态。|
     |    4|    与手机连接，待机【稳态】<br>    |    剩余张数|    白色，常亮|    可过片、拍摄。|    手机配对成功并保持连接。<br>    将蓝色常亮专供给打印机。|
     |    5|    与手机连接，传输中（瞬态）|    滚动|    白色，闪烁|    不过片、不可拍摄。因为传输后将删除图片。|    手机端触发传输照片。<br>    将蓝色常亮专供给打印机。|
     |    6|    与打印机配对中（瞬态）|    剩余张数|    蓝色，闪烁|    可过片、拍摄。|    手机端发起配对流程。<br>    超时或失败回到稳态。|
     |    7|    与打印机连接，待机【稳态】|    剩余张数|    蓝色，常亮|    可过片、拍摄。|    打印机配对成功并保持连接。|
-    |    8|    与打印机连接，传输中（瞬态）|    滚动|    蓝色，闪烁|    可过片、拍摄。因为只打印最后一张照片，不影响存储状态。|    有至少一张照片时，短按一次“印放”键。|
+    |    8|    与打印机连接，传输中（瞬态）|    滚动|    蓝色，闪烁|    可过片、拍摄。因为只打印最后一张照片，不影响存储状态。|    有至少一张照片时，短按一次"印放"键。|
 
     2. 异常与系统状态
 
@@ -258,10 +258,10 @@
     |---|---|---|---|---|---|
     |    9|    低电量【稳态】|    LO与数字闪烁交替|    橙色，常亮|    可过片、拍摄。留出阈值自动关机，确保即使低电量提升仍可拍摄。|    电量低于阈值。|
     |    10|    已拍完36张【稳态】|    00|    橙色，常亮|    不可过片、不可拍摄。|    第36张拍摄完成。|
-    |    11|    无照片时打印（瞬态）|    数字闪烁|    橙色，闪烁 3秒|    可过片、可拍摄。|    无照片时，短按“印放”键。|
+    |    11|    无照片时打印（瞬态）|    数字闪烁|    橙色，闪烁 3秒|    可过片、可拍摄。|    无照片时，短按"印放"键。|
     |    12|    故障异常【稳态】|    EE|    橙色，闪烁|    不可过片、不可拍摄。|    系统检测到异常或故障。|
     |    13|    固件升级中（瞬态）|    滚动|    白色，闪烁|    完成后进入待机状态。|    手机端发起固件升级。|
-    |    14|    恢复出厂设置中（瞬态）|    滚动|    白色，闪烁|    完成后重启进入“无连接，正常待机”状态。|    长按Reset键7秒开始恢复出厂设置。|
+    |    14|    恢复出厂设置中（瞬态）|    滚动|    白色，闪烁|    完成后重启进入"无连接，正常待机"状态。|    长按Reset键7秒开始恢复出厂设置。|
 
     3. 优先级
 
@@ -314,14 +314,14 @@
 
 |**一级功能**|**二级功能**|**功能描述、参数与逻辑**|**备注**|
 |---|---|---|---|
-|APP配对||- 拉开设备开机；<br>- 根据插件UI提示，短按“印放”键一次；|- 硬件仅三个按键：快门键、印放键与复位键。复位键需工具，快门键与不配对即可拍照冲突。只能退而求其次使用“印放”键来进行配对，也能因此确保用户开闸进入开机状态。|
+|APP配对||- 拉开设备开机；<br>- 根据插件UI提示，短按"印放"键一次；|- 硬件仅三个按键：快门键、印放键与复位键。复位键需工具，快门键与不配对即可拍照冲突。只能退而求其次使用"印放"键来进行配对，也能因此确保用户开闸进入开机状态。|
 |设备控制<br>|开机|- 关机状态下，拉开设备则自动开机；<br>- 开机后显示屏显示；||
 ||关机|- 正常状态下，关合设备开始自动关机计时，无操作180秒后自动关机；<br>- 传输数据、OTA及重置过程不计入自动关机计时；||
 ||过片、拍摄|- 过片：一次开合设备完成一次过片，过片后可拍摄一张照片；<br>- 拍摄：可拍摄状态下，按下快门拍摄一张照片。拍摄完成后剩余可拍数量 \-1；||
 ||屏幕显示|- 显示剩余可拍数量及设备状态；<br>- 具体参见[屏幕状态指示表格](https://mi-p.feishu.cn/docx/N0tddoSyqoSXAjxAW8Gckz2KnYg#share-JiUbdGPCOopdzIxwuAncfmLnnGb)；||
 ||Type\-C USB|- 仅用于充电|- 与电脑连接后，不可见，防止用户作为U盘占用存储影响正常拍照。|
 |固件OTA|/|- 插件端有新固件提示升级；<br>- 通过插件中进行固件升级；|- 升级过程中，短按或长按电源键均无效。|
-|恢复出厂设置|恢复到默认出厂设置|- [参见“重置WiFi和恢复出厂设置”交互设计](https://mi-p.feishu.cn/docx/N0tddoSyqoSXAjxAW8Gckz2KnYg#share-K8F3dUPYAomXqRxUtHycN6G8nmf)||
+|恢复出厂设置|恢复到默认出厂设置|- [参见"重置WiFi和恢复出厂设置"交互设计](https://mi-p.feishu.cn/docx/N0tddoSyqoSXAjxAW8Gckz2KnYg#share-K8F3dUPYAomXqRxUtHycN6G8nmf)||
 
 ## APP 功能
 
@@ -333,7 +333,7 @@
 
 ### 功能详细设计\*
 
-> 提示：已给出通用的功能设计，请根据实际情况进行调整，调整的部分请添加评论特别指出。新增功能的请用红色字体标示，不支持的功能请使用横线划掉不要直接删除。**如果插件类型是“标准\+自定义扩展程序”，自定义实现的功能，请务必在备注栏添加文案“自定义实现”。**必填。
+> 提示：已给出通用的功能设计，请根据实际情况进行调整，调整的部分请添加评论特别指出。新增功能的请用红色字体标示，不支持的功能请使用横线划掉不要直接删除。**如果插件类型是"标准\+自定义扩展程序"，自定义实现的功能，请务必在备注栏添加文案"自定义实现"。**必填。
 > 
 > 
 
@@ -342,35 +342,35 @@
 |**功能**|**功能描述、参数与逻辑**|**备注**|
 |---|---|---|
 |结构|1. 设备连接状态<br>2. 电量信息<br>3. 剩余可拍数量信息<br>4. 风格选择<br>5. 取出命令||
-|设备未连接|- 显示“设备未连接”；<br>- 提示打开相机开机；<br>- 显示“蓝牙已断开”并提供“连接”按钮以开始连接设备；|![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MTVmNWIyOWRhYTIwYjYwOTQ4YmMxZjA4YmNlZmU5YzNfYTcwMDVlZmMxZDg2M2YyOWMxZGI3MjliZDJlNjEyMDJfSUQ6NzY3MzA3MjY4MjMxMzk2MDQxN18xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)|
-|设备已连接|- 显示剩余电量信息；<br>- “蓝牙已断开”及“连接”按钮卡片消失；<br>- 与硬件同步，显示剩余可拍数量信息；|![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=ZTVhMDUzYWNhOGE2MGVmZDM5ZjUxNjEwNWVkYjcxMWFfNGUzMGZkY2Q1NzQwNTAxNDIyNDllNGUxNDc1ZGRhMjlfSUQ6NzY3MzA3Mjc5MDUwOTQ0MDI4M18xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)|
-|选择风格|- 未选择风格时提示“选择风格”；<br>- 选择风格后显示风格名；<br>- 点击进入风格列表可选择/更换风格；||
-|风格列表<br>|- 可用风格，提供以下信息：<br>    - 样图；<br>    - 风格名称；<br>    - 风格标签；<br>    - 已拍摄卷数；<br>    - “选择”按钮；<br>- 排序按风格名称排序；<br>- 提供“全部”和标签作为列表筛选；<br>- 点击风格卡片（非“选择”命令）进入风格详情；<br>- 点击“选择”则选中风格；<br>- 待解锁风格：<br>    - 提供信息与可用风格相同；<br>    - “选择”按钮 变为 进度\+“解锁”字样；<br>    - 未达标时点击“解锁”后弹框提供解锁所需要求，当前完成度；<br>    - 达标时点击“解锁”后，动画🎉解锁成功，随后该风格变为可用风格，按钮变为“选择”，再次点击为选中该风格；<br>|- 风格解锁需求见 [3\.3\.4](https://mi-p.feishu.cn/docx/N0tddoSyqoSXAjxAW8Gckz2KnYg#share-HYTudNnFcoY0cgxOt5lcyqfinSc)<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=Y2FhYTQ1ZjcxY2I1NjQzNjdjZjQwZWRiNDgxOGQwZTRfMTIwNjcxMDJhZjFhOTZjOGNjODBjOGY5YWMxZjYzMTFfSUQ6NzY3MzA3MzAyMzQxNTA2MTY5NV8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)|
+|设备未连接|- 显示"设备未连接"；<br>- 提示打开相机开机；<br>- 显示"蓝牙已断开"并提供"连接"按钮以开始连接设备；|![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MTVmNWIyOWRhYTIwYjYwOTQ4YmMxZjA4YmNlZmU5YzNfYTcwMDVlZmMxZDg2M2YyOWMxZGI3MjliZDJlNjEyMDJfSUQ6NzY3MzA3MjY4MjMxMzk2MDQxN18xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)|
+|设备已连接|- 显示剩余电量信息；<br>- "蓝牙已断开"及"连接"按钮卡片消失；<br>- 与硬件同步，显示剩余可拍数量信息；|![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=ZTVhMDUzYWNhOGE2MGVmZDM5ZjUxNjEwNWVkYjcxMWFfNGUzMGZkY2Q1NzQwNTAxNDIyNDllNGUxNDc1ZGRhMjlfSUQ6NzY3MzA3Mjc5MDUwOTQ0MDI4M18xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)|
+|选择风格|- 未选择风格时提示"选择风格"；<br>- 选择风格后显示风格名；<br>- 点击进入风格列表可选择/更换风格；||
+|风格列表<br>|- 可用风格，提供以下信息：<br>    - 样图；<br>    - 风格名称；<br>    - 风格标签；<br>    - 已拍摄卷数；<br>    - "选择"按钮；<br>- 排序按风格名称排序；<br>- 提供"全部"和标签作为列表筛选；<br>- 点击风格卡片（非"选择"命令）进入风格详情；<br>- 点击"选择"则选中风格；<br>- 待解锁风格：<br>    - 提供信息与可用风格相同；<br>    - "选择"按钮 变为 进度\+"解锁"字样；<br>    - 未达标时点击"解锁"后弹框提供解锁所需要求，当前完成度；<br>    - 达标时点击"解锁"后，动画🎉解锁成功，随后该风格变为可用风格，按钮变为"选择"，再次点击为选中该风格；<br>|- 风格解锁需求见 [3\.3\.4](https://mi-p.feishu.cn/docx/N0tddoSyqoSXAjxAW8Gckz2KnYg#share-HYTudNnFcoY0cgxOt5lcyqfinSc)<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=Y2FhYTQ1ZjcxY2I1NjQzNjdjZjQwZWRiNDgxOGQwZTRfMTIwNjcxMDJhZjFhOTZjOGNjODBjOGY5YWMxZjYzMTFfSUQ6NzY3MzA3MzAyMzQxNTA2MTY5NV8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)|
 |风格详情|- 显示以下内容：<br>    - 风格名称；<br>    - 风格介绍；<br>    - 风格标签；<br>    - 样片大图（不可点击再进入单图预览模式）；|- 具体风格相关需求见 [3\.3\.3](https://mi-p.feishu.cn/docx/N0tddoSyqoSXAjxAW8Gckz2KnYg#share-W7t8dehTQoHwxGx1Azvct4mRnph)<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MTAwM2M1YTgzNDRkOTQ5N2M3NjFiNWNkYTU1NGVjMmFfNzQ3Mzk1ZWEwMWUyMzZlYzYyOTNkMTAzZjRkNjY3NDhfSUQ6NzY3MzA3MzE0NDU4NDc4NTA4NF8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)<br>|
-|取出（传图）|- 未拍照时，命令为不可用状态；<br>- 已拍照但未满36张时，显示为“提前取出”，用户可开始传图；<br>- 拍满36张一卷后，显示为“取出并冲扫”，开始传图；<br>- 点击“取出”后，弹框询问冲扫方式；<br>- 取出传图后，删除相机内照片；<br>|- 若传输过程被打断（如用户离开米家等），不能删除相机内原图，用户可在插件中重新点击“取出”开始重新传图。若部分图片已被保存到手机，新流程中同名覆盖；<br>- 传图成功后：<br>    - 删除相机内原图；<br>    - 相机复位到一卷初始状态（可拍数量重置为36张）；|
+|取出（传图）|- 未拍照时，命令为不可用状态；<br>- 已拍照但未满36张时，显示为"提前取出"，用户可开始传图；<br>- 拍满36张一卷后，显示为"取出并冲扫"，开始传图；<br>- 点击"取出"后，弹框询问冲扫方式；<br>- 取出传图后，删除相机内照片；<br>|- 若传输过程被打断（如用户离开米家等），不能删除相机内原图，用户可在插件中重新点击"取出"开始重新传图。若部分图片已被保存到手机，新流程中同名覆盖；<br>- 传图成功后：<br>    - 删除相机内原图；<br>    - 相机复位到一卷初始状态（可拍数量重置为36张）；|
 
 #### 暗房 （胶卷、图片管理）
 
 |**功能**|**功能描述、参数与逻辑**|**备注**|
 |---|---|---|
 |结构|1. 胶卷列表及操作<br>2. 卷内照片列表及操作<br>3. 单图浏览模式及操作||
-|胶卷列表|- 列表为空时：<br>    - 空列表设计，提示还没有“取出”冲扫的胶卷；<br>- 列表非空时：<br>    - 列表时显示已取出的胶卷；<br>    - 最新的在列表最上；<br>    - 每一个胶卷项显示：<br>        - 名称：取出日期时间；<br>        - 选用的风格；<br>        - 包含的相片数量；<br>        - 取出的日期\+时间；<br>        - 封面图：<br>            - 冲扫中为图标\+底片图示；<br>            - 已冲扫默认为首图，用户可进入更改；<br>        - 冲扫中胶卷显示冲扫倒计时（HH:mm格式）；<br>        - 点击冲扫中胶卷后弹框提示仍在冲扫中；<br>    - 提供“全部”及已使用风格标签用于筛选列表显示内容（如点击“温暖午后”则只显示应用该风格的胶卷）；|![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=M2Q5ZWU4NWU1MTI2NmIzYzM3ZDUxYWNjYTlhZTZmYThfNDQxYTYyNjJiMWIyMTQ3N2NhMTJmNGU5ZmMwYjFiNmZfSUQ6NzY3MzA3MzM5MTg4MTAxNDIwM18xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)<br>|
-|胶卷列表操作|- 点击列表中一个胶卷项目，进入卷内多图浏览页面；<br>- 长按列表中一个胶卷，进入多选操作模式并选中该胶卷；<br>- 点击页面右上角“选择”，进入多选操作模式：<br>    - 此时“选择”命令变为“取消”命令；<br>    - 出现“删除”命令，未选择项目前，“删除”为不可用状态；<br>    - 点击一个项目为选中/取消选中该项目；<br>    - 点击至少一个项目后，“删除”为可用；<br>    - 用户可以多选项目后，点击“删除”进行删除胶卷；<br>    - 点击“删除”后，弹框要求用户确认，确认后删除该胶卷及内含所有照片；||
-|卷内多图浏览|- 顶部胶卷名称右边为“编辑”图标，点击可更改胶卷名；<br>- 默认设置：所有图片不自动保存到用户手机端；<br>- 默认为单列表模式，可切换到九宫格模式；<br>- 操作行包括：<br>    - 保存全部（非多选模式时） / 保存（多选模式时）；<br>    - 创作（P1）；<br>    - ~~印放（P1）；~~<br>    - 删除（仅多选模式中可用）；<br>- 标题行左侧返回仅在非多选模式下可用，进入多选模式，用“已选择数量”替代，避免误操作；<br>- 标题行右侧提供“多选/取消”命令，点击进入或退出多选模式；<br>- 长按任意图将进入多选模式，并选中该图；|![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MzZkOWRjYWYyOWVhMGU0Y2U1ZGQ1N2YzMjU4YjQ5MDRfOWM3OWNmNzZiM2VhNzQzNWQ2NDBkNDM4ZDM4Yjg0NTdfSUQ6NzY1ODEyMTUwNjY2MTA3NjE5MV8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)<br>|
-|多图操作|- 多选模式中，选择至少一张照片后，用户可以：<br>    - 标题行左侧原“返回”位置，显示已选择数量；<br>    - 保存：保存选中的图片；<br>    - 创作（P1）：将选中的照片制作成随机拼贴；<br>    - ~~印放（P1）：调用打印机插件，进行联动打印；~~<br>    - 删除：删除选中的照片，有弹框确认；|- 保存图片前，导入的图片在指定文件夹内，手机系统自带图库App中不显示；<br>- 保存图片后，在手机系统图库文件夹中创建所属胶卷的文件夹（名称默认为YYMMDDHHMM），图片保存在该文件夹中，用户可在手机系统自带图库App中看到；<br>- 保存照片后，同一张照片其实在手机存储有两份，一份仅在插件胶卷中可见。另一张则是用户保存在手机自带图库app可见的文件夹中。两份文件的“删除”操作互不关联；|
-|多图创作（P1）|- 进入多选模式，选中至少一张照片后，点击“创作”；<br>- 将选中照片带入创作模式：<br>    - 选择“朋友圈”或“小红书”确定格式：<br>        - 朋友圈为9宫图格式设计，套图支持：<br>            - 双图拼、三图拼、四图拼；<br>            - 根据多选总数在以上中进行组合（如选择5张照片，则为三图拼\+双图拼）；<br>        - 小红书为竖图横向浏览设计，套图支持：<br>            - 图头\+单图或双图、双图拼、三图拼、单图或双图\+图尾<br>            - 根据多选总数进行组合；<br>    - 图片根据胶卷中排序顺序放入拼贴，不可编辑图片顺序，不对拼图做过多编辑；<br>    - 点击保存将所有拼贴图片保存到手机相册；|- 创作功能优先级低于核心功能；<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MmRlOTQ4NjM1ZWY3ZDc4OGZkYjVjYzgyZjk2MTA2M2FfYTU1MGQ2Njg4Y2FmNzI1YmQ3ZTEwNDRhZTM5OWUxODVfSUQ6NzY1NDgzMzY2NTMyNzMyMDAzMV8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=Zjg5ZDNlM2JiNDc2NzA3YmFiMmE2YmU0Y2VhNDY0YzhfODg1NjRjYWQ1MDBkYzZkMGRmODllNzQ5OGRmNmY2MjVfSUQ6NzY1NDgzMzY5NjM5NDU5NTI4N18xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=YjViMGM5MDE2M2M4NGFhODliYzIwNmQ2NWRmYWUyNWZfNDU2YzkyNDEzOTkzZTY5YjEyODgwNDhkZjFjZjZkMTBfSUQ6NzY1NDgzMzc1NjUwMjc1NjU3Nl8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)<br>[【情绪｜原来这个时刻也叫Golden Hour💫】](https://www.xiaohongshu.com/discovery/item/67a5e8bf000000002a00cdd6?source=webshare&xhsshare=pc_web&xsec_token=ABs5z7VgfoIJZaAOeVU8Z1L2r5yMPv9FRw24Qj9pkrPAw=&xsec_source=pc_share) <br>- 朋友圈及小红书下设计若干款样式；|
-|~~多图印放（P1）~~|- ~~进入多选模式，选中至少一张图片后，点击“印放”；~~<br>- ~~上拉面板提供同米家账号已配对照片打印机列表；~~<br>- ~~用户选择一款打印机：~~<br>    - ~~与打印机进行蓝牙连接：~~<br>        - ~~连接失败：弹窗提示；~~<br>        - ~~连接成功：继续；~~<br>    - ~~连接成功后，将所选图片带入打印机，跳过“打印预览”直接开始打印；~~<br>    - ~~打印过程：~~<br>        - ~~异常、失败按正常打印机已有逻辑提示处理；~~<br>        - ~~成功后继续；~~<br>    - ~~打印成功后，提示完成，提供“完成”按钮，点击缩回上拉面板；~~<br>|- ~~支持的照片打印机型号包括：~~<br>    - ~~米家桌面照片打印机~~<br>    - ~~米家桌面照片打印机 1S~~<br>    - ~~米家桌面照片打印机 Pro~~<br>    - ~~米家口袋照片打印机~~<br>    - ~~米家口袋照片打印机 1S~~<br>    - ~~米家口袋照片打印机 Pro~~<br>- ~~通过Aiken开始冲扫将不同于正常选图打印，将不提供“打印预览”以及编辑流程。正常打印流程中的可编辑参数将自动设置为：~~<br>    - ~~无裁切（自适应）；~~<br>    - ~~无滤镜；~~<br>    - ~~无增强；~~<br>    - ~~无边框；~~<br>    - ~~无水印；~~|
-|单图浏览|- 在多图预览非多选模式下，点击某图进入该图单图浏览模式；<br>- 用户左右滑动浏览上一张、下一张图片；<br>- 不支持旋转，支持双指放大缩小，最小为自适应填满宽度；<br>- 不提供裁切、编辑功能；<br>- 提供“设为封面”、“保存”、“印放”（P1）和“删除”功能；||
-|单图操作|- 点击“设为封面”将该照片设置为该胶卷在胶卷列表中的封面缩略图；<br>- 点击“保存”将该照片保存到手机相册对应胶卷文件夹中，若已有则自动重命名（文件名末尾添加（01）之类）；<br>- ~~点击“印放”开始单图打印流程（P1）；~~<br>- 点击“删除”，弹框确认，确认后删除该照片。删除后，在胶卷内不再可见，但不删除用户保存到手机相册的对应照片；|- 保存照片后，同一张照片其实在手机存储有两份，一份仅在插件胶卷中可见。另一张则是用户保存在手机自带图库app可见的文件夹中。两份文件的“删除”操作互不关联；|
-|~~单图印放（P1）~~<br>|- ~~点击“印放”~~<br>- ~~后续同“多图印放”流程；~~|- ~~备注点同“多图印放”备注内容；~~|
+|胶卷列表|- 列表为空时：<br>    - 空列表设计，提示还没有"取出"冲扫的胶卷；<br>- 列表非空时：<br>    - 列表时显示已取出的胶卷；<br>    - 最新的在列表最上；<br>    - 每一个胶卷项显示：<br>        - 名称：取出日期时间；<br>        - 选用的风格；<br>        - 包含的相片数量；<br>        - 取出的日期\+时间；<br>        - 封面图：<br>            - 冲扫中为图标\+底片图示；<br>            - 已冲扫默认为首图，用户可进入更改；<br>        - 冲扫中胶卷显示冲扫倒计时（HH:mm格式）；<br>        - 点击冲扫中胶卷后弹框提示仍在冲扫中；<br>    - 提供"全部"及已使用风格标签用于筛选列表显示内容（如点击"温暖午后"则只显示应用该风格的胶卷）；|![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=M2Q5ZWU4NWU1MTI2NmIzYzM3ZDUxYWNjYTlhZTZmYThfNDQxYTYyNjJiMWIyMTQ3N2NhMTJmNGU5ZmMwYjFiNmZfSUQ6NzY3MzA3MzM5MTg4MTAxNDIwM18xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)<br>|
+|胶卷列表操作|- 点击列表中一个胶卷项目，进入卷内多图浏览页面；<br>- 长按列表中一个胶卷，进入多选操作模式并选中该胶卷；<br>- 点击页面右上角"选择"，进入多选操作模式：<br>    - 此时"选择"命令变为"取消"命令；<br>    - 出现"删除"命令，未选择项目前，"删除"为不可用状态；<br>    - 点击一个项目为选中/取消选中该项目；<br>    - 点击至少一个项目后，"删除"为可用；<br>    - 用户可以多选项目后，点击"删除"进行删除胶卷；<br>    - 点击"删除"后，弹框要求用户确认，确认后删除该胶卷及内含所有照片；||
+|卷内多图浏览|- 顶部胶卷名称右边为"编辑"图标，点击可更改胶卷名；<br>- 默认设置：所有图片不自动保存到用户手机端；<br>- 默认为单列表模式，可切换到九宫格模式；<br>- 操作行包括：<br>    - 保存全部（非多选模式时） / 保存（多选模式时）；<br>    - 创作（P1）；<br>    - ~~印放（P1）；~~<br>    - 删除（仅多选模式中可用）；<br>- 标题行左侧返回仅在非多选模式下可用，进入多选模式，用"已选择数量"替代，避免误操作；<br>- 标题行右侧提供"多选/取消"命令，点击进入或退出多选模式；<br>- 长按任意图将进入多选模式，并选中该图；|![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MzZkOWRjYWYyOWVhMGU0Y2U1ZGQ1N2YzMjU4YjQ5MDRfOWM3OWNmNzZiM2VhNzQzNWQ2NDBkNDM4ZDM4Yjg0NTdfSUQ6NzY1ODEyMTUwNjY2MTA3NjE5MV8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)<br>|
+|多图操作|- 多选模式中，选择至少一张照片后，用户可以：<br>    - 标题行左侧原"返回"位置，显示已选择数量；<br>    - 保存：保存选中的图片；<br>    - 创作（P1）：将选中的照片制作成随机拼贴；<br>    - ~~印放（P1）：调用打印机插件，进行联动打印；~~<br>    - 删除：删除选中的照片，有弹框确认；|- 保存图片前，导入的图片在指定文件夹内，手机系统自带图库App中不显示；<br>- 保存图片后，在手机系统图库文件夹中创建所属胶卷的文件夹（名称默认为YYMMDDHHMM），图片保存在该文件夹中，用户可在手机系统自带图库App中看到；<br>- 保存照片后，同一张照片其实在手机存储有两份，一份仅在插件胶卷中可见。另一张则是用户保存在手机自带图库app可见的文件夹中。两份文件的"删除"操作互不关联；|
+|多图创作（P1）|- 进入多选模式，选中至少一张照片后，点击"创作"；<br>- 将选中照片带入创作模式：<br>    - 选择"朋友圈"或"小红书"确定格式：<br>        - 朋友圈为9宫图格式设计，套图支持：<br>            - 双图拼、三图拼、四图拼；<br>            - 根据多选总数在以上中进行组合（如选择5张照片，则为三图拼\+双图拼）；<br>        - 小红书为竖图横向浏览设计，套图支持：<br>            - 图头\+单图或双图、双图拼、三图拼、单图或双图\+图尾<br>            - 根据多选总数进行组合；<br>    - 图片根据胶卷中排序顺序放入拼贴，不可编辑图片顺序，不对拼图做过多编辑；<br>    - 点击保存将所有拼贴图片保存到手机相册；|- 创作功能优先级低于核心功能；<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MmRlOTQ4NjM1ZWY3ZDc4OGZkYjVjYzgyZjk2MTA2M2FfYTU1MGQ2Njg4Y2FmNzI1YmQ3ZTEwNDRhZTM5OWUxODVfSUQ6NzY1NDgzMzY2NTMyNzMyMDAzMV8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=Zjg5ZDNlM2JiNDc2NzA3YmFiMmE2YmU0Y2VhNDY0YzhfODg1NjRjYWQ1MDBkYzZkMGRmODllNzQ5OGRmNmY2MjVfSUQ6NzY1NDgzMzY5NjM5NDU5NTI4N18xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=YjViMGM5MDE2M2M4NGFhODliYzIwNmQ2NWRmYWUyNWZfNDU2YzkyNDEzOTkzZTY5YjEyODgwNDhkZjFjZjZkMTBfSUQ6NzY1NDgzMzc1NjUwMjc1NjU3Nl8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)<br>[【情绪｜原来这个时刻也叫Golden Hour💫】](https://www.xiaohongshu.com/discovery/item/67a5e8bf000000002a00cdd6?source=webshare&xhsshare=pc_web&xsec_token=ABs5z7VgfoIJZaAOeVU8Z1L2r5yMPv9FRw24Qj9pkrPAw=&xsec_source=pc_share) <br>- 朋友圈及小红书下设计若干款样式；|
+|~~多图印放（P1）~~|- ~~进入多选模式，选中至少一张图片后，点击"印放"；~~<br>- ~~上拉面板提供同米家账号已配对照片打印机列表；~~<br>- ~~用户选择一款打印机：~~<br>    - ~~与打印机进行蓝牙连接：~~<br>        - ~~连接失败：弹窗提示；~~<br>        - ~~连接成功：继续；~~<br>    - ~~连接成功后，将所选图片带入打印机，跳过"打印预览"直接开始打印；~~<br>    - ~~打印过程：~~<br>        - ~~异常、失败按正常打印机已有逻辑提示处理；~~<br>        - ~~成功后继续；~~<br>    - ~~打印成功后，提示完成，提供"完成"按钮，点击缩回上拉面板；~~<br>|- ~~支持的照片打印机型号包括：~~<br>    - ~~米家桌面照片打印机~~<br>    - ~~米家桌面照片打印机 1S~~<br>    - ~~米家桌面照片打印机 Pro~~<br>    - ~~米家口袋照片打印机~~<br>    - ~~米家口袋照片打印机 1S~~<br>    - ~~米家口袋照片打印机 Pro~~<br>- ~~通过Aiken开始冲扫将不同于正常选图打印，将不提供"打印预览"以及编辑流程。正常打印流程中的可编辑参数将自动设置为：~~<br>    - ~~无裁切（自适应）；~~<br>    - ~~无滤镜；~~<br>    - ~~无增强；~~<br>    - ~~无边框；~~<br>    - ~~无水印；~~|
+|单图浏览|- 在多图预览非多选模式下，点击某图进入该图单图浏览模式；<br>- 用户左右滑动浏览上一张、下一张图片；<br>- 不支持旋转，支持双指放大缩小，最小为自适应填满宽度；<br>- 不提供裁切、编辑功能；<br>- 提供"设为封面"、"保存"、"印放"（P1）和"删除"功能；||
+|单图操作|- 点击"设为封面"将该照片设置为该胶卷在胶卷列表中的封面缩略图；<br>- 点击"保存"将该照片保存到手机相册对应胶卷文件夹中，若已有则自动重命名（文件名末尾添加（01）之类）；<br>- ~~点击"印放"开始单图打印流程（P1）；~~<br>- 点击"删除"，弹框确认，确认后删除该照片。删除后，在胶卷内不再可见，但不删除用户保存到手机相册的对应照片；|- 保存照片后，同一张照片其实在手机存储有两份，一份仅在插件胶卷中可见。另一张则是用户保存在手机自带图库app可见的文件夹中。两份文件的"删除"操作互不关联；|
+|~~单图印放（P1）~~<br>|- ~~点击"印放"~~<br>- ~~后续同"多图印放"流程；~~|- ~~备注点同"多图印放"备注内容；~~|
 
 #### 我的 （产品设置项）
 
 |**功能**|**功能描述、参数与逻辑**|**备注**|
 |---|---|---|
 |结构|1. 可用风格<br>2. 冲扫方式<br>3. 自动保存所有<br>4. 日期戳<br>5. 与口袋照片打印机配对||
-|可用风格|- 点击进入风格列表页；<br>- 风格列表页详情参见[“相机页”中部分](https://mi-p.feishu.cn/docx/N0tddoSyqoSXAjxAW8Gckz2KnYg#share-Tg3hd99awoyIiSx7hGIclH8Wnkh)，不过此入口的风格列表页中，各风格卡片中没有“选择”命令；<br>- 点击一项可进入风格详情，详情参见[“相机页”中部分](https://mi-p.feishu.cn/docx/N0tddoSyqoSXAjxAW8Gckz2KnYg#share-I8J3dqCvgoN4wMxoLxGczzmXn0g)；<br>- 底部提供浮动“解锁新风格”按钮（P1）：<br>    - 出现弹框提示关注运营号获取解锁码；<br>    - 弹框提供解锁码输入框及“解锁”、“取消”按钮；<br>    - 输入正确则解锁相应新风格；<br>    - 输入错误则提示错误；||
-|冲扫方式|- 提供三个选项：<br>    - 每次询问；<br>    - 即时冲扫：立等可取；<br>    - 经典冲扫：须等待3\~24小时；<br>- 出厂默认项为：每次询问；|- 即时冲扫模式为点击“取出”后，立刻可进入该卷浏览拍摄的照片；<br>- 经典冲扫模式：<br>    - 不立刻对用户显示拍摄的照片，点击“取出”后，进入胶卷列表；<br>    - 该卷被随机赋予一个3\~24小时之间的小时数作为倒计时。<br>    - 倒计时结束后，用户可进入该卷浏览拍摄的照片；|
+|可用风格|- 点击进入风格列表页；<br>- 风格列表页详情参见["相机页"中部分](https://mi-p.feishu.cn/docx/N0tddoSyqoSXAjxAW8Gckz2KnYg#share-Tg3hd99awoyIiSx7hGIclH8Wnkh)，不过此入口的风格列表页中，各风格卡片中没有"选择"命令；<br>- 点击一项可进入风格详情，详情参见["相机页"中部分](https://mi-p.feishu.cn/docx/N0tddoSyqoSXAjxAW8Gckz2KnYg#share-I8J3dqCvgoN4wMxoLxGczzmXn0g)；<br>- 底部提供浮动"解锁新风格"按钮（P1）：<br>    - 出现弹框提示关注运营号获取解锁码；<br>    - 弹框提供解锁码输入框及"解锁"、"取消"按钮；<br>    - 输入正确则解锁相应新风格；<br>    - 输入错误则提示错误；||
+|冲扫方式|- 提供三个选项：<br>    - 每次询问；<br>    - 即时冲扫：立等可取；<br>    - 经典冲扫：须等待3\~24小时；<br>- 出厂默认项为：每次询问；|- 即时冲扫模式为点击"取出"后，立刻可进入该卷浏览拍摄的照片；<br>- 经典冲扫模式：<br>    - 不立刻对用户显示拍摄的照片，点击"取出"后，进入胶卷列表；<br>    - 该卷被随机赋予一个3\~24小时之间的小时数作为倒计时。<br>    - 倒计时结束后，用户可进入该卷浏览拍摄的照片；|
 |自动保存所有|- 开、关选项<br>- 出厂默认项为：关闭|- 用户选择打开后，从相机传输照片到手机端后，将自动保存该卷所有照片到手机相册下的文件夹中；|
 |日期戳|- 开、关选项<br>- 出厂默认项为：打开|- 日期戳格式为：'YY MM DD<br>- 例如：'26 08 03<br>- 日期戳字体设计参考如下<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=N2I3M2Y4YWEwZDgzMzdlYzNkNzBjZWMxZWVmOTcyZDdfMmZhNjI1OTVkMWEwYTIwZWRkYmMyNGNhN2VhODE3MWZfSUQ6NzY1NDg2NzA0Njg3ODUzMDc2NV8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)|
 |与口袋打印机配对|未配对时：<br>- 显示支持的产品列表<br>- 用户选择一个产品<br>- 提示用户将相机和口袋打印机开机广播，按下打印机电源键确认配对<br>- 完成1对1配对<br>已配对：<br>- 显示已配对的设备，及连接状态<br>- 解除配对<br>    - 询问用户确认是否解除配对|- 支持的产品：<br>    - 米家口袋照片打印机 1S<br>    - 米家都带照片打印机 Pro<br>[https://myconcepts-3v7125w.maozi.io/shoot-print/shoot-print.html]()<br>|
@@ -417,7 +417,8 @@
     |    完成首卷|    首次拍摄36张并且成功导出|    待定|    |
     |    拍摄100张|    累计拍摄100张后（最新的可还未导出）|    待定|    |
     |    创作并分享|    完成一次创作并保存（不追踪用户是否分享）|    待定|    |
-    |    关注运营账号|    解锁说明中提供“去关注”，点击后打开“小红书”对应的账号主页，解锁|    待定|    点击后即解锁，不追踪是否点击关注|
+    |    胶片实验室|    尝试过至少一次漏光、一次相框和一次暗角效果（可在同一卷同时打开，累计尝试即可）|    待定|    需在风格详情页「成像设置」中新增暗角为可选项；"尝试"=将效果设为非"无"/"关闭"值并选用该风格拍摄至少一卷|
+    |    周末影记|    连续四周每周至少拍摄并导出3张照片（累计≥12张）|    待定|    "导出"=照片保存到手机相册；连续中断归零重来；周以自然周计算|
 
 ### **交互设计\***
 
@@ -429,7 +430,7 @@
 
 ## 数据统计
 
-> 提示：根据实际情况填写，没有可以写“无”。
+> 提示：根据实际情况填写，没有可以写"无"。
 > 
 > 
 
@@ -501,8 +502,8 @@ TBD
 
 |**~~涉及隐私~~**|**~~需求描述~~**||**~~备注~~**|
 |---|---|---|---|
-|~~是~~|~~隐私文稿~~|1. ~~《隐私政策》~~<br>2. ~~《用户协议》~~<br>|1. ~~这里需要说明支持的所有隐私文稿类型，常用文稿类型包括~~<br>~~《隐私政策》~~<br>~~《用户协议》~~<br>~~《用户体验改进计划》~~<br>~~《儿童信息保护规则》~~<br>~~《第三方共享信息清单》~~<br>2. ~~如有“其他”，请详细说明~~|
-||~~隐私功能~~|1. ~~隐私弹窗~~<br>2. ~~隐私更新弹窗~~<br>3. ~~撤销授权~~<br>4. ~~隐私下载~~<br>5. ~~数据存储服务器~~<br>6. ~~数据清除~~<br>|1. ~~这里需要说明支持的隐私功能，常见隐私功能包括~~<br>- ~~隐私弹窗~~<br>- ~~隐私更新弹窗~~<br>- ~~敏感信息提醒弹窗~~<br>- ~~权限管理~~<br>- ~~撤销授权~~<br>- ~~隐私下载~~<br>- ~~数据清除~~<br>- ~~用户体验改进计划开关~~<br>2. ~~如有“其他”，请详细说明~~|
+|~~是~~|~~隐私文稿~~|1. ~~《隐私政策》~~<br>2. ~~《用户协议》~~<br>|1. ~~这里需要说明支持的所有隐私文稿类型，常用文稿类型包括~~<br>~~《隐私政策》~~<br>~~《用户协议》~~<br>~~《用户体验改进计划》~~<br>~~《儿童信息保护规则》~~<br>~~《第三方共享信息清单》~~<br>2. ~~如有"其他"，请详细说明~~|
+||~~隐私功能~~|1. ~~隐私弹窗~~<br>2. ~~隐私更新弹窗~~<br>3. ~~撤销授权~~<br>4. ~~隐私下载~~<br>5. ~~数据存储服务器~~<br>6. ~~数据清除~~<br>|1. ~~这里需要说明支持的隐私功能，常见隐私功能包括~~<br>- ~~隐私弹窗~~<br>- ~~隐私更新弹窗~~<br>- ~~敏感信息提醒弹窗~~<br>- ~~权限管理~~<br>- ~~撤销授权~~<br>- ~~隐私下载~~<br>- ~~数据清除~~<br>- ~~用户体验改进计划开关~~<br>2. ~~如有"其他"，请详细说明~~|
 ||~~数据收集~~<br>|1. ~~存放在云端的数据~~<br>    - ~~小米账号信息：小米账号ID；~~<br>    - ~~设备信息：设备id、用户id、设备序列号、设备SDK、固件版本号、硬件版本号、PCBA串号、打印引擎串号、MAC地址、激活时间（第一次数据上报的时间）；~~<br>    - ~~小米账号与设备的绑定关系；~~<br>    - ~~打印任务信息：打印任务id、用户id、打印通道、任务状态、任务类型、打印份数、成功打印份数、文件名、文件大小、文件类型、手机系统类型、手机系统版本、插件版本、打印时长、传输时长、任务发送时间、当前蓝牙连接数；~~<br>    - ~~媒体文件信息：视频照片对应的视频、留声照片对应的音频、照片；~~<br>    - ~~配方信息：自定义预设参数包括您在编辑过程中调整的以下项目：应用的滤镜；在"调整"中设置的"亮度"、"锐化"、"对比度"、"饱和度"和"晕影"的值；在"边框及裁切"中选择的样式；在"自适应"或"等边距框"中选择的边框颜色；在"拍立得"中选择的边框样式；"水印"的开/关状态；在"水印"中设置的头像；在"水印"中设置的"设备"和"曝光参数"的值；在"水印"中选择的"文本颜色"的值；以及保存自定义预设时用作缩略图的图像。~~<br>    - ~~设备使用数据：打印总页数、成功打印总次数、取消打印总次数、纸张为空总次数、卡纸总次数、纸张不匹配总次数、硬件错误总次数、开盖总次数、解码异常总次数；~~<br>    - ~~设备故障信息：故障代码、故障事件类型、故障发生时间；~~<br>2. ~~存放在本地的数据~~<br>    - ~~插件端：AR照片、AR照片特征值、AR视频及音频~~<br>    - ~~固件端：设备绑定配对信息、设备端生命周期总打印量计数~~|~~这里需要说明数据收集存储情况，包括存放在云端和本地的数据，明确到具体字段，例如PM2\.5。需要根据产品实际情况全部列出来。~~<br>|
 
 #### **~~隐私功能详细设计\* ~~**
@@ -513,17 +514,17 @@ TBD
 
 3. 禁止频繁获取个人信息：收集个人信息的频度不超出业务功能实际需要
 
-> 提示：上方3\.7\.2\.1“隐私概要”中列举的隐私功能，都需要进行详细说明，示例给出了通用做法。必填。
+> 提示：上方3\.7\.2\.1"隐私概要"中列举的隐私功能，都需要进行详细说明，示例给出了通用做法。必填。
 > 
 > 
 
 |**~~隐私功能~~**|**~~功能逻辑\&描述~~**|**~~备注~~**|
 |---|---|---|
-|~~隐私弹窗~~<br>|1. ~~绑定设备，进入插件首页，弹出隐私弹窗~~<br>    1. ~~弹窗文案：产品名称\+米家默认文案~~<br>    2. ~~同意前：不得收集插件相关的个人信息或打开可收集个人信息的权限，不可收集任何插件数据（包括用户数据、非用户数据和打点数据）~~<br>    3. ~~同意后：~~<br>        1. ~~进入插件首页~~<br>        2. ~~云端需生成一条同意日志，记录App version，手机系统版本，UID，DID，隐私政策version，时间戳。~~<br>    4. ~~拒绝同意，则回到“米家”页面~~<br>    5. ~~相关隐私文稿为超链接，点击链接跳转到对应页面~~<br>2. ~~撤回隐私同意和删除设备后，再次绑定设备，弹出隐私弹窗~~|~~如产品涉及隐私，必须支持此功能。~~<br>~~示例~~<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MjYxNjQ0MTdkYWQ3YTVmYWM4NWYxYjJlZTRiMDhlMmNfYzU1MmMzNzI1YmYyZThlMDIyZjMyMzFjMjlmNTQ0MzFfSUQ6NzY1MTQ1MjI2OTA0MDI5MTAwMV8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)<br>|
-|~~隐私更新弹窗~~|~~产品上线后，隐私文稿内容发生变更（隐私内容版本A\-更新为版本B）~~<br>1. ~~新用户/已撤回产品隐私同意的老用户，不弹出隐私更新弹窗~~<br>2. ~~已同意历史版本隐私或隐私A，且未同意过隐私B的老用户，弹出隐私更新弹窗~~<br>    1. ~~更新弹窗文案：产品名称\+米家默认文案\+更新内容~~<br>    2. ~~同意前：不得收集插件相关的个人信息或打开可收集个人信息的权限，不可收集任何插件数据（包括用户数据、非用户数据和打点数据）~~<br>    3. ~~同意后：~~<br>        1. ~~进入插件首页~~<br>        2. ~~云端需生成一条同意日志，记录App version，手机系统版本，UID，DID，隐私政策version，时间戳。~~<br>    4. ~~拒绝同意，则回到“米家”页面~~<br>    5. ~~相关隐私文稿为超链接，点击链接跳转到对应新版隐私页面~~|1. ~~产品上线前，隐私文稿内容发生变更，不弹出隐私更新弹窗~~<br>2. ~~产品上线后，隐私文稿内容发生变更，必须支持此功能。更新弹窗文案可参考：~~[隐私政策更新弹窗文案指引](https://mi.feishu.cn/docx/BlJodBPJNo0SEyxWrWscCMKsnDd)~~ ~~<br>|
+|~~隐私弹窗~~<br>|1. ~~绑定设备，进入插件首页，弹出隐私弹窗~~<br>    1. ~~弹窗文案：产品名称\+米家默认文案~~<br>    2. ~~同意前：不得收集插件相关的个人信息或打开可收集个人信息的权限，不可收集任何插件数据（包括用户数据、非用户数据和打点数据）~~<br>    3. ~~同意后：~~<br>        1. ~~进入插件首页~~<br>        2. ~~云端需生成一条同意日志，记录App version，手机系统版本，UID，DID，隐私政策version，时间戳。~~<br>    4. ~~拒绝同意，则回到"米家"页面~~<br>    5. ~~相关隐私文稿为超链接，点击链接跳转到对应页面~~<br>2. ~~撤回隐私同意和删除设备后，再次绑定设备，弹出隐私弹窗~~|~~如产品涉及隐私，必须支持此功能。~~<br>~~示例~~<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MjYxNjQ0MTdkYWQ3YTVmYWM4NWYxYjJlZTRiMDhlMmNfYzU1MmMzNzI1YmYyZThlMDIyZjMyMzFjMjlmNTQ0MzFfSUQ6NzY1MTQ1MjI2OTA0MDI5MTAwMV8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)<br>|
+|~~隐私更新弹窗~~|~~产品上线后，隐私文稿内容发生变更（隐私内容版本A\-更新为版本B）~~<br>1. ~~新用户/已撤回产品隐私同意的老用户，不弹出隐私更新弹窗~~<br>2. ~~已同意历史版本隐私或隐私A，且未同意过隐私B的老用户，弹出隐私更新弹窗~~<br>    1. ~~更新弹窗文案：产品名称\+米家默认文案\+更新内容~~<br>    2. ~~同意前：不得收集插件相关的个人信息或打开可收集个人信息的权限，不可收集任何插件数据（包括用户数据、非用户数据和打点数据）~~<br>    3. ~~同意后：~~<br>        1. ~~进入插件首页~~<br>        2. ~~云端需生成一条同意日志，记录App version，手机系统版本，UID，DID，隐私政策version，时间戳。~~<br>    4. ~~拒绝同意，则回到"米家"页面~~<br>    5. ~~相关隐私文稿为超链接，点击链接跳转到对应新版隐私页面~~|1. ~~产品上线前，隐私文稿内容发生变更，不弹出隐私更新弹窗~~<br>2. ~~产品上线后，隐私文稿内容发生变更，必须支持此功能。更新弹窗文案可参考：~~[隐私政策更新弹窗文案指引](https://mi.feishu.cn/docx/BlJodBPJNo0SEyxWrWscCMKsnDd)~~ ~~<br>|
 |~~敏感信息权限提醒弹窗~~<br>|1. ~~收集的敏感信息~~<br>    - ~~无~~<br>|1. ~~如产品涉及收集用户敏感数据的功能，必须支持此功能。~~[敏感个人信息的定义和示例](https://mi.feishu.cn/docx/A0Y1diRkrowk8exHr1accQzfnRg)~~ ~~<br>2. ~~注意：收集年满14周岁未成年人的个人信息前，应征得未成年或其监护人的明示同意；不满十四周岁的，应征得其监护人的明示同意。~~<br>3. ~~敏感信息弹窗文案示例~~<br>    *~~为向您提供XXX功能，XXX有限公司（联系方式：XXX）将收集您的XXX信息，用于XXX。【请您放心，您的XXX信息将仅用于上述目的。在完成XXX后，我们将删除您的XXX信息，您可以通过XXX路径删除上述信息。】若您拒绝授权，您将无法使用上述功能。~~*<br>    ~~【】里的内容根据实际情况判断，如果用于其他目的（比如模型训练），不支持单独删除，不包含这几句话也可以。~~<br>~~示例~~<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MDY1ODIxYzA1MmVhMjE3ZjJlODc5ODIzZDNmYmE0MzlfMzJkNDdmNGQxMmFlMjhlZDA4NmJhNmMzMjM2OGQ2Y2VfSUQ6NzY1MTQ1MjI2ODM4NjUyMDI1NV8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)|
 |~~敏感信息权限申请弹窗~~<br>|~~无敏感信息收集~~|~~如产品涉及获取设备权限，必须支持此功能~~<br>~~示例~~<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MWYxNmRhNzYwMTE4MGY1YjNmYzcxNWNmMzc2YmIzZGJfNjU1YzcyYzU3YTNkN2MwNTZmYjNiM2FkYzI5NjM3ZGFfSUQ6NzY1MTQ1MjI2NjQ1Mzg0NzI0MF8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)|
-|~~撤销授权~~<br>|1. ~~用户同意隐私后，支持撤销授权，点击“撤销授权”，弹出撤销授权弹窗~~<br>    1. ~~撤销授权文案：米家默认文案~~<br>    2. ~~撤回后果应同文案相符。~~<br>2. ~~从米家App首页开始计算，进入撤销授权页面的步骤不得超过4步~~<br>|~~如产品涉及隐私，必须支持此功能。~~<br>~~示例~~<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NTg1NzRkYWJhYzUyZjVlYmM3ZTI5ZjQxM2Y5OWE0M2ZfMGQ3NjFiZGI2OTZmMGRhN2E5OTliY2NkMjZjMjI2MmFfSUQ6NzY1MTQ1MjI2NjQwNzYxMTU4NV8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)|
+|~~撤销授权~~<br>|1. ~~用户同意隐私后，支持撤销授权，点击"撤销授权"，弹出撤销授权弹窗~~<br>    1. ~~撤销授权文案：米家默认文案~~<br>    2. ~~撤回后果应同文案相符。~~<br>2. ~~从米家App首页开始计算，进入撤销授权页面的步骤不得超过4步~~<br>|~~如产品涉及隐私，必须支持此功能。~~<br>~~示例~~<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NTg1NzRkYWJhYzUyZjVlYmM3ZTI5ZjQxM2Y5OWE0M2ZfMGQ3NjFiZGI2OTZmMGRhN2E5OTliY2NkMjZjMjI2MmFfSUQ6NzY1MTQ1MjI2NjQwNzYxMTU4NV8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)|
 |~~隐私下载~~|1. ~~所有隐私文稿支持下载为PDF格式~~<br>2. ~~下载后的文件内容正常显示~~<br>|~~如产品涉及隐私，必须支持此功能。~~<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=OWRkMzU2MjI0ZmJiNzVlNzhjNmZmNTc1NTZiZDkzMmNfMGMyMDBjOGYxNWFmYWFkMjhlZjk2Y2NkZWZjM2IyYTNfSUQ6NzY1MTQ1MjI2NjkwMjIyODIwMV8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)|
 |~~数据清除~~<br>|~~以下用户数据支持清除~~<br>1. ~~本地数据清除：通过重置设备或恢复物理出厂，清除设备绑定配对信息~~<br>2. ~~云端数据清除：通过撤销授权，将该用户信息及关联的使用信息清除或做匿名化处理~~<br>~~以下用户数据不支持清除~~<br>1. ~~设备端生命周期总打印量计数（用于防止骗保）~~|~~如产品涉及隐私，必须支持此功能~~<br>|
 |~~用户体验改进计划开关~~<br>|~~不支持~~<br>|~~如产品支持用户体验改进计划，必须支持此功能。~~<br>~~示例~~<br>![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NDI4YjIwZDcwMWY5ZjM2Y2I4OTVjMTlmZDcxZjRkNTdfNzBlYjY1ZjA1YWE5MDdiNjhjNjk4MWJiY2I0MjU1YjZfSUQ6NzY1MTQ1MjI2ODYxODY0ODc5MF8xNzg3MDI4OTY5OjE3ODcxMTUzNjlfVjM)|
@@ -532,7 +533,7 @@ TBD
 
 # 米家服务端和云平台需求\*
 
-> 提示：这里填写上文“功能定义”中，需要服务端或云平台支持的功能。必填，
+> 提示：这里填写上文"功能定义"中，需要服务端或云平台支持的功能。必填，
 > 
 > 
 
