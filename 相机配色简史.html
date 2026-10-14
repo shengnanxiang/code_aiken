@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>相机的颜色 · 一部相机 CMF 简史</title>
+<style>
+  :root{
+    --paper:#F5F2EC;
+    --paper-2:#EDE8DF;
+    --ink:#141414;
+    --ink-2:#4A4843;
+    --ink-3:#8A857C;
+    --line:rgba(20,20,20,.12);
+    --silver:#C8CCCE;
+    --warm-silver:#D3C6AC;
+    --gold:#B08D57;
+    --cream:#EDE7DC;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:"Songti SC","STSong","SimSun",Georgia,"Times New Roman",serif}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(120% 90% at 78% 12%, rgba(200,204,206,.26) 0%, rgba(200,204,206,0) 58%),
+      radial-gradient(90% 70% at 12% 92%, rgba(176,141,87,.16) 0%, rgba(176,141,87,0) 60%),
+      #0D0E10;
+    color:#F2F0EC;
+    padding:120px 0 104px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:100% 34px;pointer-events:none;
+  }
+  .eyebrow{
+    font-size:12px;letter-spacing:.34em;text-transform:uppercase;
+    color:#9A958C;margin-bottom:26px;
+  }
+  .hero h1{
+    font-size:clamp(40px,6.4vw,74px);
+    line-height:1.1;font-weight:600;letter-spacing:-.01em;margin-bottom:22px;
+    background:linear-gradient(96deg,#FFFFFF 6%,#C8CCCE 42%,#8E9296 66%,#E6E3DD 92%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero .sub{
+    font-size:clamp(15px,2vw,19px);color:#B6B2AA;max-width:660px;line-height:1.85;
+  }
+  .hero .rule{
+    width:64px;height:2px;background:linear-gradient(90deg,var(--silver),transparent);
+    margin:34px 0 30px;
+  }
+  .hero .meta{
+    display:flex;gap:34px;flex-wrap:wrap;font-size:12.5px;color:#8A857C;letter-spacing:.06em;
+  }
+
+  /* ---------- 通用 section ---------- */
+  section{padding:88px 0}
+  section + section{border-top:1px solid var(--line)}
+  .kicker{
+    font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3);
+    margin-bottom:16px;
+  }
+  h2{
+    font-family:"Songti SC","STSong",Georgia,serif;
+    font-size:clamp(26px,3.4vw,38px);font-weight:600;letter-spacing:.01em;
+    margin-bottom:20px;line-height:1.3;
+  }
+  .lede{font-size:17px;color:var(--ink-2);max-width:760px}
+  .lede strong{color:var(--ink);font-weight:600}
+
+  .quote{
+    border-left:3px solid var(--silver);
+    padding:8px 0 8px 22px;margin:34px 0 0;
+    font-family:"Songti SC",Georgia,serif;
+    font-size:19px;color:var(--ink);line-height:1.75;
+  }
+
+  /* ---------- 时间轴 ---------- */
+  .timeline{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:26px;margin-top:52px;
+  }
+  .era{
+    background:#fff;border:1px solid var(--line);border-radius:16px;
+    padding:26px 24px 22px;position:relative;
+    transition:transform .3s ease,box-shadow .3s ease;
+  }
+  .era:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(20,20,20,.3)}
+  .era .no{
+    position:absolute;top:22px;right:24px;
+    font-size:11px;letter-spacing:.18em;color:#BFB9AE;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  .era .years{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:12px;letter-spacing:.08em;color:var(--ink-3);margin-bottom:8px;
+  }
+  .era h3{
+    font-family:"Songti SC",Georgia,serif;
+    font-size:20px;font-weight:600;margin-bottom:14px;line-height:1.4;
+  }
+  .era .cam{width:100%;max-width:210px;height:auto;margin:4px auto 18px;display:block}
+  .era .refs{font-size:12.5px;color:var(--ink-3);margin-bottom:14px;line-height:1.7}
+  .era .why{font-size:14px;color:var(--ink-2);line-height:1.8}
+  .era .why b{color:var(--ink);font-weight:600}
+  .era--star{border-color:#B9BEC2;box-shadow:0 0 0 1px rgba(200,204,206,.5)}
+  .era--star::before{
+    content:"核心";position:absolute;top:-11px;left:22px;
+    background:var(--ink);color:#fff;font-size:10.5px;letter-spacing:.16em;
+    padding:3px 10px;border-radius:20px;
+  }
+
+  /* 色卡 */
+  .swatches{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+  .sw{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+  .sw i{
+    display:block;width:38px;height:38px;border-radius:50%;
+    border:1px solid rgba(0,0,0,.1);
+    box-shadow:inset 0 -6px 12px -6px rgba(0,0,0,.28), inset 0 4px 10px -4px rgba(255,255,255,.55);
+  }
+  .sw b{font-size:11.5px;font-weight:600;color:var(--ink-2)}
+  .sw em{
+    font-style:normal;font-size:10.5px;color:var(--ink-3);
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+
+  /* ---------- 规律 ---------- */
+  .rules{margin-top:48px;border-top:1px solid var(--line)}
+  .rule-row{
+    display:grid;grid-template-columns:64px 1fr;gap:28px;
+    padding:30px 0;border-bottom:1px solid var(--line);align-items:start;
+  }
+  .rule-row .n{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:13px;color:var(--ink-3);letter-spacing:.1em;padding-top:5px;
+  }
+  .rule-row h4{font-size:18px;font-weight:600;margin-bottom:8px;letter-spacing:.01em}
+  .rule-row p{font-size:14.5px;color:var(--ink-2);max-width:720px}
+  .rule-row p b{color:var(--ink);font-weight:600}
+
+  /* ---------- 技术警示 ---------- */
+  .warn{
+    background:#141414;color:#EDEAE4;border-radius:18px;
+    padding:44px 42px;margin-top:44px;
+  }
+  .warn .kicker{color:#7E7970}
+  .warn h3{
+    font-family:"Songti SC",Georgia,serif;font-size:24px;font-weight:600;
+    margin-bottom:18px;color:#fff;
+  }
+  .warn p{color:#B9B4AB;font-size:15px;max-width:780px}
+  .warn p + p{margin-top:14px}
+  .warn b{color:#fff;font-weight:600}
+  .warn .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+  .warn .chip{
+    border:1px solid rgba(255,255,255,.18);border-radius:100px;
+    padding:7px 15px;font-size:12.5px;color:#DAD5CD;
+  }
+  .warn .chip.bad{border-color:rgba(224,122,95,.5);color:#E28C72}
+
+  /* ---------- 建议 ---------- */
+  table{
+    width:100%;border-collapse:collapse;margin-top:38px;font-size:14px;
+    background:#fff;border-radius:14px;overflow:hidden;
+    border:1px solid var(--line);
+  }
+  th,td{text-align:left;padding:16px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{
+    background:var(--paper-2);font-size:12px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink-2);font-weight:600;
+  }
+  tr:last-child td{border-bottom:none}
+  td b{font-weight:600}
+  .tag{
+    display:inline-block;font-size:11px;padding:2px 9px;border-radius:20px;
+    border:1px solid var(--line);color:var(--ink-2);margin-right:4px;
+  }
+  .tag.rec{background:#141414;color:#fff;border-color:#141414}
+  .tag.risk{border-color:rgba(224,122,95,.5);color:#C4623F}
+
+  .swatch-bar{
+    display:flex;height:56px;border-radius:12px;overflow:hidden;margin-top:26px;
+    border:1px solid var(--line);
+  }
+  .swatch-bar div{flex:1;position:relative}
+  .swatch-bar span{
+    position:absolute;bottom:6px;left:8px;font-size:10px;color:rgba(0,0,0,.5);
+    font-family:ui-monospace,monospace;
+  }
+
+  /* ---------- 收尾 ---------- */
+  .closing{
+    background:#0D0E10;color:#EDEAE4;padding:96px 0;text-align:center;
+  }
+  .closing h2{
+    background:linear-gradient(96deg,#FFFFFF,#C8CCCE 55%,#8E9296);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    max-width:760px;margin:0 auto 18px;
+  }
+  .closing p{color:#A9A49B;max-width:620px;margin:0 auto;font-size:15.5px}
+
+  footer{
+    padding:34px 0;text-align:center;font-size:12px;color:var(--ink-3);
+    letter-spacing:.08em;
+  }
+
+  @media(max-width:640px){
+    .wrap{padding:0 20px}
+    section{padding:64px 0}
+    .hero{padding:84px 0 70px}
+    .rule-row{grid-template-columns:1fr;gap:6px}
+    .warn{padding:32px 24px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Camera CMF · A Brief History</div>
+    <h1 class="serif">相机的颜色</h1>
+    <p class="sub">
+      一台相机为什么要长成那个颜色？<br>
+      答案很少是"因为好看"。从黄铜到镀铬，从蒙皮到塑料，从全黑到奶油白——
+      相机的配色史，本质是<strong style="color:#fff;font-weight:600">材料史与功能史</strong>。
+    </p>
+    <div class="rule"></div>
+    <div class="meta">
+      <span>1888 — 2026</span>
+      <span>8 个时代 · 5 条规律</span>
+      <span>供 ID / CMF 团队内部参考</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 引言 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Why this matters</div>
+    <h2>相机是少数"配色即身份"的消费品</h2>
+    <p class="lede">
+      看一个人穿的鞋，看不出太多；但看一台相机的颜色，可以判断它属于哪个年代、什么定位，
+      甚至拍摄者大概率是哪种人。<strong>银色 + 黑蒙皮是 1950 年代的机械浪漫；全黑是 1970 年代记者的隐身衣；
+      奶油白是 1960 年代塑料普及后的大众记忆；冷银是 2000 年代消费电子的科技宣言。</strong>
+    </p>
+    <p class="lede" style="margin-top:18px">
+      我们做复古相机，本质上是在借用一段<strong>已经被验证过的色彩记忆</strong>。
+      问题不在于"选哪个颜色"，而在于<strong>我们要借用哪个年代</strong>。
+    </p>
+    <div class="quote">
+      「颜色不是设计的最后一道工序，它是材料与功能的结果。」<br>
+      <span style="font-size:14px;color:var(--ink-3);font-style:normal">
+        —— 这条规律在相机上体现得最彻底
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 时间轴 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Timeline</div>
+    <h2>八个时代：相机配色的演变</h2>
+    <p class="lede">每一代配色背后，都有一条非常具体的原因。看懂原因，才能知道哪些颜色是"借来的灵魂"，哪些只是"贴上去的皮"。</p>
+
+    <div class="timeline">
+
+      <!-- 1 -->
+      <article class="era">
+        <div class="no">01</div>
+        <div class="years">1888 — 1920s</div>
+        <h3>木、皮、铜</h3>
+        <svg class="cam" viewBox="0 0 200 120" role="img" aria-label="木质相机">
+          <rect x="18" y="18" width="164" height="22" rx="6" fill="#6B4A31"/>
+          <rect x="18" y="38" width="164" height="66" rx="6" fill="#5A3E2B"/>
+          <path d="M118 38 h58 a6 6 0 0 1 6 6 v54 a6 6 0 0 1 -6 6 h-58 z" fill="#1C1A18"/>
+          <circle cx="76" cy="70" r="26" fill="#B08D57"/>
+          <circle cx="76" cy="70" r="21" fill="#8C6E42"/>
+          <circle cx="76" cy="70" r="13" fill="#221C14"/>
+          <rect x="30" y="26" width="20" height="10" rx="2" fill="#B08D57"/>
+          <circle cx="162" cy="22" r="6" fill="#B08D57"/>
+        </svg>
+        <div class="swatches">
+          <span class="sw"><i style="background:#5A3E2B"></i><b>胡桃木</b><em>#5A3E2B</em></span>
+          <span class="sw"><i style="background:#1C1A18"></i><b>皮革</b><em>#1C1A18</em></span>
+          <span class="sw"><i style="background:#B08D57"></i><b>黄铜</b><em>#B08D57</em></span>
+        </div>
+        <div class="refs">代表：Kodak No.1（1888）、木质大画幅</div>
+        <p class="why">材料决定颜色。<b>木头、皮革、黄铜，没有一个是"选"出来的</b>——那就是当时能用的东西。</p>
+      </article>
+
+      <!-- 2 -->
+      <article class="era">
+        <div class="no">02</div>
+        <div class="years">1925 — 1940s</div>
+        <h3>黑漆与镍</h3>
+        <svg class="cam" viewBox="0 0 200 120" role="img" aria-label="黑漆相机">
+          <rect x="18" y="18" width="164" height="22" rx="6" fill="#1A1A1B"/>
+          <rect x="18" y="38" width="164" height="66" rx="6" fill="#141414"/>
+          <path d="M118 38 h58 a6 6 0 0 1 6 6 v54 a6 6 0 0 1 -6 6 h-58 z" fill="#0C0C0D"/>
+          <circle cx="76" cy="70" r="26" fill="#B9BDC1"/>
+          <circle cx="76" cy="70" r="21" fill="#7E8286"/>
+          <circle cx="76" cy="70" r="13" fill="#15181A"/>
+          <rect x="30" y="26" width="20" height="10" rx="2" fill="#B9BDC1"/>
+          <circle cx="162" cy="22" r="6" fill="#B9BDC1"/>
+        </svg>
+        <div class="swatches">
+          <span class="sw"><i style="background:#141414"></i><b>黑漆</b><em>#141414</em></span>
+          <span class="sw"><i style="background:#B9BDC1"></i><b>镀镍</b><em>#B9BDC1</em></span>
+        </div>
+        <div class="refs">代表：Leica I / III、Rolleiflex</div>
+        <p class="why">徕卡把 35mm 相机做成一个<b>不引人注意的黑色小盒子</b>。这是相机第一次用颜色表达"态度"——我要隐身，我不要被看见。</p>
+      </article>
+
+      <!-- 3 核心 -->
+      <article class="era era--star">
+        <div class="no">03</div>
+        <div class="years">1954 — 1970s</div>
+        <h3>银黑双色的黄金年代</h3>
+        <svg class="cam" viewBox="0 0 200 120" role="img" aria-label="银黑相机">
+          <rect x="18" y="18" width="164" height="22" rx="6" fill="#C8CCCE"/>
+          <rect x="18" y="38" width="164" height="66" rx="6" fill="#D2D6D8"/>
+          <path d="M118 38 h58 a6 6 0 0 1 6 6 v54 a6 6 0 0 1 -6 6 h-58 z" fill="#17181A"/>
+          <circle cx="76" cy="70" r="26" fill="#C0C4C7"/>
+          <circle cx="76" cy="70" r="21" fill="#3A3E41"/>
+          <circle cx="76" cy="70" r="13" fill="#1A2026"/>
+          <rect x="30" y="26" width="20" height="10" rx="2" fill="#9DA2A6"/>
+          <circle cx="162" cy="22" r="6" fill="#9DA2A6"/>
+        </svg>
+        <div class="swatches">
+          <span class="sw"><i style="background:#C8CCCE"></i><b>镀铬银</b><em>#C8CCCE</em></span>
+          <span class="sw"><i style="background:#17181A"></i><b>硫化蒙皮</b><em>#17181A</em></span>
+        </div>
+        <div class="refs">代表：Leica M3（1954）、Nikon F、Canon AE-1（1976）、Olympus OM-1、Pentax K1000</div>
+        <p class="why">
+          银黑不是设计师挑的，是<b>结构长出来的</b>：金属机身本体就是银色的，
+          握持区贴黑色皮革用来<b>防滑、遮光、吸汗</b>。一个纯粹的功能需求，成了一个世纪的经典。
+        </p>
+      </article>
+
+      <!-- 4 -->
+      <article class="era">
+        <div class="no">04</div>
+        <div class="years">1970s — 1990s</div>
+        <h3>全黑的专业主义</h3>
+        <svg class="cam" viewBox="0 0 200 120" role="img" aria-label="全黑相机">
+          <rect x="18" y="18" width="164" height="22" rx="6" fill="#121212"/>
+          <rect x="18" y="38" width="164" height="66" rx="6" fill="#161616"/>
+          <path d="M118 38 h58 a6 6 0 0 1 6 6 v54 a6 6 0 0 1 -6 6 h-58 z" fill="#0A0A0A"/>
+          <circle cx="76" cy="70" r="26" fill="#1E1E1E"/>
+          <circle cx="76" cy="70" r="21" fill="#131313"/>
+          <circle cx="76" cy="70" r="13" fill="#0C1218"/>
+          <rect x="30" y="26" width="20" height="10" rx="2" fill="#262626"/>
+          <circle cx="162" cy="22" r="6" fill="#262626"/>
+        </svg>
+        <div class="swatches">
+          <span class="sw"><i style="background:#121212"></i><b>哑光黑漆</b><em>#121212</em></span>
+          <span class="sw"><i style="background:#1E1E1E"></i><b>黑蒙皮</b><em>#1E1E1E</em></span>
+        </div>
+        <div class="refs">代表：Nikon F2 / F3、Leica M6、Canon F-1</div>
+        <p class="why">不反光、不显眼、不惊扰被摄者。黑色从此成为<b>纪实与新闻摄影的身份符号</b>——它代表"我是来工作的，不是来表演的"。</p>
+      </article>
+
+      <!-- 5 -->
+      <article class="era">
+        <div class="no">05</div>
+        <div class="years">1960s — 1980s</div>
+        <h3>消费级的两色游戏</h3>
+        <svg class="cam" viewBox="0 0 200 120" role="img" aria-label="奶油白相机">
+          <rect x="18" y="18" width="164" height="22" rx="6" fill="#E4DDD1"/>
+          <rect x="18" y="38" width="164" height="66" rx="6" fill="#EDE7DC"/>
+          <path d="M118 38 h58 a6 6 0 0 1 6 6 v54 a6 6 0 0 1 -6 6 h-58 z" fill="#1B1B1B"/>
+          <circle cx="76" cy="70" r="26" fill="#CFC7B8"/>
+          <circle cx="76" cy="70" r="21" fill="#4A4741"/>
+          <circle cx="76" cy="70" r="13" fill="#1A2026"/>
+          <rect x="30" y="26" width="20" height="10" rx="2" fill="#B9B2A4"/>
+          <circle cx="162" cy="22" r="6" fill="#B9B2A4"/>
+        </svg>
+        <div class="swatches">
+          <span class="sw"><i style="background:#EDE7DC"></i><b>奶油白</b><em>#EDE7DC</em></span>
+          <span class="sw"><i style="background:#1B1B1B"></i><b>黑胶木</b><em>#1B1B1B</em></span>
+          <span class="sw"><i style="background:#CFC7B8"></i><b>米灰</b><em>#CFC7B8</em></span>
+        </div>
+        <div class="refs">代表：Kodak Instamatic、Canon Snappy、各厂自动对焦傻瓜机</div>
+        <p class="why">
+          塑料登场。颜色第一次成为<b>"便宜也可以好看"</b>的表达。
+          奶油白、米灰是这个年代最广泛的大众记忆——<b>也是当代"奶油风"审美的源头</b>。
+        </p>
+      </article>
+
+      <!-- 6 -->
+      <article class="era">
+        <div class="no">06</div>
+        <div class="years">1990s — 2000s</div>
+        <h3>Y2K 银</h3>
+        <svg class="cam" viewBox="0 0 200 120" role="img" aria-label="Y2K 银色相机">
+          <rect x="18" y="18" width="164" height="22" rx="6" fill="#DFE3E6"/>
+          <rect x="18" y="38" width="164" height="66" rx="6" fill="#D5D8DB"/>
+          <path d="M118 38 h58 a6 6 0 0 1 6 6 v54 a6 6 0 0 1 -6 6 h-58 z" fill="#C9CCCF"/>
+          <circle cx="76" cy="70" r="26" fill="#B7BBBE"/>
+          <circle cx="76" cy="70" r="21" fill="#6E7377"/>
+          <circle cx="76" cy="70" r="13" fill="#1B2228"/>
+          <rect x="30" y="26" width="20" height="10" rx="2" fill="#AEB2B5"/>
+          <circle cx="162" cy="22" r="6" fill="#AEB2B5"/>
+        </svg>
+        <div class="swatches">
+          <span class="sw"><i style="background:#D5D8DB"></i><b>冷银</b><em>#D5D8DB</em></span>
+          <span class="sw"><i style="background:#C9B48A"></i><b>香槟金</b><em>#C9B48A</em></span>
+        </div>
+        <div class="refs">代表：Sony Cyber-shot、Canon IXY、卡片机时代</div>
+        <p class="why">
+          银色从"金属本色"变成<b>"科技感喷涂"</b>。它不再代表机械，而是代表<b>"新"</b>——
+          这也是银色第一次被用滥，第一次让人产生"塑料感"的联想。
+        </p>
+      </article>
+
+      <!-- 7 -->
+      <article class="era">
+        <div class="no">07</div>
+        <div class="years">2000s — 2010s</div>
+        <h3>全黑数码单反</h3>
+        <svg class="cam" viewBox="0 0 200 120" role="img" aria-label="数码单反">
+          <rect x="30" y="14" width="88" height="26" rx="6" fill="#131313"/>
+          <rect x="18" y="36" width="164" height="68" rx="8" fill="#161616"/>
+          <path d="M118 38 h58 a6 6 0 0 1 6 6 v54 a6 6 0 0 1 -6 6 h-58 z" fill="#0B0B0B"/>
+          <circle cx="76" cy="70" r="29" fill="#1D1D1D"/>
+          <circle cx="76" cy="70" r="22" fill="#101010"/>
+          <circle cx="76" cy="70" r="13" fill="#0A1016"/>
+          <rect x="128" y="26" width="44" height="26" rx="4" fill="#1A1A1A"/>
+          <circle cx="164" cy="22" r="6" fill="#252525"/>
+        </svg>
+        <div class="swatches">
+          <span class="sw"><i style="background:#141414"></i><b>工程黑</b><em>#141414</em></span>
+        </div>
+        <div class="refs">代表：Canon EOS、Nikon D 系列</div>
+        <p class="why">
+          专业身份被彻底固化，黑 = 专业。<b>结果是整整一代相机几乎没有颜色。</b>
+          对 CMF 来说，这是一段"配色被功能完全压死"的历史。
+        </p>
+      </article>
+
+      <!-- 8 -->
+      <article class="era era--star">
+        <div class="no">08</div>
+        <div class="years">2011 — 至今</div>
+        <h3>复古回潮：银黑成为溢价符号</h3>
+        <svg class="cam" viewBox="0 0 200 120" role="img" aria-label="复古回潮相机">
+          <rect x="18" y="18" width="164" height="22" rx="6" fill="#C6CACD"/>
+          <rect x="18" y="38" width="164" height="66" rx="6" fill="#CFD3D6"/>
+          <path d="M112 38 h64 a6 6 0 0 1 6 6 v54 a6 6 0 0 1 -6 6 h-64 z" fill="#17181A"/>
+          <circle cx="70" cy="70" r="24" fill="#BFC3C6"/>
+          <circle cx="70" cy="70" r="19" fill="#33373A"/>
+          <circle cx="70" cy="70" r="12" fill="#161C22"/>
+          <rect x="30" y="26" width="20" height="10" rx="2" fill="#9DA2A6"/>
+          <circle cx="162" cy="22" r="6" fill="#9DA2A6"/>
+        </svg>
+        <div class="swatches">
+          <span class="sw"><i style="background:#C6CACD"></i><b>阳极银</b><em>#C6CACD</em></span>
+          <span class="sw"><i style="background:#17181A"></i><b>荔枝纹黑</b><em>#17181A</em></span>
+          <span class="sw"><i style="background:#D3C6AC"></i><b>暖香槟</b><em>#D3C6AC</em></span>
+        </div>
+        <div class="refs">代表：Fujifilm X100（2011）、X100VI、Nikon Zf（2023）、Instax mini Evo</div>
+        <p class="why">
+          数码相机重新开始"要长得像胶片机"。<b>银黑从"老"变成了"贵"</b>——
+          它现在是复古溢价最直接的符号：同一台机器，银黑版往往比全黑版更受欢迎。
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 规律 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Five Rules</div>
+    <h2>五条可以带走的规律</h2>
+    <p class="lede">如果只记五句话，记这五句。它们决定了我们后面所有的取舍。</p>
+
+    <div class="rules">
+      <div class="rule-row">
+        <div class="n">01</div>
+        <div>
+          <h4>颜色是材料的结果，不是最后一道工序</h4>
+          <p>金属给了银，蒙皮给了黑，塑料给了彩色。<b>当我们决定用什么材料时，颜色其实已经被决定了七成。</b>先定材料，再定颜色，反过来的方案基本都会翻车。</p>
+        </div>
+      </div>
+      <div class="rule-row">
+        <div class="n">02</div>
+        <div>
+          <h4>银色是一句承诺</h4>
+          <p>银色在向用户承诺："<b>这是金属。</b>"承诺兑现不了，用户看到的就不是"银色的相机"，而是"<b>淡灰色的塑料</b>"。历史上银色被用滥的时期（1990s–2000s 消费电子），恰恰是银色口碑最差的时期。</p>
+        </div>
+      </div>
+      <div class="rule-row">
+        <div class="n">03</div>
+        <div>
+          <h4>哑光比高光安全</h4>
+          <p>镜面高光银在样机上永远好看，在真实的指纹、细划痕、注塑流痕面前会立刻崩掉。<b>哑光或拉丝是银色唯一安全的表达方式</b>——它容错，而且更像老机器的氧化质感。</p>
+        </div>
+      </div>
+      <div class="rule-row">
+        <div class="n">04</div>
+        <div>
+          <h4>银黑的高级感来自对比，不是来自颜色本身</h4>
+          <p>银黑之所以成立，是因为<b>高光金属 vs 哑光颗粒蒙皮</b>之间的质感反差。如果黑色也是光滑塑料，银黑就会变成"两个灰色拼在一起"，失去层次。</p>
+        </div>
+      </div>
+      <div class="rule-row">
+        <div class="n">05</div>
+        <div>
+          <h4>银色分冷暖，冷暖决定年代</h4>
+          <p><b>暖银（香槟 / 钛）指向复古与机械；冷银（蓝灰）指向科技与消费电子。</b>这是一个非常细微但决定性的差异——差 5% 的色温，气质会从"徕卡"滑向"2005 年的卡片机"。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 技术警示 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">For CMF</div>
+    <h2>一条最容易踩的坑</h2>
+    <div class="warn">
+      <div class="kicker">Critical</div>
+      <h3>银色不能跨材质对色</h3>
+      <p>
+        金属阳极氧化的银，和塑料件喷涂的银，<b>在同一个产品上永远对不上色</b>。
+        这不是工艺水平问题，是原理问题——一个是金属本体的反射，一个是涂层颜料的光学表现，
+        在不同光照下会各自跑偏。
+      </p>
+      <p>
+        所以：<b>要做银色，就把银色集中在同一种材质上</b>。
+        要么整块金属件做银（推荐），要么整个塑料件做银（有风险），
+        最忌讳的是"金属件银 + 塑料件银"拼在同一视觉面上。
+      </p>
+      <div class="chips">
+        <span class="chip">铝阳极氧化 · 哑光暖银（最推荐）</span>
+        <span class="chip">不锈钢拉丝</span>
+        <span class="chip">真空电镀</span>
+        <span class="chip bad">塑料喷涂银（最便宜，也最危险）</span>
+        <span class="chip bad">镜面高光银（样机好看，量产翻车）</span>
+      </div>
+      <p style="margin-top:22px">
+        <b>测色条件</b>：任何银色的方案，必须在三种真实光照下同时确认——
+        晴天室外、室内暖光、影棚灯。<b>在屏幕上看的银色，没有参考价值。</b>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 对 AiKen 的启示 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Back to AiKen</div>
+    <h2>回到我们自己的产品</h2>
+    <p class="lede">
+      我们的形态是 <strong>110 胶卷比例 + 横向滑盖 + 无屏取景 + 单 SKU</strong>。
+      滑盖（含镜头与取景器）是视觉中心，机身是背景板。
+      这个结构决定了：<strong>机身颜色决定气质，滑盖颜色决定焦点。</strong>
+    </p>
+
+    <div class="swatch-bar">
+      <div style="background:#C8CCCE"><span>#C8CCCE 镀铬银</span></div>
+      <div style="background:#D3C6AC"><span>#D3C6AC 暖香槟</span></div>
+      <div style="background:#EDE7DC"><span>#EDE7DC 奶油白</span></div>
+      <div style="background:#17181A"><span>#17181A 蒙皮黑</span></div>
+      <div style="background:#6E7377"><span>#6E7377 哑光钛灰</span></div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width:20%">方案</th>
+          <th style="width:26%">构成</th>
+          <th style="width:26%">借用哪个年代</th>
+          <th style="width:28%">判断</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>银黑</b><br><span class="tag rec">首选</span></td>
+          <td>银机身 + 黑滑盖 / 黑蒙皮</td>
+          <td>1954–1970s 机械相机黄金年代</td>
+          <td>复古认知成本最低、最"对"。<b>前提是银色必须是真金属质感。</b>若机身是塑料喷涂银，会直接降级为"廉价数码玩具" <span class="tag risk">材质风险</span></td>
+        </tr>
+        <tr>
+          <td><b>暖银黑</b><br><span class="tag rec">推荐</span></td>
+          <td>香槟/暖银机身 + 黑蒙皮</td>
+          <td>徕卡镀铬 + 当代复古数码</td>
+          <td>比冷银更复古、更耐看、对光线更宽容。<b>推荐做法是把银色往暖里偏 3–5%</b>，避开 2000 年代冷银的廉价联想</td>
+        </tr>
+        <tr>
+          <td><b>奶油白 + 黑</b><br><span class="tag">现有方案</span></td>
+          <td>奶白机身 + 黑滑盖</td>
+          <td>1960s 塑料普及 / 当代奶油风</td>
+          <td>在复古语境里其实完全成立，且<b>对材质宽容度最高</b>（哑光塑料本来就是这个年代的质感）。更女性向，但机械感弱于银黑</td>
+        </tr>
+        <tr>
+          <td><b>三段式</b><br><span class="tag">折中</span></td>
+          <td>银滑盖 + 奶白机身 + 黑握持区</td>
+          <td>—</td>
+          <td>银色面积小 → 工艺与成本风险低，银色成为"点睛"。但三种颜色 / 材质会让<b>对色与成本复杂度上升</b>，单 SKU 下需要谨慎权衡</td>
+        </tr>
+        <tr>
+          <td><b>哑光钛灰</b></td>
+          <td>钛灰机身 + 黑蒙皮</td>
+          <td>—</td>
+          <td>最耐指纹、耐划痕、耐色差，最不容易翻车，但<b>复古感与话题度最弱</b></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="quote">
+      「我们不是在选一个颜色，是在选它属于哪个年代。」<br>
+      <span style="font-size:14px;color:var(--ink-3);font-style:normal">
+        银黑指向 1950–70s 的机械浪漫；奶油白指向 1960s 的塑料大众记忆。两者都对，取决于我们要讲哪个故事。
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 收尾 ============ -->
+<section class="closing">
+  <div class="wrap">
+    <h2 class="serif">颜色是记忆的搬运工</h2>
+    <p>
+      用户看到一个颜色时，想到的不是色号，而是一个年代、一种质感、一段别人已经替他验证过的情绪。
+      我们的工作，是把那段记忆准确地搬过来——不多一分，不少一分。
+    </p>
+  </div>
+</section>
+
+<footer>相机配色简史 · 内部参考材料 · 供 ID / CMF 团队讨论使用</footer>
+
+</body>
+</html>
