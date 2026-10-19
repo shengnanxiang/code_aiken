@@ -1,0 +1,41 @@
+{
+  "jobs": 4,
+  "tasks": [
+    {
+      "id": "panda-navy",
+      "promptFiles": ["prompts/panda-navy.md"],
+      "image": "aiken-panda-navy.png",
+      "provider": "dashscope",
+      "model": "wan2.7-image-pro",
+      "ref": ["reference-4k.jpg", "example-ref-4k.jpg"],
+      "size": "2048*1152"
+    },
+    {
+      "id": "panda-pink",
+      "promptFiles": ["prompts/panda-pink.md"],
+      "image": "aiken-panda-pink.png",
+      "provider": "dashscope",
+      "model": "wan2.7-image-pro",
+      "ref": ["reference-4k.jpg", "example-ref-4k.jpg"],
+      "size": "2048*1152"
+    },
+    {
+      "id": "panda-gold",
+      "promptFiles": ["prompts/panda-gold.md"],
+      "image": "aiken-panda-gold.png",
+      "provider": "dashscope",
+      "model": "wan2.7-image-pro",
+      "ref": ["reference-4k.jpg", "example-ref-4k.jpg"],
+      "size": "2048*1152"
+    },
+    {
+      "id": "panda-grey",
+      "promptFiles": ["prompts/panda-grey.md"],
+      "image": "aiken-panda-grey.png",
+      "provider": "dashscope",
+      "model": "wan2.7-image-pro",
+      "ref": ["reference-4k.jpg", "example-ref-4k.jpg"],
+      "size": "2048*1152"
+    }
+  ]
+}

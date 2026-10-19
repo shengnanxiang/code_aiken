@@ -1,0 +1,3 @@
+Use the product shown in the reference image as the exact same product. Do not redesign it, do not create a similar-looking new product, and do not change its shape, size, proportions, surface materials, texture, buttons, seams, logos, engravings, background, lighting, shadows, camera angle or composition — keep all of that identical to the reference image.
+
+The ONLY change: recolor the product's main color finish to a deep navy blue / midnight navy, rendered realistically on the same materials with the same gloss or matte finish and the same reflections as the original. Photorealistic studio product photography quality, 16:9 aspect ratio.

@@ -1,0 +1,41 @@
+{
+  "jobs": 4,
+  "tasks": [
+    {
+      "id": "navy",
+      "promptFiles": ["prompts/navy.md"],
+      "image": "aiken-navy.png",
+      "provider": "dashscope",
+      "model": "wan2.7-image-pro",
+      "ref": ["reference-4k.jpg"],
+      "size": "2048*1152"
+    },
+    {
+      "id": "silver",
+      "promptFiles": ["prompts/silver.md"],
+      "image": "aiken-silver.png",
+      "provider": "dashscope",
+      "model": "wan2.7-image-pro",
+      "ref": ["reference-4k.jpg"],
+ "size": "2048*1152"
+    },
+    {
+      "id": "gold",
+      "promptFiles": ["prompts/gold.md"],
+      "image": "aiken-gold.png",
+      "provider": "dashscope",
+      "model": "wan2.7-image-pro",
+      "ref": ["reference-4k.jpg"],
+      "size": "2048*1152"
+    },
+    {
+      "id": "pink",
+      "promptFiles": ["prompts/pink.md"],
+      "image": "aiken-pink.png",
+      "provider": "dashscope",
+      "model": "wan2.7-image-pro",
+      "ref": ["reference-4k.jpg"],
+      "size": "2048*1152"
+    }
+  ]
+}
