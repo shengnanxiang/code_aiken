@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AiKen CMF 拆解 · 塑料机身 + 金属顶盖方案</title>
+<style>
+  :root{
+    --paper:#F5F2EC; --paper2:#EDE8DF; --white:#fff;
+    --ink:#141414; --ink2:#4A4843; --ink3:#8A857C;
+    --line:rgba(20,20,20,.12);
+    --silver:#C6CACE; --silver-hi:#DDE1E3; --silver-lo:#9DA2A6;
+    --black:#1B1D1F; --amber:#8A6D3B; --risk:#C4623F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  .serif{font-family:"Songti SC","STSong","SimSun",Georgia,serif}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .wrap{max-width:680px;margin:0 auto;padding:0 20px}
+
+  header.hero{
+    background:radial-gradient(140% 80% at 78% 10%,rgba(198,202,206,.30) 0%,rgba(198,202,206,0) 60%),#0D0E10;
+    color:#F2F0EC;padding:60px 0 52px;
+  }
+  .eyebrow{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#9A958C;margin-bottom:16px}
+  .hero h1{font-size:30px;line-height:1.2;font-weight:600;margin-bottom:16px;
+    background:linear-gradient(96deg,#FFF 6%,#C6CACE 45%,#8E9296 70%,#E6E3DD 94%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{font-size:14.5px;color:#B6B2AA}
+  .hero .tagline{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14);
+    font-size:12px;color:#8A857C}
+
+  section{padding:44px 0}
+  section + section{border-top:1px solid var(--line)}
+  .kicker{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px}
+  h2{font-family:"Songti SC","STSong",Georgia,serif;font-size:22px;font-weight:600;margin-bottom:14px;line-height:1.35}
+  h3{font-size:16px;font-weight:600;margin:24px 0 10px}
+  .lede{font-size:14.5px;color:var(--ink2)}
+  .lede b{color:var(--ink);font-weight:600}
+  .lede + .lede{margin-top:12px}
+
+  .callout{border-radius:14px;padding:20px 18px;margin:22px 0}
+  .callout.warn{background:#141414;color:#EDEAE4}
+  .callout.warn .kicker{color:#7E7970}
+  .callout.warn p{font-size:14px;color:#B9B4AB}
+  .callout.warn p + p{margin-top:10px}
+  .callout.warn b{color:#fff;font-weight:600}
+  .callout.note{background:var(--paper2);border-left:3px solid var(--silver)}
+
+  .cbom{width:100%;height:auto;display:block;margin:8px 0 4px}
+  .legend{list-style:none;margin:20px 0 0}
+  .legend li{
+    display:grid;grid-template-columns:30px 1fr;gap:10px 12px;
+    padding:12px 0;border-bottom:1px solid var(--line);align-items:start;
+  }
+  .legend li:last-child{border-bottom:none}
+  .legend .mk{
+    width:26px;height:26px;border-radius:50%;
+    background:var(--ink);color:#fff;font-size:13px;
+    display:flex;align-items:center;justify-content:center;margin-top:1px;
+  }
+  .legend .mt{font-size:14.5px;font-weight:600;line-height:1.5}
+  .legend .mp{font-size:13px;color:var(--ink3);line-height:1.65;margin-top:3px}
+  .legend .mk[data-s="m"]{background:var(--silver-lo);color:#fff}
+  .legend .mk[data-s="p"]{background:#3A3C3E;color:#fff}
+  .legend .mk[data-s="g"]{background:#6B5B2E;color:#fff}
+
+  .opts{display:grid;grid-template-columns:1fr;gap:14px;margin-top:22px}
+  .opt{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:18px 16px}
+  .opt--rec{border-color:#B9BEC2;box-shadow:0 0 0 1px rgba(198,202,206,.6)}
+  .opt h4{font-size:15.5px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .badge{font-size:10px;letter-spacing:.1em;padding:2px 8px;border-radius:20px;background:var(--ink);color:#fff}
+  .badge.hollow{border:1px solid var(--line);color:var(--ink2);background:transparent}
+  .badge.hot{background:var(--risk);color:#fff}
+  .opt .mini{width:100%;max-width:240px;margin:12px auto;display:block}
+  .opt p{font-size:13px;color:var(--ink2);margin-top:8px}
+  .opt .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .opt .meta span{font-size:10.5px;padding:3px 9px;border-radius:20px;
+    border:1px solid var(--line);color:var(--ink2)}
+  .opt .meta span.ok{border-color:rgba(90,130,90,.4);color:#4E7A4E}
+  .opt .meta span.no{border-color:rgba(196,98,63,.4);color:var(--risk)}
+
+  table{width:100%;border-collapse:collapse;margin-top:20px;font-size:13px;background:var(--white);
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;display:block}
+  thead{display:none}
+  tbody{display:block}
+  tr{display:block;border-bottom:1px solid var(--line);padding:12px 14px}
+  tr:last-child{border-bottom:none}
+  td{display:block;padding:3px 0}
+  td::before{content:attr(data-l);display:block;font-size:10px;letter-spacing:.12em;color:var(--ink3);margin-bottom:1px}
+  td:first-child{font-weight:600;font-size:14px}
+  td:first-child::before{display:none}
+  td b{font-weight:600}
+  .risk-txt{color:var(--risk)}
+  .ok-txt{color:#4E7A4E}
+
+  ol.risks{margin:18px 0 0;padding-left:20px}
+  ol.risks li{font-size:13.5px;color:var(--ink2);margin-bottom:12px}
+  ol.risks li b{color:var(--ink);font-weight:600}
+  ol.risks li span{display:block;color:var(--ink3);font-size:12.5px;margin-top:2px}
+
+  .quote{border-left:3px solid var(--silver);padding:6px 0 6px 16px;margin:22px 0 0;
+    font-family:"Songti SC",Georgia,serif;font-size:16.5px;line-height:1.75}
+
+  .src{font-size:12px;color:var(--ink3);line-height:1.8;margin-top:16px}
+  .src a{color:var(--ink2)}
+
+  footer{padding:24px 20px;text-align:center;font-size:11px;color:var(--ink3);line-height:1.7}
+
+  @media(min-width:760px){
+    .wrap{max-width:940px;padding:0 40px}
+    header.hero{padding:92px 0 80px}
+    .hero h1{font-size:46px}
+    .hero p{font-size:17px}
+    section{padding:68px 0}
+    h2{font-size:30px}
+    .lede{font-size:16.5px}
+    .callout{padding:28px 26px}
+    .callout.warn p{font-size:15px}
+    .opts{grid-template-columns:repeat(3,1fr);gap:18px}
+    table{display:table;font-size:14px;border-radius:14px}
+    thead{display:table-header-group}
+    tbody{display:table-row-group}
+    tr{display:table-row;padding:0}
+    td{display:table-cell;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+    td::before{display:none}
+    td:first-child{font-size:14px}
+    th{display:table-cell;background:var(--paper2);font-size:11.5px;letter-spacing:.1em;
+      text-transform:uppercase;color:var(--ink2);font-weight:600;text-align:left;padding:14px 16px}
+    tr:last-child td{border-bottom:none}
+    ol.risks li{font-size:14.5px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">CMF Teardown · 结构拆解</div>
+    <h1 class="serif">塑料机身，怎么做出金属质感</h1>
+    <p>
+      顶部和底部用银色真金属，中间黑色蒙皮，主体保持塑料以控制成本。
+      这套组合在历史上是成立的，但成立的方式和你想象的可能不太一样。
+    </p>
+    <div class="tagline mono">2026-10 · 供 ID / 结构 / CMF / 供应链讨论</div>
+  </div>
+</header>
+
+<!-- ============ 1. H35N 查证 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">01 · 先纠一个偏</div>
+    <h2>柯达 H35N 不能作为金属质感的参考</h2>
+
+    <div class="lede">
+      查了柯达官网产品页、经销商页面与多方评测，<b>没有任何一处说明 H35N 的机身材质</b>。
+      官网只讲功能：四光束星形滤镜、B 门、三脚架孔、"镀膜部分玻璃"镜片。
+    </div>
+    <div class="lede">
+      但有三个事实指向同一个结论：
+    </div>
+
+    <table>
+      <thead><tr><th>查到的事实</th><th>推论</th></tr></thead>
+      <tbody>
+        <tr>
+          <td data-l="事实">制造商为 <b>RETO Production Ltd.</b>（瑞士代工），柯达仅授权商标</td>
+          <td data-l="推论">典型的授权代工一次性相机，非柯达自研结构</td>
+        </tr>
+        <tr>
+          <td data-l="事实">售价 HK$389–499（约 ¥360–460）</td>
+          <td data-l="推论">这个价位<b>放不下真金属件</b>，金属顶盖会直接吃掉一半毛利</td>
+        </tr>
+        <tr>
+          <td data-l="事实">颜色选项：橙 / 粉红 / 绿 / 蓝 / <b>银</b> / 黑，共 6 色</td>
+          <td data-l="推论">同一模具出 6 个颜色 = <b>银是表面处理，不是材质</b>。真金属不可能一个模具做 6 色</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout warn">
+      <div class="kicker">结论</div>
+      <p><b>H35N 的银色是塑料表面处理（电镀 / 金属漆 / 银色印刷），不是真金属件。</b></p>
+      <p>它的复古感来自<strong style="color:#fff">造型语言、星形滤镜、玻璃树脂复合镜片、印刷图案</strong>，与材质无关。</p>
+      <p>所以：<b>如果你想参考 H35N 学"怎么做复古"，参考造型可以；参考材质，会走错路。</b></p>
+      <p style="margin-top:14px;color:#7E7970">注：官网未披露材质，上述为基于价格带 + 多色同模 + 代工方三个事实的推断。若要写进评审材料，建议以实物拆解为准。</p>
+    </div>
+
+    <div class="lede" style="margin-top:22px">
+      值得注意的是：<b>市面上几乎找不到"塑料主体 + 真金属顶盖"的低成本潮玩相机</b>。原因是结构代价——金属和塑料的热膨胀系数差 3 倍，硬拼在一起会在温差环境里出问题。所以真正的先例要往回找六十多年。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. 历史先例 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">02 · 历史先例</div>
+    <h2>你要的这个结构，1961 年就有人量产过</h2>
+
+    <div class="lede">
+      <b>Adox POLO 1（1961–1964）</b>——德国产 35mm 快照相机。资料记载：<b>机身是注塑塑料机壳，顶部板和底部板是薄钢板</b>，重 280 克，三脚架孔直接攻在塑料上、没有金属嵌件。
+    </div>
+    <div class="lede">
+      这个结构和你想要的<b>几乎完全一致</b>：塑料主体负责成本与轻量，金属顶底板负责刚性与质感。Adox 把它放在一个廉价铁皮相机上，只为减重和简化制造。
+    </div>
+    <div class="lede">
+      一次性相机领域还有一个标准结构：<b>塑料机身 + 铝制连接板</b>（美国专利 US4279494），用金属板跨接两个胶卷腔作为受力骨架。这说明<b>"塑料为主 + 金属件做受力与外观面"是相机行业长期沿用的分层策略</b>。
+    </div>
+
+    <div class="quote">
+      你想做的结构，在相机史上是标准的。差别不在能不能做，而在<b>金属件做几件</b>。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. 爆炸拆解图 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">03 · 爆炸拆解</div>
+    <h2>你的方案：五个零件，两条接缝</h2>
+
+    <svg class="cbom" viewBox="0 0 600 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="塑料机身加金属顶底盖的爆炸拆解图">
+      <defs>
+        <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#E4E7E9"/><stop offset="45%" stop-color="#C6CACE"/><stop offset="100%" stop-color="#A8ADB1"/>
+        </linearGradient>
+        <linearGradient id="metalV" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#D3D7D9"/><stop offset="50%" stop-color="#B4B9BD"/><stop offset="100%" stop-color="#92979B"/>
+        </linearGradient>
+        <pattern id="grain" width="9" height="9" patternUnits="userSpaceOnUse">
+          <rect width="9" height="9" fill="#1B1D1F"/>
+          <circle cx="2" cy="2" r="1.2" fill="#2D3033"/>
+          <circle cx="6.5" cy="5" r="1.2" fill="#2D3033"/>
+          <circle cx="4" cy="7.5" r="1" fill="#141618"/>
+          <circle cx="8" cy="8" r=".9" fill="#242729"/>
+        </pattern>
+        <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0 0 L6 3 L0 6 z" fill="#8A857C"/>
+        </marker>
+      </defs>
+
+      <!-- ===== 左：爆炸图 ===== -->
+      <text x="30" y="18" font-size="11" fill="#8A857C" letter-spacing="1.5">爆炸视图</text>
+
+      <!-- ① 顶部金属盖 -->
+      <g>
+        <path d="M34 34 h226 a8 8 0 0 1 8 8 v26 a8 8 0 0 1 -8 8 h-226 a8 8 0 0 1 -8 -8 v-26 a8 8 0 0 1 8 -8 z" fill="url(#metal)"/>
+        <rect x="26" y="62" width="242" height="4" fill="#8E9296" opacity=".5"/>
+        <circle cx="238" cy="55" r="9" fill="#8E9296"/>
+        <circle cx="238" cy="55" r="5.5" fill="#DDE1E3"/>
+        <rect x="46" y="47" width="28" height="15" rx="2" fill="#2A2C2E"/>
+        <rect x="46" y="47" width="28" height="6" rx="2" fill="#4A4D50"/>
+        <text x="30" y="92" font-size="10" fill="#9DA2A6">铝合金 6063 冲压 · 阳极氧化哑光暖银</text>
+      </g>
+      <line x1="268" y1="55" x2="300" y2="55" stroke="#8A857C" stroke-width=".8" marker-end="url(#ar)"/>
+      <circle cx="316" cy="55" r="12" fill="#8A9296"/><text x="316" y="59" font-size="12" fill="#fff" text-anchor="middle" font-weight="600">1</text>
+
+      <!-- ② 接缝 A -->
+      <g>
+        <rect x="36" y="106" width="222" height="8" rx="2" fill="#3A3C3E"/>
+        <rect x="36" y="106" width="222" height="2.5" rx="1" fill="#5C6063"/>
+        <text x="30" y="130" font-size="10" fill="#9DA2A6">遮光胶条 · 必须压在接缝内侧</text>
+      </g>
+      <line x1="266" y1="110" x2="300" y2="110" stroke="#8A857C" stroke-width=".8" marker-end="url(#ar)"/>
+      <circle cx="316" cy="110" r="12" fill="#3A3C3E"/><text x="316" y="114" font-size="12" fill="#fff" text-anchor="middle" font-weight="600">2</text>
+
+      <!-- ③ 中段塑料主体 -->
+      <g>
+        <rect x="30" y="146" width="234" height="140" rx="10" fill="url(#grain)"/>
+        <rect x="30" y="146" width="234" height="140" rx="10" fill="none" stroke="#0E1011"/>
+        <!-- 横向滑盖缝 -->
+        <rect x="42" y="163" width="210" height="9" rx="4" fill="#0B0C0D"/>
+        <rect x="42" y="163" width="210" height="2" rx="1" fill="#3C4043"/>
+        <!-- 镜头 -->
+        <circle cx="100" cy="228" r="34" fill="#111315"/>
+        <circle cx="100" cy="228" r="28" fill="url(#metalV)"/>
+        <circle cx="100" cy="228" r="21" fill="#1E2226"/>
+        <circle cx="100" cy="228" r="15" fill="#0B1116"/>
+        <circle cx="93" cy="221" r="5" fill="#2A3B46" opacity=".8"/>
+        <!-- 取景窗 -->
+        <rect x="176" y="200" width="34" height="20" rx="3" fill="#0B0C0D"/>
+        <rect x="180" y="204" width="26" height="12" rx="2" fill="#39474F"/>
+        <!-- 蒙皮分界 -->
+        <rect x="224" y="190" width="30" height="96" rx="4" fill="#141618" opacity=".55"/>
+        <text x="30" y="304" font-size="10" fill="#9DA2A6">PC+ABS 主体 · 免喷涂荔枝纹 · 黑蒙皮可做可不做</text>
+      </g>
+      <line x1="272" y1="216" x2="300" y2="216" stroke="#8A857C" stroke-width=".8" marker-end="url(#ar)"/>
+      <circle cx="316" cy="216" r="12" fill="#3A3C3E"/><text x="316" y="220" font-size="12" fill="#fff" text-anchor="middle" font-weight="600">3</text>
+
+      <!-- ④ 接缝 B -->
+      <g>
+        <rect x="36" y="312" width="222" height="8" rx="2" fill="#3A3C3E"/>
+        <rect x="36" y="312" width="222" height="2.5" rx="1" fill="#5C6063"/>
+        <text x="30" y="336" font-size="10" fill="#9DA2A6">同上</text>
+      </g>
+      <line x1="266" y1="316" x2="300" y2="316" stroke="#8A857C" stroke-width=".8" marker-end="url(#ar)"/>
+      <circle cx="316" cy="316" r="12" fill="#3A3C3E"/><text x="316" y="320" font-size="12" fill="#fff" text-anchor="middle" font-weight="600">4</text>
+
+      <!-- ⑤ 底部金属盖 -->
+      <g>
+        <path d="M34 350 h226 a8 8 0 0 1 8 8 v22 a8 8 0 0 1 -8 8 h-226 a8 8 0 0 1 -8 -8 v-22 a8 8 0 0 1 8 -8 z" fill="url(#metal)"/>
+        <rect x="26" y="342" width="242" height="4" fill="#8E9296" opacity=".5"/>
+        <circle cx="150" cy="369" r="7" fill="#8E9296" opacity=".55"/>
+        <rect x="190" y="362" width="52" height="14" rx="3" fill="#9DA2A6" opacity=".6"/>
+        <text x="30" y="406" font-size="10" fill="#9DA2A6">铝合金底盖 · 电池仓盖 + 三脚架螺孔嵌件</text>
+      </g>
+      <line x1="268" y1="371" x2="300" y2="371" stroke="#8A857C" stroke-width=".8" marker-end="url(#ar)"/>
+      <circle cx="316" cy="371" r="12" fill="#8A9296"/><text x="316" y="375" font-size="12" fill="#fff" text-anchor="middle" font-weight="600">5</text>
+
+      <!-- ===== 右：组装图 ===== -->
+      <text x="370" y="18" font-size="11" fill="#8A857C" letter-spacing="1.5">组装后</text>
+
+      <g transform="translate(370,40)">
+        <rect x="0" y="0" width="200" height="42" rx="6" fill="url(#metal)"/>
+        <circle cx="176" cy="21" r="8" fill="#8E9296"/><circle cx="176" cy="21" r="4.5" fill="#DDE1E3"/>
+        <rect x="18" y="13" width="24" height="14" rx="2" fill="#2A2C2E"/>
+        <rect x="0" y="42" width="200" height="140" fill="url(#grain)"/>
+        <rect x="10" y="52" width="180" height="8" rx="4" fill="#0B0C0D"/>
+        <circle cx="86" cy="112" r="32" fill="#111315"/>
+        <circle cx="86" cy="112" r="26" fill="url(#metalV)"/>
+        <circle cx="86" cy="112" r="19" fill="#1E2226"/>
+        <circle cx="86" cy="112" r="13" fill="#0B1116"/>
+        <circle cx="79" cy="105" r="4.5" fill="#2A3B46" opacity=".8"/>
+        <rect x="150" y="88" width="32" height="19" rx="3" fill="#0B0C0D"/>
+        <rect x="154" y="92" width="24" height="11" rx="2" fill="#39474F"/>
+        <rect x="0" y="182" width="200" height="40" rx="6" fill="url(#metal)"/>
+        <circle cx="100" cy="202" r="6" fill="#8E9296" opacity=".55"/>
+        <!-- 接缝标注 -->
+        <line x1="200" y1="42" x2="228" y2="42" stroke="#C4623F" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="200" y1="182" x2="228" y2="182" stroke="#C4623F" stroke-width="1" stroke-dasharray="3 3"/>
+        <text x="200" y="118" font-size="10" fill="#8A857C" transform="rotate(90 200 118)">视觉重心</text>
+      </g>
+
+      <!-- 接缝放大 -->
+      <g transform="translate(370,258)">
+        <rect x="0" y="0" width="200" height="86" rx="8" fill="#fff" stroke="#E3DED4"/>
+        <text x="12" y="18" font-size="10" fill="#8A857C">接缝放大（剖面）</text>
+        <rect x="20" y="28" width="70" height="22" fill="url(#metal)"/>
+        <text x="55" y="20" font-size="9" fill="#9DA2A6" text-anchor="middle">铝</text>
+        <rect x="90" y="30" width="10" height="18" fill="#3A3C3E"/>
+        <text x="95" y="68" font-size="9" fill="#9DA2A6" text-anchor="middle">胶条</text>
+        <rect x="100" y="28" width="80" height="22" fill="#1B1D1F"/>
+        <text x="140" y="20" font-size="9" fill="#9DA2A6" text-anchor="middle">ABS</text>
+        <text x="12" y="78" font-size="9.5" fill="#C4623F">金属与塑料的热膨胀系数差 3 倍 → 缝隙会随温差变宽</text>
+      </g>
+
+      <!-- 下方尺寸标注 -->
+      <g transform="translate(34,430)">
+        <line x1="0" y1="0" x2="242" y2="0" stroke="#BFB9AE" stroke-width=".8"/>
+        <line x1="0" y1="-4" x2="0" y2="4" stroke="#BFB9AE" stroke-width=".8"/>
+        <line x1="242" y1="-4" x2="242" y2="4" stroke="#BFB9AE" stroke-width=".8"/>
+        <text x="121" y="-6" font-size="10" fill="#9DA2A6" text-anchor="middle">机身宽度方向</text>
+      </g>
+    </svg>
+
+    <ul class="legend">
+      <li><span class="mk" data-s="m">1</span>
+        <div><div class="mt">顶部金属盖 · 银色真金属</div>
+        <div class="mp">铝 6063 冲压（0.8–1.0mm）或锌合金压铸 → 阳极氧化做<b>哑光暖银</b>（本色阳极 + 染色，或本色 + 透明罩）。<b>绝不做镜面高光</b>，高光银在指纹和细划痕面前会立刻崩。承载快门钮、旁轴取景窗、滑盖导轨，是整机刚性的主要来源。</div></div></li>
+
+      <li><span class="mk" data-s="p">2</span>
+        <div><div class="mt">接缝 A（顶部）· 遮光胶条</div>
+        <div class="mp">铝与 PC/ABS 的线膨胀系数分别约 <b>23×10⁻⁶/K</b> 和 <b>70–80×10⁻⁶/K</b>，差 3 倍以上。温差大时塑料收缩更多，接缝会变宽、产生异响甚至进灰。<b>胶条必须压在接缝内侧 1.5mm 以上，且不能靠胶条承担结构力</b>。</div></div></li>
+
+      <li><span class="mk" data-s="p">3</span>
+        <div><div class="mt">中段塑料主体 · 黑色</div>
+        <div class="mp">PC+ABS 注塑主体承担全部结构。<b>这一段不必做真蒙皮</b>——PU 革热贴会开裂、起翘、边缘毛边，且成本与工时都不低。更好的做法是<b>免喷涂纹理</b>（晒纹 / 喷砂 + 颗粒漆 / 细荔枝纹模），在质感语言上与银顶形成"哑光 vs 金属"的对比，正好呼应银黑相机的核心逻辑。</div></div></li>
+
+      <li><span class="mk" data-s="p">4</span>
+        <div><div class="mt">接缝 B（底部）· 第二条风险点</div>
+        <div class="mp">底部再加一条金属-塑料接缝，就等于把同一个热膨胀问题<b>复制一遍</b>，且公差链变长，两条横缝的对齐难度上升。这是"顶部+底部都做金属"最大的隐性成本。</div></div></li>
+
+      <li><span class="mk" data-s="m">5</span>
+        <div><div class="mt">底部金属盖 · 银色真金属</div>
+        <div class="mp">承载电池仓盖、三脚架螺孔嵌件（<b>Adox POLO 1 就是把螺孔直接攻在塑料上的，踩了坑</b>）。底部在正面视角几乎看不见，但手持时能看到下缘——<b>银色从底部收边会让"银黑"读起来更完整</b>。</div></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 4. 三方案对比 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">04 · 三种做法</div>
+    <h2>真正的选择不是"银黑 vs 奶白"，而是金属件做几件</h2>
+
+    <div class="opts">
+
+      <div class="opt">
+        <h4>方案 A · 顶银 + 中黑 + 底银</h4>
+        <svg class="mini" viewBox="0 0 240 96" xmlns="http://www.w3.org/2000/svg" aria-label="方案 A：顶部金属加底部金属">
+          <rect x="30" y="14" width="150" height="24" rx="4" fill="#C6CACE"/>
+          <circle cx="160" cy="26" r="6" fill="#8E9296"/>
+          <rect x="30" y="38" width="150" height="46" fill="#1B1D1F"/>
+          <circle cx="70" cy="61" r="17" fill="#0B0C0D"/><circle cx="70" cy="61" r="12" fill="#2A2C2E"/>
+          <rect x="130" y="48" width="20" height="12" rx="2" fill="#0B0C0D"/>
+          <rect x="30" y="84" width="150" height="12" rx="4" fill="#C6CACE"/>
+          <line x1="186" y1="26" x2="204" y2="26" stroke="#C4623F" stroke-dasharray="3 3"/>
+          <line x1="186" y1="62" x2="204" y2="62" stroke="#C4623F" stroke-dasharray="3 3"/>
+          <line x1="186" y1="90" x2="204" y2="90" stroke="#C4623F" stroke-dasharray="3 3"/>
+          <text x="208" y="29" font-size="9" fill="#C4623F">2 条接缝</text>
+          <text x="208" y="93" font-size="9" fill="#8A857C">最"像胶片机"</text>
+        </svg>
+        <p><b>最忠于经典</b>——Leica M3、Nikon F 就是金属顶盖 + 蒙皮中段 + 金属底盖。手持时银色从上下缘收边，视觉最完整。</p>
+        <div class="meta"><span class="no">2 条金属-塑料接缝</span><span class="no">公差链长</span><span>银黑辨识最强</span></div>
+      </div>
+
+      <div class="opt opt--rec">
+        <h4>方案 B · 顶银 + 中黑 + 底黑 <span class="badge">推荐</span></h4>
+        <svg class="mini" viewBox="0 0 240 96" xmlns="http://www.w3.org/2000/svg" aria-label="方案 B：仅顶部金属">
+          <rect x="30" y="14" width="150" height="26" rx="4" fill="#C6CACE"/>
+          <circle cx="160" cy="26" r="6" fill="#8E9296"/>
+          <rect x="30" y="40" width="150" height="56" fill="#1B1D1F"/>
+          <circle cx="70" cy="68" r="17" fill="#0B0C0D"/><circle cx="70" cy="68" r="12" fill="#2A2C2E"/>
+          <rect x="130" y="55" width="20" height="12" rx="2" fill="#0B0C0D"/>
+          <line x1="186" y1="27" x2="204" y2="27" stroke="#C4623F" stroke-dasharray="3 3"/>
+          <text x="208" y="30" font-size="9" fill="#C4623F">仅 1 条接缝</text>
+          <text x="208" y="74" font-size="9" fill="#8A857C">90% 的银黑观感</text>
+        </svg>
+        <p><b>把"银"集中在视觉重心。</b>正面视角下银色只在顶部一条，占画面可见金属的绝大部分，但风险、成本、对位难度全部减半。</p>
+        <div class="meta"><span class="ok">仅 1 条接缝</span><span class="ok">省 1 副模具</span><span class="ok">热膨胀风险减半</span></div>
+      </div>
+
+      <div class="opt">
+        <h4>方案 C · 顶银 + 中黑 + 底黑（软银印刷）</h4>
+        <svg class="mini" viewBox="0 0 240 96" xmlns="http://www.w3.org/2000/svg" aria-label="方案 C：全塑料加银色印刷">
+          <rect x="30" y="14" width="150" height="26" rx="4" fill="#1B1D1F"/>
+          <rect x="30" y="14" width="150" height="9" rx="4" fill="#9AA0A4"/>
+          <circle cx="160" cy="30" r="6" fill="#4A4D50"/>
+          <rect x="30" y="40" width="150" height="56" fill="#1B1D1F"/>
+          <circle cx="70" cy="68" r="17" fill="#0B0C0D"/><circle cx="70" cy="68" r="12" fill="#2A2C2E"/>
+          <rect x="130" y="55" width="20" height="12" rx="2" fill="#0B0C0D"/>
+          <text x="208" y="40" font-size="9" fill="#C4623F">0 条金属接缝</text>
+          <text x="208" y="76" font-size="9" fill="#8A857C">银色靠印刷</text>
+        </svg>
+        <p><b>最省钱，但银色会露怯。</b>全塑料件用<b>银色金属漆 / 电镀</b>做顶部装饰条，成本最低、无接缝问题；但近距离会看出塑料质感与色差，正是我们在配色史里说的"2000 年代冷银"的陷阱。</p>
+        <div class="meta"><span class="ok">成本最低</span><span class="ok">零接缝</span><span class="no">银色质感最弱</span><span class="no">有"廉价感"风险</span></div>
+      </div>
+
+    </div>
+
+    <div class="callout note" style="margin-top:24px">
+      <p><b>注意：方案 C 违反了"银色不能跨材质对色"这条规律吗？</b>不违反——因为银色只在一个零件上。但它踩了另一条：<b>银色是一句"这是金属"的承诺</b>，塑料基材承诺不了。用印刷银，等于说了一句兑现不了的承诺。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. 工程风险 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">05 · 工程侧</div>
+    <h2>四条必须在 ID 阶段就定下来的事</h2>
+
+    <ol class="risks">
+      <li><b>接缝位置怎么定</b>
+        <span>横缝对齐视觉重心（顶部贴近取景窗下沿、底部贴近机身下缘），不要等分。两条缝之间的黑色带越宽，"银黑"读起来越像双色拼接而不是一体机身。</span></li>
+
+      <li><b>金属件不能只"贴"上去</b>
+        <span>需要独立的定位与锁付结构（塑料上的螺钉柱 / 金属嵌件 + 卡扣）。否则金属件在受力时会翘边、按压会响，长期使用后接缝会越来越宽。这一条决定了结构件数量，直接影响模具成本。</span></li>
+
+      <li><b>遮光必须验证</b>
+        <span>胶片机内腔不允许漏光，接缝的遮光唇边要比外缝小 1.5–2mm，形成迷宫式搭接。设计阶段就要和结构一起确认，别等装配后发现漏光再改模具。</span></li>
+
+      <li><b>金属色要锁，不能目视</b>
+        <span>阳极氧化的银色受膜厚、批次、挂具位置影响会产生色差。必须在<b>同一批挂具位置</b>做 3 个样件、在三种真实光照（晴天室外 / 室内暖光 / 影棚）下比对。<b>在屏幕上看的银色没有参考价值。</b></span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 6. 成本 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">06 · 成本</div>
+    <h2>从 660 万 NRE 里出得起，但要出在刀刃上</h2>
+
+    <div class="lede">
+      以你的结构（单台 MPC 约 250 元、NRE 约 660 万）为基准，金属件的增量大致如下。<b>实际数字需 ODM 报价确认</b>，这里给的是量级判断依据。
+    </div>
+
+    <table>
+      <thead><tr><th>项目</th><th>方案 A（顶+底金属）</th><th>方案 B（仅顶部金属）</th></tr></thead>
+      <tbody>
+        <tr>
+          <td data-l="项目">新增模具</td>
+          <td data-l="方案 A">+2 副（顶盖 / 底盖）</td>
+          <td data-l="方案 B"><span class="ok-txt">+1 副（顶盖）</span></td>
+        </tr>
+        <tr>
+          <td data-l="项目">单件材料 + 表面处理</td>
+          <td data-l="方案 A">+¥30–60</td>
+          <td data-l="方案 B">+¥15–35</td>
+        </tr>
+        <tr>
+          <td data-l="项目">NRE 增量（估）</td>
+          <td data-l="方案 A">+¥25–45 万</td>
+          <td data-l="方案 B"><span class="ok-txt">+¥12–22 万</span></td>
+        </tr>
+        <tr>
+          <td data-l="项目">占 660 万 NRE 比例</td>
+          <td data-l="方案 A">约 4–7%</td>
+          <td data-l="方案 B"><span class="ok-txt">约 2–3%</span></td>
+        </tr>
+        <tr>
+          <td data-l="项目">风险敞口</td>
+          <td data-l="方案 A"><span class="risk-txt">2 条接缝同时出问题，无退路（单 SKU）</span></td>
+          <td data-l="方案 B"><span class="ok-txt">1 条接缝，可在量产前调整</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="lede" style="margin-top:22px">
+      <b>结论：从 660 万 NRE 里出金属件的钱完全出得起</b>，这不该成为否决理由。真正该问的是——<b>这 12–45 万买的是多少溢价空间</b>。
+      按 ¥599 定价测算，每多花 1 元成本，需要多卖约 <b>600 台</b>才能覆盖；而 ¥599 到 ¥699 的定价差是 <b>150 元</b>。<b>用 20 元成本换 100 元定价，是划算的；这恰恰是极印品牌版本最该做的动作。</b>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. 建议 ============ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">07 · 建议</div>
+    <h2>落地顺序</h2>
+
+    <div class="lede"><b>1 · 先做方案 B（仅顶部金属）。</b>它拿到了银黑配色约 90% 的视觉收益，但把接缝从 2 条降到 1 条、模具从 +2 副降到 +1 副。单 SKU 没有退路的情况下，<b>少一个失败点比多一分精致更值</b>。底部收边可以用"底部喷涂银"或"底部加一条金属装饰片但不承力"来补，成本更低。</div>
+
+    <div class="lede"><b>2 · 中段不要做蒙皮，做免喷涂纹理。</b>PU 革热贴是金属时代的产物——它存在的唯一理由是给冰凉的金属增加摩擦和隔热。塑料机身不需要这个理由。而"哑光纹理塑料 + 金属顶"的反差，本身就是 1960 年代 Kodak Instamatic 的质感逻辑，比贴一层人造革更准确，也省掉了开裂、起翘、毛边这一整类差评来源。</div>
+
+    <div class="lede"><b>3 · 银色做暖不做冷。</b>这一点和配色史那一页是同一件事：<b>本色阳极氧化（本色铝，偏暖）比染色冷银更接近徕卡</b>，也更不容易在日光下显蓝。如果供应链只能给冷银，宁可把顶部金属件换成"本色阳极 + 透明阳极罩"，也不要染冷色。</div>
+
+    <div class="lede"><b>4 · 银色面积小，反而要守住质量。</b>只有一条顶银时，任何一点注塑毛边、阳极色差、指纹都会被看见。首件必检，并要求 ODM 提供<b>金属件单独的白光/日光双色灯箱照片</b>作为来料标准。</div>
+
+    <div class="quote">
+      这个结构在相机史上是对的。真正的风险不在金属，在<b>接缝数量</b>和<b>银色色温</b>——前者是结构问题，后者是采购问题。
+    </div>
+
+    <div class="src">
+      <b>资料来源</b><br>
+      Kodak Ektar H35N 官方产品页（kodak.com）——无任何材质披露；制造商 RETO Production Ltd.；售价 HK$389–499、6 色同模。<br>
+      Adox POLO 1（1961–1964）结构记载 —— vintagetechnologyarchive.com：注塑塑料机壳 + 薄钢顶底板，280 g，三脚架孔无金属嵌件。<br>
+      美国专利 US4279494 —— 塑料机身 + 铝制连接板跨接两胶卷腔（一次性相机经典受力结构）。
+    </div>
+  </div>
+</section>
+
+<footer>AiKen CMF 拆解 · 内部讨论材料 · 成本为量级估算，需 ODM 报价确认</footer>
+
+</body>
+</html>
