@@ -1,0 +1,12 @@
+You are given TWO reference images:
+
+- Image 1 (MASTER photo): a retro digital camera product photograph with a warm cream-ivory body, sage-green leatherette panels, a silver metallic-paint center strip, and a round orange-red shutter button on top. Reproduce the exact same product and scene: same shape, size, proportions, lens, viewfinder, buttons, dials, seams, logos, background, lighting, shadows, camera angle and composition. Make ONLY the TWO changes listed below — everything else stays exactly as in Image 1.
+- Image 2: a color/style reference (a Braun-style product). Take ONLY its finish language — do not copy its form.
+
+CHANGE 1 — LEATHERETTE WRAPS FULLY AROUND THE BODY: in Image 1 the sage-green leatherette panels stop visually at the front corners. Instead, the green leatherette must WRAP COMPLETELY AROUND the camera body in one continuous band — it covers the front, flows around the left side, across the back, around the right side, and closes the loop: the leatherette forms a full 360-degree ring around the whole body, interrupted only by the silver metallic-paint center strip around the lens. The right side of the camera is covered by the same sage-green (#586257) fine-grained leatherette — NOT bare cream plastic. No cream-plastic gaps on the sides: only the top plate, the bottom plate and the silver center strip remain cream-ivory / silver; the rest of the body circumference is green leatherette. Classic fine-grained pebbled leatherette texture, crisp straight cut edges, like traditional Leica / Fujifilm camera skin that wraps the whole body.
+
+CHANGE 2 — SHUTTER BUTTON FLUSH WITH TOP PLATE: the round orange-red shutter button on the top plate currently sits raised / domed above the top plate. Make it FLUSH — the round orange-red (#F65D1C) matte plastic disc sits at the SAME LEVEL as the top plate surface, like a flat inlaid round disc with only a hairline gap/seam around its edge. NO raised dome, NO protruding height, NO thick metal collar around it. Still perfectly circular.
+
+Everything else stays untouched: the cream-ivory (#E4DBC9) matte plastic body shell and top/bottom plates, the silver metallic-paint center strip around the lens, the round orange shutter button, the lens barrel and glass, all other buttons and dials, the clean right side with NO black trim strip, the background, lighting and composition.
+
+Photorealistic studio product photography, identical lighting, background and composition to Image 1.
