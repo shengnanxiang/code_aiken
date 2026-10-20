@@ -18,90 +18,92 @@
     --cream:#EDE7DC;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
   body{
     background:var(--paper);
     color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
     line-height:1.75;
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
   .serif{font-family:"Songti SC","STSong","SimSun",Georgia,"Times New Roman",serif}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+  .wrap{max-width:680px;margin:0 auto;padding:0 20px}
 
   /* ---------- HERO ---------- */
   .hero{
     background:
-      radial-gradient(120% 90% at 78% 12%, rgba(200,204,206,.26) 0%, rgba(200,204,206,0) 58%),
-      radial-gradient(90% 70% at 12% 92%, rgba(176,141,87,.16) 0%, rgba(176,141,87,0) 60%),
+      radial-gradient(140% 80% at 80% 8%, rgba(200,204,206,.30) 0%, rgba(200,204,206,0) 60%),
+      radial-gradient(110% 70% at 6% 96%, rgba(176,141,87,.20) 0%, rgba(176,141,87,0) 62%),
       #0D0E10;
     color:#F2F0EC;
-    padding:120px 0 104px;
+    padding:60px 0 52px;
     position:relative;
     overflow:hidden;
   }
   .hero::after{
     content:"";position:absolute;inset:0;
     background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px);
-    background-size:100% 34px;pointer-events:none;
+    background-size:100% 30px;pointer-events:none;
   }
   .eyebrow{
-    font-size:12px;letter-spacing:.34em;text-transform:uppercase;
-    color:#9A958C;margin-bottom:26px;
+    font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;
+    color:#9A958C;margin-bottom:16px;
   }
   .hero h1{
-    font-size:clamp(40px,6.4vw,74px);
-    line-height:1.1;font-weight:600;letter-spacing:-.01em;margin-bottom:22px;
+    font-size:36px;
+    line-height:1.15;font-weight:600;letter-spacing:-.01em;margin-bottom:18px;
     background:linear-gradient(96deg,#FFFFFF 6%,#C8CCCE 42%,#8E9296 66%,#E6E3DD 92%);
     -webkit-background-clip:text;background-clip:text;color:transparent;
   }
   .hero .sub{
-    font-size:clamp(15px,2vw,19px);color:#B6B2AA;max-width:660px;line-height:1.85;
+    font-size:15px;color:#B6B2AA;line-height:1.85;
+  }
+  .hero .sub--lines{
+    font-size:14px;color:#8E8A82;line-height:1.9;margin-top:14px;
   }
   .hero .rule{
-    width:64px;height:2px;background:linear-gradient(90deg,var(--silver),transparent);
-    margin:34px 0 30px;
+    width:56px;height:2px;background:linear-gradient(90deg,var(--silver),transparent);
+    margin:26px 0 20px;
   }
   .hero .meta{
-    display:flex;gap:34px;flex-wrap:wrap;font-size:12.5px;color:#8A857C;letter-spacing:.06em;
+    display:flex;gap:6px 16px;flex-wrap:wrap;font-size:11.5px;color:#8A857C;letter-spacing:.05em;
   }
 
   /* ---------- 通用 section ---------- */
-  section{padding:88px 0}
+  section{padding:48px 0}
   section + section{border-top:1px solid var(--line)}
   .kicker{
-    font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3);
-    margin-bottom:16px;
+    font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-3);
+    margin-bottom:12px;
   }
   h2{
     font-family:"Songti SC","STSong",Georgia,serif;
-    font-size:clamp(26px,3.4vw,38px);font-weight:600;letter-spacing:.01em;
-    margin-bottom:20px;line-height:1.3;
+    font-size:23px;font-weight:600;letter-spacing:.01em;
+    margin-bottom:16px;line-height:1.35;
   }
-  .lede{font-size:17px;color:var(--ink-2);max-width:760px}
+  .lede{font-size:15px;color:var(--ink-2)}
   .lede strong{color:var(--ink);font-weight:600}
 
   .quote{
     border-left:3px solid var(--silver);
-    padding:8px 0 8px 22px;margin:34px 0 0;
+    padding:6px 0 6px 16px;margin:24px 0 0;
     font-family:"Songti SC",Georgia,serif;
-    font-size:19px;color:var(--ink);line-height:1.75;
+    font-size:16.5px;color:var(--ink);line-height:1.75;
   }
 
-  /* ---------- 时间轴 ---------- */
+  /* ---------- 时间轴：移动端单列 ---------- */
   .timeline{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:26px;margin-top:52px;
+    display:grid;grid-template-columns:1fr;
+    gap:16px;margin-top:28px;
   }
   .era{
-    background:#fff;border:1px solid var(--line);border-radius:16px;
-    padding:26px 24px 22px;position:relative;
-    transition:transform .3s ease,box-shadow .3s ease;
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:20px 18px 18px;position:relative;
   }
-  .era:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(20,20,20,.3)}
   .era .no{
-    position:absolute;top:22px;right:24px;
-    font-size:11px;letter-spacing:.18em;color:#BFB9AE;
+    position:absolute;top:18px;right:18px;
+    font-size:10.5px;letter-spacing:.18em;color:#BFB9AE;
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
   }
   .era .years{
@@ -110,164 +112,228 @@
   }
   .era h3{
     font-family:"Songti SC",Georgia,serif;
-    font-size:20px;font-weight:600;margin-bottom:14px;line-height:1.4;
+    font-size:18px;font-weight:600;margin-bottom:12px;line-height:1.4;
   }
-  .era .cam{width:100%;max-width:210px;height:auto;margin:4px auto 18px;display:block}
-  .era .refs{font-size:12.5px;color:var(--ink-3);margin-bottom:14px;line-height:1.7}
-  .era .why{font-size:14px;color:var(--ink-2);line-height:1.8}
+  .era .cam{width:100%;max-width:170px;height:auto;margin:2px auto 16px;display:block}
+  .era .why{font-size:13.5px;color:var(--ink-2);line-height:1.8}
   .era .why b{color:var(--ink);font-weight:600}
   .era--star{border-color:#B9BEC2;box-shadow:0 0 0 1px rgba(200,204,206,.5)}
   .era--star::before{
-    content:"核心";position:absolute;top:-11px;left:22px;
-    background:var(--ink);color:#fff;font-size:10.5px;letter-spacing:.16em;
-    padding:3px 10px;border-radius:20px;
+    content:"核心";position:absolute;top:-10px;left:18px;
+    background:var(--ink);color:#fff;font-size:10px;letter-spacing:.16em;
+    padding:3px 9px;border-radius:20px;
   }
 
   /* 色卡 */
-  .swatches{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px}
-  .sw{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+  .swatches{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+  .sw{display:flex;flex-direction:column;gap:5px;align-items:center;width:56px}
   .sw i{
-    display:block;width:38px;height:38px;border-radius:50%;
+    display:block;width:34px;height:34px;border-radius:50%;
     border:1px solid rgba(0,0,0,.1);
     box-shadow:inset 0 -6px 12px -6px rgba(0,0,0,.28), inset 0 4px 10px -4px rgba(255,255,255,.55);
   }
-  .sw b{font-size:11.5px;font-weight:600;color:var(--ink-2)}
+  .sw b{font-size:10.5px;font-weight:600;color:var(--ink-2);text-align:center;line-height:1.3}
   .sw em{
-    font-style:normal;font-size:10.5px;color:var(--ink-3);
+    font-style:normal;font-size:9.5px;color:var(--ink-3);
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
   }
 
-  /* ---------- 速查列表：一个年代一行 ---------- */
-  .glance{list-style:none;margin:32px 0 0;border-top:1px solid var(--line)}
+  /* ---------- 速查列表：一个年代一块 ---------- */
+  .glance{list-style:none;margin:24px 0 0;border-top:1px solid var(--line)}
   .glance li{
-    display:grid;grid-template-columns:44px 140px 130px 1fr 130px;
-    gap:18px;align-items:center;
-    padding:15px 0;border-bottom:1px solid var(--line);
+    display:grid;grid-template-columns:38px 1fr;gap:3px 12px;
+    align-items:center;
+    padding:14px 0;border-bottom:1px solid var(--line);
   }
   .glance .g-swatch{
-    width:40px;height:40px;border-radius:50%;overflow:hidden;
-    border:1px solid rgba(0,0,0,.1);display:block;
+    grid-column:1;grid-row:1 / span 4;align-self:center;
+    width:38px;height:38px;border-radius:50%;overflow:hidden;
+    border:1px solid rgba(0,0,0,.1);
     background:linear-gradient(105deg,var(--a) 0 50%,var(--b) 50% 100%);
   }
   .glance .g-era{
+    grid-column:2;
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:12px;color:var(--ink-3);letter-spacing:.03em;
+    font-size:10.5px;color:var(--ink-3);letter-spacing:.03em;
   }
-  .glance .g-name{font-size:16px;font-weight:600;letter-spacing:.01em}
-  .glance .g-model{font-size:13px;color:var(--ink-2)}
+  .glance .g-name{grid-column:2;font-size:15.5px;font-weight:600}
+  .glance .g-model{grid-column:2;font-size:12.5px;color:var(--ink-2);line-height:1.5}
   .glance .g-word{
-    font-family:"Songti SC",Georgia,serif;font-size:15.5px;
-    color:var(--ink);text-align:right;
+    grid-column:2;
+    font-family:"Songti SC",Georgia,serif;font-size:14.5px;
+    color:#8A6D3B;margin-top:2px;
   }
   /* ---------- 机型列表：一个机型一行 ---------- */
-  .models{list-style:none;margin:0 0 14px;border-top:1px solid var(--line)}
+  .models{list-style:none;margin:0 0 12px;border-top:1px solid var(--line)}
   .models li{
-    display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    display:flex;justify-content:space-between;align-items:baseline;gap:10px;
     padding:6px 0;border-bottom:1px solid rgba(20,20,20,.06);
     font-size:12.5px;line-height:1.5;
   }
   .models li b{font-weight:600;color:var(--ink)}
   .models li span{
     color:var(--ink-3);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:11px;white-space:nowrap;text-align:right;
+    font-size:10.5px;white-space:nowrap;text-align:right;
   }
   .models li.key b{color:#8A6D3B}
   .why + .why{margin-top:10px}
   .rule-row p + p{margin-top:8px}
-  @media(max-width:860px){
-    .glance li{grid-template-columns:40px 1fr;gap:12px 14px}
-    .glance .g-sw-wrap{grid-row:span 4}
-    .glance .g-era,.glance .g-name,.glance .g-model,.glance .g-word{
-      grid-column:2;text-align:left;
-    }
-  }
 
   /* ---------- 规律 ---------- */
-  .rules{margin-top:48px;border-top:1px solid var(--line)}
+  .rules{margin-top:28px;border-top:1px solid var(--line)}
   .rule-row{
-    display:grid;grid-template-columns:64px 1fr;gap:28px;
-    padding:30px 0;border-bottom:1px solid var(--line);align-items:start;
+    display:grid;grid-template-columns:1fr;gap:4px;
+    padding:20px 0;border-bottom:1px solid var(--line);
   }
   .rule-row .n{
     font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:13px;color:var(--ink-3);letter-spacing:.1em;padding-top:5px;
+    font-size:11px;color:var(--ink-3);letter-spacing:.14em;
   }
-  .rule-row h4{font-size:18px;font-weight:600;margin-bottom:8px;letter-spacing:.01em}
-  .rule-row p{font-size:14.5px;color:var(--ink-2);max-width:720px}
+  .rule-row h4{font-size:16.5px;font-weight:600;margin-bottom:6px;letter-spacing:.01em;line-height:1.4}
+  .rule-row p{font-size:14px;color:var(--ink-2)}
   .rule-row p b{color:var(--ink);font-weight:600}
 
   /* ---------- 技术警示 ---------- */
   .warn{
-    background:#141414;color:#EDEAE4;border-radius:18px;
-    padding:44px 42px;margin-top:44px;
+    background:#141414;color:#EDEAE4;border-radius:14px;
+    padding:24px 18px;margin-top:28px;
   }
   .warn .kicker{color:#7E7970}
   .warn h3{
-    font-family:"Songti SC",Georgia,serif;font-size:24px;font-weight:600;
-    margin-bottom:18px;color:#fff;
+    font-family:"Songti SC",Georgia,serif;font-size:19px;font-weight:600;
+    margin-bottom:14px;color:#fff;line-height:1.4;
   }
-  .warn p{color:#B9B4AB;font-size:15px;max-width:780px}
-  .warn p + p{margin-top:14px}
+  .warn p{color:#B9B4AB;font-size:14px}
+  .warn p + p{margin-top:12px}
   .warn b{color:#fff;font-weight:600}
-  .warn .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+  .warn .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
   .warn .chip{
     border:1px solid rgba(255,255,255,.18);border-radius:100px;
-    padding:7px 15px;font-size:12.5px;color:#DAD5CD;
+    padding:6px 12px;font-size:12px;color:#DAD5CD;
   }
   .warn .chip.bad{border-color:rgba(224,122,95,.5);color:#E28C72}
 
-  /* ---------- 建议 ---------- */
+  /* ---------- 方案表：移动端转卡片 ---------- */
   table{
-    width:100%;border-collapse:collapse;margin-top:38px;font-size:14px;
-    background:#fff;border-radius:14px;overflow:hidden;
-    border:1px solid var(--line);
+    display:block;width:100%;margin-top:24px;font-size:13.5px;
+    border-collapse:collapse;
   }
-  th,td{text-align:left;padding:16px 18px;border-bottom:1px solid var(--line);vertical-align:top}
-  th{
-    background:var(--paper-2);font-size:12px;letter-spacing:.1em;
-    text-transform:uppercase;color:var(--ink-2);font-weight:600;
+  thead{display:none}
+  tbody{display:block}
+  tr{
+    display:block;background:#fff;border:1px solid var(--line);
+    border-radius:14px;padding:14px 16px;margin-bottom:12px;
   }
-  tr:last-child td{border-bottom:none}
+  td{display:block;padding:5px 0;border:none}
+  td::before{
+    content:attr(data-l);
+    display:block;font-size:10px;letter-spacing:.12em;
+    color:var(--ink-3);margin-bottom:2px;
+  }
+  td:first-child{padding-top:0;font-size:15.5px;font-weight:600}
+  td:first-child::before{display:none}
   td b{font-weight:600}
   .tag{
-    display:inline-block;font-size:11px;padding:2px 9px;border-radius:20px;
+    display:inline-block;font-size:10.5px;padding:2px 8px;border-radius:20px;
     border:1px solid var(--line);color:var(--ink-2);margin-right:4px;
+    vertical-align:middle;
   }
   .tag.rec{background:#141414;color:#fff;border-color:#141414}
   .tag.risk{border-color:rgba(224,122,95,.5);color:#C4623F}
 
   .swatch-bar{
-    display:flex;height:56px;border-radius:12px;overflow:hidden;margin-top:26px;
-    border:1px solid var(--line);
+    display:grid;grid-template-columns:repeat(2,1fr);gap:6px;
+    margin-top:18px;
   }
-  .swatch-bar div{flex:1;position:relative}
+  .swatch-bar div{
+    height:54px;border-radius:10px;position:relative;
+    border:1px solid rgba(0,0,0,.08);
+  }
+  .swatch-bar div:last-child{grid-column:1 / -1}
   .swatch-bar span{
-    position:absolute;bottom:6px;left:8px;font-size:10px;color:rgba(0,0,0,.5);
-    font-family:ui-monospace,monospace;
+    position:absolute;bottom:6px;left:8px;right:6px;
+    font-size:10px;line-height:1.3;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
   }
 
   /* ---------- 收尾 ---------- */
   .closing{
-    background:#0D0E10;color:#EDEAE4;padding:96px 0;text-align:center;
+    background:#0D0E10;color:#EDEAE4;padding:60px 0;text-align:center;
   }
   .closing h2{
     background:linear-gradient(96deg,#FFFFFF,#C8CCCE 55%,#8E9296);
     -webkit-background-clip:text;background-clip:text;color:transparent;
-    max-width:760px;margin:0 auto 18px;
+    margin:0 auto 14px;
   }
-  .closing p{color:#A9A49B;max-width:620px;margin:0 auto;font-size:15.5px}
+  .closing p{color:#A9A49B;font-size:14.5px}
 
   footer{
-    padding:34px 0;text-align:center;font-size:12px;color:var(--ink-3);
-    letter-spacing:.08em;
+    padding:24px 20px;text-align:center;font-size:11px;color:var(--ink-3);
+    letter-spacing:.06em;line-height:1.7;
   }
 
-  @media(max-width:640px){
-    .wrap{padding:0 20px}
-    section{padding:64px 0}
-    .hero{padding:84px 0 70px}
-    .rule-row{grid-template-columns:1fr;gap:6px}
-    .warn{padding:32px 24px}
+  /* ---------- 桌面增强 ---------- */
+  @media(min-width:760px){
+    .wrap{max-width:920px;padding:0 40px}
+    .hero{padding:96px 0 84px}
+    .hero h1{font-size:54px}
+    .hero .sub{font-size:17px}
+    .hero .sub--lines{font-size:16px}
+    section{padding:72px 0}
+    h2{font-size:32px}
+    .lede{font-size:17px;max-width:720px}
+    .quote{font-size:18.5px;padding-left:22px;margin-top:28px}
+    .timeline{grid-template-columns:repeat(2,1fr);gap:22px}
+    .era{padding:24px 22px 20px}
+    .era .cam{max-width:190px}
+    .glance li{
+      grid-template-columns:44px 150px 150px 1fr 140px;
+      gap:16px;align-items:center;
+    }
+    .glance .g-swatch{grid-row:auto;grid-column:auto;width:40px;height:40px}
+    .glance .g-era{grid-column:2}
+    .glance .g-name{grid-column:3}
+    .glance .g-model{grid-column:4}
+    .glance .g-word{grid-column:5;text-align:right;margin-top:0}
+    .rules{margin-top:44px}
+    .rule-row{grid-template-columns:60px 1fr;gap:24px;padding:26px 0}
+    .rule-row .n{padding-top:5px;font-size:13px}
+    .rule-row h4{font-size:18px}
+    .warn{padding:38px 36px;border-radius:18px;margin-top:40px}
+    .warn h3{font-size:23px}
+    .warn p{font-size:15px}
+    table{
+      display:table;margin-top:34px;font-size:14px;
+      background:#fff;border-radius:14px;overflow:hidden;
+      border:1px solid var(--line);
+    }
+    thead{display:table-header-group}
+    tbody{display:table-row-group}
+    tr{display:table-row;background:transparent;border:none;border-radius:0;padding:0;margin:0}
+    td{
+      display:table-cell;padding:16px 18px;
+      border-bottom:1px solid var(--line);vertical-align:top;
+    }
+    td::before{display:none}
+    td:first-child{font-size:14px;font-weight:400}
+    th{
+      display:table-cell;background:var(--paper-2);font-size:12px;letter-spacing:.1em;
+      text-transform:uppercase;color:var(--ink-2);font-weight:600;
+      text-align:left;padding:16px 18px;
+    }
+    tr:last-child td{border-bottom:none}
+    .swatch-bar{
+      display:flex;height:56px;margin-top:26px;gap:0;
+      border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    }
+    .swatch-bar div{height:auto;border:none;border-radius:0}
+    .swatch-bar div:last-child{grid-column:auto}
+    .swatch-bar span{font-size:10px;bottom:6px;left:8px;right:3px}
+    .closing{padding:92px 0}
+  }
+  @media(min-width:1180px){
+    .wrap{max-width:1080px}
+    .timeline{grid-template-columns:repeat(3,1fr)}
   }
 </style>
 </head>
@@ -282,7 +348,7 @@
       一台相机为什么要长成那个颜色？<br>
       答案很少是"因为好看"。
     </p>
-    <p class="sub" style="margin-top:16px;font-size:16px;color:#8E8A82">
+    <p class="sub sub--lines">
       从黄铜，到镀铬<br>
       从蒙皮，到塑料<br>
       从全黑，到奶油白
@@ -716,11 +782,11 @@
     </p>
 
     <div class="swatch-bar">
-      <div style="background:#C8CCCE"><span>#C8CCCE 镀铬银</span></div>
-      <div style="background:#D3C6AC"><span>#D3C6AC 暖香槟</span></div>
-      <div style="background:#EDE7DC"><span>#EDE7DC 奶油白</span></div>
-      <div style="background:#17181A"><span>#17181A 蒙皮黑</span></div>
-      <div style="background:#6E7377"><span>#6E7377 哑光钛灰</span></div>
+      <div style="background:#C8CCCE"><span style="color:rgba(0,0,0,.62)">#C8CCCE 镀铬银</span></div>
+      <div style="background:#D3C6AC"><span style="color:rgba(0,0,0,.62)">#D3C6AC 暖香槟</span></div>
+      <div style="background:#EDE7DC"><span style="color:rgba(0,0,0,.62)">#EDE7DC 奶油白</span></div>
+      <div style="background:#17181A"><span style="color:rgba(255,255,255,.75)">#17181A 蒙皮黑</span></div>
+      <div style="background:#6E7377"><span style="color:rgba(255,255,255,.85)">#6E7377 哑光钛灰</span></div>
     </div>
 
     <table>
@@ -734,34 +800,34 @@
       </thead>
       <tbody>
         <tr>
-          <td><b>银黑</b><br><span class="tag rec">首选</span></td>
-          <td>银机身 + 黑滑盖 / 黑蒙皮</td>
-          <td>1954–1970s 机械相机黄金年代</td>
-          <td>复古认知成本最低、最"对"。<b>前提是银色必须是真金属质感。</b>若机身是塑料喷涂银，会直接降级为"廉价数码玩具" <span class="tag risk">材质风险</span></td>
+          <td data-l="方案"><b>银黑</b><br><span class="tag rec">首选</span></td>
+          <td data-l="构成">银机身 + 黑滑盖 / 黑蒙皮</td>
+          <td data-l="借用哪个年代">1954–1980s 机械相机黄金年代</td>
+          <td data-l="判断">复古认知成本最低、最"对"。<b>前提是银色必须是真金属质感。</b>若机身是塑料喷涂银，会直接降级为"廉价数码玩具" <span class="tag risk">材质风险</span></td>
         </tr>
         <tr>
-          <td><b>暖银黑</b><br><span class="tag rec">推荐</span></td>
-          <td>香槟/暖银机身 + 黑蒙皮</td>
-          <td>徕卡镀铬 + 当代复古数码</td>
-          <td>比冷银更复古、更耐看、对光线更宽容。<b>推荐做法是把银色往暖里偏 3–5%</b>，避开 2000 年代冷银的廉价联想</td>
+          <td data-l="方案"><b>暖银黑</b><br><span class="tag rec">推荐</span></td>
+          <td data-l="构成">香槟/暖银机身 + 黑蒙皮</td>
+          <td data-l="借用哪个年代">徕卡镀铬 + 当代复古数码</td>
+          <td data-l="判断">比冷银更复古、更耐看、对光线更宽容。<b>推荐做法是把银色往暖里偏 3–5%</b>，避开 1996–2008 冷银的廉价联想</td>
         </tr>
         <tr>
-          <td><b>奶油白 + 黑</b><br><span class="tag">现有方案</span></td>
-          <td>奶白机身 + 黑滑盖</td>
-          <td>1960s 塑料普及 / 当代奶油风</td>
-          <td>在复古语境里其实完全成立，且<b>对材质宽容度最高</b>（哑光塑料本来就是这个年代的质感）。更女性向，但机械感弱于银黑</td>
+          <td data-l="方案"><b>奶油白 + 黑</b><br><span class="tag">现有方案</span></td>
+          <td data-l="构成">奶白机身 + 黑滑盖</td>
+          <td data-l="借用哪个年代">1977 起塑料与色彩自由 / 当代奶油风</td>
+          <td data-l="判断">在复古语境里其实完全成立，且<b>对材质宽容度最高</b>（哑光塑料本来就是这个年代的质感）。更女性向，但机械感弱于银黑</td>
         </tr>
         <tr>
-          <td><b>三段式</b><br><span class="tag">折中</span></td>
-          <td>银滑盖 + 奶白机身 + 黑握持区</td>
-          <td>—</td>
-          <td>银色面积小 → 工艺与成本风险低，银色成为"点睛"。但三种颜色 / 材质会让<b>对色与成本复杂度上升</b>，单 SKU 下需要谨慎权衡</td>
+          <td data-l="方案"><b>三段式</b><br><span class="tag">折中</span></td>
+          <td data-l="构成">银滑盖 + 奶白机身 + 黑握持区</td>
+          <td data-l="借用哪个年代">—</td>
+          <td data-l="判断">银色面积小 → 工艺与成本风险低，银色成为"点睛"。但三种颜色 / 材质会让<b>对色与成本复杂度上升</b>，单 SKU 下需要谨慎权衡</td>
         </tr>
         <tr>
-          <td><b>哑光钛灰</b></td>
-          <td>钛灰机身 + 黑蒙皮</td>
-          <td>—</td>
-          <td>最耐指纹、耐划痕、耐色差，最不容易翻车，但<b>复古感与话题度最弱</b></td>
+          <td data-l="方案"><b>哑光钛灰</b></td>
+          <td data-l="构成">钛灰机身 + 黑蒙皮</td>
+          <td data-l="借用哪个年代">—</td>
+          <td data-l="判断">最耐指纹、耐划痕、耐色差，最不容易翻车，但<b>复古感与话题度最弱</b></td>
         </tr>
       </tbody>
     </table>
@@ -769,7 +835,7 @@
     <div class="quote">
       「我们不是在选一个颜色，是在选它属于哪个年代。」<br>
       <span style="font-size:14px;color:var(--ink-3);font-style:normal">
-        银黑指向 1950–70s 的机械浪漫；奶油白指向 1960s 的塑料大众记忆。两者都对，取决于我们要讲哪个故事。
+        银黑指向 1954 年起的机械浪漫；奶油白指向 1977 年起的塑料色彩自由。两者都对，取决于我们要讲哪个故事。
       </span>
     </div>
   </div>
