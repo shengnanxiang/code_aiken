@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AiKen · 概念测试页 B（单变量对比版）</title>
+<style>
+:root {
+    --orange: #FF6900; --orange-light: #FF8533;
+    --dark: #1a1a1a; --gray: #333; --gray-light: #666;
+    --gray-50: #fafafa; --gray-100: #f5f5f5; --gray-200: #eee;
+    --paper: #f1f0eb; --radius: 12px; --radius-lg: 20px;
+    --shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:-apple-system,BlinkMacSystemFont,"MiSans","PingFang SC","Helvetica Neue","Segoe UI",sans-serif; color:var(--gray); background:var(--paper); line-height:1.6; overflow-x:hidden; }
+img { max-width:100%; display:block; }
+.container { max-width:960px; margin:0 auto; padding:0 24px; }
+
+.test-badge { position:fixed; top:12px; right:12px; z-index:2000; font-size:11px; color:#fff; background:rgba(0,0,0,0.45); padding:3px 10px; border-radius:100px; letter-spacing:1px; backdrop-filter:blur(4px); }
+
+/* 变体切换 */
+.variant { display:none; }
+body[data-job="mech"]  #v-mech  { display:block; }
+body[data-job="roll"]  #v-roll  { display:block; }
+body[data-job="film"]  #v-film  { display:block; }
+body[data-job="social"]#v-social{ display:block; }
+body[data-job="ctrl"]  #v-ctrl  { display:block; }
+
+/* Hero 通用 */
+.hero { min-height:88vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:80px 24px 60px; background:radial-gradient(ellipse at center top,#fdf6ec 0%,var(--paper) 75%); }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; padding:6px 18px; border-radius:100px; background:rgba(255,105,0,0.08); color:var(--orange); font-size:13px; font-weight:600; margin-bottom:28px; letter-spacing:2px; }
+.hero-badge::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--orange); animation:pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.5;transform:scale(1.3);} }
+.hero h1 { font-size:clamp(38px,6.5vw,64px); font-weight:800; letter-spacing:-2px; line-height:1.18; color:var(--dark); margin-bottom:20px; }
+.hero h1 .accent { color:var(--orange); }
+.hero-sub { font-size:clamp(15px,2vw,19px); color:var(--gray-light); margin-bottom:8px; }
+.hero-tag { font-size:clamp(12px,1.5vw,14px); color:#999; margin-bottom:36px; }
+.btn-primary { padding:14px 42px; border-radius:100px; background:var(--orange); color:#fff; font-size:16px; font-weight:600; border:none; cursor:pointer; transition:all .3s; }
+.btn-primary:hover { background:var(--orange-light); transform:translateY(-2px); box-shadow:0 8px 24px rgba(255,105,0,0.3); }
+.hero-price { display:flex; align-items:center; justify-content:center; gap:6px; margin-top:26px; }
+.hero-price .amount { font-size:14px; color:#aaa; letter-spacing:1px; }
+
+/* 产品图占位 */
+.camera-ph { width:min(380px,78vw); aspect-ratio:21/9; border-radius:18px; border:2px dashed rgba(0,0,0,0.22); background:rgba(255,255,255,0.6); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; color:#999; margin-top:44px; }
+.camera-ph .ph-icon { font-size:36px; opacity:.5; }
+.camera-ph .ph-text { font-size:13px; letter-spacing:1px; }
+
+/* 段落 */
+section { padding:80px 0; }
+.section-tag { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--orange); margin-bottom:14px; letter-spacing:2px; }
+.section-tag::before { content:''; width:22px; height:2px; background:var(--orange); }
+.section-title { font-size:clamp(26px,3.6vw,38px); font-weight:800; color:var(--dark); line-height:1.25; letter-spacing:-1px; margin-bottom:16px; }
+.section-desc { font-size:16px; color:var(--gray-light); max-width:620px; line-height:1.8; }
+.bg-white { background:#fff; } .bg-dark { background:var(--dark); color:#fff; }
+.bg-dark .section-title { color:#fff; } .bg-dark .section-desc { color:rgba(255,255,255,0.6); }
+
+/* 卡片 */
+.ev-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:44px; }
+.ev-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:30px 26px; border-radius:var(--radius-lg); transition:all .3s; }
+.ev-card:hover { border-color:rgba(255,105,0,0.4); transform:translateY(-4px); }
+.ev-card .icon { width:46px; height:46px; border-radius:12px; background:rgba(255,105,0,0.14); display:flex; align-items:center; justify-content:center; font-size:23px; margin-bottom:16px; }
+.ev-card h3 { font-size:17px; font-weight:700; margin-bottom:8px; color:#fff; }
+.ev-card p { font-size:13.5px; color:rgba(255,255,255,0.55); line-height:1.75; }
+.bg-white .ev-card { background:var(--gray-50); border:1px solid var(--gray-200); box-shadow:var(--shadow); }
+.bg-white .ev-card h3 { color:var(--dark); }
+.bg-white .ev-card p { color:var(--gray-light); }
+
+/* 引语 */
+.quote-card { margin-top:36px; padding:26px 30px; border-radius:var(--radius-lg); background:var(--gray-50); border-left:4px solid var(--orange); max-width:620px; }
+.bg-dark .quote-card { background:rgba(255,255,255,0.05); }
+.quote-card .q { font-size:16px; font-weight:600; line-height:1.7; }
+.bg-dark .quote-card .q { color:rgba(255,255,255,0.85); }
+.quote-card .who { margin-top:8px; font-size:12px; color:#999; letter-spacing:1px; }
+
+/* 时间线（roll 版用） */
+.timeline { margin-top:44px; display:flex; flex-direction:column; gap:0; }
+.tl-item { display:flex; gap:20px; padding:20px 0; border-bottom:1px solid var(--gray-100); }
+.tl-item:last-child { border-bottom:none; }
+.tl-step { flex-shrink:0; width:44px; height:44px; border-radius:50%; background:rgba(255,105,0,0.1); color:var(--orange); font-weight:800; font-size:18px; display:flex; align-items:center; justify-content:center; }
+.tl-body h4 { font-size:16px; font-weight:700; color:var(--dark); margin-bottom:4px; }
+.tl-body p { font-size:14px; color:var(--gray-light); line-height:1.7; }
+
+/* 风格色卡（film 版用） */
+.style-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:44px; }
+.style-cell { aspect-ratio:4/3; border-radius:var(--radius); position:relative; overflow:hidden; }
+.style-cell .slabel { position:absolute; bottom:0; left:0; right:0; padding:12px 16px; background:linear-gradient(to top,rgba(0,0,0,0.65),transparent); color:#fff; font-size:13px; font-weight:600; }
+.style-cell .slabel small { display:block; font-size:11px; opacity:.65; font-weight:400; margin-top:2px; }
+.s-warm { background:linear-gradient(135deg,#c9956b,#8b5e3c); }
+.s-bw { background:linear-gradient(135deg,#2a2a2a,#1a1a1a); }
+.s-portrait { background:linear-gradient(135deg,#e8c4a0,#b8845c); }
+.s-jp { background:linear-gradient(135deg,#6b9bb8,#4a7c96); }
+.s-kodak { background:linear-gradient(135deg,#d4a017,#a67c00); }
+.s-cross { background:linear-gradient(135deg,#5a7d5a,#2d4a2d); }
+.s-street { background:linear-gradient(135deg,#555,#222); }
+.s-neon { background:linear-gradient(135deg,#ff2d95,#6b00ff); }
+.s-dream { background:linear-gradient(135deg,#a0c4ff,#e0b3ff); }
+
+/* 流程（social 版用） */
+.flow { display:flex; align-items:center; justify-content:center; gap:10px; margin-top:44px; flex-wrap:wrap; }
+.flow-node { display:flex; flex-direction:column; align-items:center; gap:8px; min-width:112px; padding:16px 12px; background:#fff; border:2px solid var(--gray-200); border-radius:16px; transition:all .3s; }
+.flow-node:hover { border-color:var(--orange); }
+.flow-node .fi { font-size:24px; } .flow-node .fl { font-size:13px; font-weight:700; color:var(--dark); } .flow-node .fs { font-size:11px; color:#999; }
+.flow-arrow { color:#bbb; font-size:20px; }
+
+/* 参数条（所有变体共享的"产品全貌"简条） */
+.specs-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:44px; }
+.spec-pill { text-align:center; padding:20px 12px; border-radius:var(--radius); background:var(--gray-50); border:1px solid var(--gray-100); }
+.spec-pill .num { font-size:26px; font-weight:800; color:var(--dark); }
+.spec-pill .unit { font-size:13px; color:var(--orange); font-weight:600; margin-left:2px; }
+.spec-pill .label { font-size:12px; color:var(--gray-light); margin-top:6px; }
+
+/* 对照组参数表 */
+.ctrl-table { width:100%; border-collapse:collapse; background:#fff; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow); margin-top:36px; }
+.ctrl-table th, .ctrl-table td { padding:16px 24px; text-align:left; font-size:14.5px; border-bottom:1px solid var(--gray-100); }
+.ctrl-table th { background:var(--gray-50); font-weight:700; color:var(--dark); width:160px; }
+.ctrl-table td { color:var(--gray-light); }
+
+/* CTA & footer */
+.cta-section { background:linear-gradient(160deg,#fdf6ec,var(--paper)); text-align:center; padding:90px 24px; }
+.cta-section h2 { font-size:clamp(26px,3.6vw,38px); font-weight:800; color:var(--dark); margin-bottom:12px; }
+.cta-section p { font-size:16px; color:var(--gray-light); margin-bottom:30px; }
+.cta-note { margin-top:18px; font-size:12px; color:#bbb; }
+footer { background:var(--dark); color:rgba(255,255,255,0.45); padding:36px 24px; text-align:center; font-size:12px; line-height:2; }
+
+@media (max-width:768px) {
+    section { padding:56px 0; }
+    .ev-grid, .style-grid { grid-template-columns:1fr; }
+    .specs-strip { grid-template-columns:repeat(2,1fr); }
+    .flow-arrow { display:none; }
+}
+</style>
+</head>
+<body data-job="mech">
+
+<div class="test-badge">概念测试 · 非正式发布版</div>
+
+<!-- ================================================================ -->
+<!-- 变体：mech 机械爽感（Job 3） -->
+<!-- ================================================================ -->
+<div class="variant" id="v-mech">
+<header class="hero" data-sec="hero">
+    <div class="hero-badge">AIKEN · 复古胶卷相机</div>
+    <h1>拍照这件事，<br>本来就该<span class="accent">有手感</span></h1>
+    <p class="hero-sub">抽拉过片，清脆回弹，克制的齿轮声</p>
+    <p class="hero-tag">「拍」这个动作本身，就是奖励</p>
+    <button class="btn-primary" data-cta="hero">预约首发</button>
+    <div class="camera-ph"><span class="ph-icon">📷</span><span class="ph-text">产品主视觉占位 · 替换为抽拉动作特写</span></div>
+</header>
+
+<section class="bg-dark" data-sec="body">
+    <div class="container">
+        <span class="section-tag">手感</span>
+        <h2 class="section-title">按快门之前，先上瘾</h2>
+        <p class="section-desc">像机械键盘，像盘核桃，像扣动扳机。抽拉过片的段落感阻尼和克制的声音，让每一次过片都值得回味——过片成功，计数跳动，解锁下一张，每一步都有真实反馈。</p>
+        <div class="ev-grid">
+            <div class="ev-card"><div class="icon">⌨️</div><h3>段落感阻尼</h3><p>明确的「咔哒」确认，不是空步骤，每次动作都对应状态变化。</p></div>
+            <div class="ev-card"><div class="icon">🔊</div><h3>克制的声音</h3><p>齿轮滚动声，不吵不炸。拿出来拍照，周围人会转过头来问。</p></div>
+            <div class="ev-card"><div class="icon">↩️</div><h3>回弹清脆</h3><p>松手复位，单手可完成。握在手里把玩，本身就是解压。</p></div>
+        </div>
+        <div class="quote-card"><p class="q">「抽拉手感 8~9 分——像网吧键盘的轴体手感。」「过片有解压感，可以当解压神器宣传。」</p><p class="who">—— 内部体验用户原声 · 2026.08</p></div>
+        <div class="specs-strip" style="background:rgba(255,255,255,0.03);padding:20px;border-radius:var(--radius-lg);">
+            <div class="spec-pill" style="background:transparent;border-color:rgba(255,255,255,0.1);"><span class="num" style="color:#fff;">36</span><span class="unit">张</span><div class="label" style="color:rgba(255,255,255,0.45);">一卷一拍</div></div>
+            <div class="spec-pill" style="background:transparent;border-color:rgba(255,255,255,0.1);"><span class="num" style="color:#fff;">9</span><span class="unit">种</span><div class="label" style="color:rgba(255,255,255,0.45);">胶片风格</div></div>
+            <div class="spec-pill" style="background:transparent;border-color:rgba(255,255,255,0.1);"><span class="num" style="color:#fff;">40</span><span class="unit">秒</span><div class="label" style="color:rgba(255,255,255,0.45);">整卷传手机</div></div>
+            <div class="spec-pill" style="background:transparent;border-color:rgba(255,255,255,0.1);"><span class="num" style="color:#fff;">0</span><span class="unit">元</span><div class="label" style="color:rgba(255,255,255,0.45);">耗材成本</div></div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" data-sec="cta">
+    <h2>手感，是要试的</h2>
+    <p>预约首发，第一批拿到手里</p>
+    <button class="btn-primary" data-cta="final">预约首发</button>
+    <p class="cta-note">概念测试页面 · 最终信息以正式发布为准</p>
+</section>
+</div>
+
+<!-- ================================================================ -->
+<!-- 变体：roll 成卷纪念（Job 1） -->
+<!-- ================================================================ -->
+<div class="variant" id="v-roll">
+<header class="hero" data-sec="hero">
+    <div class="hero-badge">AIKEN · 复古胶卷相机</div>
+    <h1>36 张，<br>装下<span class="accent">一段时光</span></h1>
+    <p class="hero-sub">一次旅行，一卷朋友局，一段值得郑重对待的日子</p>
+    <p class="hero-tag">拍满 36 张才能取出——每一张都花得起</p>
+    <button class="btn-primary" data-cta="hero">预约首发</button>
+    <div class="camera-ph"><span class="ph-icon">🎞️</span><span class="ph-text">产品主视觉占位 · 替换为计数器特写/卷概念图</span></div>
+</header>
+
+<section class="bg-white" data-sec="body">
+    <div class="container">
+        <span class="section-tag">一卷</span>
+        <h2 class="section-title">回到家里，它不是一堆照片</h2>
+        <p class="section-desc">是一卷有名字、有日期、有封面的作品。手机相册里躺着 500 张截图的日子结束了——36 张，张张有分量。</p>
+        <div class="timeline">
+            <div class="tl-item"><div class="tl-step">1</div><div class="tl-body"><h4>拍 · 认真地拍</h4><p>计数器从 36 开始倒数。每按一次快门都是「花掉」一张——你会开始选择值得的瞬间。</p></div></div>
+            <div class="tl-item"><div class="tl-step">2</div><div class="tl-body"><h4>满 · 封存一卷</h4><p>拍满取出，像把这段时光装进了盒子。旅行回来那晚，打开手机等着「冲扫」揭晓。</p></div></div>
+            <div class="tl-item"><div class="tl-step">3</div><div class="tl-body"><h4>扫 · 开盲盒</h4><p>好的是惊喜，歪的是回忆。每一张都盖着那一天的日期，它替你记得。</p></div></div>
+            <div class="tl-item"><div class="tl-step">4</div><div class="tl-body"><h4>藏 · 进入暗房</h4><p>整卷归档在暗房里，有封面、有名字。多年后翻出来，一卷就是一段日子。</p></div></div>
+        </div>
+        <div class="quote-card"><p class="q">「一卷胶卷对应一段特定时光，有纪念意义。特别喜欢等待成像的过程——开盲盒式的未知感。」</p><p class="who">—— 内部体验用户原声 · 2026.08</p></div>
+        <div class="specs-strip">
+            <div class="spec-pill"><span class="num">36</span><span class="unit">张</span><div class="label">一卷一拍 · 满卷取出</div></div>
+            <div class="spec-pill"><span class="num">9</span><span class="unit">种</span><div class="label">胶片风格</div></div>
+            <div class="spec-pill"><span class="num">40</span><span class="unit">秒</span><div class="label">整卷传手机</div></div>
+            <div class="spec-pill"><span class="num">0</span><span class="unit">元</span><div class="label">耗材成本</div></div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" data-sec="cta">
+    <h2>给值得的日子，一卷的郑重</h2>
+    <p>预约首发，第一批拿到手里</p>
+    <button class="btn-primary" data-cta="final">预约首发</button>
+    <p class="cta-note">概念测试页面 · 最终信息以正式发布为准</p>
+</section>
+</div>
+
+<!-- ================================================================ -->
+<!-- 变体：film 直出质感（Job 4） -->
+<!-- ================================================================ -->
+<div class="variant" id="v-film">
+<header class="hero" data-sec="hero">
+    <div class="hero-badge">AIKEN · 复古胶卷相机</div>
+    <h1>胶片的质感，<br>胶卷的麻烦<span class="accent">都不要</span></h1>
+    <p class="hero-sub">胶片色调直出 · 机身可重复使用 · 没有胶卷和冲扫的账单</p>
+    <p class="hero-tag">你得到的是胶片的结果，省掉的是胶片的一切代价</p>
+    <button class="btn-primary" data-cta="hero">预约首发</button>
+    <div class="camera-ph"><span class="ph-icon">🖼️</span><span class="ph-text">样张占位 · 替换为真实直出样张（人像/街景/暗光）</span></div>
+</header>
+
+<section class="bg-white" data-sec="body">
+    <div class="container">
+        <span class="section-tag">出片</span>
+        <h2 class="section-title">9 种胶片风格，直出</h2>
+        <p class="section-desc">不用后期，不用修图 App。自然复古、暖调人像、黑白电影感——选好风格，冲扫出来就是成品。</p>
+        <div class="style-grid">
+            <div class="style-cell s-warm"><span class="slabel">自然复古<small>默认 · 人像友好</small></span></div>
+            <div class="style-cell s-portrait"><span class="slabel">暖调人像<small>肤色白皙柔和</small></span></div>
+            <div class="style-cell s-bw"><span class="slabel">黑白电影<small>故事感扫街</small></span></div>
+            <div class="style-cell s-jp"><span class="slabel">日系清透<small>生活场景</small></span></div>
+            <div class="style-cell s-kodak"><span class="slabel">柯达金<small>温馨怀旧</small></span></div>
+            <div class="style-cell s-cross"><span class="slabel">交叉冲扫<small>进阶玩家</small></span></div>
+        </div>
+        <p style="margin-top:14px;font-size:12px;color:#bbb;">* 上为风格示意色卡。正式页面必须替换为固件真实直出样张——上市后的差评会反噬一切过度承诺</p>
+        <div class="quote-card"><p class="q">「相比实体胶卷更经济，不怕废片，不用等冲洗——满足对胶片的好奇，不用承担胶片的成本。」</p><p class="who">—— 内部体验用户原声 · 2026.08</p></div>
+        <div class="specs-strip">
+            <div class="spec-pill"><span class="num">0</span><span class="unit">元</span><div class="label">耗材成本 · 可重复使用</div></div>
+            <div class="spec-pill"><span class="num">36</span><span class="unit">张</span><div class="label">一卷一拍</div></div>
+            <div class="spec-pill"><span class="num">40</span><span class="unit">秒</span><div class="label">整卷传手机</div></div>
+            <div class="spec-pill"><span class="num">9</span><span class="unit">种</span><div class="label">胶片风格直出</div></div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" data-sec="cta">
+    <h2>胶片的结果，不付胶片的代价</h2>
+    <p>预约首发，第一批拿到手里</p>
+    <button class="btn-primary" data-cta="final">预约首发</button>
+    <p class="cta-note">概念测试页面 · 最终信息以正式发布为准</p>
+</section>
+</div>
+
+<!-- ================================================================ -->
+<!-- 变体：social 社交货币（Job 5） -->
+<!-- ================================================================ -->
+<div class="variant" id="v-social">
+<header class="hero" data-sec="hero">
+    <div class="hero-badge">AIKEN · 复古胶卷相机</div>
+    <h1>拍下来，<br>就<span class="accent">发得出去</span></h1>
+    <p class="hero-sub">日期戳 · 拼贴模板 · 朋友圈九宫格和小红书竖图</p>
+    <p class="hero-tag">不用再打开三个修图 App</p>
+    <button class="btn-primary" data-cta="hero">预约首发</button>
+    <div class="camera-ph"><span class="ph-icon">📲</span><span class="ph-text">产品主视觉占位 · 替换为拼贴成品展示图</span></div>
+</header>
+
+<section class="bg-white" data-sec="body">
+    <div class="container">
+        <span class="section-tag">分享</span>
+        <h2 class="section-title">从拍下来，到发出去，五步</h2>
+        <p class="section-desc">每一张照片都盖着那一天的日期。选好风格，拼好版式，直接发布——你的朋友圈从此有了「胶卷感」这个新风格。</p>
+        <div class="flow">
+            <div class="flow-node"><span class="fi">📸</span><span class="fl">拍</span><span class="fs">36 张一卷</span></div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-node"><span class="fi">📤</span><span class="fl">取出</span><span class="fs">40 秒传手机</span></div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-node"><span class="fi">🎨</span><span class="fl">冲扫</span><span class="fs">选风格 · 日期戳</span></div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-node"><span class="fi">🖼️</span><span class="fl">拼贴</span><span class="fs">九宫格 / 竖图</span></div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-node" style="border-color:var(--orange);"><span class="fi">🚀</span><span class="fl">发布</span><span class="fs">朋友圈 / 小红书</span></div>
+        </div>
+        <div class="quote-card"><p class="q">「日期水印能带来炫耀感，会提升我发出去的意愿。」「拼贴分享是必选项——缺了这个我购买动力会大打折扣。」</p><p class="who">—— 内部体验用户原声 · 2026.08</p></div>
+        <div class="specs-strip">
+            <div class="spec-pill"><span class="num">9</span><span class="unit">种</span><div class="label">胶片风格</div></div>
+            <div class="spec-pill"><span class="num">36</span><span class="unit">张</span><div class="label">一卷一拍</div></div>
+            <div class="spec-pill"><span class="num">40</span><span class="unit">秒</span><div class="label">整卷传手机</div></div>
+            <div class="spec-pill"><span class="num">0</span><span class="unit">元</span><div class="label">耗材成本</div></div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" data-sec="cta">
+    <h2>你的朋友圈，该换个风格了</h2>
+    <p>预约首发，第一批拿到手里</p>
+    <button class="btn-primary" data-cta="final">预约首发</button>
+    <p class="cta-note">概念测试页面 · 最终信息以正式发布为准</p>
+</section>
+</div>
+
+<!-- ================================================================ -->
+<!-- 变体：ctrl 对照组（中性参数页，无情感叙事） -->
+<!-- ================================================================ -->
+<div class="variant" id="v-ctrl">
+<header class="hero" data-sec="hero">
+    <div class="hero-badge">AIKEN · 数码相机</div>
+    <h1>AiKen 复古数码相机</h1>
+    <p class="hero-sub">便携式数码相机产品页面</p>
+    <p class="hero-tag">产品参数如下</p>
+    <button class="btn-primary" data-cta="hero">预约首发</button>
+    <div class="camera-ph"><span class="ph-icon">📷</span><span class="ph-text">产品图占位</span></div>
+</header>
+
+<section class="bg-white" data-sec="body">
+    <div class="container">
+        <span class="section-tag">参数</span>
+        <h2 class="section-title">产品规格</h2>
+        <table class="ctrl-table">
+            <tr><th>产品形态</th><td>便携复古造型数码相机</td></tr>
+            <tr><th>取景方式</th><td>光学取景器</td></tr>
+            <tr><th>拍摄张数</th><td>每卷 36 张，拍满后传输至手机</td></tr>
+            <tr><th>对焦方式</th><td>超焦距免对焦</td></tr>
+            <tr><th>出片风格</th><td>9 种风格滤镜，手机端选择应用</td></tr>
+            <tr><th>传输方式</th><td>蓝牙传输，36 张约 40 秒</td></tr>
+            <tr><th>充电接口</th><td>Type-C</td></tr>
+            <tr><th>联动功能</th><td>支持照片打印机联动打印</td></tr>
+        </table>
+        <div class="specs-strip">
+            <div class="spec-pill"><span class="num">36</span><span class="unit">张</span><div class="label">每卷张数</div></div>
+            <div class="spec-pill"><span class="num">9</span><span class="unit">种</span><div class="label">风格滤镜</div></div>
+            <div class="spec-pill"><span class="num">40</span><span class="unit">秒</span><div class="label">传输时长</div></div>
+            <div class="spec-pill"><span class="num">0</span><span class="unit">元</span><div class="label">耗材成本</div></div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" data-sec="cta">
+    <h2>AiKen 复古数码相机</h2>
+    <p>预约首发，到货通知</p>
+    <button class="btn-primary" data-cta="final">预约首发</button>
+    <p class="cta-note">概念测试页面 · 最终信息以正式发布为准</p>
+</section>
+</div>
+
+<footer>
+    AiKen · 复古胶卷相机<br>
+    <span style="opacity:.5;">© 2026 概念测试页 · 单变量对比版 · 数据仅用于卖点验证研究</span>
+</footer>
+
+<!-- ================= 测试埋点 ================= -->
+<script>
+(function () {
+    var params = new URLSearchParams(location.search);
+    var job = params.get('job') || 'mech';
+    var valid = ['mech', 'roll', 'film', 'social', 'ctrl'];
+    if (valid.indexOf(job) === -1) job = 'mech';
+    document.body.setAttribute('data-job', job);
+
+    var PAGE_ID = 'B-' + job;
+    var data = {
+        pageId: PAGE_ID,
+        startTs: Date.now(),
+        hiddenTs: 0, lastHidden: null,
+        scrollDepth: 0,
+        sectionMs: {}, sectionSeen: {},
+        ctaClicks: []
+    };
+    function now(){ return Date.now(); }
+    function elapsed(){ return now() - data.startTs; }
+
+    window.addEventListener('scroll', function () {
+        var h = document.documentElement;
+        var pct = Math.round((h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100);
+        if (pct > data.scrollDepth) data.scrollDepth = pct;
+    }, { passive: true });
+
+    var visible = {};
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            var id = e.target.getAttribute('data-sec');
+            if (e.isIntersecting) {
+                visible[id] = true;
+                if (!data.sectionSeen[id]) data.sectionSeen[id] = now();
+            } else { visible[id] = false; }
+        });
+    }, { threshold: 0.35 });
+    document.querySelectorAll('[data-sec]').forEach(function (el) { io.observe(el); });
+
+    setInterval(function () {
+        if (document.hidden) return;
+        Object.keys(visible).forEach(function (id) {
+            if (visible[id]) data.sectionMs[id] = (data.sectionMs[id] || 0) + 1000;
+        });
+    }, 1000);
+
+    document.addEventListener('visibilitychange', function () {
+        if (document.hidden) { data.lastHidden = now(); }
+        else if (data.lastHidden) { data.hiddenTs += now() - data.lastHidden; data.lastHidden = null; }
+    });
+
+    document.querySelectorAll('[data-cta]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var h = document.documentElement;
+            var scrollPct = Math.round((h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight)) * 100) || 0;
+            data.ctaClicks.push({
+                id: btn.getAttribute('data-cta'),
+                ts: now(), elapsedMs: elapsed(), scrollPct: scrollPct
+            });
+            alert('【测试转化点】' + PAGE_ID + ' / ' + btn.getAttribute('data-cta') + '\n接入正式系统时替换为预约表单跳转');
+        });
+    });
+
+    function snapshot() {
+        return {
+            pageId: data.pageId, job: job,
+            dwellMs: elapsed() - data.hiddenTs,
+            scrollDepthPct: data.scrollDepth,
+            sectionMs: data.sectionMs, sectionFirstSeenTs: data.sectionSeen,
+            ctaClicks: data.ctaClicks,
+            capturedAt: new Date().toISOString()
+        };
+    }
+    window.addEventListener('beforeunload', function () {
+        try {
+            var all = JSON.parse(localStorage.getItem('aiken_test_data') || '[]');
+            all.push(snapshot());
+            localStorage.setItem('aiken_test_data', JSON.stringify(all));
+        } catch (e) {}
+    });
+    window.aikenTest = {
+        export: function () { console.log(JSON.stringify(snapshot(), null, 2)); return snapshot(); },
+        raw: function () { try { return JSON.parse(localStorage.getItem('aiken_test_data') || '[]'); } catch (e) { return []; } },
+        clear: function () { localStorage.removeItem('aiken_test_data'); }
+    };
+    console.log('[AiKen Test] 变体: ' + PAGE_ID + '。控制台 aikenTest.export() 取数；链接加 ?job=mech/roll/film/social/ctrl 切换变体');
+})();
+</script>
+</body>
+</html>
