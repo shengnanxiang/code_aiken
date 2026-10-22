@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>AiKen 转极印 · SI / COA</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { background:#3a3a3a; }
+  body { margin:0; }
+  #slide { width:1280px; max-width:96vw; margin:24px auto; background:#FFF; font-family:"Microsoft YaHei",sans-serif;
+           color:#111; box-shadow:0 8px 40px rgba(0,0,0,.45); }
+  .pad { padding:24px 34px 16px; display:flex; flex-direction:column; }
+  .hd { display:flex; align-items:flex-end; justify-content:space-between; border-bottom:2.5px solid #111; padding-bottom:9px; }
+  .hd h1 { font-size:26px; letter-spacing:.5px; }
+  .hd h1 em { color:#EC008C; font-style:normal; }
+  .hd .tag { font-size:11px; color:#fff; background:#111; padding:4px 10px; border-radius:3px; letter-spacing:1px; }
+  /* 总纲 */
+  .thesis { margin-top:14px; background:#111; border-radius:8px; padding:14px 20px; display:flex; align-items:center; gap:18px; }
+  .thesis .lbl { flex:none; font-size:12px; color:#EC008C; font-weight:bold; letter-spacing:3px; border:1.5px solid #EC008C; padding:3px 10px; border-radius:3px; }
+  .thesis .txt { font-size:16.5px; color:#fff; line-height:1.55; font-weight:bold; }
+  .thesis .txt em { color:#EC008C; font-style:normal; }
+  /* SI 卡片 */
+  .sec { margin-top:16px; display:flex; align-items:center; gap:10px; }
+  .sec .bar { width:5px; height:20px; background:#EC008C; border-radius:2px; }
+  .sec h2 { font-size:17px; letter-spacing:1px; }
+  .sec .n { font-size:10.5px; color:#9a9a9a; margin-left:2px; }
+  .sirow { display:flex; gap:12px; margin-top:10px; }
+  .si { flex:1; border:1.5px solid #E6E6E6; border-top:3px solid #111; border-radius:8px; padding:10px 13px; background:#fff; }
+  .si .no { font-size:10px; color:#fff; background:#111; display:inline-block; padding:2px 8px; border-radius:2px; letter-spacing:1px; }
+  .si h3 { font-size:15px; margin:6px 0 4px; }
+  .si p { font-size:11.3px; color:#444; line-height:1.6; }
+  .si p b { color:#111; }
+  .si p .mk { color:#EC008C; font-weight:bold; }
+  .si .slogan { margin-top:6px; font-size:10.5px; color:#EC008C; font-weight:bold; border-top:1px dashed #E6E6E6; padding-top:5px; }
+  /* 贯穿 band */
+  .cross { margin-top:12px; border:1.5px dashed #111; border-radius:8px; padding:8px 16px; display:flex; align-items:center; gap:14px; background:#FDF3F8; }
+  .cross .lbl { flex:none; font-size:11px; color:#EC008C; font-weight:bold; letter-spacing:2px; }
+  .cross .txt { font-size:12px; color:#111; }
+  .cross .txt b { color:#EC008C; }
+  /* COA 张力裁决表 */
+  .coa-note { margin-top:10px; font-size:11px; color:#444; background:#F7F7F7; border-radius:6px; padding:7px 14px; display:flex; align-items:center; gap:10px; }
+  .coa-note .lbl { flex:none; font-size:11px; font-weight:bold; color:#EC008C; letter-spacing:2px; }
+  .coa-row { display:flex; gap:12px; margin-top:10px; }
+  .coa { flex:1; border-radius:8px; padding:10px 13px 8px; background:#fff; }
+  .coa.c { border:2px solid #EC008C; background:#FDF3F8; }
+  .coa.o { border:1.5px solid #111; }
+  .coa.a { border:1.5px solid #C9C9C9; background:#FAFAFA; }
+  .coa .tag2 { font-size:10px; color:#fff; display:inline-block; padding:2px 9px; border-radius:2px; letter-spacing:1px; }
+  .coa.c .tag2 { background:#EC008C; }
+  .coa.o .tag2 { background:#111; }
+  .coa.a .tag2 { background:#9a9a9a; }
+  .coa h4 { font-size:14.5px; margin:5px 0 2px; }
+  .coa.c h4 { color:#EC008C; }
+  .coa .sub2 { font-size:9.8px; color:#9a9a9a; margin-bottom:5px; }
+  .coa ul { list-style:none; }
+  .coa li { font-size:10.8px; color:#333; line-height:1.55; padding-left:11px; position:relative; margin-bottom:3.5px; }
+  .coa li b { color:#111; }
+  .coa li::before { content:""; position:absolute; left:0; top:7px; width:5px; height:5px; border-radius:50%; background:#C9C9C9; }
+  .coa.c li::before { background:#EC008C; }
+  .coa.o li::before { background:#111; }
+  /* C 卡片 */
+  .crow { display:flex; gap:12px; margin-top:10px; }
+  .cc { flex:1; border:1.5px solid #E6E6E6; border-left:3px solid #EC008C; border-radius:8px; padding:9px 12px; background:#fff; }
+  .cc .no { font-size:10px; color:#fff; background:#EC008C; display:inline-block; padding:2px 8px; border-radius:2px; letter-spacing:1px; }
+  .cc .map { font-size:9.5px; color:#9a9a9a; margin-left:6px; }
+  .cc h4 { font-size:13.5px; margin:5px 0 3px; }
+  .cc ul { list-style:none; }
+  .cc li { font-size:10.8px; color:#444; line-height:1.55; padding-left:11px; position:relative; margin-bottom:2px; }
+  .cc li::before { content:""; position:absolute; left:0; top:7px; width:5px; height:5px; border-radius:50%; background:#EC008C; }
+  .cc li b { color:#111; }
+  .abar { margin-top:10px; background:#F7F7F7; border-left:4px solid #9a9a9a; border-radius:6px; padding:9px 16px; }
+  .abar .t { font-size:11px; font-weight:bold; letter-spacing:1px; color:#6B6B6B; margin-bottom:3px; }
+  .abar .v { font-size:12px; color:#444; line-height:1.7; }
+  .abar .v .sep { color:#bbb; margin:0 7px; }
+  /* 页脚 */
+  .ft { margin-top:14px; border-top:2px solid #111; padding-top:10px; }
+  .ft .flow { display:flex; align-items:center; gap:8px; }
+  .ft .node { font-size:11px; background:#111; color:#fff; padding:4px 10px; border-radius:4px; white-space:nowrap; }
+  .ft .node.first { background:#EC008C; }
+  .ft .ar { color:#EC008C; font-weight:bold; font-size:13px; }
+  .ft .sub { font-size:10.5px; color:#9a9a9a; margin-top:7px; display:flex; justify-content:space-between; }
+</style>
+</head>
+<body>
+<div id="slide"><div class="pad">
+
+  <div class="hd">
+    <h1>AiKen 转极印品牌 <em>· SI / COA</em></h1>
+    <div class="tag">评审主材料 · 开篇</div>
+  </div>
+
+  <div class="thesis">
+    <div class="lbl">总纲</div>
+    <div class="txt">AiKen 是<em>品牌投资型先锋项目</em>——不以利润为核心诉求；作为极印「潮玩相机」品类的第一款产品，为品牌注入情绪型基因，并验证极印自己的 C 端打法。</div>
+  </div>
+
+  <div class="sec"><div class="bar"></div><h2>SI · 战略意图</h2><span class="n">四条，对应本次评审四个部分</span></div>
+  <div class="sirow">
+    <div class="si">
+      <span class="no">SI-1 品牌资产</span>
+      <h3>增强极印品牌</h3>
+      <p>潮玩相机是极印三大品类之一（潮玩相机 / 照片打印机 / 打印切割一体机），AiKen 为该品类<b>第一款</b>。承接品牌蓝图「工具型 → 情绪型 → 创作型」跃迁，以<span class="mk">品牌资产指标</span>衡量成果（搜索量 · 自然提及率 · 内容关键词纯度）。</p>
+      <div class="slogan">销量是手段，不是目的</div>
+    </div>
+    <div class="si">
+      <span class="no">SI-2 体验标杆</span>
+      <h3>打造优秀的闭环体验</h3>
+      <p>产品定义从「一台相机」升级为完整闭环：<b>拍</b>（快速开机 · 36 张仪式）→ <b>片</b>（标志性滤镜 · 三个经典成片场景）→ <b>享</b>（一键分享 · 拼图成片）→ <b>生态</b>（App · 打印联动）。</p>
+      <div class="slogan">验收标准：让用户觉得 ¥599 花得值</div>
+    </div>
+    <div class="si">
+      <span class="no">SI-3 飞轮启动</span>
+      <h3>验证 C 端业务飞轮</h3>
+      <p><b>体验 → 声量（投放+种草）→ 销量 → 资源再投入</b>，四环正循环。首年目标不是转多快，而是<span class="mk">转起来并被验证</span>。纪律：严禁降价、砍体验、砍投放等一切反向操作。</p>
+      <div class="slogan">飞轮静止质量大，反转一次代价极高</div>
+    </div>
+    <div class="si">
+      <span class="no">SI-4 方法升级</span>
+      <h3>尝试新的销量预测模型</h3>
+      <p>从「三个点」预测转向<span class="mk">概率分布经营</span>：参照类 + Bass 扩散 + 蒙特卡洛 + 投流漏斗。所有运营动作 = 把销量分布往右推；30 / 90 天 Checkpoint 用真实数据收窄分布。</p>
+      <div class="slogan">验证有效 → 沉淀为极印新品类经营范式</div>
+    </div>
+  </div>
+
+  <div class="cross">
+    <div class="lbl">贯穿目标</div>
+    <div class="txt"><b>团队能力沉淀</b>：内容运营 · 体验设计 · 飞轮运营 · 概率化经营——四项能力练成后<b>全员复用</b>，这是项目独立于产品成败之外的确定性收益。</div>
+  </div>
+
+  <div class="sec"><div class="bar"></div><h2>COA · 张力裁决表</h2><span class="n">Constrain 不可妥协 ｜ Optimize 努力达成 ｜ Accept 接受妥协</span></div>
+
+  <div class="coa-note">
+    <div class="lbl">用途</div>
+    <div>项目推进中遇到张力需要取舍判断时，以本表为依据——Constrain 层不可动摇；Constrain 与 Optimize 冲突时保前者；Accept 层允许为更高优先级让路，且提前讲清代价。</div>
+  </div>
+
+  <div class="coa-row">
+    <div class="coa c">
+      <span class="tag2">CONSTRAIN · 不可妥协</span>
+      <h4>红线与纪律</h4>
+      <div class="sub2">任一条被突破，项目性质即改变</div>
+      <ul>
+        <li><b>品牌投资型定位（CEO 裁决）</b>：营收不作强考核；Worst 场景亏损额已预先接受——不以短期利润为由改变运营纪律（「如果每个项目都一定不能亏钱，这个项目就是失败的」）</li>
+        <li><b>飞轮纪律</b>：严禁降价、砍体验、砍投放等反向操作</li>
+        <li><b>品牌定位纪律</b>（SI-1）：不进入相机参数比较框架；传播规避「印 / 打印」联想；品类叙事锚定「影像潮玩」</li>
+        <li><b>体验交付纪律</b>（SI-2）：上市版本必须包含有命名的标志性直出色彩风格与完整分享链路——体验不完整不首发</li>
+        <li><b>沉没成本切割</b>：10 月前小米阶段投入不计入后续预算考核</li>
+        <li><b>硬件定义冻结</b>：视频能力 · 闪光灯等已定项不再讨论</li>
+      </ul>
+    </div>
+    <div class="coa o">
+      <span class="tag2">OPTIMIZE · 努力达成</span>
+      <h4>目标与能力建设</h4>
+      <div class="sub2">尽力冲，达不到要复盘原因</div>
+      <ul>
+        <li><b>三档财务场景</b>：Worst（月销 ~500 · 0.05，亏损额已被 CEO 预先接受）｜ Normal（~1,000 · 0.88，MOQ 倒推基准）｜ Best（~3,000 · 4.41，×3 乐观）——作为概率分布的分位锚与供应链执行接口，非预测点（详见第④部分）</li>
+        <li><b>Q2 尾 / 618 上市</b>：因小米侧变化已有约一个月延误；618 窗口经与市场部预对齐后提出，已于项目周会正式同步为目标，项目 schedule 以此为基准制定</li>
+        <li><b>定价 ¥599</b>：避免比价人群、保留投放空间</li>
+        <li><b>闭环体验交付</b>：标志性滤镜（有命名）· 快速开机 · 一键分享 · 三个经典成片场景（应对「不如手机」质疑的现场演示案例）</li>
+        <li><b>销量概率模型 v0.3</b>：参照类 + 漏斗实测校准上线</li>
+        <li><b>首批 MOQ 3,000</b> · 季度滚动补货</li>
+        <li><b>Best = Normal × 3</b>：分布右尾的冲刺带（月销 ~3,000 · 毛利 4.41）</li>
+      </ul>
+    </div>
+    <div class="coa a">
+      <span class="tag2">ACCEPT · 接受妥协</span>
+      <h4>可让路项与已知代价</h4>
+      <div class="sub2">为更高优先级让路时，代价透明</div>
+      <ul>
+        <li><b>上市节奏</b>：若体验交付与时间窗冲突，体验优先、窗口顺延；618 为项目组已同步之目标，错过则记录代价</li>
+        <li><b>首批量小成本高</b>：MOQ 3,000 下 BOM 上浮（校准会已确认「成本肯定会高一点」）——品牌投资型定位下的可接受代价</li>
+        <li><b>返修率预算可下调</b>（校准会方向），不影响体验红线</li>
+        <li><b>单品利润率</b>：项目目标非利润，毛利结构服从飞轮纪律</li>
+        <li><b>Worst 场景的发生本身</b>：亏损额已被接受，不触发自动止损；触发的是 Checkpoint 诊断（p/q/m 归因）与策略调整</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ft">
+    <div class="flow">
+      <div class="node first">SI / COA 总述</div><div class="ar">→</div>
+      <div class="node">① 品牌战略对齐（SI-1）</div><div class="ar">→</div>
+      <div class="node">② 闭环体验（SI-2）</div><div class="ar">→</div>
+      <div class="node">③ 业务飞轮（SI-3 · 含定价逻辑）</div><div class="ar">→</div>
+      <div class="node">④ 销量概率分布模型（SI-4）</div>
+    </div>
+    <div class="sub">
+      <span>竞争窗口（国内暂无强势品牌直接进入）作为背景时机依据，不设为目标</span>
+      <span>市场 · 用户 · 场景 · 竞品：与此前无本质变化，沿用既有材料（备查）</span>
+    </div>
+  </div>
+
+</div></div>
+</body>
+</html>
