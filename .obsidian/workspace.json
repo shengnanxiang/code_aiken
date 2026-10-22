@@ -41,16 +41,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AiKen SI、COA校准会议.md",
+                "file": "notes/26-10-21 SI、COA校准.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AiKen SI、COA校准会议"
+              "title": "26-10-21 SI、COA校准"
+            }
+          },
+          {
+            "id": "a23edefdbef0b017",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "品牌战略.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "品牌战略"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -217,11 +231,17 @@
       "bases:新建数据库": false
     }
   },
-  "active": "1110a816cc27783d",
+  "active": "a23edefdbef0b017",
   "lastOpenFiles": [
+    "极印版 aiken/销量概率模型/市场部数据需求与沟通方案.md",
+    "极印版 aiken/销量概率模型/v0.2_结果摘要.md",
+    "极印版 aiken/销量概率模型/v02_results.npz",
+    "极印版 aiken/销量概率模型/v02_输出.txt",
+    "极印版 aiken/销量概率模型/prototype_v02.py",
+    "notes/26-10-21 SI、COA校准.md",
+    "品牌战略.md",
     "极印品牌战略",
     "新建文件夹",
-    "notes/26-10-21 SI、COA校准.md",
     "AiKen SI、COA校准会议.md",
     "Hannto Brand Growth Blueprint Presentation draft v4.pdf",
     "潮玩影像品类 v3.md",
