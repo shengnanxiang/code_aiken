@@ -16,13 +16,13 @@ rng = np.random.default_rng(20261022)
 N_SIM = 8000
 T_MONTHS = 36
 
-# ============ v0.2 同参数重算 ============
-m_prior = rng.lognormal(mean=np.log(120_000), sigma=0.90, size=N_SIM)
+# ============ v0.3 实测校准参数（S1 口径，2026-10-26 Maggie 数据） ============
+m_prior = rng.lognormal(mean=np.log(110_000), sigma=0.85, size=N_SIM)
 q_prior = np.clip(rng.normal(0.42, 0.10, size=N_SIM), 0.18, 0.68)
-B_budget = rng.uniform(120, 280, size=N_SIM) * 10_000
-CPM = rng.triangular(45, 60, 75, size=N_SIM)
-CTR = rng.triangular(0.015, 0.022, 0.035, size=N_SIM)
-CVR = rng.triangular(0.012, 0.018, 0.028, size=N_SIM)
+B_budget = rng.triangular(80, 155, 240, size=N_SIM) * 10_000  # 锚 S1 实投 93 万 YTD × 1-2.5
+CPM = rng.triangular(36, 42, 48, size=N_SIM)          # S1 站外 37.6 / 站内 45.2
+CTR = rng.triangular(0.018, 0.023, 0.030, size=N_SIM) # S1 实测 2.14%
+CVR = rng.triangular(0.010, 0.015, 0.022, size=N_SIM) # S1 实测 0.98% 下界
 exposure = B_budget / CPM * 1000
 clicks = exposure * CTR
 s6_raw = clicks * CVR
@@ -74,7 +74,7 @@ p_dji_100 = float((m_dji < 1_000_000).mean() * 100)
 p_dji_5m = float((m_dji < 5_000_000).mean() * 100)
 p_dji_10m = float((m_dji < 10_000_000).mean() * 100)
 
-print("=== v0.2 关键数字 ===")
+print("=== v0.3 关键数字（S1 实测校准） ===")
 print(f"y1: P5={pct(y1,5)/1e4:.2f} P50={pct(y1,50)/1e4:.2f} P95={pct(y1,95)/1e4:.2f}")
 print(f"y3: P5={pct(y3,5)/1e4:.2f} P50={pct(y3,50)/1e4:.2f} P95={pct(y3,95)/1e4:.2f}")
 print(f"P(y1>=3.6万)={prob(y1,36000)*100:.1f}%  P(y3>=10万)={prob(y3,100000)*100:.1f}%")
@@ -175,7 +175,7 @@ def fan_svg(w=300, h=132):
 def prior_bars_svg(w=280, h=126):
     P = [f'<svg viewBox="0 0 {w} {h}" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft YaHei">']
     rows = [
-        ("m 市场潜力", "3.9万", "12.1万", "36.8万", 0.12, 0.30, 0.80),
+        ("m 市场潜力", "3.8万", "11.1万", "31.7万", 0.12, 0.30, 0.80),
         ("q 口碑系数", "0.29", "0.42", "0.55", 0.14, 0.33, 0.81),
     ]
     y = 22
@@ -256,9 +256,11 @@ def dji_svg(w=560, h=210):
 
 W = lambda v: f"{v/1e4:.2f}万"
 
+BEST_LINE = pct(y1, 90)  # 新三档：Best = P90（用户裁决 2026-10-26）
+
 SVG_Y1 = hist_svg(y1, w=560, h=210, vmax=80_000,
-    marks=[(pct(y1,5),"P5",  "#C0392B","4 3"),(pct(y1,50),"P50","#111","4 3"),(pct(y1,95),"P95","#7A4FA0","4 3")],
-    shade=(36_000, f"P(≥3.6万 Best线)={prob(y1,36000)*100:.0f}%"),
+    marks=[(pct(y1,10),"P10 Worst","#C0392B","4 3"),(pct(y1,50),"P50 Normal","#111","4 3"),(pct(y1,90),"P90 Best","#7A4FA0","4 3")],
+    shade=(BEST_LINE, f"P(≥Best线 {BEST_LINE/1e4:.1f}万)={prob(y1,BEST_LINE)*100:.0f}%"),
     xticks=[(0,"0"),(2e4,"2万"),(4e4,"4万"),(6e4,"6万"),(8e4,"8万")])
 SVG_Y3 = hist_svg(y3, w=560, h=210, vmax=200_000,
     marks=[(pct(y3,5),"P5","#C0392B","4 3"),(pct(y3,50),"P50","#111","4 3"),(pct(y3,95),"P95","#7A4FA0","4 3")],
@@ -269,7 +271,7 @@ SVG_FAN = fan_svg()
 SVG_PRIOR = prior_bars_svg()
 SVG_DJI = dji_svg()
 
-LEV_BUDGET = f"P50 {W(pct(y1,50))}→{W(pct(y1_b,50))}；P(≥Best线) {prob(y1,36000)*100:.0f}%→{prob(y1_b,36000)*100:.0f}%"
+LEV_BUDGET = f"P50 {W(pct(y1,50))}→{W(pct(y1_b,50))}；P(≥Best线 P90) {prob(y1,BEST_LINE)*100:.0f}%→{prob(y1_b,BEST_LINE)*100:.0f}%"
 LEV_Q = f"首年影响小、后期放大：三年 P50 {W(pct(y3,50))}→{W(pct(y3_k,50))}；P(三年≥10万) {prob(y3,100000)*100:.0f}%→{prob(y3_k,100000)*100:.0f}%"
 LEV_M = f"上限抬高：三年 P50 {W(pct(y3,50))}→{W(pct(y3_m,50))}（首年几乎不变）"
 
@@ -368,7 +370,7 @@ HTML_TMPL = """<!DOCTYPE html>
       <div class="q">8000 次模拟</div>
       <div class="desc">参数不取单点，按层 1 区间随机抽 8000 组 (m·p·q) → 8000 条 S 曲线 → 统计成销量概率分布。</div>
       <div class="chart">__SVG_FAN__</div>
-      <div class="refs">Worst / Normal / Best 三档场景 = 分布上的 <b>P5 / P50 / P95</b> 分位</div>
+      <div class="refs">三档场景（Worst/Normal/Best）= 分布上的 <b>P10 / P50 / P90</b> 分位锚</div>
     </div>
   </div>
 
@@ -419,7 +421,7 @@ HTML_TMPL = """<!DOCTYPE html>
 
   <div class="ft">
     <div class="loop"><b>Checkpoint 闭环</b>：上市 30 / 90 天真实数据 → 更新 m·p·q → 分布收窄（演示：一次 30 天收窄约 47%）→ 下一轮动作决策 ↺</div>
-    <div class="note">v0.2 参数：参照类已校准，漏斗为行业通带占位（待市场部实测校准）<br>RCF = 参照类预测（Flyvbjerg）· Bass = 扩散模型（1969, Management Science）· MC = 蒙特卡洛</div>
+    <div class="note">v0.3 参数：漏斗已按 S1 实测校准（CPM 37.6/45.2 · CTR 2.14% · CVR 0.98%，数据源 2026-10-26）<br>RCF = 参照类预测（Flyvbjerg）· Bass = 扩散模型（1969, Management Science）· MC = 蒙特卡洛</div>
   </div>
 
 </div></div>

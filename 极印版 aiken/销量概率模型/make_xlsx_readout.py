@@ -8,8 +8,8 @@ from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 
-# ===== 载入 v0.2 模拟结果 =====
-d = np.load(r"C:\Users\Nan\Documents\GitHub\code_aiken\极印版 aiken\销量概率模型\v02_results.npz")
+# ===== 载入 v0.3 模拟结果（S1 实测校准，2026-10-26） =====
+d = np.load(r"C:\Users\Nan\Documents\GitHub\code_aiken\极印版 aiken\销量概率模型\v03_results.npz")
 y1 = d["y1"]   # 首年销量
 y3 = d["y3"]   # 三年累计
 N = len(y1)
@@ -51,7 +51,7 @@ ws.column_dimensions["C"].width = 86
 
 ws["B2"] = "AiKen 销量概率分布 · 读数表"
 ws["B2"].font = F_TITLE
-ws["B3"] = "模型 v0.2 · 8,000 次蒙特卡洛 · 参数：参照类已校准，漏斗为行业通带占位（待市场部数据校准）"
+ws["B3"] = "模型 v0.3 · 8,000 次蒙特卡洛 · 漏斗参数已按 S1 实测校准（CPM 37.6/45.2 · CTR 2.14% · CVR 0.98%；数据源：极印投放数据 2026-10-26）"
 ws["B3"].font = F_SUB
 
 rows = [
@@ -66,18 +66,19 @@ rows = [
      "P5–P95 之间覆盖了 90% 的可能性，即「大概率区间」。"),
     ("怎么读「达到某销量对应多少概率」？",
      "两种读法：① 找分位表中第一个 ≥ 该销量的行，其概率列即答案（近似）；② 直接查「关键概率」表——"
-     "如 P(首年 ≥ 3.6万) 表示 8,000 次模拟中销量 ≥ 36,000 台的次数占比。"
+     "如 P(首年 ≥ 3.8万) 表示 8,000 次模拟中销量 ≥ 38,000 台的次数占比。"
      "注意：分位表给的是「多少分位对应多少销量」，关键概率表给的是「多少销量对应多少概率」，两者互为反查。"),
     ("和三档场景（Worst/Normal/Best）什么关系？",
-     "三档场景 = 分布上的分位锚，不是预测点：Worst（月销500→年6000）≈ P1 以下；Normal（月销1000→年1.2万）≈ P1；"
-     "Best（月销3000→年3.6万）≈ P75。三档供供应链与财务执行使用；全分布才是决策工具（详见方法论说明页）。"),
-    ("为什么首年 P50（2.86万）比会议 Normal（1.2万）高？",
-     "主要差异来自媒介预算假设：模型按上市前 6 个月 120–280 万投放测算（P50≈202万），"
-     "而会议 Normal 按 2% 销售费用折算全年仅约 14 万。校准会已确认 2% 不够——预算口径待市场部确认后重跑 v0.3。"),
+     "三档场景 = 分布上的分位锚（2026-10-26 裁决）：Worst = P10（首年 17,513 台 · 月销 ≈ 1,459）；"
+     "Normal = P50（26,348 · 月销 ≈ 2,196）；Best = P90（37,643 · 月销 ≈ 3,137）。"
+     "三档供供应链与财务执行使用；全分布才是决策工具（详见方法论说明页）。"),
+    ("S1 实测参照",
+     "站内直接归因月销 ~142 台（¥1799）；AiKen 价格 1/3，若效率持平、价格弹性 ×3 → 月销 ~425 台，"
+     "低于 Worst 锚（月销 ≈ 1,459）——投放加码是把销量推过三档锚的主要杠杆（预算 ×1.5：首年 P50 2.63万→3.72万）。"),
     ("读数示例",
-     "「首年销量 P50 = 28,600 台」→ 一半的可能性卖得比它多；"
-     "「P(首年 ≥ 36,000) = 25.8%」→ 约四分之一的概率达到 Best 档；"
-     "「三年累计 P95 = 158,000 台」→ 20 次里约有 1 次三年卖过 15.8 万台。"),
+     "「首年销量 P50 = 26,348 台」→ 一半的可能性卖得比它多；"
+     "「P(首年 ≥ 37,643) = 10%」→ P90 即 Best 锚（预算 ×1.5 后该档概率升至 58%）；"
+     "「三年累计 P95 = 134,992 台」→ 20 次里约有 1 次三年卖过 13.5 万台。"),
 ]
 r = 5
 for q, a in rows:
@@ -103,7 +104,7 @@ for col, w in widths.items():
 
 ws2["B2"] = "销量分位表 · 首年 & 三年累计"
 ws2["B2"].font = F_TITLE
-ws2["B3"] = "读法：如「首年 P50 = 28,600」表示 50% 的模拟结果首年销量低于 28,600 台。淡黄行 = 会议三档场景锚。"
+ws2["B3"] = "读法：如「首年 P50 = 26,300」表示 50% 的模拟结果首年销量低于 26,300 台。淡黄行 = 三档场景锚（Worst=P10 / Normal=P50 / Best=P90）。"
 ws2["B3"].font = F_SUB
 
 headers = ["分位 P(x)", "首年销量（台）", "首年销量（万台）", "首年 ≥ 该销量的概率", "三年累计（台）", "三年累计（万台）", "三年 ≥ 该销量的概率", "备注"]
@@ -112,17 +113,8 @@ for i, h in enumerate(headers):
     c.font = F_HDR; c.fill = FILL_HDR; c.alignment = CENTER; c.border = BORDER
 
 qs = list(range(5, 100, 5))  # P5, P10, ..., P95
-# 场景锚（首年口径）
-scn_map = {}
-for p in qs:
-    v = pct(y1, p)
-    if v >= 6000 and "worst" not in scn_map and pct(y1, 5) <= 6000:
-        pass
-# 手动判断锚行
-y1_6000, y1_12000, y1_36000 = 6000, 12000, 36000
-worst_p = prob_ge(y1, y1_6000)     # P(≥6000)
-normal_p = prob_ge(y1, y1_12000)
-best_p = prob_ge(y1, y1_36000)
+# 三档锚 = 分布分位（用户裁决 2026-10-26）：Worst=P10 / Normal=P50 / Best=P90
+W_V, N_V, B_V = pct(y1, 10), pct(y1, 50), pct(y1, 90)
 
 for i, p in enumerate(qs):
     r = 6 + i
@@ -132,13 +124,14 @@ for i, p in enumerate(qs):
             int(round(v3)), round(v3 / 10000, 2), f"{p3_ge*100:.1f}%", ""]
     note = ""
     is_anchor = False
-    if p == 5 and v1 <= 12000:
-        note = "Worst（年6000）在此之下"
-    if 10 <= p <= 20 and abs(v1 - 12000) == min(abs(pct(y1, q) - 12000) for q in qs):
-        note = "≈ Normal（年1.2万）"
+    if p == 10:
+        note = "Worst 场景锚（月销 ≈ {:,.0f}）".format(W_V / 12)
         is_anchor = True
-    if 70 <= p <= 80 and abs(v1 - 36000) == min(abs(pct(y1, q) - 36000) for q in qs):
-        note = "≈ Best（年3.6万）"
+    if p == 50:
+        note = "Normal 场景锚（月销 ≈ {:,.0f}）".format(N_V / 12)
+        is_anchor = True
+    if p == 90:
+        note = "Best 场景锚（月销 ≈ {:,.0f}）".format(B_V / 12)
         is_anchor = True
     vals[7] = note
     for j, v in enumerate(vals):
@@ -158,9 +151,9 @@ for i, h in enumerate(["问法", "首年", "三年累计"]):
     c = ws2.cell(row=kr, column=2 + i, value=h)
     c.font = F_HDR; c.fill = FILL_HDR; c.alignment = CENTER; c.border = BORDER
 key_rows = [
-    ("P(≥ 6,000 台)  — Worst 场景线", prob_ge(y1, 6000), prob_ge(y3, 6000)),
-    ("P(≥ 12,000 台) — Normal 场景线", prob_ge(y1, 12000), prob_ge(y3, 12000)),
-    ("P(≥ 36,000 台) — Best 场景线", prob_ge(y1, 36000), prob_ge(y3, 36000)),
+    ("P(≥ Worst 锚 {:,.0f} 台) — P10".format(W_V), prob_ge(y1, W_V), prob_ge(y3, W_V)),
+    ("P(≥ Normal 锚 {:,.0f} 台) — P50".format(N_V), prob_ge(y1, N_V), prob_ge(y3, N_V)),
+    ("P(≥ Best 锚 {:,.0f} 台) — P90".format(B_V), prob_ge(y1, B_V), prob_ge(y3, B_V)),
     ("P(≥ 50,000 台)", prob_ge(y1, 50000), prob_ge(y3, 50000)),
     ("P(≥ 100,000 台) — 十万台线", prob_ge(y1, 100000), prob_ge(y3, 100000)),
     ("P(≥ 200,000 台)", prob_ge(y1, 200000), prob_ge(y3, 200000)),
@@ -177,7 +170,7 @@ for i, (label, p1, p3) in enumerate(key_rows):
             ws2.cell(row=rr, column=col).fill = FILL_ALT
 
 note_r = kr + len(key_rows) + 2
-ws2.cell(row=note_r, column=2, value="注：本表由 v0.2 模拟结果（v02_results.npz）直接计算生成；v0.3 校准后数字将更新。").font = F_NOTE
+ws2.cell(row=note_r, column=2, value="注：本表由 v0.3 模拟结果（v03_results.npz）直接计算生成；漏斗参数为 S1 实测校准（2026-10-26）。").font = F_NOTE
 
 # ============================================================
 # Sheet 3: 直方图数据（首年 & 三年）
@@ -231,5 +224,4 @@ wb.save(OUT)
 print("saved:", OUT)
 print(f"y1 P5={pct(y1,5):.0f} P50={pct(y1,50):.0f} P95={pct(y1,95):.0f}")
 print(f"y3 P5={pct(y3,5):.0f} P50={pct(y3,50):.0f} P95={pct(y3,95):.0f}")
-print(f"key: P(y1>=36000)={prob_ge(y1,36000)*100:.1f}%  P(y3>=100000)={prob_ge(y3,100000)*100:.1f}%")
-print(f"anchors: worst6000<=P{np.searchsorted(np.sort(y1),6000)/N*100:.0f} normal12000=P{np.searchsorted(np.sort(y1),12000)/N*100:.0f} best36000=P{np.searchsorted(np.sort(y1),36000)/N*100:.0f}")
+print(f"三档锚: Worst=P10={W_V:,.0f}  Normal=P50={N_V:,.0f}  Best=P90={B_V:,.0f}")
