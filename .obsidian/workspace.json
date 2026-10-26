@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "极印版 aiken/AiKen SI、COA校准会议_纪要修正版.md",
+                "file": "file:C:/Users/Nan/.jiuwenswarm/.agent_teams/jiuwen_team_web_1a176db4c68_38638533d92e/team-workspace/artifacts/2026-10-26/chat-1/outputs/00_AiKen_DO评审总报告.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AiKen SI、COA校准会议_纪要修正版"
+              "title": "00_AiKen_DO评审总报告"
             }
           }
         ],
@@ -234,6 +234,11 @@
   },
   "active": "2e97d54feddbef42",
   "lastOpenFiles": [
+    "极印版 aiken/销量概率模型/v0.3b_最终摘要.md",
+    "极印版 aiken/销量概率模型/~$AiKen销量概率分布_读数表.xlsx",
+    "极印版 aiken/销量概率模型/v03b_finance.npz",
+    "极印版 aiken/销量概率模型/prototype_v03b.py",
+    "极印版 aiken/销量概率模型/v0.3_结果摘要.md",
     "极印版 aiken/四页评审PPT/AiKen_③业务飞轮与定价逻辑.html",
     "极印版 aiken/销量概率模型/AiKen销量概率模型_3+1框架说明_钉钉版.md",
     "极印版 aiken/AiKen SI、COA校准会议_纪要修正版.md",
@@ -247,12 +252,8 @@
     "极印版 aiken/销量概率模型/v02_results.npz",
     "极印版 aiken/销量概率模型/v02_输出.txt",
     "极印版 aiken/销量概率模型/prototype_v02.py",
-    "极印品牌战略",
-    "新建文件夹",
     "AiKen SI、COA校准会议.md",
-    "Hannto Brand Growth Blueprint Presentation draft v4.pdf",
     "潮玩影像品类 v3.md",
-    "notes",
     "手机以外的第二台相机.md",
     "极印品牌国内上市策略.md"
   ]
