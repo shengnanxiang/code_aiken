@@ -1,0 +1,3 @@
+row 3: [None, 'RD-003', 'NPI试产样机费用', '#REF!', 'Xiaomi', None, '研发NRE', 375550, None]
+row 11: [None, 'ZC-1202', '生产模具', '#REF!', 'Xiaomi', None, None, 634700, 'NRE']
+row 12: [None, 'ZC-1202', '生产治具', '#REF!', 'Xiaomi', None, None, 1822700, '总和']

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AiKen 品类组合演化逻辑</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body { background:#3a3a3a; }
+  body { margin:0; font-family:"Microsoft YaHei",-apple-system,sans-serif; }
+  #page { max-width:520px; margin:0 auto; background:#FFF; color:#111; padding-bottom:28px; }
+  .sec { padding:18px 18px 0; }
+  .hd { background:#111; padding:20px 18px 16px; }
+  .hd h1 { color:#fff; font-size:20px; letter-spacing:.5px; }
+  .hd h1 em { color:#EC008C; font-style:normal; }
+  .hd .sub { color:#bbb; font-size:12px; margin-top:5px; line-height:1.5; }
+
+  .card { border:1.5px solid #E6E6E6; border-radius:10px; padding:12px 14px; margin-top:12px; background:#fff; }
+  .card.hot { border:2px solid #EC008C; background:#FDF3F8; }
+  .card .tag { display:inline-block; font-size:10px; color:#fff; background:#111; padding:2px 9px; border-radius:2px; letter-spacing:1px; }
+  .card.hot .tag { background:#EC008C; }
+  .card h3 { font-size:15px; margin:7px 0 4px; }
+  .card p { font-size:13px; color:#444; line-height:1.65; }
+  .card p b { color:#111; }
+  .card p .mk { color:#EC008C; font-weight:bold; }
+  .card .foot { font-size:11px; color:#9a9a9a; margin-top:6px; padding-top:6px; border-top:1px dashed #E6E6E6; line-height:1.5; }
+
+  /* 收敛表 */
+  table { width:100%; border-collapse:collapse; margin-top:8px; font-size:12px; }
+  th { background:#111; color:#fff; font-weight:normal; padding:6px 8px; text-align:left; }
+  th:first-child { border-radius:6px 0 0 0; } th:last-child { border-radius:0 6px 0 0; }
+  td { padding:7px 8px; border-bottom:1px solid #EFEFEF; color:#333; line-height:1.45; }
+  td b { color:#111; }
+  tr.hl td { background:#FDF3F8; }
+  .num { font-variant-numeric:tabular-nums; }
+
+  /* 时间轴 */
+  .gen { display:flex; gap:10px; margin-top:10px; }
+  .gen .g { flex:1; border:1.5px solid #E6E6E6; border-radius:10px; padding:10px 8px; text-align:center; background:#fff; }
+  .gen .g.now { border:2px solid #EC008C; background:#FDF3F8; }
+  .gen .g .t { font-size:10px; color:#fff; background:#111; display:inline-block; padding:2px 8px; border-radius:8px; }
+  .gen .g.now .t { background:#EC008C; }
+  .gen .g h5 { font-size:13px; margin:6px 0 3px; }
+  .gen .g .p { font-size:11px; color:#555; line-height:1.55; }
+  .gen .g .be { font-size:15px; font-weight:bold; color:#111; margin-top:5px; font-variant-numeric:tabular-nums; }
+  .gen .g.now .be { color:#EC008C; }
+  .gen .g .be small { font-size:9.5px; color:#9a9a9a; font-weight:normal; display:block; }
+  .gen-arrow { display:flex; justify-content:center; color:#EC008C; font-weight:bold; font-size:16px; padding:2px 0; }
+
+  .formula { background:#111; color:#fff; border-radius:10px; padding:13px 16px; margin-top:12px; }
+  .formula .t { color:#EC008C; font-size:11px; font-weight:bold; letter-spacing:2px; }
+  .formula .f { font-size:14px; line-height:1.7; margin-top:5px; }
+  .formula .f b { color:#EC008C; }
+  .formula .n { font-size:11px; color:#999; margin-top:6px; line-height:1.5; }
+
+  ul.cl { list-style:none; margin-top:6px; }
+  ul.cl li { font-size:13px; color:#333; line-height:1.6; padding-left:15px; position:relative; margin-bottom:7px; }
+  ul.cl li::before { content:""; position:absolute; left:0; top:8px; width:6px; height:6px; border-radius:50%; background:#EC008C; }
+  ul.cl li b { color:#111; }
+  ul.cl li .why { display:block; font-size:11.5px; color:#888; margin-top:1px; }
+
+  .judge { display:flex; gap:8px; margin-top:10px; }
+  .judge .j { flex:1; border-radius:10px; padding:10px 11px; font-size:12px; line-height:1.55; }
+  .judge .go { background:#F0F9F0; border:1.5px solid #4CAF50; }
+  .judge .stop { background:#FDF0EF; border:1.5px solid #E57373; }
+  .judge .j b { display:block; font-size:13px; margin-bottom:3px; }
+  .judge .go b { color:#2E7D32; } .judge .stop b { color:#C62828; }
+</style>
+</head>
+<body>
+<div id="page">
+
+  <div class="hd">
+    <h1>AiKen <em>品类组合演化逻辑</em></h1>
+    <div class="sub">回答两个问题：第二款凭什么开始盈利？什么时候该停？<br>—— 第一款是预付，不是消耗</div>
+  </div>
+
+  <div class="sec">
+
+    <div class="card hot">
+      <span class="tag">核心逻辑</span>
+      <h3>第一款的亏损，是品类的一次性预付成本</h3>
+      <p>亏的 ~150 万（Normal 口径）由三块构成，性质完全不同：</p>
+      <table class="num">
+        <tr><th>亏损构成</th><th>性质</th><th>第二代能否复用</th></tr>
+        <tr><td>NRE 477 万<br><span style="color:#999;font-size:11px">模具/治具/研发</span></td><td>品类入场费</td><td><b>大部分可复用</b>——COA 两条 Constrain（可延续 ID 设计语言、标志性滤镜）买的就是复用权</td></tr>
+        <tr><td>投放效率损失<br><span style="color:#999;font-size:11px">CVR 1% vs 已教育品类 3%</span></td><td>品类教育成本</td><td><b>完全复用</b>——S1 回测证明教育断层差 2 倍，第二代 = 已教育品类</td></tr>
+        <tr><td>冷启动成本<br><span style="color:#999;font-size:11px">人群包/素材/店铺</span></td><td>资产构建</td><td><b>完全复用</b>，越滚越厚</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <span class="tag">收敛数学</span>
+      <h3>每一代的盈亏平衡销量在收敛（按真实复用结构修正）</h3>
+      <p style="margin-bottom:4px"><b>Gen2 复用的真实结构</b>：软件+测试人力 <b>≈194 万可复用</b>（50 人月经验迁移）；硬件结构/模具治具 110 万<b>需重做</b>；CMF/ID <b>追加 30–50 万</b> → Gen2 总投入 ≈ <b>310–330 万</b>。</p>
+      <div class="gen">
+        <div class="g now">
+          <span class="t">Gen 1</span>
+          <h5>走量款 ¥599</h5>
+          <div class="be">9.2 万<small>盈亏平衡 / 三年</small></div>
+          <div class="p">P50 实际 6.3 万<br>→ 亏 150 万（已接受）</div>
+        </div>
+        <div class="g">
+          <span class="t">Gen 1.5</span>
+          <h5>换色款（非联名）</h5>
+          <div class="be">NRE≈0–15万<small>色母/打样级</small></div>
+          <div class="p">模具不变 MOQ 2,000<br><b style="color:#2E7D32">现金流为正+测颜色</b></div>
+        </div>
+        <div class="g">
+          <span class="t">Gen 2</span>
+          <h5>CMF 系统迭代 ¥599</h5>
+          <div class="be">≈5 万<small>投入 310–330 万</small></div>
+          <div class="p">P50 若 6.3 万→+80 万；若 5 万→贴线<br><b style="color:#B8860B">谨慎乐观：重看 Gen1 资产兑现</b></div>
+        </div>
+        <div class="g">
+          <span class="t">Gen 3</span>
+          <h5>Pro 款 ¥899</h5>
+          <div class="be">≈2.5–3 万<small>净贡献 ~100 元/台</small></div>
+          <div class="p">利润层，须过两道检查<br>（净贡献 &amp; NRE 复用）</div>
+        </div>
+      </div>
+      <div class="foot">收敛仍成立（9.2万 → 5万 → 2.5万）但幅度按真实复用率下修：软件是最大复用块，硬件每代重付。Gen2 从「大概率盈利」修正为「谨慎乐观」——立项门更依赖 Gen1 资产兑现（自然流量占比、用户池转化）。</div>
+    </div>
+
+    <div class="card">
+      <span class="tag">判断依据</span>
+      <h3>五个「第二代可行性指标」<br>——加进 30/90 天 Checkpoint 追踪</h3>
+      <ul class="cl">
+        <li><b>自然销量占比</b>（非投放归因订单/总订单）<span class="why">目标 &gt;30–40%：q 口碑引擎成立的直接证据，Gen2 冷启动成本大降</span></li>
+        <li><b>三年累计落在分布的分位</b><span class="why">m 真实读数，决定 Gen2 模型的潜力上限</span></li>
+        <li><b>App 注册用户 & 私域池规模</b><span class="why">Gen2 的免费触达渠道 = 半个漏斗免费</span></li>
+        <li><b>打印机生态转化率</b>（相机用户→打印机/耗材）<span class="why">相机是入口、打印是利润中心；LTV 好则第一代实际回报远好于单品盈亏</span></li>
+        <li><b>NRE 实际复用清单</b>（模具/主板/结构件）<span class="why">Gen2 模型的分母输入</span></li>
+      </ul>
+      <p style="margin-top:4px"><span class="mk">Gen2 立项的门 = 用 Gen1 实测参数重跑模型，P50 盈利就立，P50 亏损就等或收缩。</span>方法论完全复用，参数全部换实测——这就是「沉淀为极印新品类经营范式」的完整含义。</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">Pro 款情景</span>
+      <h3>价高量低还亏损？先过两道检查，再谈三条出路</h3>
+      <p><b>检查 1 · 净贡献：</b>¥899 的 Pro 净贡献应约 100 元（走量款 2 倍）。做不到 = BOM 涨幅吃掉溢价，说明只是「贵」不是「Pro」，定位失败。</p>
+      <p style="margin-top:6px"><b>检查 2 · NRE 复用：</b>Pro 基于走量款平台改，NRE 应在百万级。按全新开发 = 不是 Pro 是新项目。</p>
+      <ul class="cl" style="margin-top:8px">
+        <li><b>降级为形象款/限量款</b>——用营销预算做（联名/纪念版），拉价格锚和声量，不背销量 KPI，符合 Jester 原型</li>
+        <li><b>插入 Gen 1.5</b>——配色/滤镜/小改款，NRE≈0，现金流为正，给 Gen2 争取时间和数据（潮玩品类标准打法）</li>
+        <li><b>顺序倒过来</b>——Gen2 先做全复用的走量迭代，Pro 放 Gen3 等品牌势能撑得起高价（Flashback 节奏：One35 → V2 两年磨一剑）</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="tag">停止判据</span>
+      <h3>组合的红线不是亏损额，是学习曲线</h3>
+      <div class="judge">
+        <div class="j go">
+          <b>继续的判据</b>
+          盈亏平衡销量在收敛（9.2万→3.7万→1.5万）；效率指标在改善（自然占比↑、CVR↑、CPM↓）。Gen2 小亏但趋势正确 → 继续，亏损在收窄。
+        </div>
+        <div class="j stop">
+          <b>停止的判据</b>
+          Gen2 漏斗效率相比 Gen1 无系统性改善（CVR 仍 &lt;1%、自然流量没起来、q 校准后仍低）→ 问题不是学习成本，是品类假设不成立，该停。
+        </div>
+      </div>
+    </div>
+
+    <div class="formula">
+      <div class="t">一句话</div>
+      <div class="f">第一款买的不是销量，是三样资产：<b>可复用的 NRE、被教育的市场、用户池</b>。<br>第二款盈利 = 资产让盈亏平衡销量降到预期之下（软件复用是最大杠杆）。<br>Pro 是利润层不是第二款。<br>停止信号不是亏损，是<b>效率曲线不再改善</b>。</div>
+      <div class="n">口径：单台净贡献 51.9 元（ASP 不含税 431.2 × 70% − BOM 250）；Gen2/Gen3 数字按真实复用结构推演（软件 194 万复用 / 硬件重做 / CMF 追加），立项前须用 Gen1 实测参数重跑概率模型。</div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

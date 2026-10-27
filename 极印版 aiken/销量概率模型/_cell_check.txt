@@ -1,0 +1,19 @@
+FOUND H8 = 3003000
+FOUND H9 = 4773550
+FOUND H12 = 1188000
+FOUND H13 = 634700
+FOUND H14 = 1822700
+--- 右侧汇总区 (E-J, 行1-14) ---
+E2=品牌名称 | I2=备注
+E3=Xiaomi | G3=模具 | H3=600000
+E4=Xiaomi | G4=治具 | H4=500000
+E5=Xiaomi | G5=研发NRE | H5=375550
+E6=Xiaomi | G6=测试+其它 | H6=145000
+E7=Xiaomi | G7=认证 | H7=150000
+E8=Xiaomi | G8=人力 | H8=3003000 | I8=原127 人月，10月前约36
+E9=Xiaomi | G9=汇总 | H9=4773550
+E10=Xiaomi
+E11=Xiaomi
+E12=Xiaomi | G12=右侧为沉没成本 | H12=1188000 | I12=10月前人月
+E13=Xiaomi | H13=634700 | I13=已发生NRE
+E14=Xiaomi | H14=1822700 | I14=沉没成本总和

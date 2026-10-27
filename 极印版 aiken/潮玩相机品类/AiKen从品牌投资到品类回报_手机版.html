@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AiKen · 从品牌投资到品类回报</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body { background:#3a3a3a; }
+  body { margin:0; font-family:"Microsoft YaHei",-apple-system,sans-serif; }
+  #page { max-width:520px; margin:0 auto; background:#FFF; color:#111; padding-bottom:28px; }
+  .sec { padding:16px 16px 0; }
+  .hd { background:#111; padding:20px 16px 16px; }
+  .hd h1 { color:#fff; font-size:19px; letter-spacing:.5px; line-height:1.3; }
+  .hd h1 em { color:#EC008C; font-style:normal; }
+  .hd .sub { color:#bbb; font-size:12px; margin-top:5px; line-height:1.5; }
+
+  .card { border:1.5px solid #E6E6E6; border-radius:10px; padding:12px 14px; margin-top:12px; background:#fff; }
+  .card.hot { border:2px solid #EC008C; background:#FDF3F8; }
+  .card .tag { display:inline-block; font-size:10px; color:#fff; background:#111; padding:2px 9px; border-radius:2px; letter-spacing:1px; }
+  .card.hot .tag { background:#EC008C; }
+  .card h3 { font-size:15px; margin:7px 0 4px; line-height:1.4; }
+  .card p { font-size:13px; color:#444; line-height:1.65; }
+  .card p b { color:#111; }
+  .card p .mk { color:#EC008C; font-weight:bold; }
+  .card .foot { font-size:11px; color:#9a9a9a; margin-top:7px; padding-top:6px; border-top:1px dashed #E6E6E6; line-height:1.5; }
+
+  table { width:100%; border-collapse:collapse; margin-top:8px; font-size:12px; }
+  th { background:#111; color:#fff; font-weight:normal; padding:6px 7px; text-align:left; }
+  th:first-child { border-radius:6px 0 0 0; } th:last-child { border-radius:0 6px 0 0; }
+  td { padding:6px 7px; border-bottom:1px solid #EFEFEF; color:#333; line-height:1.5; }
+  td b { color:#111; }
+  tr.hl td { background:#FDF3F8; }
+  .num { font-variant-numeric:tabular-nums; }
+  .pos { color:#2E7D32; font-weight:bold; }
+  .neg { color:#C62828; font-weight:bold; }
+
+  .steps { margin-top:10px; }
+  .step { display:flex; gap:10px; margin-bottom:9px; }
+  .step .no { flex:none; width:24px; height:24px; border-radius:50%; background:#111; color:#fff; font-size:12px; font-weight:bold; display:flex; align-items:center; justify-content:center; margin-top:2px; }
+  .step.hot .no { background:#EC008C; }
+  .step .bd { flex:1; border:1.5px solid #E6E6E6; border-radius:9px; padding:8px 11px; background:#fff; }
+  .step.hot .bd { border:1.5px solid #EC008C; background:#FDF3F8; }
+  .step .bd h5 { font-size:13.5px; }
+  .step .bd h5 span { font-size:10.5px; color:#9a9a9a; font-weight:normal; margin-left:5px; }
+  .step .bd p { font-size:12px; color:#444; line-height:1.6; margin-top:3px; }
+  .step .bd p b { color:#111; }
+
+  .verdict { background:#111; border-radius:10px; padding:13px 15px; margin-top:12px; }
+  .verdict .t { color:#EC008C; font-size:11px; font-weight:bold; letter-spacing:2px; }
+  .verdict .big { color:#fff; font-size:17px; font-weight:bold; line-height:1.5; margin-top:5px; }
+  .verdict .big em { color:#EC008C; font-style:normal; }
+  .verdict .n { color:#999; font-size:10.5px; margin-top:7px; line-height:1.55; }
+
+  .gates { margin-top:8px; }
+  .gate { display:flex; gap:9px; align-items:flex-start; margin-bottom:7px; }
+  .gate .g { flex:none; font-size:10px; color:#fff; background:#2E7D32; padding:2px 8px; border-radius:9px; margin-top:2px; white-space:nowrap; }
+  .gate p { font-size:12px; color:#333; line-height:1.55; }
+  .gate p b { color:#111; }
+</style>
+</head>
+<body>
+<div id="page">
+
+  <div class="hd">
+    <h1>AiKen <em>从品牌投资到品类回报</em></h1>
+    <div class="sub">单品会亏，但亏损买的是三样资产；<br>三步兑现后，品类组合三年摸到打平线上下——这是投资的退出路径</div>
+  </div>
+
+  <div class="sec">
+
+    <div class="card hot">
+      <span class="tag">先讲清楚亏损</span>
+      <h3>AiKen 单品：亏 150 万（Normal 口径），这是入场券</h3>
+      <p>新预算 477 万下，Best 档（P90）也只是打平。这不是坏消息——<b>项目从立项起就是品牌投资，Sean 已预先接受 Worst 的全部亏损</b>。真正的问题是：这张券买到了什么？</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">亏损的兑换物</span>
+      <h3>150 万买的三样资产，全部可带入下一代</h3>
+      <table>
+        <tr><th>资产</th><th>量化形态</th><th>谁兑现</th></tr>
+        <tr><td><b>可复用的工程</b></td><td>软件+测试 ≈194 万人力沉淀；ID/滤镜语言延续权</td><td>Gen 2 / Pro</td></tr>
+        <tr><td><b>被教育的市场</b></td><td>品类认知 + CVR 从 1% 带升向 2-3% 带（S1 回测：教育断层差 2 倍）</td><td>Gen 2</td></tr>
+        <tr><td><b>用户池</b></td><td>P50 下 ≈2.2 万买家 + 3.3 万 App 注册；自然流量占比 25-40%</td><td>Gen 2 / Pro</td></tr>
+      </table>
+      <p style="margin-top:6px"><span class="mk">关键：这三样资产的第一性来源就是 AiKen 这台亏钱的产品。</span>没有 Gen1，Gen2 的模型没有实测参数、没有用户池、没有「已教育」状态——直接做 Gen2 一样要付这笔钱，而且没有数据。</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">三步兑现</span>
+      <h3>每一步的投入、回报与门槛（8,000 次模拟）</h3>
+      <div class="steps">
+        <div class="step hot">
+          <div class="no">1</div>
+          <div class="bd">
+            <h5>AiKen ¥599<span>品牌投资 · 已立项</span></h5>
+            <p>投入 477 万 ｜ 三年 P50：<b>亏 150 万</b>（已接受）<br>产出：三样资产 + <b>品类经营方法论</b>（本页所有数字的来源）</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">2</div>
+          <div class="bd">
+            <h5>Gen 1.5 换色款<span>+6-12 月 · 市场测试+现金流</span></h5>
+            <p>NRE≈0–15 万（色母/打样级，模具不变）｜ MOQ 2,000 小批快跑<br><b class="pos">现金流为正</b> + 测试哪个颜色卖得动——换色销量直接喂给 Gen2 的 CMF 方向</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">3</div>
+          <div class="bd">
+            <h5>Gen 2 CMF 系统迭代 ¥599<span>+6-12 月 · 主力收割</span></h5>
+            <p>NRE 100 万（ID+CMF）｜ 首年 P50 = <b>33,291 台</b>（Gen1 的 1.5 倍）<br>三年 P50 净利 <b class="pos">+141 万</b> ｜ P(转正) = <b>63%</b><br><span style="color:#888;font-size:11px">驱动：CVR 1.4%→2.2%（市场已被教育）+ 自然流量 25-40%</span></p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">4</div>
+          <div class="bd">
+            <h5>Pro ¥999<span>+18 月 · 利润层（X half 平替）</span></h5>
+            <p>NRE 300 万 ｜ 净贡献 152 元/台（Gen1 的 2.9 倍）<br>三年 P50 净利 <b class="pos">+317 万</b> ｜ P(转正) = <b>92%</b>（品类盘口径）<br><span style="color:#888;font-size:11px">保守口径（平替窄盘）P(转正)=42%——见下方门槛</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <div class="t">组合视角</div>
+      <div class="big">Gen1 + Gen2 + Pro 三年累计：<br>P50 <em>+336 万</em> ｜ P(整体转正) = <em>73%</em><br><span style="font-size:13px;font-weight:normal;color:#ddd">单品亏 150 万 → 品类组合五五开 → 七成转正</span></div>
+      <div class="n">保守情景（Pro 按平替窄盘计）组合 P50 ≈ +50 万、P(转正) ≈ 55%——方向一致，幅度待 Gen2 期数据收窄。</div>
+    </div>
+
+    <div class="card">
+      <span class="tag">不盲投</span>
+      <h3>每一步都有门：Checkpoint 数据说话</h3>
+      <div class="gates">
+        <div class="gate"><div class="g">门 1</div><p><b>Gen2 启动门</b>（AiKen 90 天 Checkpoint）：自然销量占比 ≥25% 且 CVR 向 2% 带收敛 → CMF 迭代启动；不达 → Gen1.5 延长观察</p></div>
+        <div class="gate"><div class="g">门 2</div><p><b>Pro 立项门</b>（Gen2 上市后）：① ¥1,000-1,500 复古相机中国实际年销摸底（Maggie 竞品监测/电商爬取）② AiKen 用户 ¥999 购买意愿调研——两个数落地后 m 从假设变实测，重跑模型 P50 盈利才立项</p></div>
+        <div class="gate"><div class="g">门 3</div><p><b>止损门</b>（贯穿）：Gen2 漏斗效率相比 Gen1 无系统性改善 → 说明品类假设不成立而非学习成本，停止追加</p></div>
+      </div>
+      <p style="margin-top:4px">这套门就是 AiKen 项目验证的「<b>新品类经营范式</b>」本身——<span class="mk">方法论的复利和资产的复利，是同一笔投资的两面。</span></p>
+    </div>
+
+    <div class="card">
+      <span class="tag">一句话</span>
+      <h3>给评审的收束</h3>
+      <p><b>「AiKen 这 150 万不是花掉的，是存进去的。」</b><br>存入的是工程复用权、市场教育、用户池——Gen2 用 100 万的本金开始取（P50 +141 万），Pro 用 300 万放大（P50 +317 万）。三年后品类组合 P50 +336 万、七成概率整体转正；而如果中途任何一扇门的数据不及格，我们随时有能力停止——<b>这正是不做单点预测、做概率分布经营的价值：每个决定都有数据门，没有盲注。</b></p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

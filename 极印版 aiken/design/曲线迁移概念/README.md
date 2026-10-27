@@ -35,22 +35,60 @@
 4. **红线遵守**：三图的外轮廓均为圆角矩形机身（无结构性改动的迹象），但**形体保真的最终确认需人工目检**（本成员读图通道受限，已用像素转写做了能做的部分）
 5. **绿蒙皮版特有**：A 图右半有约 7% 绿色像素（判断为左壳绿蒙皮的反射光/环境光沾染到右侧曲面，非蒙皮错位）；两图绿区实测均色 #4a533a-#50593d，比原蒙皮 #55603f 略暗 1-2 个灰阶，属光照差异范围；绿蒙皮与石墨灰机身的搭配协调性（撞色是否好看）属审美判断，留待用户目检
 
-## 四、下一步建议
+## 五、v2 重生成版（2026-10-27，响应用户"重试一下"）
 
-1. **人工目检五图**（重点：形体保真、细节完整性），在"曲线强度 × 蒙皮解读"两维度上反馈落点（例：B 曲线 + 绿蒙皮 = 字面解读的稳妥版）
-2. 若认可某方向但形态漂移：可用更严格的图生图参数重跑（或换 provider）
-3. 若"曲线处理"实际指腰线弧度（解读候选 B），告诉我，只需改 prompt 的曲线描述重出，框架不动
-4. 可补一张"保留右端竖直窄条"的对照变体（解读候选 ② 的另一分支）
+### 生成通道对比（结论：DashScope wan2.7-image + `--ar 16:9` + 双参考图）
 
-## 五、文件清单
+| 通道 | 结果 |
+|---|---|
+| google / gemini-3-pro-image | v1 时被墙；本轮发现系统代理（127.0.0.1:7897）可通，但 **免费层配额耗尽**（generate_content limit 0，需等约 1.5h 重置），未采用 |
+| DashScope / wan2.7-image-pro | 可用；试生成 A 炭灰版对比——构图指标与 wan2.7-image 一致，但右壳呈现**细密重复纹理**（偏 variant C 语言），对 A 的"2-3 条大弧线"意图偏离，未选为主通道（对比图保留：`v2/variantA_faithful_alt_pro.png`） |
+| **DashScope / wan2.7-image（选定）** | 构图对齐 + A 变体曲线意图最忠实，全矩阵 5 张由此通道生成 |
+
+### v1→v2 关键改进（程序化验证）
+
+| 指标 | MASTER | v1 | v2 | 结论 |
+|---|---|---|---|---|
+| 画幅 | 1373×826 横幅 AR 1.66 | 2048×2048 方画幅（FAIL） | 2720×1536 AR 1.77 | ✅ 修复（`--ar 16:9`） |
+| 产品宽度占比 | 60% | 83-86%（特写，FAIL） | 56% | ✅ 修复（差 4pp） |
+| 物体长宽比 | 1.54 | 1.48-1.74 | 1.70-1.71 | ✅ 通过 |
+| 质心 | x53% y50% | x51% y53-54% | x51% y53% | ✅ 居中一致 |
+| C 版凹槽走向 | —（要求斜向） | 竖直主导（FAIL） | **diag(/) 84% 斜向主导** | ✅ 修复（prompt 斜向明确化 + 重言约束） |
+| CMF 纯度 | — | colorful 0.0% | colorful 0.0% | ✅ 保持 |
+| 绿蒙皮定位 | 左壳 | 93-96% 左半 | 96-97% 左半，均色 #4c563a/#4e593c | ✅ 保持 |
+| 参考图 | — | 单参考（close） | **双参考（close+open）** | ✅ 形态锁定增强 |
+
+### v2 文件（`v2\` 子目录）
+
+- `variantA_faithful.png` —— 三弧忠实迁移（炭灰蒙皮）
+- `variantB_restrained.png` —— 克制单弧（炭灰蒙皮）
+- `variantC_expressive.png` —— **斜向**凹槽族（炭灰蒙皮，v2 已修复走向）
+- `variantA_greenleather.png` —— 三弧 + 原绿蒙皮（字面解读）
+- `variantB_greenleather.png` —— 单弧 + 原绿蒙皮（字面解读）
+- `variantA_faithful_alt_pro.png` —— 通道对比证据（wan2.7-image-pro 版，未选为主）
+- 生成记录：prompt 在 `concept-renderer_workspace/prompts/v2/`（5 份，含构图约束段 + C 斜向约束）；QA 数据在 `analysis/v2_matrix_qa.txt` 等
+
+### v2 已知偏差（诚实标注）
+
+1. **视角一致性仍属"高概率一致"而非"逐像素验证"**：构图几何指标（画幅/占比/质心/物体长宽比）已对齐，对角线构图姿态与 MASTER 转写一致，但机位高度/俯仰角的严格一致性超出 ASCII 转写分辨率，建议人工目检最终确认
+2. **细节仍未验证**：按钮/转盘/logo/缝线/蒙皮颗粒等超出转写分辨率
+3. **C 版斜向为统计主导（84%）而非 100%**：边缘方向统计来自右壳区强边缘采样，存在少量非斜向边缘（轮廓/分件线本身），属正常
+4. v2 起四张炭灰版右壳明暗带与 MASTER 转写的形态对应良好；wan2.7-image-pro 的对比版呈现细密纹理（更接近 C 语言），如用户喜欢该质感可作为备选通道说明
+
+## 六、下一步建议
+
+1. **人工目检 v2 五图**（重点：机位视角一致性、细节完整性），在"曲线强度 × 蒙皮解读"两维度上反馈落点
+2. v2 构图已对齐 MASTER（横幅/占比/居中/斜向凹槽全修复），若仍有形体漂移，下一步可尝试：等 google 配额重置后用 gemini-3-pro-image 走代理生成对比；或用 wan2.7-image-pro 的编辑模式（更保形但纹理偏密）
+3. 若"曲线处理"实际指腰线弧度（解读候选 B），只需改 prompt 曲线描述重出，框架不动
+4. 可补"保留右端竖直窄条"的对照变体（解读候选 ② 的另一分支）
+
+## 七、文件清单
 
 - `reading_notes.md` —— 阶段一读图结论（含需求逐句解读、8 图程序化读图数据、石墨灰误判修正记录）
-- `variantA_faithful.png` —— 忠实迁移（3 弧线，炭灰蒙皮）
-- `variantB_restrained.png` —— 克制单弧（炭灰蒙皮）
-- `variantC_expressive.png` —— 表现性凹槽族（炭灰蒙皮）
-- `variantA_greenleather.png` —— 忠实迁移（3 弧线，**原绿蒙皮·字面解读**）
-- `variantB_greenleather.png` —— 克制单弧（**原绿蒙皮·字面解读**）
-- 生成 prompt（工作区）：`concept-renderer_workspace/prompts/variant*.md`（5 份）
-- QA 数据（工作区）：`concept-renderer_workspace/analysis/variant_qa.txt`、`greenleather_qa.txt`
+- 【v1】`variantA_faithful.png` / `variantB_restrained.png` / `variantC_expressive.png` / `variantA_greenleather.png` / `variantB_greenleather.png` —— 首轮五变体（方画幅，保留供对比）
+- 【v2】`v2\variantA_faithful.png` / `v2\variantB_restrained.png` / `v2\variantC_expressive.png` / `v2\variantA_greenleather.png` / `v2\variantB_greenleather.png` —— 重生成五变体（横幅 16:9、构图对齐 MASTER、C 斜向修复）
+- 【v2 对比】`v2\variantA_faithful_alt_pro.png` —— wan2.7-image-pro 通道对比证据
+- 生成 prompt（工作区）：`concept-renderer_workspace/prompts/`（v1 5 份 + v2 5 份）
+- QA 数据（工作区）：`concept-renderer_workspace/analysis/`（variant_qa / greenleather_qa / v2_compare / v2_sbs / v2_matrix_qa）
 
 > 本轮全部读图经过程序化像素转写通道完成（read_file 多模态被禁用），所有结论可复核；生成结果的 QA 同样基于程序化分析，形体保真项已如实标注验证边界。

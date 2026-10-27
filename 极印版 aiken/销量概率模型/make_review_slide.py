@@ -350,7 +350,7 @@ HTML = """<!DOCTYPE html>
   <div class="kpirow">
     <div class="kpi"><div class="k">首月观测 = Normal 月销时</div><div class="v">区间收窄 <em>41%</em></div><div class="s">m 的 P10–P90：4.5万–26.4万 → 8.3万–21.3万</div></div>
     <div class="kpi"><div class="k">单台净贡献（30% 费用口径）</div><div class="v">51.9 <em>元</em></div><div class="s">ASP 不含税 431.2 × 70% − BOM 250</div></div>
-    <div class="kpi"><div class="k">首年投入覆盖（P50）</div><div class="v">28<em>%</em></div><div class="s">投入 413.8 万 · 品牌投资型定位（非回本导向）</div></div>
+    <div class="kpi"><div class="k">首年投入覆盖（P50）</div><div class="v">24<em>%</em></div><div class="s">投入 477.4 万（新 Budget）· 品牌投资型定位（非回本导向）</div></div>
     <div class="kpi"><div class="k">P(三年累计 ≥10万)</div><div class="v">__P3_10W__<em>%</em></div><div class="s">三年 P50 = 63,130 台</div></div>
   </div>
 

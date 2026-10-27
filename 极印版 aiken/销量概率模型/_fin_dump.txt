@@ -1,0 +1,91 @@
+=== BUDGET ===
+品号 | NPI Program Items | 项目名称 | 品牌名称 | 备注
+RD-001 | 样品费用 | #REF! | Xiaomi | 模具 | 600000
+RD-002 | 测试费用 | #REF! | Xiaomi | 治具 | 500000
+RD-003 | NPI试产样机费用 | #REF! | Xiaomi | 研发NRE | 375550
+RD-004 | NPI试产服务费用 | #REF! | Xiaomi | 测试+其它 | 145000
+RD-005 | 试验模具治具 | #REF! | Xiaomi | 认证 | 150000
+RD-006 | 技术服务（委托研发） | #REF! | Xiaomi | 人力 | 3003000 | 原127 人月，10月前约36
+RD-007 | 软件（研发） | #REF! | Xiaomi | 汇总 | 4773550
+RD-008 | 咨询服务 | #REF! | Xiaomi
+RD-009 | 人力资源服务 | #REF! | Xiaomi
+RD-011 | 研发测试用耗材 | #REF! | Xiaomi | 右侧为沉没成本 | 1188000 | 10月前人月
+ZC-1202 | 生产模具 | #REF! | Xiaomi | 634700 | NRE
+ZC-1202 | 生产治具 | #REF! | Xiaomi | 1822700 | 总和
+ZC-1299 | 其他生产设备 | #REF! | Xiaomi
+ZC-1301 | 办公计算机设备 | #REF! | Xiaomi
+ZC-1302 | 办公测试设备 | #REF! | Xiaomi
+ZC-2201 | 研发工具 | #REF! | Xiaomi
+Travel-P | 项目差旅费用 | #REF! | Xiaomi
+Logistics-P | 物流费用 | #REF! | Xiaomi
+RCOW-P | 项目人力费用 | #REF! | Xiaomi
+TB-P | 项目组团建费用 | #REF! | Xiaomi
+Monthly Total
+Investment Total | #REF!
+Ricotta-P 国内 | 2024-10-22 00:00:00
+品号 | NPI Program Items | 项目名称 | 品牌名称
+RD-001 | 样品费用 | #REF! | Xiaomi
+RD-002 | 测试费用 | #REF! | Xiaomi
+RD-003 | NPI试产样机费用 | #REF! | Xiaomi
+RD-004 | NPI试产服务费用 | #REF! | Xiaomi
+RD-005 | 试验模具治具 | #REF! | Xiaomi
+RD-006 | 技术服务（委托研发） | #REF! | Xiaomi
+RD-007 | 软件（研发） | #REF! | Xiaomi
+RD-008 | 咨询服务 | #REF! | Xiaomi
+RD-009 | 人力资源服务 | #REF! | Xiaomi
+RD-011 | 研发测试用耗材 | #REF! | Xiaomi
+ZC-1202 | 生产模具 | #REF! | Xiaomi
+ZC-1202 | 生产治具 | #REF! | Xiaomi
+ZC-1299 | 其他生产设备 | #REF! | Xiaomi
+ZC-1301 | 办公计算机设备 | #REF! | Xiaomi
+ZC-1302 | 办公测试设备 | #REF! | Xiaomi
+ZC-2201 | 研发工具 | #REF! | Xiaomi
+Travel-P | 项目差旅费用 | #REF! | Xiaomi
+Logistics-P | 物流费用 | #REF! | Xiaomi
+RCOW-P | 项目人力费用 | #REF! | Xiaomi
+TB-P | 项目组团建费用 | #REF! | Xiaomi
+Monthly Total
+Investment Total | #REF!
+Ricotta-P 海外 | 2024-10-22 00:00:00
+品号 | NPI Program Items | 项目名称 | 品牌名称
+RD-001 | 样品费用 | #REF! | Xiaomi
+RD-002 | 测试费用 | #REF! | Xiaomi
+RD-003 | NPI试产样机费用 | #REF! | Xiaomi
+RD-004 | NPI试产服务费用 | #REF! | Xiaomi
+RD-005 | 试验模具治具 | #REF! | Xiaomi
+RD-006 | 技术服务（委托研发） | #REF! | Xiaomi
+RD-007 | 软件（研发） | #REF! | Xiaomi
+RD-008 | 咨询服务 | #REF! | Xiaomi
+RD-009 | 人力资源服务 | #REF! | Xiaomi
+RD-011 | 研发测试用耗材 | #REF! | Xiaomi
+ZC-1202 | 生产模具 | #REF! | Xiaomi
+ZC-1202 | 生产治具 | #REF! | Xiaomi
+ZC-1299 | 其他生产设备 | #REF! | Xiaomi
+ZC-1301 | 办公计算机设备 | #REF! | Xiaomi
+ZC-1302 | 办公测试设备 | #REF! | Xiaomi
+ZC-2201 | 研发工具 | #REF! | Xiaomi
+Travel-P | 项目差旅费用 | #REF! | Xiaomi
+Logistics-P | 物流费用 | #REF! | Xiaomi
+RCOW-P | 项目人力费用 | #REF! | Xiaomi
+TB-P | 项目组团建费用 | #REF! | Xiaomi
+Monthly Total
+Investment Total | #REF!
+=== SCENARIOS ===
+Normal
+年销 | 月销 | 分布
+第一年 | 21600 | 1800 | P10
+第二年 | 21600 | 1800
+第三年 | 21600 | 1800
+合计 | 64800
+Best
+年销 | 月销 | 分布
+第一年 | 32400 | 2700 | P50
+第二年 | 32400 | 2700
+第三年 | 32400 | 2700
+合计 | 97200
+Worst
+年销 | 月销 | 分布
+第一年 | 14400 | 1200 | P90
+第二年 | 14400 | 1200
+第三年 | 14400 | 1200
+合计 | 43200

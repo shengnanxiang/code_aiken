@@ -9,7 +9,7 @@ from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 
 # ===== 载入 v0.3 模拟结果（S1 实测校准，2026-10-26） =====
-d = np.load(r"C:\Users\Nan\Documents\GitHub\code_aiken\极印版 aiken\销量概率模型\v03_results.npz")
+d = np.load(r"C:\Users\Nan\Documents\GitHub\code_aiken\极印版 aiken\销量概率模型\v04_results.npz")
 y1 = d["y1"]   # 首年销量
 y3 = d["y3"]   # 三年累计
 N = len(y1)
