@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>新品销量概率分布计算器 · 极印 PM 工具</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:"Microsoft YaHei",sans-serif; background:#F0F0F0; color:#111; padding:20px; }
+  .wrap { max-width:1440px; margin:0 auto; }
+  .hd { background:#111; color:#fff; border-radius:10px 10px 0 0; padding:14px 24px; display:flex; justify-content:space-between; align-items:center; }
+  .hd h1 { font-size:19px; }
+  .hd h1 em { color:#EC008C; font-style:normal; }
+  .hd .tag { font-size:10.5px; background:#EC008C; padding:3px 10px; border-radius:3px; letter-spacing:1px; }
+  .main { display:flex; gap:0; background:#fff; border:1px solid #ddd; border-top:none; }
+  /* 左侧参数区 */
+  .params { width:400px; flex:none; border-right:1px solid #E6E6E6; padding:16px 18px; overflow-y:auto; max-height:82vh; }
+  .sec { margin-bottom:16px; }
+  .sec .t { font-size:12px; font-weight:bold; letter-spacing:1px; color:#EC008C; border-bottom:1.5px solid #111; padding-bottom:4px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; }
+  .sec .t .hint { font-size:9.5px; color:#999; font-weight:normal; }
+  .row { display:flex; gap:8px; margin-bottom:7px; align-items:center; }
+  .row label { font-size:11px; color:#444; width:118px; flex:none; cursor:help; }
+  .row input, .row select { font-size:12px; padding:4px 7px; border:1px solid #ccc; border-radius:4px; width:100%; min-width:0; font-family:inherit; }
+  .row input:focus { outline:none; border-color:#EC008C; }
+  .row .unit { font-size:10px; color:#999; flex:none; width:34px; }
+  .presets { display:flex; gap:6px; margin-bottom:14px; flex-wrap:wrap; }
+  .preset { font-size:11px; border:1.5px solid #111; background:#fff; padding:4px 10px; border-radius:14px; cursor:pointer; }
+  .preset:hover { background:#111; color:#fff; }
+  .preset.hot { border-color:#EC008C; color:#EC008C; }
+  .preset.hot:hover { background:#EC008C; color:#fff; }
+  /* 参数向导 */
+  .wiz { margin-bottom:16px; display:flex; flex-direction:column; gap:10px; }
+  .wizbox { border:1.5px dashed #EC008C; border-radius:8px; padding:10px 12px; background:#FDF3F8; }
+  .wizbox .wt { font-size:11.5px; font-weight:bold; color:#EC008C; margin-bottom:7px; }
+  .qrow { display:flex; flex-direction:column; gap:2px; margin-bottom:6px; }
+  .qrow span { font-size:10.5px; color:#444; }
+  .qrow select { font-size:11px; padding:3px 6px; border:1px solid #ccc; border-radius:4px; font-family:inherit; }
+  .wizbtn { font-size:11px; border:none; background:#111; color:#fff; padding:5px 12px; border-radius:5px; cursor:pointer; margin-top:4px; }
+  .wizbtn:hover { background:#EC008C; }
+  .wout { font-size:11px; color:#111; margin-top:6px; line-height:1.6; display:none; background:#fff; border-radius:5px; padding:6px 9px; }
+  .run { width:100%; font-size:14px; font-weight:bold; padding:11px; background:#111; color:#fff; border:none; border-radius:6px; cursor:pointer; margin-top:4px; }
+  .run:hover { background:#EC008C; }
+  .run:disabled { background:#999; cursor:wait; }
+  /* 右侧结果区 */
+  .results { flex:1; padding:16px 20px; overflow-y:auto; max-height:82vh; }
+  .placeholder { display:flex; flex-direction:column; align-items:center; justify-content:center; height:400px; color:#aaa; }
+  .placeholder .big { font-size:40px; margin-bottom:12px; }
+  .kpirow { display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap; }
+  .kpi { flex:1; min-width:150px; border:1.5px solid #E6E6E6; border-radius:8px; padding:8px 12px; }
+  .kpi .k { font-size:10px; color:#888; }
+  .kpi .v { font-size:20px; font-weight:bold; margin-top:2px; font-variant-numeric:tabular-nums; }
+  .kpi .v em { font-size:10px; font-style:normal; color:#999; }
+  .kpi .s { font-size:9.5px; color:#aaa; margin-top:2px; }
+  .chartbox { border:1.5px solid #E6E6E6; border-radius:8px; padding:10px 12px; margin-bottom:14px; }
+  .chartbox h4 { font-size:12.5px; margin-bottom:4px; display:flex; justify-content:space-between; }
+  .chartbox h4 .r { font-size:10px; color:#888; font-weight:normal; }
+  .chartbox svg { width:100%; height:190px; }
+  table { border-collapse:collapse; width:100%; font-size:11.5px; }
+  th { background:#111; color:#fff; padding:4px 8px; font-weight:normal; text-align:center; }
+  th:first-child { text-align:left; }
+  td { padding:3.5px 8px; border-bottom:1px solid #eee; text-align:center; font-variant-numeric:tabular-nums; }
+  td:first-child { text-align:left; }
+  tr.hl td { background:#FFF6D9; font-weight:bold; }
+  .tips { font-size:9.5px; color:#aaa; margin-top:8px; line-height:1.6; }
+  .ft { font-size:9.5px; color:#999; padding:8px 24px; background:#fafafa; border:1px solid #ddd; border-top:none; border-radius:0 0 10px 10px; display:flex; justify-content:space-between; }
+  /* 悬浮提示 */
+  .tip { position:fixed; max-width:320px; background:#111; color:#fff; font-size:11px; line-height:1.5; padding:8px 12px; border-radius:6px; z-index:99; display:none; pointer-events:none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hd">
+    <h1>新品销量概率分布计算器 <em>· RCF + Bass + 蒙特卡洛</em></h1>
+    <div class="tag">单机版 · 数据不出浏览器</div>
+  </div>
+  <div class="main">
+
+    <div class="params">
+      <div class="presets">
+        <div class="preset hot" onclick="loadPreset('aiken699')">示例 · AiKen ¥699</div>
+        <div class="preset" onclick="toggleWizard()">🧭 参数向导（不会填点这里）</div>
+        <div class="preset" onclick="loadPreset('blank')">清空</div>
+      </div>
+
+      <div class="wiz" id="wizard" style="display:none">
+        <div class="wizbox">
+          <div class="wt">m 向导 · 从对标品推导</div>
+          <div class="row"><label data-tip="找 1 个同价位带（±30%）最接近的对标品。查它的年销量：淘宝看详情页「月销xx」×12；京东看累计评论数÷0.4（约40%买家留评）；众筹平台看backers数；或找市场部要蝉妈妈/生意参谋数据。">对标品年销量</label><input id="wz_ref" type="number" placeholder="例：50000"><span class="unit">台</span></div>
+          <div class="row"><label data-tip="你的产品相对对标品的综合竞争力：品牌力×渠道×差异化。明显更强填1.5-2.0；相当填1.0；更弱填0.5-0.8。">竞争力因子</label><input id="wz_f" type="number" value="1.0" step="0.1" min="0.3" max="2.5"><span class="unit">×</span></div>
+          <button class="wizbtn" onclick="calcM()">生成 m 建议值 →</button>
+          <div id="wz_m_out" class="wout"></div>
+        </div>
+        <div class="wizbox">
+          <div class="wt">q 向导 · 5 题自测（选最像的）</div>
+          <div class="qrow"><span>1. 用户买到后会主动晒社交媒体吗？</span><select id="wz_q1"><option value="3">大量晒（如拍立得/盲盒）</option><option value="2">偶尔晒</option><option value="1">基本不晒（如路由器）</option></select></div>
+          <div class="qrow"><span>2. 买前会搜「推荐/测评/排行」吗？</span><select id="wz_q2"><option value="3">高频，决策靠口碑</option><option value="2">有时搜</option><option value="1">功能导向自己判断</option></select></div>
+          <div class="qrow"><span>3. 品类有活跃爱好者圈层吗？</span><select id="wz_q3"><option value="3">有活跃社区/二创</option><option value="2">有边缘社区</option><option value="1">无圈层</option></select></div>
+          <div class="qrow"><span>4. 高频作为礼物购买吗？</span><select id="wz_q4"><option value="3">礼赠是主要场景</option><option value="2">偶尔送</option><option value="1">几乎不送</option></select></div>
+          <div class="qrow"><span>5. 对标品的讨论里 UGC 占比高吗？</span><select id="wz_q5"><option value="3">UGC 为主</option><option value="2">UGC 与商单混合</option><option value="1">官方商单为主</option></select></div>
+          <button class="wizbtn" onclick="calcQ()">生成 q 建议值 →</button>
+          <div id="wz_q_out" class="wout"></div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="t">① 参照类先验（RCF）<span class="hint">找 3-5 个同类同价位产品</span></div>
+        <div class="row"><label data-tip="市场潜力 = 该品类最终累计销量的合理上限。用参照类产品的实际年销倒推：比你的产品稍贵的对标品卖了多少台？取它的一半到两倍做 P10-P90 区间。">m 市场潜力 P10</label><input id="m_p10" type="number" value="30000"><span class="unit">台</span></div>
+        <div class="row"><label data-tip="最可能值。参照类中位数水平的年销/生命周期销量。">m 市场潜力 P50</label><input id="m_p50" type="number" value="110000"><span class="unit">台</span></div>
+        <div class="row"><label data-tip="乐观值。品类爆发时的量级（如 instax 全球年销千万）。">m 市场潜力 P90</label><input id="m_p90" type="number" value="320000"><span class="unit">台</span></div>
+        <div class="row"><label data-tip="口碑/模仿系数（Bass 的 q）。强社交货币品类 0.4-0.6；工具型 0.2-0.35。">q 口碑系数 P50</label><input id="q_p50" type="number" value="0.42" step="0.01"><span class="unit">—</span></div>
+        <div class="row"><label data-tip="q 的 P10-P90 半宽（如 0.42±0.12）。不确定就填 P50 的 30%。">q 不确定半宽</label><input id="q_hw" type="number" value="0.12" step="0.01"><span class="unit">±</span></div>
+      </div>
+
+      <div class="sec">
+        <div class="t">② 投流漏斗（冷启动 6 个月）<span class="hint">用自家投放数据</span></div>
+        <div class="row"><label data-tip="上市前 6 个月的媒介预算（元）。用市场部给的意向区间中值。">媒介预算</label><input id="budget" type="number" value="1550000"><span class="unit">元</span></div>
+        <div class="row"><label data-tip="千次曝光成本。极印站外 37.6 / 站内 45.2（S1 实测）；没有自家数据先用 45。">CPM</label><input id="cpm" type="number" value="45"><span class="unit">元</span></div>
+        <div class="row"><label data-tip="点击率。S1 实测 2.14%；行业通带 1.5%-3%。">CTR</label><input id="ctr" type="number" value="0.023" step="0.001"><span class="unit">%</span></div>
+        <div class="row"><label data-tip="落地页/商详转化率。S1 实测 0.98%（高价）；参考自家电商大盘。">CVR</label><input id="cvr" type="number" value="0.014" step="0.001"><span class="unit">%</span></div>
+      </div>
+
+      <div class="sec">
+        <div class="t">③ 财务参数<span class="hint">供贡献测算</span></div>
+        <div class="row"><label data-tip="零售价（元）。">定价</label><input id="price" type="number" value="699"><span class="unit">元</span></div>
+        <div class="row"><label data-tip="BOM + 加工费（元/台）。⚠️ 税口径：按含税价填（与 ASP 不含税配对会偏保守约 4pp 毛利率——这是刻意的安全垫，AiKen 699 即 BOM 250 含税 / ASP 503.22 不含税）。">BOM</label><input id="bom" type="number" value="250"><span class="unit">元</span></div>
+        <div class="row"><label data-tip="ASP 不含税（扣渠道后）。例：699 → 含税 618.58 → 扣渠道 568.64 → 不含税 503.22。">ASP 不含税</label><input id="asp" type="number" value="503.22"><span class="unit">元</span></div>
+        <div class="row"><label data-tip="销售+营销费用合计率（占 ASP 不含税）。极印 699 口径 30%。">费用率</label><input id="srate" type="number" value="0.30" step="0.01"><span class="unit">%</span></div>
+        <div class="row"><label data-tip="项目总投入（NRE+研发，元）。用于投入覆盖读数。">项目投入</label><input id="invest" type="number" value="4740000"><span class="unit">元</span></div>
+      </div>
+
+      <button class="run" id="runbtn" onclick="runModel()">▶ 运行 8000 次蒙特卡洛</button>
+      <div class="tips">参数不确定时先跑一版——分布本身就是对不确定性的诚实表达。上市后 30/90 天用真实数据回来收窄它。</div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="placeholder">
+        <div class="big">📈</div>
+        <div>左侧设置参数（或加载示例）→ 点击运行</div>
+        <div style="font-size:11px; margin-top:6px;">本工具完全在浏览器本地计算，无任何网络请求</div>
+      </div>
+    </div>
+  </div>
+  <div class="ft">
+    <span>模型：RCF 参照类 + Bass 扩散 (1969) + 蒙特卡洛 · 与 AiKen v0.4 方法一致</span>
+    <span>单文件 HTML · 双击即用 · 数据不出本机</span>
+  </div>
+</div>
+<div class="tip" id="tooltip"></div>
+
+<script>
+// ================= 工具函数 =================
+const $ = id => document.getElementById(id);
+function lognormalFromQuantiles(p10, p50, p90, rng) {
+  // 由分位数反推对数正态参数并抽样
+  const mu = Math.log(p50);
+  const s1 = Math.log(p90) - Math.log(p50);
+  const s2 = Math.log(p50) - Math.log(p10);
+  const sigma = (s1 + s2) / 2 / 1.2816; // P10/P90 ≈ ±1.2816σ
+  return Math.exp(mu + sigma * gauss(rng));
+}
+function gauss(rng) { // Box-Muller
+  let u = 0, v = 0;
+  while (u === 0) u = rng();
+  while (v === 0) v = rng();
+  return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+}
+function mulberry32(seed) {
+  let a = seed >>> 0;
+  return function() {
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    let t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+function percentile(sorted, q) {
+  const idx = (sorted.length - 1) * q / 100;
+  const lo = Math.floor(idx), hi = Math.ceil(idx);
+  return sorted[lo] + (sorted[hi] - sorted[lo]) * (idx - lo);
+}
+function fmt(n) { return n.toLocaleString("zh-CN", {maximumFractionDigits: 0}); }
+
+// ================= 模型 =================
+function bassCum(m, p, q, t) {
+  const denom = 1 + (q / p) * Math.exp(-(p + q) * t);
+  return m * (1 - Math.exp(-(p + q) * t)) / denom;
+}
+function solveP(m, q, s6) { // 二分法
+  let lo = 1e-5, hi = 1.2;
+  for (let i = 0; i < 40; i++) {
+    const mid = (lo + hi) / 2;
+    if (bassCum(m, mid, q, 0.5) < s6) lo = mid; else hi = mid;
+  }
+  return (lo + hi) / 2;
+}
+
+function runModel() {
+  const btn = $("runbtn");
+  btn.disabled = true; btn.textContent = "⏳ 计算中…";
+  setTimeout(() => { try { doRun(); } catch(e) { alert("参数有误：" + e.message); } btn.disabled = false; btn.textContent = "▶ 运行 8000 次蒙特卡洛"; }, 30);
+}
+
+function doRun() {
+  const N = 8000, T = 36;
+  const mP10 = +$("m_p10").value, mP50 = +$("m_p50").value, mP90 = +$("m_p90").value;
+  const qP50 = +$("q_p50").value, qHW = +$("q_hw").value;
+  const budget = +$("budget").value, CPM = +$("cpm").value, CTR = +$("ctr").value, CVR = +$("cvr").value;
+  const price = +$("price").value, bom = +$("bom").value, asp = +$("asp").value, srate = +$("srate").value, invest = +$("invest").value;
+
+  if (!(mP10 > 0 && mP50 > mP10 && mP90 > mP50)) throw new Error("m 分位需满足 P10 < P50 < P90");
+  if (!(budget > 0 && CPM > 0 && CTR > 0 && CVR > 0)) throw new Error("漏斗参数需为正");
+
+  const rng = mulberry32(20261028);
+  const clicks = budget / CPM * 1000 * CTR;
+
+  const y1Arr = new Float64Array(N), y3Arr = new Float64Array(N);
+  for (let i = 0; i < N; i++) {
+    const m = lognormalFromQuantiles(mP10, mP50, mP90, rng);
+    let q = qP50 + qHW * gauss(rng);
+    q = Math.max(0.15, Math.min(0.75, q));
+    // 漏斗参数不确定性：CTR/CVR 加 ±20% 噪声
+    const cvr_i = CVR * (1 + 0.2 * gauss(rng));
+    let s6 = clicks * Math.max(0.004, cvr_i);
+    s6 = Math.min(s6, m * 0.55);
+    const p = solveP(m, q, s6);
+    y1Arr[i] = bassCum(m, p, q, 1.0);
+    y3Arr[i] = bassCum(m, p, q, 3.0);
+  }
+
+  const y1s = Array.from(y1Arr).sort((a, b) => a - b);
+  const y3s = Array.from(y3Arr).sort((a, b) => a - b);
+  render(y1s, y3s, {price, bom, asp, srate, invest, N});
+}
+
+// ================= 渲染 =================
+function render(y1s, y3s, fin) {
+  const P = q => percentile(y1s, q);
+  const P3 = q => percentile(y3s, q);
+  const prob1 = th => y1s.filter(v => v >= th).length / y1s.length;
+  const prob3 = th => y3s.filter(v => v >= th).length / y3s.length;
+  const unit = fin.asp * (1 - fin.srate) - fin.bom;
+
+  const svg1 = histSVG(y1s, 45_000, [
+    [P(20), "P20·Worst", "#C0392B"], [P(50), "P50·Normal", "#111"], [P(90), "P90·Best", "#7A4FA0"]
+  ], [[0,"0"],[10000,"1万"],[20000,"2万"],[30000,"3万"],[40000,"4万"]]);
+  const svg3 = histSVG(y3s, 140_000, [
+    [P3(20), "P20", "#C0392B"], [P3(50), "P50", "#111"], [P3(90), "P90", "#7A4FA0"]
+  ], [[0,"0"],[35000,"3.5万"],[70000,"7万"],[105000,"10.5万"],[140000,"14万"]]);
+
+  const QUANTILES = [5,10,15,20,25,30,40,50,60,70,75,80,85,90,95];
+  let rows = "";
+  for (const q of QUANTILES) {
+    const hl = (q === 20 || q === 50 || q === 90) ? ' class="hl"' : "";
+    rows += `<tr${hl}><td>P${q}</td><td>${fmt(P(q))}</td><td>${fmt(P(q)/12)}</td><td>${fmt(P3(q))}</td><td>${fmt(P3(q)/36)}</td><td>${(100-q)}%</td></tr>`;
+  }
+
+  $("results").innerHTML = `
+    <div class="kpirow">
+      <div class="kpi"><div class="k">Worst 锚（P20）</div><div class="v">${fmt(P(20))}<em> 台/首年</em></div><div class="s">月均 ~${fmt(P(20)/12)} ｜ 跌破概率 20%</div></div>
+      <div class="kpi"><div class="k">Normal 锚（P50）</div><div class="v">${fmt(P(50))}<em> 台/首年</em></div><div class="s">月均 ~${fmt(P(50)/12)} ｜ 财务测算基准</div></div>
+      <div class="kpi"><div class="k">Best 锚（P90）</div><div class="v">${fmt(P(90))}<em> 台/首年</em></div><div class="s">月均 ~${fmt(P(90)/12)} ｜ 冲刺带</div></div>
+      <div class="kpi"><div class="k">单台净贡献</div><div class="v">${unit.toFixed(1)}<em> 元</em></div><div class="s">ASP ${fin.asp} × (1−${(fin.srate*100).toFixed(0)}%) − BOM ${fin.bom}</div></div>
+      <div class="kpi"><div class="k">三年 P50 贡献</div><div class="v">${fmt(P3(50)*unit/1e4)}<em> 万</em></div><div class="s">首年 P50 贡献 ${fmt(P(50)*unit/1e4)} 万 ｜ 投入覆盖 ${(P(50)*unit/fin.invest*100).toFixed(0)}%</div></div>
+    </div>
+    <div class="chartbox"><h4>首年销量概率分布<span class="r">P(≥P90) = ${(prob1(P(90))*100).toFixed(0)}% ｜ P(≥P50) = ${(prob1(P(50))*100).toFixed(0)}%</span></h4>${svg1}</div>
+    <div class="chartbox"><h4>三年累计销量概率分布<span class="r">P(≥10万台) = ${(prob3(100000)*100).toFixed(1)}%</span></h4>${svg3}</div>
+    <div class="chartbox"><h4>分位表<span class="r">黄色 = 三档锚（P20/P50/P90）</span></h4>
+      <table><tr><th>分位</th><th>首年（台）</th><th>首年月均</th><th>三年累计（台）</th><th>三年月均</th><th>≥ 该销量概率</th></tr>${rows}</table>
+    </div>
+    <div class="tips">读法：P50 = 一半的模拟结果比它好/差；「≥ 该销量概率」= 达成概率。锚位选择：Worst 用 P20（80% 置信守线）或 P10（更宽），与财务表对齐后保持一致。模型对 CVR 已内置 ±20% 不确定性噪声。</div>
+  `;
+}
+
+function histSVG(sorted, vmax, marks, xticks) {
+  const w = 640, h = 190, nbins = 46;
+  const ml = 50, mr = 16, mt = 22, mb = 36;
+  const x0 = ml, x1 = w - mr, y0 = h - mb, y1 = mt;
+  const counts = new Array(nbins).fill(0);
+  for (const v of sorted) { if (v < vmax) { const b = Math.min(nbins - 1, Math.floor(v / vmax * nbins)); counts[b]++; } }
+  const cmax = Math.max(...counts);
+  const X = v => x0 + Math.min(v, vmax) / vmax * (x1 - x0);
+  let s = `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" font-family="Microsoft YaHei">`;
+  for (let gy = y0; gy >= y1; gy -= (y0 - y1) / 3) s += `<line x1="${x0}" y1="${gy}" x2="${x1}" y2="${gy}" stroke="#F0F0F0"/>`;
+  const bw = (x1 - x0) / nbins;
+  counts.forEach((c, i) => {
+    const bh = c / cmax * (y0 - y1);
+    if (bh > 0.5) s += `<rect x="${(x0 + i * bw).toFixed(1)}" y="${(y0 - bh).toFixed(1)}" width="${(bw * 0.86).toFixed(1)}" height="${bh.toFixed(1)}" fill="#111" fill-opacity="0.82" rx="1"/>`;
+  });
+  for (const [v, label, color] of marks) {
+    const x = X(v);
+    s += `<line x1="${x.toFixed(1)}" y1="${y1}" x2="${x.toFixed(1)}" y2="${y0}" stroke="${color}" stroke-width="1.8" stroke-dasharray="4 3"/>`;
+    s += `<text x="${x.toFixed(1)}" y="${y0 + 14}" text-anchor="middle" font-size="10.5" fill="${color}" font-weight="bold">${label}</text>`;
+  }
+  s += `<line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y0}" stroke="#111" stroke-width="1.5"/>`;
+  for (const [v, label] of xticks) s += `<text x="${X(v).toFixed(0)}" y="${y0 + 28}" text-anchor="middle" font-size="10" fill="#6B6B6B">${label}</text>`;
+  s += `<text x="${x0 - 6}" y="${y1 + 4}" text-anchor="end" font-size="10" fill="#6B6B6B">密度</text>`;
+  s += `</svg>`;
+  return s;
+}
+
+// ================= 参数向导 =================
+function toggleWizard() {
+  const w = $("wizard");
+  w.style.display = w.style.display === "none" ? "flex" : "none";
+}
+function calcM() {
+  const ref = +$("wz_ref").value, f = +$("wz_f").value;
+  if (!(ref > 0)) { alert("请先填对标品年销量（查法见输入框提示）"); return; }
+  // P50 = 对标年销 × 竞争力 × 2.2（3年累计/年销 的典型比）
+  const p50 = Math.round(ref * f * 2.2);
+  // 对数正态 σ=0.85：P10 ≈ P50×0.27，P90 ≈ P50×2.9
+  const p10 = Math.round(p50 * 0.27), p90 = Math.round(p50 * 2.9);
+  $("m_p10").value = p10; $("m_p50").value = p50; $("m_p90").value = p90;
+  const out = $("wz_m_out");
+  out.style.display = "block";
+  out.innerHTML = `✅ 已填入：P10 = <b>${p10.toLocaleString()}</b> ｜ P50 = <b>${p50.toLocaleString()}</b> ｜ P90 = <b>${p90.toLocaleString()}</b><br><span style="color:#888">P10/P90 按对数正态(σ≈0.85)自动展开；若你的品类更确定（如成熟品类迭代），可手动收窄到 P50×0.4 / P50×2</span>`;
+}
+function calcQ() {
+  let score = 0;
+  for (let i = 1; i <= 5; i++) score += +$("wz_q" + i).value;
+  // 5-15 分 → q 0.22-0.56
+  const q = (0.22 + (score - 5) / 10 * 0.34).toFixed(2);
+  const hw = Math.max(0.06, +(0.03 + score / 15 * 0.09).toFixed(2));
+  $("q_p50").value = q; $("q_hw").value = hw;
+  const band = score >= 12 ? "强社交货币（如拍立得/盲盒/CCD）" : score >= 8 ? "中等传染（如新潮数码）" : "偏工具型（口碑传播弱）";
+  const out = $("wz_q_out");
+  out.style.display = "block";
+  out.innerHTML = `✅ 已填入：q = <b>${q}</b> ± ${hw}<br><span style="color:#888">你的品类画像：${band}（自测 ${score}/15 分）。上市后 90 天 Checkpoint 用真实数据回来校准它</span>`;
+}
+
+// ================= 预设 =================
+const PRESETS = {
+  aiken699: { m_p10: 30000, m_p50: 110000, m_p90: 320000, q_p50: 0.42, q_hw: 0.12,
+              budget: 1550000, cpm: 45, ctr: 0.023, cvr: 0.014,
+              price: 699, bom: 250, asp: 503.22, srate: 0.30, invest: 4740000 },
+  blank: { m_p10: "", m_p50: "", m_p90: "", q_p50: "", q_hw: "",
+           budget: "", cpm: "", ctr: "", cvr: "", price: "", bom: "", asp: "", srate: "", invest: "" },
+};
+function loadPreset(name) {
+  const p = PRESETS[name];
+  for (const k in p) { if ($(k)) $(k).value = p[k]; }
+}
+
+// ================= 悬浮提示 =================
+const tip = $("tooltip");
+document.addEventListener("mouseover", e => {
+  const t = e.target.closest("[data-tip]");
+  if (t) { tip.innerHTML = t.dataset.tip; tip.style.display = "block"; }
+});
+document.addEventListener("mousemove", e => {
+  if (tip.style.display === "block") {
+    tip.style.left = Math.min(e.clientX + 14, innerWidth - 340) + "px";
+    tip.style.top = Math.min(e.clientY + 14, innerHeight - 120) + "px";
+  }
+});
+document.addEventListener("mouseout", e => {
+  if (e.target.closest("[data-tip]")) tip.style.display = "none";
+});
+</script>
+</body>
+</html>
