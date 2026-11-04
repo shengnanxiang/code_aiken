@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "50f48dd7e301d39d",
+        "id": "98e1f5a8eb88bb64",
         "type": "tabs",
         "children": [
           {
-            "id": "35670237d8f97ee8",
+            "id": "886bbef96a0f0fac",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "极印版 aiken/AiKen_立项陈述_演讲稿_slide2-10.md",
-                "mode": "source",
+                "file": "bromo/Bromo 氙气闪光灯专项推进方案.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AiKen_立项陈述_演讲稿_slide2-10"
+              "title": "Bromo 氙气闪光灯专项推进方案"
             }
           }
         ]
@@ -99,7 +99,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "极印版 aiken/AiKen SI、COA校准会议_纪要修正版.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +117,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "AiKen SI、COA校准会议.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -161,7 +159,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "极印版 aiken/AiKen SI、COA校准会议_纪要修正版.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -189,26 +186,38 @@
       "bases:新建数据库": false
     }
   },
-  "active": "35670237d8f97ee8",
+  "active": "886bbef96a0f0fac",
   "lastOpenFiles": [
+    "bromo/Bromo 氙气闪光灯专项推进方案.md",
+    "bromo/ref/yashica-35mf-flash-popup.jpg",
+    "bromo/Bromo 立项战略意图.md",
+    "bromo/38DF4D10",
+    "bromo/~$Finance.xlsx",
+    "极印版 aiken/销量概率模型/bromo_v01_结果摘要.md",
+    "极印版 aiken/销量概率模型/bromo_v01_run_output.txt",
+    "极印版 aiken/销量概率模型/bromo_v01_results.npz",
+    "极印版 aiken/销量概率模型/数据文件/bromo_v01.py",
+    "bromo/ref/近摄片.jpg",
+    "bromo/ref/近摄片.jpg.crdownload",
+    "bromo/ref/滤镜片.jpg",
+    "bromo/ref/滤镜片.jpg.crdownload",
+    "bromo/ref/快门帽.jpg",
+    "bromo/ref/快门帽.jpg.crdownload",
+    "bromo/ref/ovf.jpg.crdownload",
+    "bromo/ref/ovf.jpg",
+    "bromo/ref/过片杆.jpg",
+    "bromo/ref/过片杆.jpg.crdownload",
+    "bromo/Bromo v0.2.md",
+    "bromo/Bromo - ￥1299 极印仿胶卷数码相机 #2.md",
+    "极印版 aiken/AiKen_立项陈述_演讲稿_slide2-10.md",
     "notes/26-10-21 SI、COA校准.md",
     "极印版 aiken/销量概率模型/市场部数据需求与沟通方案.md",
     "极印版 aiken/销量概率模型/AiKen销量概率模型_3+1框架说明_钉钉版.md",
     "极印版 aiken/销量概率模型/v0.3b_最终摘要.md",
-    "极印版 aiken/销量概率模型/~$AiKen销量概率分布_读数表.xlsx",
-    "极印版 aiken/销量概率模型/v03b_finance.npz",
-    "极印版 aiken/销量概率模型/prototype_v03b.py",
     "极印版 aiken/销量概率模型/v0.3_结果摘要.md",
-    "极印版 aiken/四页评审PPT/AiKen_③业务飞轮与定价逻辑.html",
     "极印版 aiken/AiKen SI、COA校准会议_纪要修正版.md",
-    "极印版 aiken/四页评审PPT/AiKen_SI_COA_开篇页.html",
     "极印版 aiken/销量概率模型/v0.2_结果摘要.md",
-    "未命名 1.base",
-    "未命名.base",
     "品牌战略.md",
-    "极印版 aiken/销量概率模型/v02_results.npz",
-    "极印版 aiken/销量概率模型/v02_输出.txt",
-    "极印版 aiken/销量概率模型/prototype_v02.py",
     "AiKen SI、COA校准会议.md",
     "潮玩影像品类 v3.md",
     "手机以外的第二台相机.md",
