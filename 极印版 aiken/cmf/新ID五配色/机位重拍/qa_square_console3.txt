@@ -1,0 +1,30 @@
+
+===== newid-香槟-开_square.png (2048x2048) =====
+ square=True  fill w=0.441 h=0.249 (PASS=True)
+ centroid=(0.520,0.536) dev=0.011 (PASS=True)
+ circle: {'ref_r': 0.339, 'found_r_ratio': np.float64(0.3702), 'dev_pct': np.float64(9.2), 'pos_dev': 0.1328, 'at': [767, 1023, 188]}
+ circle: {'ref_r': 0.3341, 'found_r_ratio': np.float64(0.3738), 'dev_pct': np.float64(11.9), 'pos_dev': 0.091, 'at': [1343, 1151, 190]}
+ circle: {'ref_r': 0.2163, 'found_r_ratio': np.float64(0.1405), 'dev_pct': np.float64(-35.0), 'pos_dev': 0.0294, 'at': [685, 1177, 71]}
+ circles PASS(>=2 within ±15%)=False
+ color #CECCC9 -> #C9C6BE dist=13.5
+ color #BCB8B3 -> #BBB6AE dist=5.5
+ color #847C73 -> #847D72 dist=1.4
+ color #3F3E3E -> #3D3C39 dist=5.7
+ leather=0.296 (base 0.281, PASS=True)
+ VERDICT: CHECK (colors informational)
+
+===== newid-香槟-开_square_alt.png (2048x2048) =====
+ square=True  fill w=0.441 h=0.250 (PASS=True)
+ centroid=(0.519,0.536) dev=0.010 (PASS=True)
+ circle: {'ref_r': 0.339, 'found_r_ratio': np.float64(0.2919), 'dev_pct': np.float64(-13.9), 'pos_dev': 0.0981, 'at': [755, 953, 149]}
+ circle: {'ref_r': 0.3341, 'found_r_ratio': np.float64(0.3234), 'dev_pct': np.float64(-3.2), 'pos_dev': 0.0763, 'at': [1361, 1178, 165]}
+ circle: {'ref_r': 0.2163, 'found_r_ratio': np.float64(0.1479), 'dev_pct': np.float64(-31.6), 'pos_dev': 0.0313, 'at': [685, 1170, 75]}
+ circles PASS(>=2 within ±15%)=False
+ color #CECCC9 -> #C5C0B8 dist=22.7
+ color #BCB8B3 -> #C5C0B8 dist=13.0
+ color #847C73 -> #867E74 dist=3.0
+ color #3F3E3E -> #3E3D3A dist=4.2
+ leather=0.294 (base 0.281, PASS=True)
+ VERDICT: CHECK (colors informational)
+
+saved qa_square.json

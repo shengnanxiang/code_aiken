@@ -1,0 +1,148 @@
+[
+ {
+  "file": "newid-香槟-开_square.png",
+  "square": true,
+  "fill_w": 0.441,
+  "fill_h": 0.249,
+  "fill_pass": true,
+  "centroid": [
+   0.52,
+   0.536
+  ],
+  "cen_pass": true,
+  "circles": [
+   {
+    "ref_r": 0.339,
+    "found_r_ratio": 0.3702,
+    "dev_pct": 9.2,
+    "pos_dev": 0.1328,
+    "at": [
+     767,
+     1023,
+     188
+    ]
+   },
+   {
+    "ref_r": 0.3341,
+    "found_r_ratio": 0.3738,
+    "dev_pct": 11.9,
+    "pos_dev": 0.091,
+    "at": [
+     1343,
+     1151,
+     190
+    ]
+   },
+   {
+    "ref_r": 0.2163,
+    "found_r_ratio": 0.1405,
+    "dev_pct": -35.0,
+    "pos_dev": 0.0294,
+    "at": [
+     685,
+     1177,
+     71
+    ]
+   }
+  ],
+  "circles_pass": false,
+  "colors": [
+   {
+    "base": "#CECCC9",
+    "nearest": "#C9C6BE",
+    "dist": 13.5
+   },
+   {
+    "base": "#BCB8B3",
+    "nearest": "#BBB6AE",
+    "dist": 5.5
+   },
+   {
+    "base": "#847C73",
+    "nearest": "#847D72",
+    "dist": 1.4
+   },
+   {
+    "base": "#3F3E3E",
+    "nearest": "#3D3C39",
+    "dist": 5.7
+   }
+  ],
+  "leather": 0.296,
+  "leather_pass": true,
+  "verdict": false
+ },
+ {
+  "file": "newid-香槟-开_square_alt.png",
+  "square": true,
+  "fill_w": 0.441,
+  "fill_h": 0.25,
+  "fill_pass": true,
+  "centroid": [
+   0.519,
+   0.536
+  ],
+  "cen_pass": true,
+  "circles": [
+   {
+    "ref_r": 0.339,
+    "found_r_ratio": 0.2919,
+    "dev_pct": -13.9,
+    "pos_dev": 0.0981,
+    "at": [
+     755,
+     953,
+     149
+    ]
+   },
+   {
+    "ref_r": 0.3341,
+    "found_r_ratio": 0.3234,
+    "dev_pct": -3.2,
+    "pos_dev": 0.0763,
+    "at": [
+     1361,
+     1178,
+     165
+    ]
+   },
+   {
+    "ref_r": 0.2163,
+    "found_r_ratio": 0.1479,
+    "dev_pct": -31.6,
+    "pos_dev": 0.0313,
+    "at": [
+     685,
+     1170,
+     75
+    ]
+   }
+  ],
+  "circles_pass": false,
+  "colors": [
+   {
+    "base": "#CECCC9",
+    "nearest": "#C5C0B8",
+    "dist": 22.7
+   },
+   {
+    "base": "#BCB8B3",
+    "nearest": "#C5C0B8",
+    "dist": 13.0
+   },
+   {
+    "base": "#847C73",
+    "nearest": "#867E74",
+    "dist": 3.0
+   },
+   {
+    "base": "#3F3E3E",
+    "nearest": "#3E3D3A",
+    "dist": 4.2
+   }
+  ],
+  "leather": 0.294,
+  "leather_pass": true,
+  "verdict": false
+ }
+]

@@ -1,0 +1,216 @@
+{
+ "close": {
+  "file": "C:\\Users\\Nan\\Documents\\GitHub\\code_aiken\\极印版 aiken\\cmf\\新ID五配色\\newid-低奢金-c.png",
+  "size": [
+   1810,
+   978
+  ],
+  "body_bbox": [
+   646,
+   206,
+   965,
+   570
+  ],
+  "body_fill": 0.797,
+  "body_aspect": 1.693,
+  "leather_frac_of_body": 0.249,
+  "circles": [
+   {
+    "id": "circle1",
+    "cx": 864,
+    "cy": 497,
+    "r": 123,
+    "cx_rel": 0.4773,
+    "cy_rel": 0.5082,
+    "r_rel_bodyH": 0.2158,
+    "disk_L": 76.3,
+    "disk_hex": "#4C4C4C",
+    "ring_L": 116.0
+   },
+   {
+    "id": "circle2",
+    "cx": 809,
+    "cy": 492,
+    "r": 119,
+    "cx_rel": 0.447,
+    "cy_rel": 0.5031,
+    "r_rel_bodyH": 0.2088,
+    "disk_L": 77.7,
+    "disk_hex": "#4D4D4D",
+    "ring_L": 116.5
+   }
+  ],
+  "colors": [
+   {
+    "frac_of_body": 0.2901,
+    "hex": "#CBC9C5",
+    "L": 201.5
+   },
+   {
+    "frac_of_body": 0.1819,
+    "hex": "#BBB7B1",
+    "L": 184.0
+   },
+   {
+    "frac_of_body": 0.1496,
+    "hex": "#857D74",
+    "L": 126.9
+   },
+   {
+    "frac_of_body": 0.1313,
+    "hex": "#434343",
+    "L": 67.6
+   },
+   {
+    "frac_of_body": 0.1207,
+    "hex": "#9F9990",
+    "L": 154.0
+   },
+   {
+    "frac_of_body": 0.0977,
+    "hex": "#5E5C5A",
+    "L": 93.1
+   },
+   {
+    "frac_of_body": 0.0154,
+    "hex": "#DFDEDC",
+    "L": 222.5
+   },
+   {
+    "frac_of_body": 0.0132,
+    "hex": "#191817",
+    "L": 24.9
+   }
+  ],
+  "edge_features": {
+   "top": {
+    "slope": 0.0723,
+    "resid_std_px": 3.8,
+    "resid_range_px": 23.5
+   },
+   "bottom": {
+    "slope": 0.1053,
+    "resid_std_px": 3.3,
+    "resid_range_px": 21.8
+   }
+  },
+  "quadrant_L": {
+   "UL": 138.4,
+   "UR": 179.1,
+   "LL": 124.6,
+   "LR": 162.9
+  },
+  "body_L_pct": {
+   "10": 72.0,
+   "50": 165.0,
+   "90": 205.0
+  }
+ },
+ "open": {
+  "file": "C:\\Users\\Nan\\Documents\\GitHub\\code_aiken\\极印版 aiken\\cmf\\新ID五配色\\newid-低奢金-open.png",
+  "size": [
+   1927,
+   1018
+  ],
+  "body_bbox": [
+   474,
+   237,
+   1125,
+   584
+  ],
+  "body_fill": 0.783,
+  "body_aspect": 1.926,
+  "leather_frac_of_body": 0.281,
+  "circles": [
+   {
+    "id": "circle1",
+    "cx": 744,
+    "cy": 529,
+    "r": 123,
+    "cx_rel": 0.3861,
+    "cy_rel": 0.5196,
+    "r_rel_bodyH": 0.2106,
+    "disk_L": 79.5,
+    "disk_hex": "#4F4F4F",
+    "ring_L": 138.2
+   },
+   {
+    "id": "circle2",
+    "cx": 581,
+    "cy": 372,
+    "r": 115,
+    "cx_rel": 0.3015,
+    "cy_rel": 0.3654,
+    "r_rel_bodyH": 0.1969,
+    "disk_L": 164.9,
+    "disk_hex": "#A6A4A1",
+    "ring_L": 164.9
+   }
+  ],
+  "colors": [
+   {
+    "frac_of_body": 0.2037,
+    "hex": "#CECCC9",
+    "L": 204.8
+   },
+   {
+    "frac_of_body": 0.1997,
+    "hex": "#BCB8B3",
+    "L": 185.2
+   },
+   {
+    "frac_of_body": 0.13,
+    "hex": "#827B71",
+    "L": 124.2
+   },
+   {
+    "frac_of_body": 0.1203,
+    "hex": "#585755",
+    "L": 87.2
+   },
+   {
+    "frac_of_body": 0.1153,
+    "hex": "#9E978E",
+    "L": 152.5
+   },
+   {
+    "frac_of_body": 0.1086,
+    "hex": "#1A1A19",
+    "L": 26.1
+   },
+   {
+    "frac_of_body": 0.1064,
+    "hex": "#3C3C3B",
+    "L": 60.4
+   },
+   {
+    "frac_of_body": 0.016,
+    "hex": "#E0DFDD",
+    "L": 223.6
+   }
+  ],
+  "edge_features": {
+   "top": {
+    "slope": 0.0875,
+    "resid_std_px": 6.8,
+    "resid_range_px": 22.1
+   },
+   "bottom": {
+    "slope": 0.104,
+    "resid_std_px": 6.8,
+    "resid_range_px": 23.4
+   }
+  },
+  "quadrant_L": {
+   "UL": 144.5,
+   "UR": 131.4,
+   "LL": 137.6,
+   "LR": 130.1
+  },
+  "body_L_pct": {
+   "10": 40.0,
+   "50": 148.0,
+   "90": 206.0
+  }
+ }
+}

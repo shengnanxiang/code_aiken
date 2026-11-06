@@ -1,0 +1,88 @@
+{
+ "file": "C:\\Users\\Nan\\Documents\\GitHub\\code_aiken\\极印版 aiken\\cmf\\新ID五配色\\newid-低奢金-open.png",
+ "size": [
+  1927,
+  1018
+ ],
+ "body_bbox": [
+  474,
+  237,
+  1125,
+  584
+ ],
+ "circles": [
+  {
+   "cx": 671,
+   "cy": 376,
+   "r": 197,
+   "cx_rel": 0.3484,
+   "cy_rel": 0.3697,
+   "r_rel_bodyH": 0.339,
+   "disk_hex": "#9D9B99",
+   "disk_L": 155.7
+  },
+  {
+   "cx": 1408,
+   "cy": 624,
+   "r": 195,
+   "cx_rel": 0.731,
+   "cy_rel": 0.6136,
+   "r_rel_bodyH": 0.3341,
+   "disk_hex": "#A8A49E",
+   "disk_L": 165.0
+  },
+  {
+   "cx": 597,
+   "cy": 601,
+   "r": 126,
+   "cx_rel": 0.31,
+   "cy_rel": 0.5906,
+   "r_rel_bodyH": 0.2163,
+   "disk_hex": "#706E6C",
+   "disk_L": 111.1
+  }
+ ],
+ "colors": [
+  {
+   "frac_of_body": 0.2036,
+   "hex": "#CECCC9",
+   "L": 204.9
+  },
+  {
+   "frac_of_body": 0.1961,
+   "hex": "#BCB8B3",
+   "L": 185.5
+  },
+  {
+   "frac_of_body": 0.1317,
+   "hex": "#847C73",
+   "L": 125.8
+  },
+  {
+   "frac_of_body": 0.1165,
+   "hex": "#3F3E3E",
+   "L": 62.8
+  },
+  {
+   "frac_of_body": 0.1125,
+   "hex": "#1A1A1A",
+   "L": 26.7
+  },
+  {
+   "frac_of_body": 0.1112,
+   "hex": "#5A5957",
+   "L": 89.7
+  },
+  {
+   "frac_of_body": 0.1108,
+   "hex": "#9F9890",
+   "L": 153.9
+  },
+  {
+   "frac_of_body": 0.0176,
+   "hex": "#E1DFDD",
+   "L": 223.8
+  }
+ ],
+ "leather_frac": 0.281
+}

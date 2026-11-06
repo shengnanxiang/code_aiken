@@ -1,0 +1,315 @@
+[
+ {
+  "file": "newid-低奢金-c_hero.png",
+  "tag": "close",
+  "size": [
+   2720,
+   1536
+  ],
+  "view": {
+   "aspect": 1.446,
+   "base_aspect": 1.693,
+   "aspect_dev_pct": -14.6,
+   "top_L": 144.9,
+   "mid_L": 102.6
+  },
+  "circles": [
+   {
+    "ref": "circle1",
+    "found": [
+     1392,
+     781,
+     335
+    ],
+    "pos_offset_rel": 0.0343,
+    "r_ratio_found": 0.2868,
+    "r_ratio_base": 0.2158
+   },
+   {
+    "ref": "circle2",
+    "found": [
+     1392,
+     781,
+     335
+    ],
+    "pos_offset_rel": 0.0648,
+    "r_ratio_found": 0.2868,
+    "r_ratio_base": 0.2088
+   }
+  ],
+  "shadow": {
+   "shadow_dark_frac": 0.0,
+   "shadow_w_frac": 0.0,
+   "bg_L": 205.0
+  },
+  "drift": {
+   "fill": 0.518,
+   "fill_dev_pct": -35.1
+  },
+  "leather_frac": 0.205,
+  "leather_base": 0.249,
+  "colors": [
+   {
+    "base": "#CBC9C5",
+    "base_frac": 0.2901,
+    "nearest_found": "#CCC5B9",
+    "found_frac": 0.006,
+    "hex_dist": 12.7
+   },
+   {
+    "base": "#BBB7B1",
+    "base_frac": 0.1819,
+    "nearest_found": "#BBB6AE",
+    "found_frac": 0.356,
+    "hex_dist": 3.2
+   },
+   {
+    "base": "#857D74",
+    "base_frac": 0.1496,
+    "nearest_found": "#746D64",
+    "found_frac": 0.079,
+    "hex_dist": 28.3
+   },
+   {
+    "base": "#434343",
+    "base_frac": 0.1313,
+    "nearest_found": "#3B3B36",
+    "found_frac": 0.166,
+    "hex_dist": 17.2
+   }
+  ]
+ },
+ {
+  "file": "newid-低奢金-c_hero_alt.png",
+  "tag": "close",
+  "size": [
+   2720,
+   1536
+  ],
+  "view": {
+   "aspect": 1.613,
+   "base_aspect": 1.693,
+   "aspect_dev_pct": -4.7,
+   "top_L": 163.8,
+   "mid_L": 124.0
+  },
+  "circles": [
+   {
+    "ref": "circle1",
+    "found": [
+     1214,
+     744,
+     335
+    ],
+    "pos_offset_rel": 0.0391,
+    "r_ratio_found": 0.3164,
+    "r_ratio_base": 0.2158
+   },
+   {
+    "ref": "circle2",
+    "found": [
+     1214,
+     744,
+     335
+    ],
+    "pos_offset_rel": 0.0186,
+    "r_ratio_found": 0.3164,
+    "r_ratio_base": 0.2088
+   }
+  ],
+  "shadow": {
+   "shadow_dark_frac": 0.0,
+   "shadow_w_frac": 0.0,
+   "bg_L": 230.0
+  },
+  "drift": {
+   "fill": 0.59,
+   "fill_dev_pct": -25.9
+  },
+  "leather_frac": 0.221,
+  "leather_base": 0.249,
+  "colors": [
+   {
+    "base": "#CBC9C5",
+    "base_frac": 0.2901,
+    "nearest_found": "#D4D3D0",
+    "found_frac": 0.057,
+    "hex_dist": 17.4
+   },
+   {
+    "base": "#BBB7B1",
+    "base_frac": 0.1819,
+    "nearest_found": "#C4BFB7",
+    "found_frac": 0.328,
+    "hex_dist": 13.5
+   },
+   {
+    "base": "#857D74",
+    "base_frac": 0.1496,
+    "nearest_found": "#7B776F",
+    "found_frac": 0.099,
+    "hex_dist": 12.7
+   },
+   {
+    "base": "#434343",
+    "base_frac": 0.1313,
+    "nearest_found": "#3B3934",
+    "found_frac": 0.087,
+    "hex_dist": 19.7
+   }
+  ]
+ },
+ {
+  "file": "newid-低奢金-open_hero.png",
+  "tag": "open",
+  "size": [
+   2720,
+   1536
+  ],
+  "view": {
+   "aspect": 1.592,
+   "base_aspect": 1.926,
+   "aspect_dev_pct": -17.3,
+   "top_L": 132.1,
+   "mid_L": 116.0
+  },
+  "circles": [
+   {
+    "ref": "circle1",
+    "found": [
+     1019,
+     801,
+     257
+    ],
+    "pos_offset_rel": 0.0118,
+    "r_ratio_found": 0.2222,
+    "r_ratio_base": 0.2106
+   },
+   {
+    "ref": "circle2",
+    "found": [
+     972,
+     777,
+     210
+    ],
+    "pos_offset_rel": 0.151,
+    "r_ratio_found": 0.1815,
+    "r_ratio_base": 0.1969
+   }
+  ],
+  "shadow": {
+   "shadow_dark_frac": 0.0,
+   "shadow_w_frac": 0.0,
+   "bg_L": 229.0
+  },
+  "drift": {
+   "fill": 0.532,
+   "fill_dev_pct": -32.1
+  },
+  "leather_frac": 0.233,
+  "leather_base": 0.281,
+  "colors": [
+   {
+    "base": "#CECCC9",
+    "base_frac": 0.2037,
+    "nearest_found": "#CFCECB",
+    "found_frac": 0.091,
+    "hex_dist": 3.0
+   },
+   {
+    "base": "#BCB8B3",
+    "base_frac": 0.1997,
+    "nearest_found": "#BCB7AF",
+    "found_frac": 0.245,
+    "hex_dist": 4.1
+   },
+   {
+    "base": "#827B71",
+    "base_frac": 0.13,
+    "nearest_found": "#79736A",
+    "found_frac": 0.084,
+    "hex_dist": 13.9
+   },
+   {
+    "base": "#585755",
+    "base_frac": 0.1203,
+    "nearest_found": "#4B4844",
+    "found_frac": 0.215,
+    "hex_dist": 26.1
+   }
+  ]
+ },
+ {
+  "file": "newid-低奢金-open_hero_alt.png",
+  "tag": "open",
+  "size": [
+   2720,
+   1536
+  ],
+  "view": {
+   "aspect": 1.566,
+   "base_aspect": 1.926,
+   "aspect_dev_pct": -18.7,
+   "top_L": 165.9,
+   "mid_L": 134.9
+  },
+  "circles": [
+   {
+    "ref": "circle1",
+    "found": [
+     1303,
+     937,
+     208
+    ],
+    "pos_offset_rel": 0.1296,
+    "r_ratio_found": 0.2124,
+    "r_ratio_base": 0.2106
+   },
+   {
+    "ref": "circle2",
+    "found": null
+   }
+  ],
+  "shadow": {
+   "shadow_dark_frac": 0.0,
+   "shadow_w_frac": 0.0,
+   "bg_L": 230.0
+  },
+  "drift": {
+   "fill": 0.65,
+   "fill_dev_pct": -17.0
+  },
+  "leather_frac": 0.245,
+  "leather_base": 0.281,
+  "colors": [
+   {
+    "base": "#CECCC9",
+    "base_frac": 0.2037,
+    "nearest_found": "#D3D1CC",
+    "found_frac": 0.08,
+    "hex_dist": 7.7
+   },
+   {
+    "base": "#BCB8B3",
+    "base_frac": 0.1997,
+    "nearest_found": "#C5C1B8",
+    "found_frac": 0.22,
+    "hex_dist": 13.7
+   },
+   {
+    "base": "#827B71",
+    "base_frac": 0.13,
+    "nearest_found": "#938B80",
+    "found_frac": 0.107,
+    "hex_dist": 27.7
+   },
+   {
+    "base": "#585755",
+    "base_frac": 0.1203,
+    "nearest_found": "#51504D",
+    "found_frac": 0.103,
+    "hex_dist": 12.7
+   }
+  ]
+ }
+]

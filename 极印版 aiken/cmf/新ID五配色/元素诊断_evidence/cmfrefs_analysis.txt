@@ -1,0 +1,101 @@
+name                             size         clusters(top-5 by area)
+
+灰绿-v1  1536x1536
+   65.9%  #E3E3E3  H=  0 S=  0 V=227
+    8.3%  #888C7E  H= 39 S= 26 V=140
+    7.8%  #777B6C  H= 38 S= 31 V=123
+    5.9%  #9A9F90  H= 40 S= 24 V=159
+    5.3%  #646758  H= 36 S= 37 V=103
+    3.1%  #181918  H= 60 S= 10 V= 25
+
+石墨灰-v1  1536x1536
+   68.7%  #E3E3E3  H=  0 S=  0 V=227
+    9.0%  #606062  H=120 S=  5 V= 98
+    7.7%  #4D4D4F  H=120 S=  6 V= 79
+    5.9%  #3C3D3E  H=105 S=  8 V= 62
+    2.8%  #6F7071  H=105 S=  5 V=113
+    2.4%  #212121  H=  0 S=  0 V= 33
+
+岩石白-v1  1536x1536
+   67.1%  #E1E3E2  H= 75 S=  2 V=227
+   11.5%  #ADA499  H= 17 S= 29 V=173
+    8.9%  #C1B9B2  H= 14 S= 20 V=193
+    7.3%  #D0CAC3  H= 16 S= 16 V=208
+    2.0%  #232323  H=  0 S=  0 V= 35
+    1.1%  #0F0F0F  H=  0 S=  0 V= 15
+
+熊猫-v2  1536x1536
+   75.5%  #E0E1E1  H= 90 S=  1 V=225
+    6.7%  #D4D4D3  H= 30 S=  1 V=212
+    6.0%  #282827  H= 30 S=  6 V= 40
+    4.5%  #C0C0BF  H= 30 S=  1 V=192
+    4.5%  #3A3A39  H= 30 S=  4 V= 58
+    1.7%  #141414  H=  0 S=  0 V= 20
+
+低奢蓝-v4  1536x1536
+   71.4%  #E0E0E0  H=  0 S=  0 V=224
+    7.3%  #C0BAB1  H= 18 S= 20 V=192
+    6.4%  #D1CBC3  H= 17 S= 17 V=209
+    5.9%  #232631  H=114 S= 73 V= 49
+    4.3%  #AEA69C  H= 17 S= 26 V=174
+    2.8%  #33363F  H=113 S= 49 V= 63
+
+newid-低奢金-c(用户自合成)  1810x978
+   75.6%  #EAEAEA  H=  0 S=  0 V=234
+    7.2%  #CBC9C5  H= 20 S=  8 V=203
+    4.6%  #BBB7B1  H= 18 S= 14 V=187
+    3.7%  #837C73  H= 17 S= 31 V=131
+    3.1%  #9E978F  H= 16 S= 24 V=158
+    2.9%  #424141  H=  0 S=  4 V= 66
+
+panda-cream(历史)  2048x1152
+   44.6%  #FAFBF4  H= 34 S=  7 V=251
+   25.9%  #EFEFEC  H= 30 S=  3 V=239
+   11.3%  #DEDCD2  H= 25 S= 14 V=222
+    5.9%  #131512  H= 50 S= 36 V= 21
+    5.4%  #C8C5BA  H= 24 S= 18 V=200
+    4.3%  #292B27  H= 45 S= 24 V= 43
+
+panda-pink(历史)  2048x1152
+   37.3%  #F5F6F3  H= 40 S=  3 V=246
+   18.6%  #E7E6DC  H= 27 S= 12 V=231
+   15.9%  #D9D6CA  H= 24 S= 18 V=217
+   10.3%  #F0BEBA  H=  2 S= 57 V=240
+    7.8%  #C9C3B7  H= 20 S= 23 V=201
+    5.9%  #BB9993  H=  5 S= 55 V=187
+
+panda-navy(历史)  2048x1152
+   71.0%  #FEFFFE  H= 60 S=  1 V=255
+    8.9%  #33261F  H= 11 S=100 V= 51
+    7.3%  #45382F  H= 12 S= 81 V= 69
+    3.8%  #484F5F  H=111 S= 62 V= 95
+    3.3%  #181E2B  H=111 S=113 V= 43
+    2.5%  #313B4D  H=109 S= 93 V= 77
+
+panda-gold(历史)  2048x1152
+   38.0%  #F8F9F4  H= 36 S=  5 V=249
+   22.8%  #EFEEEB  H= 23 S=  4 V=239
+   11.1%  #6F3E2A  H=  9 S=159 V=111
+   10.5%  #DBD8D2  H= 20 S= 10 V=219
+    9.9%  #CBBFAA  H= 19 S= 41 V=203
+    3.2%  #A89E8C  H= 19 S= 42 V=168
+
+
+==== saturation / value stats (body = all non-bg clusters) ====
+灰绿-v1                            S_mean=0.106 S_p90=0.149 colored(S>0.15)= 8.2% vivid(S>0.35)= 0.2% V_mean=0.480 dark(V<0.25)=12.4%
+石墨灰-v1                           S_mean=0.026 S_p90=0.039 colored(S>0.15)= 0.6% vivid(S>0.35)= 0.1% V_mean=0.327 dark(V<0.25)=21.2%
+岩石白-v1                           S_mean=0.087 S_p90=0.133 colored(S>0.15)= 1.8% vivid(S>0.35)= 0.2% V_mean=0.647 dark(V<0.25)=13.0%
+熊猫-v2                            S_mean=0.051 S_p90=0.090 colored(S>0.15)= 2.7% vivid(S>0.35)= 1.3% V_mean=0.338 dark(V<0.25)=65.5%
+低奢蓝-v4                           S_mean=0.151 S_p90=0.365 colored(S>0.15)=28.6% vivid(S>0.35)=12.2% V_mean=0.525 dark(V<0.25)=32.8%
+newid-低奢金-c(用户自合成)               S_mean=0.057 S_p90=0.137 colored(S>0.15)= 4.5% vivid(S>0.35)= 0.2% V_mean=0.594 dark(V<0.25)= 5.5%
+
+
+==== new id close: circular glass component region stats ====
+disk(873,489,r88): n=24309 hex=#4A4A4A H=0 S=0 L=75 Lsd=12.5 tex=3.6
+  ring around: hex=#636261 L=99
+disk(809,484,r80): n=20069 hex=#4B4B4B H=0 S=0 L=76 Lsd=12.6 tex=3.6
+  ring around: hex=#5F5F5E L=95
+
+==== logo size: new id vs old close ====
+old(1373x826): dark marks top3 = [(np.int32(5452), '(768,611,275,71)')]
+new(1810x978): dark marks top3 = [(np.int32(10633), '(1013,723,362,50)')]

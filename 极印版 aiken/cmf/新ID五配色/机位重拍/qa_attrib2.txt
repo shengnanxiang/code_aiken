@@ -1,0 +1,22 @@
+
+===== newid-香槟-开_square.png =====
+ thr=30: bbox w_frac=0.587 h_frac=0.305 aspect=1.92
+ thr=18: bbox w_frac=0.595 h_frac=0.345 aspect=1.72
+ thr=12: bbox w_frac=0.917 h_frac=0.624 aspect=1.47
+ left edge L profile(503): ['231', '230', '230', '230', '230', '230', '230', '6'] sharp=97
+ right edge L profile(1699): ['231', '230', '230', '230', '231', '231', '229', '105'] sharp=83
+ left-boundary per row: [np.int64(705), np.int64(540), np.int64(505), np.int64(499), np.int64(502), np.int64(501), np.int64(503), np.int64(504), np.int64(505), np.int64(519), np.int64(595), np.int64(1017), np.int64(1477)]
+ right-boundary per row: [np.int64(721), np.int64(1229), np.int64(1615), np.int64(1695), np.int64(1699), np.int64(1700), np.int64(1699), np.int64(1696), np.int64(1697), np.int64(1696), np.int64(1684), np.int64(1636), np.int64(1527)]
+ circles: [(1456, 1096, 296), (715, 1039, 276), (1039, 1082, 251), (1283, 1058, 247)]
+ circle x-spread=741 / body_w=1202 = 0.62
+
+===== newid-香槟-开_square_alt.png =====
+ thr=30: bbox w_frac=0.441 h_frac=0.250 aspect=1.77
+ thr=18: bbox w_frac=0.442 h_frac=0.255 aspect=1.73
+ thr=12: bbox w_frac=0.444 h_frac=0.271 aspect=1.64
+ left edge L profile(606): ['218', '220', '220', '221', '220', '220', '222', '134'] sharp=108
+ right edge L profile(1505): ['220', '222', '220', '221', '219', '220', '220', '137'] sharp=72
+ left-boundary per row: [np.int64(749), np.int64(635), np.int64(611), np.int64(607), np.int64(605), np.int64(605), np.int64(606), np.int64(607), np.int64(610), np.int64(623), np.int64(699), np.int64(992), np.int64(1290)]
+ right-boundary per row: [np.int64(771), np.int64(1151), np.int64(1451), np.int64(1500), np.int64(1507), np.int64(1506), np.int64(1505), np.int64(1504), np.int64(1503), np.int64(1502), np.int64(1497), np.int64(1468), np.int64(1406)]
+ circles: [(1195, 1093, 210), (768, 1018, 183), (732, 1077, 179), (1361, 1178, 165)]
+ circle x-spread=463 / body_w=903 = 0.51

@@ -1,0 +1,46 @@
+
+=== newid-低奢金-c_hero.png (2720x1536) ===
+ aspect=1.4456800684345594 (base 1.693, dev -14.6%) top_L=145 vs mid_L=103
+ circle circle1: {'ref': 'circle1', 'found': [1392, 781, 335], 'pos_offset_rel': 0.0343, 'r_ratio_found': 0.2868, 'r_ratio_base': 0.2158}
+ circle circle2: {'ref': 'circle2', 'found': [1392, 781, 335], 'pos_offset_rel': 0.0648, 'r_ratio_found': 0.2868, 'r_ratio_base': 0.2088}
+ shadow: dark_frac=0.00 w_frac=0.00 (bg_L=205)
+ leather: 0.205 (base 0.249)
+ color #CBC9C5(29%) -> #CCC5B9(1%) dist=12.7
+ color #BBB7B1(18%) -> #BBB6AE(36%) dist=3.2
+ color #857D74(15%) -> #746D64(8%) dist=28.3
+ color #434343(13%) -> #3B3B36(17%) dist=17.2
+
+=== newid-低奢金-c_hero_alt.png (2720x1536) ===
+ aspect=1.613421550094518 (base 1.693, dev -4.7%) top_L=164 vs mid_L=124
+ circle circle1: {'ref': 'circle1', 'found': [1214, 744, 335], 'pos_offset_rel': 0.0391, 'r_ratio_found': 0.3164, 'r_ratio_base': 0.2158}
+ circle circle2: {'ref': 'circle2', 'found': [1214, 744, 335], 'pos_offset_rel': 0.0186, 'r_ratio_found': 0.3164, 'r_ratio_base': 0.2088}
+ shadow: dark_frac=0.00 w_frac=0.00 (bg_L=230)
+ leather: 0.221 (base 0.249)
+ color #CBC9C5(29%) -> #D4D3D0(6%) dist=17.4
+ color #BBB7B1(18%) -> #C4BFB7(33%) dist=13.5
+ color #857D74(15%) -> #7B776F(10%) dist=12.7
+ color #434343(13%) -> #3B3934(9%) dist=19.7
+
+=== newid-低奢金-open_hero.png (2720x1536) ===
+ aspect=1.5920484010371652 (base 1.926, dev -17.3%) top_L=132 vs mid_L=116
+ circle circle1: {'ref': 'circle1', 'found': [1019, 801, 257], 'pos_offset_rel': 0.0118, 'r_ratio_found': 0.2222, 'r_ratio_base': 0.2106}
+ circle circle2: {'ref': 'circle2', 'found': [972, 777, 210], 'pos_offset_rel': 0.151, 'r_ratio_found': 0.1815, 'r_ratio_base': 0.1969}
+ shadow: dark_frac=0.00 w_frac=0.00 (bg_L=229)
+ leather: 0.233 (base 0.281)
+ color #CECCC9(20%) -> #CFCECB(9%) dist=3.0
+ color #BCB8B3(20%) -> #BCB7AF(24%) dist=4.1
+ color #827B71(13%) -> #79736A(8%) dist=13.9
+ color #585755(12%) -> #4B4844(22%) dist=26.1
+
+=== newid-低奢金-open_hero_alt.png (2720x1536) ===
+ aspect=1.566326530612245 (base 1.926, dev -18.7%) top_L=166 vs mid_L=135
+ circle circle1: {'ref': 'circle1', 'found': [1303, 937, 208], 'pos_offset_rel': 0.1296, 'r_ratio_found': 0.2124, 'r_ratio_base': 0.2106}
+ circle circle2: {'ref': 'circle2', 'found': None}
+ shadow: dark_frac=0.00 w_frac=0.00 (bg_L=230)
+ leather: 0.245 (base 0.281)
+ color #CECCC9(20%) -> #D3D1CC(8%) dist=7.7
+ color #BCB8B3(20%) -> #C5C1B8(22%) dist=13.7
+ color #827B71(13%) -> #938B80(11%) dist=27.7
+ color #585755(12%) -> #51504D(10%) dist=12.7
+
+saved qa_final.json
