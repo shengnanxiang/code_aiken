@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "极印版 aiken/cmf/新ID五配色/元素诊断.md",
+                "file": "deliverables/06-lomography-research.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "元素诊断"
+              "title": "06-lomography-research"
             }
           }
         ]
@@ -188,6 +188,22 @@
   },
   "active": "886bbef96a0f0fac",
   "lastOpenFiles": [
+    "极印版 aiken/cmf/新ID五配色/渲染图/石墨灰/石墨灰-拉开-立体图1.png",
+    "极印版 aiken/cmf/新ID五配色/渲染图/石墨灰/石墨灰-闭合-前视图.png",
+    "极印版 aiken/cmf/新ID五配色/渲染图/石墨灰",
+    "极印版 aiken/老登反馈_双路径战略校准_2026-11-06.md",
+    "极印版 aiken/cmf/新ID五配色/Jiyin-261104-6-views-open.pdf",
+    "极印版 aiken/cmf/新ID五配色/Jiyin-21104-6-view-close.pdf",
+    "极印版 aiken/cmf/新ID五配色/渲染图/闭合底视图.png",
+    "极印版 aiken/cmf/新ID五配色/渲染图/闭合-立体图1.png",
+    "极印版 aiken/cmf/新ID五配色/渲染图/闭合顶视图.png",
+    "极印版 aiken/cmf/新ID五配色/渲染图/闭合-立体图2.png",
+    "极印版 aiken/cmf/新ID五配色/渲染图/闭合-前视图.png",
+    "极印版 aiken/cmf/新ID五配色/渲染图/拉开-立体图2.png",
+    "极印版 aiken/cmf/新ID五配色/渲染图/拉开-立体图1.png",
+    "极印版 aiken/cmf/新ID五配色/渲染图/拉开-顶视图.png",
+    "极印版 aiken/cmf/新ID五配色/渲染图/拉开-后视图.png",
+    "极印版 aiken/cmf/新ID五配色/渲染图",
     "极印版 aiken/cmf/新ID五配色/机位重拍/README.md",
     "极印版 aiken/cmf/新ID五配色/机位重拍/qa_hero_conclusion.md",
     "极印版 aiken/cmf/新ID五配色/机位重拍/qa_shadow_deep.py",
@@ -195,25 +211,11 @@
     "极印版 aiken/cmf/新ID五配色/机位重拍/qa_final.json",
     "极印版 aiken/cmf/新ID五配色/机位重拍/qa_console.txt",
     "极印版 aiken/cmf/新ID五配色/机位重拍/qa_hero.py",
-    "极印版 aiken/cmf/新ID五配色/机位重拍/newid-低奢金-open_hero_alt.png",
-    "极印版 aiken/cmf/新ID五配色/机位重拍/newid-低奢金-open_hero.png",
-    "极印版 aiken/cmf/新ID五配色/机位重拍/newid-低奢金-c_hero_alt.png",
-    "极印版 aiken/cmf/新ID五配色/机位重拍/newid-低奢金-c_hero.png",
     "极印版 aiken/cmf/新ID五配色/机位重拍/baseline/baseline_report.md",
     "极印版 aiken/cmf/新ID五配色/机位重拍/baseline/baseline_data.json",
-    "极印版 aiken/cmf/新ID五配色/机位重拍/baseline/mask_leather_open.png",
-    "极印版 aiken/cmf/新ID五配色/机位重拍/baseline/mask_body_open.png",
-    "极印版 aiken/cmf/新ID五配色/机位重拍/baseline/mask_leather_close.png",
-    "极印版 aiken/cmf/新ID五配色/机位重拍/baseline/mask_body_close.png",
-    "极印版 aiken/cmf/新ID五配色/机位重拍/baseline",
-    "极印版 aiken/cmf/新ID五配色/机位重拍/make_baseline.py",
-    "极印版 aiken/cmf/新ID五配色/机位重拍",
     "bromo/Bromo 氙气闪光灯专项推进方案.md",
-    "bromo/ref/yashica-35mf-flash-popup.jpg",
     "bromo/Bromo 立项战略意图.md",
-    "bromo/38DF4D10",
     "极印版 aiken/销量概率模型/bromo_v01_结果摘要.md",
-    "bromo/ref/近摄片.jpg",
     "bromo/Bromo v0.2.md",
     "bromo/Bromo - ￥1299 极印仿胶卷数码相机 #2.md",
     "极印版 aiken/AiKen_立项陈述_演讲稿_slide2-10.md",
