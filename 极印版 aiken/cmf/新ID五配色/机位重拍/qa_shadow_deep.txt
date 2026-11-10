@@ -1,4 +1,0 @@
-  File "<stdin>", line 6
-    BASE = Path(r"C:/Users/Nan/Documents/GitHub/code_aiken/��ӡ�� aiken/cmf/��ID����ɫ/��λ����")
-                                                           ^
-SyntaxError: Non-UTF-8 code starting with '\xbc' in file <stdin> on line 6, but no encoding declared; see https://peps.python.org/pep-0263/ for details

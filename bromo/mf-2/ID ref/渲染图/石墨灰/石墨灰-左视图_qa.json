@@ -1,0 +1,30 @@
+{
+ "render": "石墨灰-左视图.png",
+ "render_fill": [
+  0.25,
+  0.7
+ ],
+ "render_centroid": [
+  0.5,
+  0.52
+ ],
+ "sample_fill": [
+  0.24,
+  0.65
+ ],
+ "contour_iou": 0.867,
+ "fill_ok": true,
+ "glass_found": true,
+ "glass": {
+  "rel_x": 0.275,
+  "rel_y": 0.27,
+  "area": 6283,
+  "roundness": 0.71
+ },
+ "colorful_pct": 0.01,
+ "dark25": "#292a2a",
+ "light25": "#7a7876",
+ "cmf_ok": false,
+ "bg": "#dad8d7",
+ "verdict": "FAIL"
+}

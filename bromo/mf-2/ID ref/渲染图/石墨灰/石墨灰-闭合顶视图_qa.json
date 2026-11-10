@@ -1,0 +1,30 @@
+{
+ "render": "石墨灰-闭合顶视图.png",
+ "render_fill": [
+  0.37,
+  0.25
+ ],
+ "render_centroid": [
+  0.5,
+  0.51
+ ],
+ "sample_fill": [
+  0.37,
+  0.22
+ ],
+ "contour_iou": 0.895,
+ "fill_ok": true,
+ "glass_found": true,
+ "glass": {
+  "rel_x": 0.164,
+  "rel_y": 0.43,
+  "area": 2296,
+  "roundness": 0.57
+ },
+ "colorful_pct": 0.0,
+ "dark25": "#353433",
+ "light25": "#989795",
+ "cmf_ok": true,
+ "bg": "#d4d2d0",
+ "verdict": "PASS"
+}
