@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!-- Background -->
+  <rect width="1200" height="900" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#000000">BOTTOM</text>
+  
+  <!-- Main body outline (bottom view: width=118mm, depth=51mm) -->
+  <rect x="128" y="246" width="944" height="408" rx="24" ry="24"
+        fill="none" stroke="#000000" stroke-width="3"/>
+  
+  <!-- Front edge -->
+  <line x1="128" y1="654" x2="1072" y2="654" stroke="#000000" stroke-width="2"/>
+  
+  <!-- Rear edge -->
+  <line x1="128" y1="246" x2="1072" y2="246" stroke="#000000" stroke-width="2"/>
+  
+  <!-- Battery compartment cover -->
+  <!-- Position: center-left, ~35x20mm -->
+  <rect x="480" y="400" width="280" height="160" rx="12" ry="12"
+        fill="none" stroke="#000000" stroke-width="2"/>
+  <!-- Slide direction arrow -->
+  <polygon points="520,480 540,480 530,470" fill="none" stroke="#000000" stroke-width="1.5"/>
+  <line x1="520" y1="480" x2="560" y2="480" stroke="#000000" stroke-width="1.5"/>
+  <text x="630" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000000">OPEN →</text>
+  
+  <!-- Battery symbol -->
+  <text x="630" y="540" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#000000">2×AA</text>
+  
+  <!-- Tripod socket -->
+  <!-- Position: center-right, standard 1/4"-20 -->
+  <circle cx="850" cy="450" r="20" fill="none" stroke="#000000" stroke-width="2"/>
+  <circle cx="850" cy="450" r="12" fill="none" stroke="#000000" stroke-width="1"/>
+  <!-- Thread indication -->
+  <circle cx="850" cy="450" r="16" fill="none" stroke="#000000" stroke-width="0.5" stroke-dasharray="2,1"/>
+  <text x="850" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#000000">1/4"-20</text>
+  
+  <!-- Lens bottom (hidden, show as dashed circle) -->
+  <circle cx="600" cy="580" r="80" fill="none" stroke="#000000" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="600" y="590" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666666">LENS</text>
+  
+  <!-- Center lines -->
+  <line x1="600" y1="246" x2="600" y2="654" stroke="#999999" stroke-width="0.5" stroke-dasharray="8,4"/>
+  <line x1="128" y1="450" x2="1072" y2="450" stroke="#999999" stroke-width="0.5" stroke-dasharray="8,4"/>
+  
+</svg>

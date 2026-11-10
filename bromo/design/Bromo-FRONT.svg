@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!-- Background -->
+  <rect width="1200" height="900" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#000000">FRONT</text>
+  
+  <!-- Main body outline -->
+  <!-- Body width: 118mm * 8 = 944px, height: 70mm * 8 = 560px -->
+  <!-- Centered: x=(1200-944)/2=128, y=(900-560)/2=170 -->
+  <rect x="128" y="170" width="944" height="560" rx="24" ry="24" 
+        fill="none" stroke="#000000" stroke-width="3"/>
+  
+  <!-- Top decorative band (metal strip) -->
+  <rect x="128" y="170" width="944" height="48" rx="8" ry="8"
+        fill="none" stroke="#000000" stroke-width="2"/>
+  
+  <!-- Bottom decorative band (metal strip) -->
+  <rect x="128" y="682" width="944" height="48" rx="8" ry="8"
+        fill="none" stroke="#000000" stroke-width="2"/>
+  
+  <!-- Leather texture area (front face) - indicated by border -->
+  <rect x="148" y="218" width="904" height="464" rx="16" ry="16"
+        fill="none" stroke="#000000" stroke-width="1.5" stroke-dasharray="4,2"/>
+  
+  <!-- Grip area (right side, ~30% width) -->
+  <rect x="789" y="218" width="263" height="464" rx="12" ry="12"
+        fill="none" stroke="#000000" stroke-width="1.5"/>
+  
+  <!-- Grip texture indication -->
+  <line x1="810" y1="240" x2="810" y2="660" stroke="#000000" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <line x1="830" y1="240" x2="830" y2="660" stroke="#000000" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <line x1="850" y1="240" x2="850" y2="660" stroke="#000000" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <line x1="870" y1="240" x2="870" y2="660" stroke="#000000" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <line x1="890" y1="240" x2="890" y2="660" stroke="#000000" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <line x1="910" y1="240" x2="910" y2="660" stroke="#000000" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <line x1="930" y1="240" x2="930" y2="660" stroke="#000000" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <line x1="950" y1="240" x2="950" y2="660" stroke="#000000" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <line x1="970" y1="240" x2="970" y2="660" stroke="#000000" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <line x1="990" y1="240" x2="990" y2="660" stroke="#000000" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <line x1="1010" y1="240" x2="1010" y2="660" stroke="#000000" stroke-width="0.5" stroke-dasharray="3,3"/>
+  
+  <!-- Brand text area -->
+  <text x="200" y="205" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#000000">BROMO</text>
+  
+  <!-- Viewfinder window (top center-left) -->
+  <!-- Position: center-left of top band, ~8x6mm -->
+  <rect x="480" y="178" width="64" height="48" rx="4" ry="4"
+        fill="none" stroke="#000000" stroke-width="2"/>
+  
+  <!-- Flash housing (top right, closed) -->
+  <!-- Position: top right, ~20x15mm -->
+  <rect x="920" y="172" width="120" height="90" rx="6" ry="6"
+        fill="none" stroke="#000000" stroke-width="2"/>
+  <text x="980" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#000000">FLASH</text>
+  
+  <!-- Lens assembly (center, lower portion) -->
+  <!-- 37mm thread, center at x=600, y=480 (lens center height ~28mm from bottom) -->
+  <!-- 37mm * 8 = 296px diameter -->
+  <circle cx="600" cy="480" r="148" fill="none" stroke="#000000" stroke-width="3"/>
+  
+  <!-- Lens thread detail (inner) -->
+  <circle cx="600" cy="480" r="136" fill="none" stroke="#000000" stroke-width="1"/>
+  
+  <!-- Lens glass area -->
+  <circle cx="600" cy="480" r="120" fill="none" stroke="#000000" stroke-width="1.5"/>
+  
+  <!-- Lens element (inner) -->
+  <circle cx="600" cy="480" r="100" fill="none" stroke="#000000" stroke-width="1"/>
+  <circle cx="600" cy="480" r="80" fill="none" stroke="#000000" stroke-width="0.5"/>
+  
+  <!-- Lens text -->
+  <text x="600" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#000000">37mm</text>
+  
+  <!-- Shutter button (hidden on front, but show position hint) -->
+  <circle cx="600" cy="170" r="4" fill="none" stroke="#000000" stroke-width="0.5" stroke-dasharray="2,2"/>
+  
+  <!-- Strap lug (left side) -->
+  <rect x="118" y="400" width="10" height="24" rx="3" ry="3"
+        fill="none" stroke="#000000" stroke-width="1.5"/>
+  
+  <!-- Strap lug (right side) -->
+  <rect x="1072" y="400" width="10" height="24" rx="3" ry="3"
+        fill="none" stroke="#000000" stroke-width="1.5"/>
+  
+  <!-- Center line (vertical) -->
+  <line x1="600" y1="170" x2="600" y2="730" stroke="#999999" stroke-width="0.5" stroke-dasharray="8,4"/>
+  
+  <!-- Center line (horizontal) -->
+  <line x1="128" y1="480" x2="1072" y2="480" stroke="#999999" stroke-width="0.5" stroke-dasharray="8,4"/>
+  
+</svg>

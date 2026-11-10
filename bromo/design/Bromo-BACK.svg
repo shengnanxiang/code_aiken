@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!-- Background -->
+  <rect width="1200" height="900" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#000000">BACK</text>
+  
+  <!-- Main body outline -->
+  <rect x="128" y="170" width="944" height="560" rx="24" ry="24" 
+        fill="none" stroke="#000000" stroke-width="3"/>
+  
+  <!-- Top decorative band -->
+  <rect x="128" y="170" width="944" height="48" rx="8" ry="8"
+        fill="none" stroke="#000000" stroke-width="2"/>
+  
+  <!-- Bottom decorative band -->
+  <rect x="128" y="682" width="944" height="48" rx="8" ry="8"
+        fill="none" stroke="#000000" stroke-width="2"/>
+  
+  <!-- Back cover (leather texture area) -->
+  <rect x="148" y="218" width="904" height="464" rx="16" ry="16"
+        fill="none" stroke="#000000" stroke-width="1.5" stroke-dasharray="4,2"/>
+  
+  <!-- Viewfinder eyepiece window -->
+  <rect x="520" y="178" width="64" height="48" rx="4" ry="4"
+        fill="none" stroke="#000000" stroke-width="2"/>
+  
+  <!-- Flash housing back (visible from back) -->
+  <rect x="920" y="172" width="120" height="90" rx="6" ry="6"
+        fill="none" stroke="#000000" stroke-width="2"/>
+  
+  <!-- Battery compartment cover (if on back) -->
+  <!-- Option A: bottom placement (default) -->
+  <!-- Option B: back placement (alternative) -->
+  <!-- Drawing Option A (bottom) - show outline on back for reference -->
+  <rect x="480" y="640" width="280" height="80" rx="8" ry="8"
+        fill="none" stroke="#000000" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="620" y="685" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666666">BATTERY (BOTTOM)</text>
+  
+  <!-- Strap lug (left) -->
+  <rect x="118" y="400" width="10" height="24" rx="3" ry="3"
+        fill="none" stroke="#000000" stroke-width="1.5"/>
+  
+  <!-- Strap lug (right) -->
+  <rect x="1072" y="400" width="10" height="24" rx="3" ry="3"
+        fill="none" stroke="#000000" stroke-width="1.5"/>
+  
+  <!-- Center lines -->
+  <line x1="600" y1="170" x2="600" y2="730" stroke="#999999" stroke-width="0.5" stroke-dasharray="8,4"/>
+  <line x1="128" y1="480" x2="1072" y2="480" stroke="#999999" stroke-width="0.5" stroke-dasharray="8,4"/>
+  
+</svg>

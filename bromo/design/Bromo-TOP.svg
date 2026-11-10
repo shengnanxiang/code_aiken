@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <!-- Background -->
+  <rect width="1200" height="900" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#000000">TOP</text>
+  
+  <!-- Main body outline (top view: width=118mm, depth=51mm) -->
+  <!-- 118*8=944, 51*8=408 -->
+  <rect x="128" y="246" width="944" height="408" rx="24" ry="24"
+        fill="none" stroke="#000000" stroke-width="3"/>
+  
+  <!-- Front edge (bottom of top view) -->
+  <line x1="128" y1="654" x2="1072" y2="654" stroke="#000000" stroke-width="2"/>
+  
+  <!-- Rear edge (top of top view) -->
+  <line x1="128" y1="246" x2="1072" y2="246" stroke="#000000" stroke-width="2"/>
+  
+  <!-- Shutter button with M3x0.5 threaded cap -->
+  <!-- Position: left-front area -->
+  <circle cx="280" cy="520" r="24" fill="none" stroke="#000000" stroke-width="2"/>
+  <circle cx="280" cy="520" r="20" fill="none" stroke="#000000" stroke-width="1"/>
+  <!-- Knurling detail -->
+  <circle cx="280" cy="520" r="16" fill="none" stroke="#000000" stroke-width="0.5" stroke-dasharray="2,1"/>
+  <text x="280" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#000000">SHUTTER</text>
+  
+  <!-- Film advance lever -->
+  <!-- Position: shutter right, ~15mm center distance -->
+  <!-- Lever base -->
+  <rect x="340" y="480" width="80" height="80" rx="12" ry="12"
+        fill="none" stroke="#000000" stroke-width="2"/>
+  <!-- Lever arm -->
+  <line x1="380" y1="520" x2="440" y2="480" stroke="#000000" stroke-width="3"/>
+  <line x1="440" y1="480" x2="460" y2="470" stroke="#000000" stroke-width="3"/>
+  <!-- Lever tip -->
+  <rect x="455" y="455" width="30" height="20" rx="4" ry="4"
+        fill="none" stroke="#000000" stroke-width="2"/>
+  <text x="400" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#000000">LEVER</text>
+  
+  <!-- Viewfinder window (top) -->
+  <rect x="520" y="280" width="80" height="60" rx="6" ry="6"
+        fill="none" stroke="#000000" stroke-width="2"/>
+  <text x="560" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#000000">OVF</text>
+  
+  <!-- Flash housing (closed, top view) -->
+  <!-- Position: right side, ~20x15mm -->
+  <rect x="920" y="280" width="120" height="90" rx="6" ry="6"
+        fill="none" stroke="#000000" stroke-width="2"/>
+  <text x="980" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#000000">FLASH</text>
+  
+  <!-- Cold shoe -->
+  <!-- Position: center-rear -->
+  <rect x="540" y="380" width="120" height="80" rx="4" ry="4"
+        fill="none" stroke="#000000" stroke-width="2"/>
+  <!-- Shoe rails -->
+  <line x1="560" y1="400" x2="560" y2="440" stroke="#000000" stroke-width="1.5"/>
+  <line x1="640" y1="400" x2="640" y2="440" stroke="#000000" stroke-width="1.5"/>
+  <text x="600" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#000000">COLD SHOE</text>
+  
+  <!-- Lens top view (hidden, show as circle) -->
+  <circle cx="600" cy="580" r="80" fill="none" stroke="#000000" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="600" y="590" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666666">LENS</text>
+  
+  <!-- Brand text -->
+  <text x="200" y="300" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#000000">BROMO</text>
+  
+  <!-- Center lines -->
+  <line x1="600" y1="246" x2="600" y2="654" stroke="#999999" stroke-width="0.5" stroke-dasharray="8,4"/>
+  <line x1="128" y1="450" x2="1072" y2="450" stroke="#999999" stroke-width="0.5" stroke-dasharray="8,4"/>
+  
+</svg>
